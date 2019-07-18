@@ -28,6 +28,7 @@ Create table Files (
 	fileid int not null Identity(1,1),
 	usid int  not null,
 	donvi int,
+	ngaythangnamsinh datetime,
 	hotendangdung nvarchar(200),
 	hotenkhaisinh nvarchar(200),
 	gioitinh bit ,
