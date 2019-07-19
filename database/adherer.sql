@@ -13,6 +13,16 @@ create table ChiBo(
 	active bit,
 	foreign key(dbid) references DangBo(dbid)
 );
+Create table Title(
+	titleid int not null primary key identity (1,1),
+	nametitle nvarchar(100),
+	active bit
+);
+Create table Roles(
+	roleid int not null primary key identity (1,1),
+	rolename nvarchar(100) not null,
+	active bit
+);
 create table Users (
 	usid int not null Identity(1,1),
 	madv nvarchar(9),
@@ -21,8 +31,22 @@ create table Users (
 	createday datetime,
 	password nvarchar(100),
 	primary key(usid),
+	roleid int,
+	titleid int ,
 	active bit not null,
-	foreign key (cbid) references Chibo(cbid)
+	foreign key (cbid) references Chibo(cbid),
+	foreign key (roleid) references Roles(roleid),
+	foreign key (titleid) references Title(titleid)
+);
+create table Nation(
+	nationid int not null primary key identity(1,1),
+	name nvarchar(100),
+	note nvarchar(200)
+);
+create table Organization(
+	ogid int not null primary key Identity (1,1),
+	nameog nvarchar(200),
+	active bit,
 );
 Create table Files (
 	fileid int not null Identity(1,1),
@@ -46,7 +70,9 @@ Create table Files (
 	sdt nvarchar(10),
 	email nvarchar(100),
 	primary key(fileid),
-	foreign key (usid) references users(usid)
+	foreign key (usid) references users(usid),
+	foreign key (dantoc) references Nation(nationid),
+	foreign key(donvi) references Organization(ogid)
 );
 Create table Family(
 	fmlid int not null Identity(1,1),
@@ -83,10 +109,8 @@ create table Forms(
 	formid int not null identity (1,1) primary key ,
 	nameform nvarchar(100) not null ,
 	namefile nvarchar(100) not null,
+	note nvarchar(1000),
 	updatedate datetime,
 	active bit
 )
-create table Forms(
-	formid int not null identity (1,1) primary key ,
-	nameform nvarchar(100) not null ,
-)
+
