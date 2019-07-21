@@ -53,12 +53,12 @@ namespace WebApi
                 };
             });
 
-            services.AddSingleton<IFileProvider>(
-               new PhysicalFileProvider(
-                   Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/user")));//image
-            services.AddSingleton<IFileProvider>(
-               new PhysicalFileProvider(
-                   Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/admin")));//image
+            //services.AddSingleton<IFileProvider>(
+            //   new PhysicalFileProvider(
+            //       Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/user")));//image
+            //services.AddSingleton<IFileProvider>(
+            //   new PhysicalFileProvider(
+            //       Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/admin")));//image
 
 
             services.AddScoped<IUserResponsitory, UserResponsitory>();
