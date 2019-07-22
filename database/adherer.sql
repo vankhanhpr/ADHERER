@@ -59,21 +59,29 @@ Create table Files (
 	dantoc int ,
 	tongiao int,
 	nghenghiep nvarchar(100),
-	ngayvaodang datetime ,
+	ngayvaodangdb datetime ,
+	ngayvaodangct datetime,
 	ngayvaodoan datetime ,
 	trinhdovanhoa nvarchar(2),
 	chuyenmon nvarchar(100),
 	quequan nvarchar(500),
 	noicutru nvarchar(300),
+	matp varchar(5),
+	maqh varchar(5),
+	xaid varchar(5),
 	solilich nvarchar(20),
+	createday datetime,
 	updateday datetime,
 	sdt nvarchar(10),
 	email nvarchar(100),
+	avatar nvarchar(20),
 	primary key(fileid),
 	foreign key (usid) references users(usid),
 	foreign key (dantoc) references Nation(nationid),
 	foreign key(donvi) references Organization(ogid)
 );
+ALTER TABLE Files
+ADD avatar nvarchar(20);
 Create table Family(
 	fmlid int not null Identity(1,1),
 	fileid int not null,
@@ -112,5 +120,14 @@ create table Forms(
 	note nvarchar(1000),
 	updatedate datetime,
 	active bit
-)
-
+);
+create table toabroad (
+	brid int not null primary key identity (1,1),
+	fileid int not null,
+	noiden nvarchar(200),
+	lydo nvarchar(200),
+	thoigiandi datetime,
+	thoigiantrove datetime,
+	createday datetime,
+	foreign key (fileid) references files(fileid)
+);
