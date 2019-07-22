@@ -5,11 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="serrvice\productservice\model\" />
-    <Folder Include="serrvice\productservice\interfaces\" />
-    <Folder Include="serrvice\productservice\responsitory\" />
-    <Folder Include="wwwroot\images\admin\" />
-    <Folder Include="wwwroot\images\user\" />
+    <Compile Remove="serrvice\productservice\**" />
+    <Content Remove="serrvice\productservice\**" />
+    <EmbeddedResource Remove="serrvice\productservice\**" />
+    <None Remove="serrvice\productservice\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
   </ItemGroup>
 
   <ItemGroup>
