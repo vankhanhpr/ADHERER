@@ -3,9 +3,11 @@ use Adherer;
 
 create table DangBo(
 	dbid int not null primary key identity (1,1),
+	tructhuoc int,
 	tendb nvarchar(200),
 	active bit
 );
+alter table  DangBo add tructhuoc int;
 create table ChiBo(
 	cbid int not null identity(1,1) primary key,
 	tencb nvarchar(200),
@@ -121,7 +123,7 @@ create table Forms(
 	updatedate datetime,
 	active bit
 );
-create table toabroad (
+create table Toabroad (
 	brid int not null primary key identity (1,1),
 	fileid int not null,
 	noiden nvarchar(200),
@@ -129,5 +131,7 @@ create table toabroad (
 	thoigiandi datetime,
 	thoigiantrove datetime,
 	createday datetime,
-	foreign key (fileid) references files(fileid)
+	active int,
+	status int ,
+	foreign key (fileid) references Files(fileid)
 );
