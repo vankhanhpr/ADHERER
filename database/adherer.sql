@@ -135,3 +135,13 @@ create table Toabroad (
 	status int ,
 	foreign key (fileid) references Files(fileid)
 );
+Create table Report (
+	rpid int not null primary key identity (1,1),
+	title nvarchar(200),
+	filename nvarchar(20),
+	reportday datetime,
+	createday datetime,
+	note nvarchar(1000),
+	active bit
+);
+alter table Report add note nvarchar(1000)
