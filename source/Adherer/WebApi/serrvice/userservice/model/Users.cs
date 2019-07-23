@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -9,12 +10,15 @@ namespace WebApi.model
     public class Users
     {
         [Key]
-        public int userid { get; set; }
-        public string username { get; set; }
-        public int gender { get; set; }
-        public string addr { get; set; }
-        public string email { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int usid { get; set; }
+        public string madv { get; set; }
+        public int cbid { get; set; }
+        public DateTime ngaydenchibo { get; set; }
+        public DateTime createday { get; set; }
         public string password { get; set; }
-
+        public int roleid { get; set; }
+        public int titleid { get; set; }
+        public Boolean active { get; set; }
     }
 }

@@ -10,6 +10,6 @@ namespace WebApi.serrvice.userservice.interfaces
     public interface IUserResponsitory:IResponsitory<Users>
     {
         dynamic getAllUser();
-        Users getUserByEmail(string email);
+        Users getUserByMaDV(string madvd);
     }
 }

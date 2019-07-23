@@ -7,7 +7,7 @@ namespace WebApi.serrvice.authentication.model
 {
     public class Auth
     {
-        public string email { get; set; }
+        public string madv { get; set; }
         public string password { get; set; }
     }
 }

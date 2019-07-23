@@ -27,16 +27,34 @@ namespace WebApi.controllers.auth
             try
             {
                 Auth auth = new Auth();
-                auth.email = users.email;
+                auth.madv = users.madv;
                 auth.password = users.password;
                 data.success = true;
                 data.data = m_authentication.login(auth);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 data.success = false;
                 data.error = e;
                 data.message = e.Message;
+            }
+            return data;
+        }
+
+        //logout user
+        [HttpPost("logout")]
+        public DataRespond logout([FromBody] Users users)
+        {
+            DataRespond data = new DataRespond();
+            try
+            {
+                data.success = true;
+
+            }catch(Exception e)
+            {
+                data.error = e;
+                data.message = e.Message;
+                data.success = false;
             }
             return data;
         }

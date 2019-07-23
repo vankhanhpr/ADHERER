@@ -22,9 +22,9 @@ namespace WebApi.serrvice.userservice.responsitory
             return context.Users.ToList();
         }
 
-        public Users getUserByEmail(string email)
+        public Users getUserByMaDV(string madvd)
         {
-            return context.Users.Where(m => m.email == email).FirstOrDefault();
+            return context.Users.Where(m=>m.madv==madvd).FirstOrDefault();
 
         }
     }

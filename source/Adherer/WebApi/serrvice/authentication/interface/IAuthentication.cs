@@ -10,7 +10,7 @@ namespace WebApi.serrvice.authentication
     public interface IAuthentication
     {
         DataRespond login(Auth auth);
-        void logout(int id);
+        void logout(string madv);
 
         void refreshToken();
 

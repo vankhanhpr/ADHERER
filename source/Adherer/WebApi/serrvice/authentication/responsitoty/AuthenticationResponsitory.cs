@@ -17,6 +17,7 @@ namespace WebApi.serrvice.authentication.responsitoty
     {
         private readonly IConfiguration m_config;
         private IUserResponsitory m_userResponsitory;
+        public static IDictionary<string, string> m_tokens = new Dictionary<string, string>();
         public AuthenticationResponsitory(IConfiguration config, IUserResponsitory userResponsitory)
         {
             m_config = config;
@@ -30,18 +31,21 @@ namespace WebApi.serrvice.authentication.responsitoty
 
         public DataRespond login(Auth auth)
         {
-            Users user = m_userResponsitory.getUserByEmail(auth.email);
+            Users user = m_userResponsitory.getUserByMaDV(auth.madv);
             DataRespond data = new DataRespond();
-            if(auth.email==user.email&& auth.password== user.password)
+            if(auth.madv==user.madv&& auth.password== user.password)
             {
-                data.data = new { toke = BuildToken(user), id = user.userid };
+                data.data = new { toke = BuildToken(user), id = user.usid };
             }
             return data;
         }
-
-        public void logout(int id)
+        public void savaToken(string madv,string token)
         {
-            throw new NotImplementedException();
+            m_tokens.Add(madv, token);
+        }
+        public void logout(string madv)
+        {
+            m_tokens.Remove(madv);
         }
 
         public void refreshToken()
@@ -58,8 +62,8 @@ namespace WebApi.serrvice.authentication.responsitoty
         private string BuildToken(Users user)
         {
             var claims = new[] {
-                new Claim(JwtRegisteredClaimNames.Sub, user.username),
-                new Claim(JwtRegisteredClaimNames.Email, user.email),
+                new Claim(JwtRegisteredClaimNames.Sub, user.madv),
+                new Claim(JwtRegisteredClaimNames.Email, user.password),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
 
