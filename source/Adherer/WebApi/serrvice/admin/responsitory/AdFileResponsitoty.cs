@@ -10,10 +10,10 @@ using WebApi.serrvice.admin.model;
 
 namespace WebApi.serrvice.admin.responsitory
 {
-    public class FileResponsitory : Responsitory<Files>, IFileResponsitory
+    public class AdFileResponsitory : Responsitory<Files>, IAdFileResponsitory
     {
         private DbSet<Files> fileEntity;
-        public FileResponsitory(MyDBContext context) : base(context)
+        public AdFileResponsitory(MyDBContext context) : base(context)
         {
             fileEntity = context.Set<Files>();
         }

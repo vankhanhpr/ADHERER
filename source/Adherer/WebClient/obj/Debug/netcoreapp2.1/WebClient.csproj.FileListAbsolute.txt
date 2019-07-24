@@ -39,7 +39,6 @@ F:\ASP.NET\ADHERER\source\Adherer\WebClient\bin\Debug\netcoreapp2.1\WebClient.dl
 F:\ASP.NET\ADHERER\source\Adherer\WebClient\bin\Debug\netcoreapp2.1\WebClient.pdb
 F:\ASP.NET\ADHERER\source\Adherer\WebClient\bin\Debug\netcoreapp2.1\WebClient.Views.dll
 F:\ASP.NET\ADHERER\source\Adherer\WebClient\bin\Debug\netcoreapp2.1\WebClient.Views.pdb
-F:\ASP.NET\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\WebClient.csprojAssemblyReference.cache
 F:\ASP.NET\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\WebClient.csproj.CoreCompileInputs.cache
 F:\ASP.NET\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\WebClient.RazorAssemblyInfo.cache
 F:\ASP.NET\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\WebClient.RazorAssemblyInfo.cs

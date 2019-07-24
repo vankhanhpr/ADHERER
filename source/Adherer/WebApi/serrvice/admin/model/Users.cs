@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WebApi.model
+namespace WebApi.serrvice.admin.model
 {
     public class Users
     {

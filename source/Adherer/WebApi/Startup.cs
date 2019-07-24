@@ -13,8 +13,10 @@ using WebApi.serrvice.admin.interfaces;
 using WebApi.serrvice.admin.responsitory;
 using WebApi.serrvice.authentication;
 using WebApi.serrvice.authentication.responsitoty;
-using WebApi.serrvice.userservice.interfaces;
-using WebApi.serrvice.userservice.responsitory;
+using WebApi.serrvice.unit.interfaces;
+using WebApi.serrvice.unit.responsitory;
+using WebApi.serrvice.user.interfaces;
+using WebApi.serrvice.user.responsitory;
 
 namespace WebApi
 {
@@ -58,6 +60,9 @@ namespace WebApi
             services.AddScoped<IUserResponsitory, UserResponsitory>();
             services.AddScoped<IAuthentication, AuthenticationResponsitory>();
             services.AddScoped<IAdUserResponsitory, AdUserResponsitory>();
+            services.AddTransient<IProvinceResponsitory, ProvinceResponsitory>();
+            services.AddTransient<IDistrictResponsitory, DistrictResponsitory>();
+            services.AddTransient<IWardResponsitory, WardResponsitory>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

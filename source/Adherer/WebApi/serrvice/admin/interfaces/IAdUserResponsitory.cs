@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebApi.interfaces.responsitory;
 using WebApi.model;
+using WebApi.serrvice.admin.model;
 
 namespace WebApi.serrvice.admin.interfaces
 {

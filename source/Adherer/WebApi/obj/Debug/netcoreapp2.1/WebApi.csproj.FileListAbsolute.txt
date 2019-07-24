@@ -17,7 +17,6 @@ F:\ASP.NET\ADHERER\source\Adherer\WebApi\bin\Debug\netcoreapp2.1\WebApi.runtimec
 F:\ASP.NET\ADHERER\source\Adherer\WebApi\bin\Debug\netcoreapp2.1\WebApi.runtimeconfig.dev.json
 F:\ASP.NET\ADHERER\source\Adherer\WebApi\bin\Debug\netcoreapp2.1\WebApi.dll
 F:\ASP.NET\ADHERER\source\Adherer\WebApi\bin\Debug\netcoreapp2.1\WebApi.pdb
-F:\ASP.NET\ADHERER\source\Adherer\WebApi\obj\Debug\netcoreapp2.1\WebApi.csprojAssemblyReference.cache
 F:\ASP.NET\ADHERER\source\Adherer\WebApi\obj\Debug\netcoreapp2.1\WebApi.csproj.CoreCompileInputs.cache
 F:\ASP.NET\ADHERER\source\Adherer\WebApi\obj\Debug\netcoreapp2.1\WebApi.RazorAssemblyInfo.cache
 F:\ASP.NET\ADHERER\source\Adherer\WebApi\obj\Debug\netcoreapp2.1\WebApi.RazorAssemblyInfo.cs
@@ -40,3 +39,4 @@ E:\ASPMVC\WORK\ADHERER\source\Adherer\WebApi\obj\Debug\netcoreapp2.1\WebApi.Asse
 E:\ASPMVC\WORK\ADHERER\source\Adherer\WebApi\obj\Debug\netcoreapp2.1\WebApi.RazorTargetAssemblyInfo.cache
 E:\ASPMVC\WORK\ADHERER\source\Adherer\WebApi\obj\Debug\netcoreapp2.1\WebApi.dll
 E:\ASPMVC\WORK\ADHERER\source\Adherer\WebApi\obj\Debug\netcoreapp2.1\WebApi.pdb
+F:\ASP.NET\ADHERER\source\Adherer\WebApi\obj\Debug\netcoreapp2.1\WebApi.csprojAssemblyReference.cache

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.model;
-using WebApi.serrvice.userservice.interfaces;
+using WebApi.serrvice.user.interfaces;
 
 namespace WebApi.controllers
 {
@@ -29,7 +29,7 @@ namespace WebApi.controllers
             {
                 string requestedWith = HttpContext.Request.Headers["Authorization"];
                 data.success = true;
-                data.data = m_userResponsitory.getAllUser();
+               // data.data = m_userResponsitory.get();
                 data.message = "success";
             }
             catch(Exception e)

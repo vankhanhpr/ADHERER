@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.model;
+using WebApi.serrvice.admin.model;
 using WebApi.serrvice.authentication;
 using WebApi.serrvice.authentication.model;
 

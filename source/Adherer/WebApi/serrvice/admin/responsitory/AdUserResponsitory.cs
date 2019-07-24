@@ -7,6 +7,7 @@ using WebApi.data;
 using WebApi.model;
 using WebApi.responsitory;
 using WebApi.serrvice.admin.interfaces;
+using WebApi.serrvice.admin.model;
 
 namespace WebApi.serrvice.admin.responsitory
 {

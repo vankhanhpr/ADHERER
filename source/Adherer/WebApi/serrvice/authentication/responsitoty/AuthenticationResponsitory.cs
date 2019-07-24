@@ -8,8 +8,9 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using WebApi.model;
+using WebApi.serrvice.admin.model;
 using WebApi.serrvice.authentication.model;
-using WebApi.serrvice.userservice.interfaces;
+using WebApi.serrvice.user.interfaces;
 
 namespace WebApi.serrvice.authentication.responsitoty
 {
@@ -31,7 +32,7 @@ namespace WebApi.serrvice.authentication.responsitoty
 
         public DataRespond login(Auth auth)
         {
-            Users user = m_userResponsitory.getUserByMaDV(auth.madv);
+            Users user = m_userResponsitory.getUserByMaDv(auth.madv);
             DataRespond data = new DataRespond();
             if(auth.madv==user.madv&& auth.password== user.password)
             {

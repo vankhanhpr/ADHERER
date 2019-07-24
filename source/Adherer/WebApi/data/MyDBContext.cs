@@ -4,7 +4,7 @@ using WebApi.serrvice.admin.model;
 
 namespace WebApi.data
 {
-    public class MyDBContext:DbContext
+    public class MyDBContext : DbContext
     {
         public MyDBContext(DbContextOptions<MyDBContext> options) : base(options)
         {
@@ -14,5 +14,15 @@ namespace WebApi.data
         public DbSet<DangBo> Dangbo { get; set; }
         public DbSet<ChiBo> Chibo { get; set; }
         public DbSet<Nation> Nation { get; set; }
+        public DbSet<Province> devvn_tinhthanhpho { get; set; }
+        public DbSet<District> devvn_quanhuyen { get; set; }
+        public DbSet<Ward> devvn_xaphuongthitran { get; set; }
+        public DbSet<Bonus> Bonus { get; set; }
+        public DbSet<Forms> Forms { get; set; }
+        public DbSet<Family> Family { get; set; }
+        public DbSet<Toabroad> Toabroad { get;set;}
+        public DbSet<Discipline> Discipline { get; set; }
+        public DbSet<Report> Report { get; set; }
+        public DbSet<Organization> Organization { get; set; }
     }
 }

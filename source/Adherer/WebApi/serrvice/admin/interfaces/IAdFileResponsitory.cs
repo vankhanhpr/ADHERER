@@ -7,7 +7,7 @@ using WebApi.serrvice.admin.model;
 
 namespace WebApi.serrvice.admin.interfaces
 {
-    public interface IFileResponsitory:IResponsitory<Files>
+    public interface IAdFileResponsitory:IResponsitory<Files>
     {
         Files getFileByUsid(int id);
         void insertFile(Files file);

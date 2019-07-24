@@ -483,7 +483,7 @@ INSERT INTO devvn_quanhuyen VALUES ('614', 'Huyện Kon Rẫy', 'Huyện', '62')
 INSERT INTO devvn_quanhuyen VALUES ('615', 'Huyện Đắk Hà', 'Huyện', '62');
 INSERT INTO devvn_quanhuyen VALUES ('616', 'Huyện Sa Thầy', 'Huyện', '62');
 INSERT INTO devvn_quanhuyen VALUES ('617', 'Huyện Tu Mơ Rông', 'Huyện', '62');
-INSERT INTO devvn_quanhuyen VALUES ('618', 'Huyện Ia H\' Drai', 'Huyện', '62');
+INSERT INTO devvn_quanhuyen VALUES ('618', 'Huyện Ia H Drai', 'Huyện', '62');
 INSERT INTO devvn_quanhuyen VALUES ('622', 'Thành phố Pleiku', 'Thành phố', '64');
 INSERT INTO devvn_quanhuyen VALUES ('623', 'Thị xã An Khê', 'Thị xã', '64');
 INSERT INTO devvn_quanhuyen VALUES ('624', 'Thị xã Ayun Pa', 'Thị xã', '64');
@@ -503,14 +503,14 @@ INSERT INTO devvn_quanhuyen VALUES ('638', 'Huyện Phú Thiện', 'Huyện', '6
 INSERT INTO devvn_quanhuyen VALUES ('639', 'Huyện Chư Pưh', 'Huyện', '64');
 INSERT INTO devvn_quanhuyen VALUES ('643', 'Thành phố Buôn Ma Thuột', 'Thành phố', '66');
 INSERT INTO devvn_quanhuyen VALUES ('644', 'Thị Xã Buôn Hồ', 'Thị xã', '66');
-INSERT INTO devvn_quanhuyen VALUES ('645', 'Huyện Ea H\'leo', 'Huyện', '66');
+INSERT INTO devvn_quanhuyen VALUES ('645', 'Huyện Ea Hleo', 'Huyện', '66');
 INSERT INTO devvn_quanhuyen VALUES ('646', 'Huyện Ea Súp', 'Huyện', '66');
 INSERT INTO devvn_quanhuyen VALUES ('647', 'Huyện Buôn Đôn', 'Huyện', '66');
-INSERT INTO devvn_quanhuyen VALUES ('648', 'Huyện Cư M\'gar', 'Huyện', '66');
+INSERT INTO devvn_quanhuyen VALUES ('648', 'Huyện Cư Mgar', 'Huyện', '66');
 INSERT INTO devvn_quanhuyen VALUES ('649', 'Huyện Krông Búk', 'Huyện', '66');
 INSERT INTO devvn_quanhuyen VALUES ('650', 'Huyện Krông Năng', 'Huyện', '66');
 INSERT INTO devvn_quanhuyen VALUES ('651', 'Huyện Ea Kar', 'Huyện', '66');
-INSERT INTO devvn_quanhuyen VALUES ('652', 'Huyện M\'Đrắk', 'Huyện', '66');
+INSERT INTO devvn_quanhuyen VALUES ('652', 'Huyện M Đrắk', 'Huyện', '66');
 INSERT INTO devvn_quanhuyen VALUES ('653', 'Huyện Krông Bông', 'Huyện', '66');
 INSERT INTO devvn_quanhuyen VALUES ('654', 'Huyện Krông Pắc', 'Huyện', '66');
 INSERT INTO devvn_quanhuyen VALUES ('655', 'Huyện Krông A Na', 'Huyện', '66');
@@ -522,7 +522,7 @@ INSERT INTO devvn_quanhuyen VALUES ('662', 'Huyện Cư Jút', 'Huyện', '67');
 INSERT INTO devvn_quanhuyen VALUES ('663', 'Huyện Đắk Mil', 'Huyện', '67');
 INSERT INTO devvn_quanhuyen VALUES ('664', 'Huyện Krông Nô', 'Huyện', '67');
 INSERT INTO devvn_quanhuyen VALUES ('665', 'Huyện Đắk Song', 'Huyện', '67');
-INSERT INTO devvn_quanhuyen VALUES ('666', 'Huyện Đắk R\'Lấp', 'Huyện', '67');
+INSERT INTO devvn_quanhuyen VALUES ('666', 'Huyện Đắk RLấp', 'Huyện', '67');
 INSERT INTO devvn_quanhuyen VALUES ('667', 'Huyện Tuy Đức', 'Huyện', '67');
 INSERT INTO devvn_quanhuyen VALUES ('672', 'Thành phố Đà Lạt', 'Thành phố', '68');
 INSERT INTO devvn_quanhuyen VALUES ('673', 'Thành phố Bảo Lộc', 'Thành phố', '68');
@@ -748,17 +748,17 @@ INSERT INTO devvn_quanhuyen VALUES ('973', 'Huyện Ngọc Hiển', 'Huyện', '
 -- ----------------------------
 DROP TABLE IF EXISTS devvn_tinhthanhpho;
 CREATE TABLE devvn_tinhthanhpho (
-  matp varchar(5)  NOT NULL,
-  name varchar(100)  NOT NULL,
-  type varchar(30) NOT NULL,
+  matp nvarchar(5)  NOT NULL,
+  name nvarchar(100)  NOT NULL,
+  type nvarchar(30) NOT NULL,
   PRIMARY KEY (matp)
 ) ;
 
 -- ----------------------------
 -- Records of devvn_tinhthanhpho
 -- ----------------------------
-INSERT INTO devvn_tinhthanhpho VALUES ('01', 'Thành phố Hà Nội', 'Thành phố Trung ương');
-INSERT INTO devvn_tinhthanhpho VALUES ('02', 'Tỉnh Hà Giang', 'Tỉnh');
+INSERT INTO devvn_tinhthanhpho VALUES ('01','Thành phố Hà Nội', N'Thành phố Trung ương');
+INSERT INTO devvn_tinhthanhpho VALUES ('02', N'Tỉnh Hà Giang', N'Tỉnh');
 INSERT INTO devvn_tinhthanhpho VALUES ('04', 'Tỉnh Cao Bằng', 'Tỉnh');
 INSERT INTO devvn_tinhthanhpho VALUES ('06', 'Tỉnh Bắc Kạn', 'Tỉnh');
 INSERT INTO devvn_tinhthanhpho VALUES ('08', 'Tỉnh Tuyên Quang', 'Tỉnh');
