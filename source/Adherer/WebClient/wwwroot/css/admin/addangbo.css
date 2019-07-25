@@ -9,26 +9,9 @@
         padding: 0 5%;
         background-color:var(--bg-main);
     }
-    .f-inf{
-        width:100%;
-        background-color:white;
-    }
-
-
-    table {
-        font-family: arial, sans-serif;
-        border-collapse: collapse;
+    .f-inf {
         width: 100%;
-    }
-
-    td, th {
-        border: 1px solid #dddddd;
-        text-align: left;
-        padding: 8px;
-    }
-
-    tr:nth-child(even) {
-        background-color: #dddddd;
+        background-color: white;
     }
 
     .fa-cogs{
@@ -47,11 +30,110 @@
         margin-top:5px;
         color:red;
     }
+    .fa-minus {
+        cursor: pointer;
+        right: 0;
+        text-align: right;
+        float: right;
+        position: relative;
+        margin-top: 5px;
+        color: var(--cl-text-bl);
+    }
+        .row-table {
+            width: 100%;
+            border: 1px solid rgba(51,51,51,0.1);
+        }
+    .tt-table {
+        color: var(--cl-text-bl);
+        font-weight: 600;
+        text-align: left;
+        width: 25%;
+        font-size: var(--fs-dt);
+        border-right:1px solid rgba(51,51,51,0.1);
+        padding:10px;
+    }
+    .tt-table-dt {
+        color: var(--cl-text-bl);
+        text-align: left;
+        width: 25%;
+        font-size: var(--fs-dt);
+        border-right: 1px solid rgba(51,51,51,0.1);
+        padding: 10px;
+    }
+    .f-chibo{
+        width:100%;
+        border:1px solid rgba(51,51,51,0.1);
+        background-color:rgba(51,51,51,0.1);
+    }
+    .t-name-chibo{
+        width:100%;
+        color:var(--cl-text-bl);
+        padding: 10px 0;
+        border-bottom:0.5px solid rgba(51,51,51,0.5);
+        font-size:var(--fs-dt);
+    }
+    .dl-name-db{
+        color:var(--cl-text-bl);
+        width:30%;
+    }
+    .dl-input-db {
+        color: var(--cl-text-bl);
+        width: 70%;
+        border-radius:4px;
+        border:1px solid rgba(51,51,51,0.2);
+        padding:5px;
+    }
+    .dl-sl-db {
+        color: var(--cl-text-wt);
+        width: 70%;
+        border: 1px solid rgba(51,51,51,0.2);
+        padding: 5px;
+        cursor: pointer;
+        background-color: DodgerBlue;
+    }
+    .select-selected {
+        color: var(--cl-text-wt);
+        border: 1px solid transparent;
+        border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+        cursor: pointer;
+        user-select: none;
+    }
+    .dl-op {
+        border: 1px solid transparent;
+        border-color: transparent transparent rgba(0, 0, 0, 0.3) transparent;
+    }
+
+        .dl-bnt-save {
+            color: var(--cl-text-wt);
+            width: 100%;
+            text-align: center;
+            background-color: var(--bg-button);
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    .dl-sm-it{
+        width:100%;
+    }
 }
 
 @media only screen and (min-width:1200px){
     .f-inf{
         margin-top:20px;
         margin-bottom:20px;
+    }
+    .f-chibo {
+        padding:10px 10px 0 10px;
+    }
+    .dl-name-db, .dl-input-db {
+        font-size: var(--fs-dt);
+    }
+    .dl-bnt-save{
+        padding:5px;
+        font-size:var(--fs-dt);
+        margin-top:20px;
+        margin-bottom:10px;
+    }
+    .dl-sm-it {
+        margin-bottom:10px;
     }
 }
