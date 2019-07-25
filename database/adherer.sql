@@ -122,7 +122,7 @@ create table Forms(
 	note nvarchar(1000),
 	updatedate datetime,
 	active bit
-);
+)	
 create table Toabroad (
 	brid int not null primary key identity (1,1),
 	fileid int not null,
