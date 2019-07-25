@@ -1,0 +1,68 @@
+﻿@import url("/css/admin/adconfig.css");
+:root {
+    --h-heght-hd: 122px;
+    --h-bg-cl-hd: #fffce0;
+    --h-height-avt:120px;
+    --h-width-avt:180px;
+    --h-color-hd:red;
+    --h-fs-hd-page:20px;
+    --h-fs-hd:30px;
+}
+
+@media only screen and (min-width:0){
+    .hd-main{
+        width:100%;
+        height:var(--h-heght-hd);
+        background-color:var(--h-bg-cl-hd);
+    }
+    .hd-avt{
+        background-image:url(/images/admin/logo.png);
+    }
+    .h-f-tt{
+        width:100%;
+    }
+    .h-t-page-ad{
+        color:var(--h-color-hd);
+        width:100%;
+        font-weight:600;
+        letter-spacing:-1px;
+    }
+    .h-t-namepage {
+        color: var(--h-color-hd);
+        width: 100%;
+        font-weight: bold;
+    }
+    /*------------footer---------------*/
+    .h-f-ft{
+        width:100%;
+        background-color:var(--h-bg-cl-hd);
+        text-align:center;
+    }
+    .h-t-ft{
+        width:100%;
+        text-align:center;
+    }
+}
+@media only screen and (min-width:1200px){
+    .hd-main{
+        padding:5px 3%;
+    }
+    .hd-avt {
+        height: var(--h-height-avt);
+        width: var(--h-width-avt);
+    }
+    .h-f-tt{
+        width:60%;
+    }
+    .h-t-page-ad {
+        font-size: var(--h-fs-hd-page);
+        margin-top:15px;
+    }
+    .h-t-namepage {
+        font-size: var(--h-fs-hd);
+    }
+    .h-f-ft {
+        padding:10px 0;
+    }
+    /*------------footer---------------*/
+}

@@ -4,16 +4,29 @@
 <head>
     <link rel="stylesheet" type="text/css" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="~/lib/bootstrap/fonts/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="~/fonts/fonts-roboto.css">
+    <link rel="stylesheet" type="text/css" href="~/css/admin/ad_layout.css">
+
     @RenderSection("Css", required: false)
 </head>
 <body>
     <div class="container-fluid">
         <div class="header">
-
+            <div class="hd-main">
+                <a href="/admin"><div class="k bg hd-avt"></div></a>
+                <div class="k h-f-tt">
+                    <span class="k h-t-page-ad">TRANG QUẢN LÝ</span>
+                    <span class="k h-t-namepage">CHI BỘ TRUNG TÂM CÔNG NGHỆ THÔNG TIN</span>
+                </div>
+            </div>
         </div>
-        @RenderBody();
+        @RenderBody()
         <div class="foooter">
-
+            <div class="k h-f-ft">
+                <span class="k t h-t-ft">TRANG QUẢN LÝ ĐẢNG VIÊN THUỘC TRUNG TÂM CÔNG NGHỆ THÔNG TIN </span>
+                <span class="k t h-t-ft">Giấy phép được cấp : </span>
+                <span class="k t h-t-ft">Địa chỉ : 12/1 Nguyễn Thị Minh Khai, Phường ĐaKao, Quận 1, TP.HCM  </span>
+            </div>
         </div>
     </div>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

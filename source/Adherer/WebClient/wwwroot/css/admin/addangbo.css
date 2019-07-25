@@ -1,0 +1,57 @@
+﻿@import url("adconfig.css");
+
+:root{
+
+}
+@media only screen and (min-width:0){
+    .body-form{
+        width:100%;
+        padding: 0 5%;
+        background-color:var(--bg-main);
+    }
+    .f-inf{
+        width:100%;
+        background-color:white;
+    }
+
+
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+
+    .fa-cogs{
+        cursor:pointer;
+    }
+    .fa-trash-o {
+        margin-left: 10px;
+        cursor: pointer;
+    }
+    .fa-plus{
+        cursor:pointer;
+        right:0;
+        text-align:right;
+        float:right;
+        position:relative;
+        margin-top:5px;
+        color:red;
+    }
+}
+
+@media only screen and (min-width:1200px){
+    .f-inf{
+        margin-top:20px;
+        margin-bottom:20px;
+    }
+}

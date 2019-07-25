@@ -1,0 +1,116 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+@section Css{
+    <link rel="stylesheet" type="text/css" href="~/css/admin/adhome.css">
+}
+<div class="k main-form">
+    <div class="k form-body">
+        <span class="k t-name-db">Dashboard</span>
+        <a href="/admin/dangbo">
+            <div class="k bd-item-db">
+                <div class="k item-db">
+                    <span class="k t t-name-it">ĐẢNG BỘ</span>
+                    <span class="k t t-tt-it">30</span>
+                    <span class="k t t-bw-it">update</span>
+                    <i class="fa fa-clock-o ic-time-ud" aria-hidden="true"></i>
+                    <span class="k upday">20/12/2012</span>
+                </div>
+            </div>
+        </a>
+
+        <div class="k bd-item-db">
+            <div class="k item-db2">
+                <span class="k t t-name-it">CHI BỘ</span>
+                <span class="k t t-tt-it">30</span>
+                <span class="k t t-bw-it">update</span>
+                <i class="fa fa-clock-o ic-time-ud" aria-hidden="true"></i>
+                <span class="k upday">20/12/2012</span>
+            </div>
+        </div>
+        <div class="k bd-item-db">
+            <div class="k item-db3">
+                <span class="k t t-name-it">ĐẢNG VIÊN</span>
+                <span class="k t t-tt-it">30</span>
+                <span class="k t t-bw-it">update</span>
+                <i class="fa fa-clock-o ic-time-ud" aria-hidden="true"></i>
+                <span class="k upday">20/12/2012</span>
+            </div>
+        </div>
+        <div class="k bd-item-db">
+            <div class="k item-db4">
+                <span class="k t t-name-it">ĐƠN VỊ</span>
+                <span class="k t t-tt-it">30</span>
+                <span class="k t t-bw-it">update</span>
+                <i class="fa fa-clock-o ic-time-ud" aria-hidden="true"></i>
+                <span class="k upday">20/12/2012</span>
+            </div>
+        </div>
+        <div class="k bd-item-db">
+            <div class="k item-db5">
+                <span class="k t t-name-it">BIỂU MẪU</span>
+                <span class="k t t-tt-it">30</span>
+                <span class="k t t-bw-it">update</span>
+                <i class="fa fa-clock-o ic-time-ud" aria-hidden="true"></i>
+                <span class="k upday">20/12/2012</span>
+            </div>
+        </div>
+        <div class="k bd-item-db">
+            <div class="k item-db6">
+                <span class="k t t-name-it">BÁO CÁO</span>
+                <span class="k t t-tt-it">30</span>
+                <span class="k t t-bw-it">update</span>
+                <i class="fa fa-clock-o ic-time-ud" aria-hidden="true"></i>
+                <span class="k upday">20/12/2012</span>
+            </div>
+        </div>
+
+        <span class="k t-name-db">Đảng viên trong các tháng trong năm</span>
+
+
+        <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto ;margin-bottom:50px;"></div>
+
+    </div>
+</div>
+@section Script{
+    <script type="text/javascript" src="~/lib/chart/highcharts.js"></script>
+
+    <script>
+        var arr = [7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6];
+        Highcharts.chart('container', {
+            chart: {
+                type: 'line'
+            },
+            title: {
+                text: ''
+            },
+            subtitle: {
+                text: 'Năm 2019'
+            },
+            xAxis: {
+                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+            },
+            yAxis: {
+                title: {
+                    text: 'Số lượng (người)'
+                }
+            },
+            plotOptions: {
+                line: {
+                    dataLabels: {
+                        enabled: true
+                    },
+                    enableMouseTracking: false
+                }
+            },
+            series: [{
+                name: 'Số lượng Đảng viên',
+                data: arr
+            }
+            ]
+        });
+    </script>
+
+}
