@@ -16,5 +16,9 @@ namespace WebClient.Controllers
         {
             return View();
         }
+        public IActionResult ChiBo()
+        {
+            return View();
+        }
     }
 }

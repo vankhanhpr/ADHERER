@@ -11,9 +11,10 @@ namespace WebApi.serrvice.admin.model
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
-        public string cbid { get; set; }
+        public int cbid { get; set; }
         public string tencb { get; set; }
         public int dbid { get; set; }
-        public int active { get; set; }
+        public Boolean active { get; set; }
+        public DateTime ngaythanhlap { get; set; }
     }
 }

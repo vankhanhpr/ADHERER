@@ -13,23 +13,41 @@ namespace WebApi.serrvice.admin.responsitory
     public class DangBoResponsitory : Responsitory<DangBo>, IDangBoResponsitory
     {
         private DbSet<DangBo> dangBoEntiry;
-        public DangBoResponsitory(MyDBContext context): base(context)
+        public DangBoResponsitory(MyDBContext context) : base(context)
         {
             dangBoEntiry = context.Set<DangBo>();
         }
         public dynamic getAllDangBo()
         {
-            throw new NotImplementedException();
+            var dangbo = context.Dangbo.Where(x=>x.active==true).Select(db => new
+            {
+                db,
+                chibo = context.Chibo.Where(m => m.dbid == db.dbid).ToList()
+            }).ToList();
+            return dangbo;
+        }
+
+        public DangBo getDangBoById(int id)
+        {
+            return context.Dangbo.Where(m => m.dbid == id).FirstOrDefault();
+        }
+
+        public dynamic getDangBoNotAttached(int id)
+        {
+            var db = getDangBoById(id);
+            return context.Dangbo.Where(m => m.tructhuoc == 0 && m.dbid !=db.dbid).ToList();
         }
 
         public void insertDangBo(DangBo db)
         {
-            throw new NotImplementedException();
+            context.Entry(db).State = EntityState.Added;
+            context.SaveChanges();
         }
 
         public void updateDangBo(DangBo db)
         {
-            throw new NotImplementedException();
+            context.Update(db);
+            context.SaveChanges();
         }
     }
 }

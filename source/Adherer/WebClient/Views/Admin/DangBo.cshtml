@@ -6,65 +6,139 @@
 @section Css{
     <link rel="stylesheet" type="text/css" href="~/css/admin/addangbo.css">
 }
-<div class="k main-form">
-    <div class="k body-form">
-        <span class="k t t-name-db">Thông tin Đảng Bộ</span>
-        <div class="k f-inf">
-            <div class="k row-table">
-                <span class="k t tt-table">Đảng bộ</span>
-                <span class="k t tt-table">Ngày thành lập</span>
-                <span class="k t tt-table">Trạng thái</span>
-                <span class="k t tt-table">Cập nhật</span>
-            </div>
-            <div class="k row-table">
-                <span class="k t tt-table-dt">Trung tâm công nghệ thông tin</span>
-                <span class="k t tt-table-dt">12/12/2012</span>
-                <span class="k t tt-table-dt">Hoạt động</span>
-                <div class="k t tt-table-dt">
-                    <i class="fa fa-cogs" data-toggle="modal" data-target="#modaladddangbo"></i>
-                    <i class="fa fa-trash-o" aria-hidden="true"></i>
-                    <i class="fa fa-plus" aria-hidden="true" onclick="toggeChibo(this)"></i>
-                </div>
-                <div class="k f-chibo" style="display:none">
-                    <span class="k t t-name-chibo">Chi Bo trung tam cong nghe thong tin</span>
-                    <span class="k t t-name-chibo">Chi Bo Phòng Giải Pháp</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    @*edit dang bo*@
-    <div class="modal fade" id="modaladddangbo" role="dialog">
-        <div class="modal-dialog">
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Cập nhật Đảng bộ</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="k dl-sm-it">
-                        <span class="k t dl-name-db">Đảng bộ: </span>
-                        <input class="k dl-input-db" type="text" />
-                    </div>
-                    <div class="k dl-sm-it">
-                        <span class="k t dl-name-db">Trực thuộc: </span>
-                        <select class="k dl-sl-db">
-                            <option class="dl-op" value="0">Không trực thuộc</option>
-                            <option class="dl-op" value="0">Đảng bộ A</option>
-                            <option class="dl-op" value="1">Đảng bộ B</option>
-                        </select>
-                    </div>
-                    <span class="k dl-bnt-save">Cập nhật</span>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
+    <div class="k main-form">
+        <div class="k body-form">
+            <div class="k f-add-ab">
+                <span class="k t t-name-db">Thông tin Đảng Bộ</span>
+                <span class="k t bnt-add-db"data-toggle="modal" data-target="#modaladddangbo" onclick="getDangBo(binddingDangBoToSl)"> + Thêm mới</span>
             </div>
 
+            <div class="k f-inf" id="f-item-db">
+                <div class="k row-table">
+                    <span class="k t tt-table">Đảng bộ</span>
+                    <span class="k t tt-table">Ngày thành lập</span>
+                    <span class="k t tt-table">Trạng thái</span>
+                    <span class="k t tt-table">Cập nhật</span>
+                </div>
+                @*<div class="k row-table">
+                    <span class="k t tt-table-dt">Trung tâm công nghệ thông tin</span>
+                    <span class="k t tt-table-dt">12/12/2012</span>
+                    <span class="k t tt-table-dt">Hoạt động</span>
+                    <div class="k t tt-table-dt">
+                        <i class="fa fa-cogs" data-toggle="modal" data-target="#modaladddangbo"></i>
+                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                        <i class="fa fa-plus" aria-hidden="true" onclick="toggeChibo(this)"></i>
+                    </div>
+                    <div class="k f-chibo" style="display:none">
+                        <span class="k t t-name-chibo">Chi Bo trung tam cong nghe thong tin</span>
+                        <span class="k t t-name-chibo">Chi Bo Phòng Giải Pháp</span>
+                    </div>
+                </div>*@
+
+
+            </div>
         </div>
+
+        @*edit dang bo*@
+        <div class="modal fade" id="modalinsertdangbo" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Cập nhật Đảng bộ</h4>
+                    </div>
+                    <div class="k modal-body">
+                        <div class="k dl-sm-it">
+                            <span class="k t dl-name-db">Đảng bộ: </span>
+                            <input class="k dl-input-db" id="ip-name-db" type="text" />
+                        </div>
+                        <div class="k dl-sm-it">
+                            <span class="k t dl-name-db">Trực thuộc: </span>
+                            <select class="k dl-sl-db" id="sl-db-att">
+                                <option value="0">Không trực thuộc</option>
+                            </select>
+                        </div>
+                        <div class="k dl-sm-it">
+                            <span class="k t dl-name-db" id="sl-db-active">Trạng thái: </span>
+                            <select class="k dl-sl-db">
+                                <option value="0">Hoạt động</option>
+                                <option value="1">Khóa</option>
+                            </select>
+                        </div>
+
+                        <div class="k dl-sm-it">
+                            <span class="k t dl-name-db" id="sl-db-active">Ngày thành lập: </span>
+                            <div class="form-group">
+                                <div class='input-group date' id='datepicker'>
+                                    <input type='text' class="form-control" id="day-create-db" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <span class="k dl-bnt-save" onclick="updateDangBo()">Cập nhật</span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        @*insert dang bo*@
+        <div class="modal fade" id="modaladddangbo" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Thêm mới Đảng bộ</h4>
+                    </div>
+                    <div class="k modal-body">
+                        <div class="k dl-sm-it">
+                            <span class="k t dl-name-db">Đảng bộ: </span>
+                            <input class="k dl-input-db" id="name-db-addnew" type="text" />
+                        </div>
+                        <div class="k dl-sm-it">
+                            <span class="k t dl-name-db">Trực thuộc: </span>
+                            <select class="k dl-sl-db" id="sl-db-att-addnew">
+                                @*<option value="0">Không trực thuộc</option>*@
+                            </select>
+                        </div>
+                        <div class="k dl-sm-it">
+                            <span class="k t dl-name-db" id="sl-db-active">Trạng thái: </span>
+                            <select class="k dl-sl-db">
+                                <option value="0">Hoạt động</option>
+                            </select>
+                        </div>
+
+                        <div class="k dl-sm-it">
+                            <span class="k t dl-name-db" id="sl-db-active">Ngày thành lập: </span>
+                            <div class="form-group">
+                                <div class='input-group date' id='datepicker-is'>
+                                    <input type='text' class="form-control" id="day-create-db" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <span class="k dl-bnt-save" onclick="insertDangbo()">Cập nhật</span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
     </div>
-</div>
 
 @section Script{
     <script src="~/js/admin/addangbo.js"></script>

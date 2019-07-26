@@ -99,8 +99,9 @@ E:\ASPMVC\WORK\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\WebClien
 E:\ASPMVC\WORK\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\WebClient.dll
 E:\ASPMVC\WORK\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\WebClient.pdb
 E:\ASPMVC\WORK\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\WebClient.csproj.CopyComplete
-F:\ASP.NET\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\WebClient.csprojAssemblyReference.cache
 F:\ASP.NET\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\Razor\Views\Admin\Index.g.cshtml.cs
 F:\ASP.NET\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\Razor\Views\Admin\DangBo.g.cshtml.cs
 E:\ASPMVC\WORK\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\Razor\Views\Admin\DangBo.g.cshtml.cs
 E:\ASPMVC\WORK\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\Razor\Views\Admin\Index.g.cshtml.cs
+F:\ASP.NET\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\WebClient.csprojAssemblyReference.cache
+F:\ASP.NET\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\Razor\Views\Admin\ChiBo.g.cshtml.cs

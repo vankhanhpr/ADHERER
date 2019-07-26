@@ -5,7 +5,8 @@ create table DangBo(
 	dbid int not null primary key identity (1,1),
 	tructhuoc int,
 	tendb nvarchar(200),
-	active bit
+	active bit,
+	ngaythanhlap datetime
 );
 alter table  DangBo add tructhuoc int;
 create table ChiBo(
@@ -13,6 +14,7 @@ create table ChiBo(
 	tencb nvarchar(200),
 	dbid int not null,
 	active bit,
+	ngaythanhlap datetime,
 	foreign key(dbid) references DangBo(dbid)
 );
 Create table Title(

@@ -29,7 +29,7 @@ namespace WebClient
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
+            services.AddCors();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
@@ -48,7 +48,7 @@ namespace WebClient
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
+            app.UseCors(options => options.WithOrigins("https://localhost:44377").AllowAnyMethod());
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

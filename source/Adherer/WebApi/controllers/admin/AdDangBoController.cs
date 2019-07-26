@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.model;
+using WebApi.model.request;
 using WebApi.serrvice.admin.interfaces;
 using WebApi.serrvice.admin.model;
 
 namespace WebApi.controllers.admin
 {
-    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class AdDangBoController : Controller
@@ -26,8 +27,10 @@ namespace WebApi.controllers.admin
             DataRespond data = new DataRespond();
             try
             {
+                data.success = true;
                 data.data = m_dangBoResponsitory.getAllDangBo();
-            }catch(Exception e)
+            }
+            catch (Exception e)
             {
                 data.error = e;
                 data.success = false;
@@ -37,13 +40,20 @@ namespace WebApi.controllers.admin
         }
 
         [HttpPost("insertDangBo")]
-        public DataRespond insertDangBo(DangBo db)
+        public DataRespond insertDangBo(DangBoRequest db)
         {
             DataRespond data = new DataRespond();
             try
             {
+                DangBo dangbo = new DangBo();
+                
+                dangbo.tendb = db.tendb;
+                dangbo.active = db.active == 0 ? true : false;
+                dangbo.tructhuoc = db.tructhuoc;
+                DateTime ngaytl = DateTime.ParseExact(db.ngaythanhlap, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                dangbo.ngaythanhlap = ngaytl;
                 data.success = true;
-                m_dangBoResponsitory.insertDangBo(db);
+                m_dangBoResponsitory.insertDangBo(dangbo);
             }
             catch(Exception e)
             {
@@ -54,18 +64,62 @@ namespace WebApi.controllers.admin
             return data;
         }
         [HttpPost("updateDangBo")]
-        public DataRespond updateDangBo(DangBo db)
+        public DataRespond updateDangBo([FromBody]DangBoRequest db)
         {
             DataRespond data = new DataRespond();
             try
             {
+                DangBo dangbo = new DangBo();
+                dangbo.dbid = db.dbid;
+                dangbo.tendb = db.tendb;
+                dangbo.active = db.active == 0 ? true : false;
+                dangbo.tructhuoc = db.tructhuoc;
+                DateTime ngaytl = DateTime.ParseExact(db.ngaythanhlap, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                dangbo.ngaythanhlap = ngaytl;
                 data.success = true;
-                m_dangBoResponsitory.updateDangBo(db);
+                m_dangBoResponsitory.updateDangBo(dangbo);
             }
             catch (Exception e)
             {
                 data.success = false;
                 data.data = e;
+                data.message = e.Message;
+            }
+            return data;
+        }
+
+        [HttpGet("getDangBoById")]
+        public DataRespond getDangBoById(int id)
+        {
+            DataRespond data = new DataRespond();
+            try
+            {
+                data.success = true;
+                data.data = m_dangBoResponsitory.getDangBoById(id);
+                data.message = "success";
+            }
+            catch(Exception e)
+            {
+                data.success = false;
+                data.error = e;
+                data.message = e.Message;
+            }
+            return data;
+        }
+
+        [HttpGet("getDangBoNotAttached")]
+        public DataRespond getDangBoNotAttached(int id)
+        {
+            DataRespond data = new DataRespond();
+            try
+            {
+                data.success = true;
+                data.data = m_dangBoResponsitory.getDangBoNotAttached(id);
+            }
+            catch(Exception e)
+            {
+                data.success = false;
+                data.error = e;
                 data.message = e.Message;
             }
             return data;

@@ -63,7 +63,9 @@ namespace WebApi
             services.AddTransient<IProvinceResponsitory, ProvinceResponsitory>();
             services.AddTransient<IDistrictResponsitory, DistrictResponsitory>();
             services.AddTransient<IWardResponsitory, WardResponsitory>();
+            services.AddTransient<IDangBoResponsitory, DangBoResponsitory>();
 
+            services.AddCors();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
@@ -77,6 +79,12 @@ namespace WebApi
             {
                 app.UseHsts();
             }
+
+            app.UseCors(builder => builder
+                                    .AllowAnyOrigin()
+                                    .AllowAnyMethod()
+                                    .AllowAnyHeader()
+                                    .AllowCredentials());
             app.UseAuthentication();
             app.UseHttpsRedirection();
             app.UseStaticFiles();

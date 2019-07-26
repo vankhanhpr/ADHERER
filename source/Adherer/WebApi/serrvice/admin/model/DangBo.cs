@@ -14,7 +14,8 @@ namespace WebApi.serrvice.admin.model
         public int dbid { get; set; }
         public int tructhuoc { get; set; }
         public string tendb { get; set; }
-        public int active { get; set;}
+        public Boolean active { get; set;}
+        public DateTime ngaythanhlap { get; set; }
 
     }
 }
