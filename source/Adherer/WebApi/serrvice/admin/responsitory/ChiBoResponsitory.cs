@@ -22,7 +22,12 @@ namespace WebApi.serrvice.admin.responsitory
 
         public dynamic getChiBoByDB(int id)
         {
-            return context.Chibo.Where(m => m.dbid == id).FirstOrDefault();
+            return context.Chibo.Where(m => m.dbid == id).ToList();
+        }
+
+        public ChiBo getChiBoById(int id)
+        {
+            return context.Chibo.Where(m => m.cbid == id).FirstOrDefault();
         }
 
         public void insertChoBo(ChiBo cb)

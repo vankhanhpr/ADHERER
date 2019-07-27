@@ -17,6 +17,7 @@ create table ChiBo(
 	ngaythanhlap datetime,
 	foreign key(dbid) references DangBo(dbid)
 );
+use ADHERER;
 Create table Title(
 	titleid int not null primary key identity (1,1),
 	nametitle nvarchar(100),

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.model;
+using WebApi.model.request;
 using WebApi.serrvice.admin.model;
 using WebApi.serrvice.authentication;
 using WebApi.serrvice.authentication.model;
@@ -22,7 +23,7 @@ namespace WebApi.controllers.auth
         }
         //login user
         [HttpPost("login")]
-        public DataRespond login([FromBody]Users users)
+        public DataRespond login([FromBody]UserRequest users)
         {
             DataRespond data = new DataRespond();
             try
@@ -30,8 +31,7 @@ namespace WebApi.controllers.auth
                 Auth auth = new Auth();
                 auth.madv = users.madv;
                 auth.password = users.password;
-                data.success = true;
-                data.data = m_authentication.login(auth);
+                data = m_authentication.login(auth);
             }
             catch (Exception e)
             {

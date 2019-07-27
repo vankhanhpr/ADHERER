@@ -18,12 +18,13 @@ namespace WebApi.serrvice.user.responsitory
             userEntiry = context.Set<Users>();
         }
 
-        public dynamic getUserByMaDv(string madv)
+        public Users getUserByMaDv(string madv)
         {
-            return context.Users.Where(m => m.madv == madv).Select(user => new {
-                user,
-                file = context.Files.Where(m => m.usid == user.usid).FirstOrDefault()
-            });
+            //return context.Users.Where(m => m.madv == madv).Select(user => new {
+            //    user,
+            //    file = context.Files.Where(m => m.usid == user.usid).FirstOrDefault()
+            //});
+            return context.Users.Where(m => m.madv == madv).FirstOrDefault();
         }
     }
 }

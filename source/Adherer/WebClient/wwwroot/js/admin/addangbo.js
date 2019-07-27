@@ -261,7 +261,7 @@ function insertDangbo() {
                         callback: function () {
                             getDangBo(bindingDangBo);
                         }
-                    })
+                    });
                 }
                 else {
                     bootbox.alert("Có lỗi xảy ra vui lòng kiểm tra lại thông tin!");

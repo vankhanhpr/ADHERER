@@ -34,9 +34,22 @@ namespace WebApi.serrvice.authentication.responsitoty
         {
             Users user = m_userResponsitory.getUserByMaDv(auth.madv);
             DataRespond data = new DataRespond();
+            if (user==null)
+            {
+                data.success = false;
+                data.message = "Mã Đảng viên hoặc mật khẩu không chính xác!";
+                return data;
+            }
             if(auth.madv==user.madv&& auth.password== user.password)
             {
-                data.data = new { toke = BuildToken(user), id = user.usid };
+                data.success = true;
+                data.data = new { token = BuildToken(user), user = user };
+                data.message = "Đăng nhập thành công!";
+            }
+            else
+            {
+                data.success = false;
+                data.message = "Mã Đảng viên hoặc mật khẩu không chính xác!";
             }
             return data;
         }

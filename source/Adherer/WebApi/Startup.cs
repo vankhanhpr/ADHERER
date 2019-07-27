@@ -64,6 +64,7 @@ namespace WebApi
             services.AddTransient<IDistrictResponsitory, DistrictResponsitory>();
             services.AddTransient<IWardResponsitory, WardResponsitory>();
             services.AddTransient<IDangBoResponsitory, DangBoResponsitory>();
+            services.AddTransient<IChiBoResponsitory, ChiBoResponsitory>();
 
             services.AddCors();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
