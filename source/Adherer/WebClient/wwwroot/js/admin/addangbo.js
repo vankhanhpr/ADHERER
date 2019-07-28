@@ -1,4 +1,4 @@
-﻿
+﻿checkToken();
 function toggeChibo(obj) {
     var y = obj.className;
     if (y == "fa fa-plus") {//kiem tra dang dong

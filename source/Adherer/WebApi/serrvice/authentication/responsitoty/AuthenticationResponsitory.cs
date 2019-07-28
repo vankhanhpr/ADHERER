@@ -8,6 +8,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using WebApi.model;
+using WebApi.model.request;
 using WebApi.serrvice.admin.model;
 using WebApi.serrvice.authentication.model;
 using WebApi.serrvice.user.interfaces;
@@ -18,7 +19,7 @@ namespace WebApi.serrvice.authentication.responsitoty
     {
         private readonly IConfiguration m_config;
         private IUserResponsitory m_userResponsitory;
-        public static IDictionary<string, string> m_tokens = new Dictionary<string, string>();
+        public static IDictionary<int, TokenRequest> m_tokens = new Dictionary<int, TokenRequest>();
         public AuthenticationResponsitory(IConfiguration config, IUserResponsitory userResponsitory)
         {
             m_config = config;
@@ -43,8 +44,14 @@ namespace WebApi.serrvice.authentication.responsitoty
             if(auth.madv==user.madv&& auth.password== user.password)
             {
                 data.success = true;
-                data.data = new { token = BuildToken(user), user = user };
+                var token = BuildToken(user);
+                data.data = new { token = token, user = user };
                 data.message = "Đăng nhập thành công!";
+                TokenRequest tokenrq = new TokenRequest();
+                tokenrq.token = token;
+                tokenrq.roleid = user.roleid;
+                tokenrq.usid = user.usid;
+                savaToken(user.usid,tokenrq);
             }
             else
             {
@@ -53,11 +60,11 @@ namespace WebApi.serrvice.authentication.responsitoty
             }
             return data;
         }
-        public void savaToken(string madv,string token)
+        public void savaToken(int usid,TokenRequest token)
         {
-            m_tokens.Add(madv, token);
+            m_tokens.Add(usid, token);
         }
-        public void logout(string madv)
+        public void logout(int madv)
         {
             m_tokens.Remove(madv);
         }
@@ -71,7 +78,6 @@ namespace WebApi.serrvice.authentication.responsitoty
         {
             throw new NotImplementedException();
         }
-
 
         private string BuildToken(Users user)
         {
@@ -93,5 +99,16 @@ namespace WebApi.serrvice.authentication.responsitoty
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
+        public bool checkToken(TokenRequest tokenrq)
+        {
+            foreach (KeyValuePair<int, TokenRequest> item in m_tokens)
+            {
+                if(item.Key== tokenrq.usid && item.Value.token== tokenrq.token && item.Value.roleid==tokenrq.roleid)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

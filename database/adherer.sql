@@ -52,6 +52,7 @@ create table Organization(
 	ogid int not null primary key Identity (1,1),
 	nameog nvarchar(200),
 	active bit,
+	createday datetime
 );
 Create table Files (
 	fileid int not null Identity(1,1),

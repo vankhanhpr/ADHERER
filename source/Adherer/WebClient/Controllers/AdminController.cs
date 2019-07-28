@@ -20,5 +20,9 @@ namespace WebClient.Controllers
         {
             return View();
         }
+        public IActionResult DonVi()
+        {
+            return View();
+        }
     }
 }

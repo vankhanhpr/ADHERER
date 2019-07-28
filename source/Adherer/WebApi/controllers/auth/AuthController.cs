@@ -51,11 +51,38 @@ namespace WebApi.controllers.auth
             {
                 data.success = true;
 
-            }catch(Exception e)
+            }
+            catch (Exception e)
             {
                 data.error = e;
                 data.message = e.Message;
                 data.success = false;
+            }
+            return data;
+        }
+
+        [HttpPost("checkToken")]
+        public DataRespond checkToken([FromBody]TokenRequest tokenrq)
+        {
+            DataRespond data = new DataRespond();
+            try
+            {
+                if (m_authentication.checkToken(tokenrq))
+                {
+                    data.success = true;
+                    data.message = "success";
+                }
+                else
+                {
+                    data.success = false;
+                    data.message = "not found";
+                }
+            }
+            catch(Exception e)
+            {
+                data.error = e;
+                data.success = false;
+                data.message = e.Message;
             }
             return data;
         }

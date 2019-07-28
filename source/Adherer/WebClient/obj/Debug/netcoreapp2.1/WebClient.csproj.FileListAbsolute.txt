@@ -107,3 +107,4 @@ F:\ASP.NET\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\WebClient.cs
 F:\ASP.NET\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\Razor\Views\Admin\ChiBo.g.cshtml.cs
 E:\ASPMVC\WORK\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\Razor\Views\Admin\ChiBo.g.cshtml.cs
 E:\ASPMVC\WORK\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\Razor\Views\Login\Index.g.cshtml.cs
+E:\ASPMVC\WORK\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\Razor\Views\Admin\DonVi.g.cshtml.cs

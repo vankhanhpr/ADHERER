@@ -23,7 +23,7 @@ function login() {
                 bol = true;
                 if (data.success) {
                     if (typeof (Storage) !== 'undefined') {
-                        var value = { "id": data.data.user.usid, "token": data.data.token, "roles": data.data.user.roleid };
+                        var value = { "usid": data.data.user.usid, "token": data.data.token, "roleid": data.data.user.roleid };
                         sessionStorage.setItem("token_session", JSON.stringify(value));
                         if (data.data.user.roleid === 2) {
                             window.location.href = "/admin";

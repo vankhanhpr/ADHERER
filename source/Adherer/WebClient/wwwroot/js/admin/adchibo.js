@@ -1,4 +1,5 @@
-﻿var dbid = 0;
+﻿checkToken();
+var dbid = 0;
 var dbud = 0;
 var active = 0;
 var cbid = 0;

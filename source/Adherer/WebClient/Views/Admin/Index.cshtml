@@ -42,15 +42,18 @@
                 <span class="k upday">20/12/2012</span>
             </div>
         </div>
-        <div class="k bd-item-db">
-            <div class="k item-db4">
-                <span class="k t t-name-it">ĐƠN VỊ</span>
-                <span class="k t t-tt-it">30</span>
-                <span class="k t t-bw-it">update</span>
-                <i class="fa fa-clock-o ic-time-ud" aria-hidden="true"></i>
-                <span class="k upday">20/12/2012</span>
+        <a href="/admin/donvi">
+            <div class="k bd-item-db">
+                <div class="k item-db4">
+                    <span class="k t t-name-it">ĐƠN VỊ</span>
+                    <span class="k t t-tt-it">30</span>
+                    <span class="k t t-bw-it">update</span>
+                    <i class="fa fa-clock-o ic-time-ud" aria-hidden="true"></i>
+                    <span class="k upday">20/12/2012</span>
+                </div>
             </div>
-        </div>
+        </a>
+        
         <div class="k bd-item-db">
             <div class="k item-db5">
                 <span class="k t t-name-it">BIỂU MẪU</span>
@@ -78,6 +81,9 @@
     </div>
 </div>
 @section Script{
+    <script>
+        checkToken();
+    </script>
     <script type="text/javascript" src="~/lib/chart/highcharts.js"></script>
 
     <script>
