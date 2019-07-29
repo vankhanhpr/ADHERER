@@ -84,6 +84,7 @@ F:\ASP.NET\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\WebClient.Ta
 F:\ASP.NET\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\WebClient.TagHelpers.output.cache
 F:\ASP.NET\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\WebClient.RazorCoreGenerate.cache
 F:\ASP.NET\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\Razor\Views\Admin\ChiBo.g.cshtml.cs
+<<<<<<< HEAD
 F:\ASP.NET\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\Razor\Views\Admin\DangBo.g.cshtml.cs
 F:\ASP.NET\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\Razor\Views\Admin\Index.g.cshtml.cs
 F:\ASP.NET\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\Razor\Views\Home\About.g.cshtml.cs
@@ -109,3 +110,8 @@ F:\ASP.NET\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\Razor\Views\
 F:\ASP.NET\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\WebClient.csprojAssemblyReference.cache
 F:\ASP.NET\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\Razor\Views\Admin\DangVien.g.cshtml.cs
 F:\ASP.NET\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\Razor\Views\Admin\File.g.cshtml.cs
+=======
+E:\ASPMVC\WORK\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\Razor\Views\Admin\ChiBo.g.cshtml.cs
+E:\ASPMVC\WORK\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\Razor\Views\Login\Index.g.cshtml.cs
+E:\ASPMVC\WORK\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\Razor\Views\Admin\DonVi.g.cshtml.cs
+>>>>>>> 3a80cb37661f3ad97c0c9257bbc1c5054267c4c7
