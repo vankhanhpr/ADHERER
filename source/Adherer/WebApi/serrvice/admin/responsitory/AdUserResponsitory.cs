@@ -11,6 +11,7 @@ using WebApi.serrvice.admin.model;
 
 namespace WebApi.serrvice.admin.responsitory
 {
+
     public class AdUserResponsitory : Responsitory<Users>, IAdUserResponsitory
     {
         private DbSet<Users> userEntity;
@@ -23,15 +24,26 @@ namespace WebApi.serrvice.admin.responsitory
             var dangvien = context.Users.Select(user => new
             {
                 user,
-                file = from file1 in context.Files
-                       join nation in context.Nation on file1.dantoc equals nation.nationid
-                       select new
-                       {
-                           file1,
-                           nation
-                       }
+                file=context.Files.Where(m=>m.usid==user.usid).FirstOrDefault()
+                //file = from file1 in context.Files
+                //       join nation in context.Nation on file1.dantoc equals nation.nationid
+                //       select new
+                //       {
+                //           file1,
+                //           nation
+                //       }
             }).Where(n=>n.user.active==true).Skip(page*pagesize).Take(pagesize).ToList();
             return dangvien;
+        }
+
+        public Users getUserById(int id)
+        {
+            return context.Users.Where(m => m.usid == id).FirstOrDefault();
+        }
+
+        public Users getUserByMaDv(string madv)
+        {
+            return context.Users.Where(m => m.madv == madv).FirstOrDefault();
         }
 
         public void insertUser(Users user)

@@ -104,3 +104,8 @@ F:\ASP.NET\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\WebClient.Vi
 F:\ASP.NET\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\WebClient.dll
 F:\ASP.NET\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\WebClient.pdb
 F:\ASP.NET\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\WebClient.csproj.CopyComplete
+F:\ASP.NET\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\Razor\Views\Admin\DonVi.g.cshtml.cs
+F:\ASP.NET\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\Razor\Views\Login\Index.g.cshtml.cs
+F:\ASP.NET\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\WebClient.csprojAssemblyReference.cache
+F:\ASP.NET\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\Razor\Views\Admin\DangVien.g.cshtml.cs
+F:\ASP.NET\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\Razor\Views\Admin\File.g.cshtml.cs

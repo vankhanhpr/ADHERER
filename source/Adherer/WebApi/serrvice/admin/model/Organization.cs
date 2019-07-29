@@ -13,6 +13,7 @@ namespace WebApi.serrvice.admin.model
         [Key]
         public int ogid { get; set; }
         public string nameog { get; set; }
-        public int active { get; set; }
+        public Boolean active { get; set; }
+        public DateTime createday { get; set; }
     }
 }

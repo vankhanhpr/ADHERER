@@ -35,7 +35,7 @@ namespace WebApi.serrvice.admin.responsitory
 
         public IEnumerable<Organization> getAllOrganization()
         {
-            return context.Organization.ToList();
+            return context.Organization.Where(m=>m.active==true).ToList();
         }
 
         public void insertOrganization(Organization organization)

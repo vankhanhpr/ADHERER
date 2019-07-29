@@ -1,14 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.model;
+using WebApi.model.request;
 using WebApi.serrvice.admin.interfaces;
 using WebApi.serrvice.admin.model;
 
 namespace WebApi.controllers.admin
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class AdChiBoController : Controller
     {
         private IChiBoResponsitory m_chiBoResponsitory;
@@ -17,7 +21,7 @@ namespace WebApi.controllers.admin
             m_chiBoResponsitory = chiBoResponsitory;
         }
         [HttpGet("getAllChiBo")]
-       public DataRespond getAllChiBo()
+        public DataRespond getAllChiBo()
         {
             DataRespond data = new DataRespond();
             try
@@ -25,7 +29,7 @@ namespace WebApi.controllers.admin
                 data.success = true;
                 data.data = m_chiBoResponsitory.getAllChiBo();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 data.error = e;
                 data.success = false;
@@ -35,16 +39,23 @@ namespace WebApi.controllers.admin
         }
 
         [HttpPost("insertChiBo")]
-        public DataRespond insertChiBo(ChiBo cb)
+        public DataRespond insertChiBo([FromBody]ChiBoRequest cb)
         {
             DataRespond data = new DataRespond();
             try
             {
+                ChiBo chb = new ChiBo();
+                chb.tencb = cb.tencb;
+                chb.dbid = cb.dbid;
+                chb.active = cb.active == 0 ? true : false;
+                DateTime ngaytl = DateTime.ParseExact(cb.ngaythanhlap, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                chb.ngaythanhlap = ngaytl;
+
                 data.success = true;
-                m_chiBoResponsitory.insertChoBo(cb);
+                m_chiBoResponsitory.insertChoBo(chb);
                 data.message = "Insert success!";
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 data.success = false;
                 data.error = e;
@@ -54,14 +65,60 @@ namespace WebApi.controllers.admin
         }
 
         [HttpPost("updateChiBo")]
-        public DataRespond updateChiBo(ChiBo cb)
+        public DataRespond updateChiBo(ChiBoRequest cb)
+        {
+            DataRespond data = new DataRespond();
+            try
+            {
+                ChiBo chb = new ChiBo();
+                chb.cbid = cb.cbid;
+                chb.tencb = cb.tencb;
+                chb.dbid = cb.dbid;
+                chb.active = cb.active == 0 ? true : false;
+                DateTime ngaytl = DateTime.ParseExact(cb.ngaythanhlap, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                chb.ngaythanhlap = ngaytl;
+
+                data.success = true;
+                m_chiBoResponsitory.updateChiBo(chb);
+
+            }
+            catch (Exception e)
+            {
+                data.success = false;
+                data.error = e;
+                data.message = e.Message;
+            }
+            return data;
+        }
+
+        [HttpGet("getChiBoByDb")]
+        public DataRespond getChiBoByDb(int id)
         {
             DataRespond data = new DataRespond();
             try
             {
                 data.success = true;
-                m_chiBoResponsitory.updateChiBo(cb);
-                
+                data.data = m_chiBoResponsitory.getChiBoByDB(id);
+                data.message = "success";
+            }
+            catch (Exception e)
+            {
+                data.success = false;
+                data.error = e;
+                data.message = e.Message;
+            }
+            return data;
+        }
+
+        [HttpGet("getChiBoById")]
+        public DataRespond getChiBoById(int id)
+        {
+            DataRespond data = new DataRespond();
+            try
+            {
+                data.success = true;
+                data.data = m_chiBoResponsitory.getChiBoById(id);
+                data.message = "success";
             }
             catch(Exception e)
             {

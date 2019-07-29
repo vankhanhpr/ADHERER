@@ -24,5 +24,6 @@ namespace WebApi.data
         public DbSet<Discipline> Discipline { get; set; }
         public DbSet<Report> Report { get; set; }
         public DbSet<Organization> Organization { get; set; }
+        public DbSet<Title> Title { get; set; }
     }
 }
