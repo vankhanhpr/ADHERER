@@ -24,7 +24,6 @@ namespace WebClient.Controllers
         {
             return View();
         }
-<<<<<<< HEAD
         public IActionResult DangVien()
         {
             return View();
@@ -34,7 +33,5 @@ namespace WebClient.Controllers
             return View();
         }
 
-=======
->>>>>>> 3a80cb37661f3ad97c0c9257bbc1c5054267c4c7
     }
 }
