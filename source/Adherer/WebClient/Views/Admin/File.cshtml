@@ -1,0 +1,204 @@
+﻿
+@{
+    ViewData["Title"] = "File";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+@section Css{
+    <link rel="stylesheet" type="text/css" href="~/css/admin/adfile.css">
+}
+<div class="k main-form">
+    <div class="k body-form">
+        <span class=" k t name-file">Thông tin hồ sơ Đảng viên</span>
+
+        <div class="k f-bd-file">
+            <div class="k row-item">
+                <div class="k tab-avt">
+                    <div class=" k img-avt-file">
+                        <span class="brower-avt">Brower</span>
+                    </div>
+                    <div class="k f-t-avt">
+                        <span class="k t t-avt-left">Mã Đảng viên:</span>
+                        <input type="text" class="k t ip-avt-t" disabled="disabled" />
+                    </div>
+                    <div class="k f-t-avt">
+                        <span class="k t t-avt-left">Họ tên Đảng viên:</span>
+                        <input type="text" class="k t ip-avt-t" disabled="disabled" />
+                    </div>
+                </div>
+                <div class="k bd-tab-body">
+                    <div class="k tab-body">
+                        <div class="k row-item-body">
+                            <span class="k t t-avt-left">Họ tên khai sinh:</span>
+                            <input type="text" class="k t ip-avt-t" />
+                        </div>
+                        <div class="k row-item-body">
+                            <span class="k t t-avt-left">Họ tên đang dùng:</span>
+                            <input type="text" class="k t ip-avt-t" />
+                        </div>
+                        <div class="k row-item-body">
+                            <span class="k t t-avt-left">Ngày tháng năm sinh:</span>
+                            <div class="form-group">
+                                <div class='input-group date' id='datepicker-udcb'>
+                                    <input type='text' class="form-control" id="day-update-cb" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="k row-item-body">
+                            <span class="k t t-avt-left">Giới tính:</span>
+                            <select class="k t ip-avt-t">
+                                <option value="1">Nam</option>
+                                <option value="1">Nữ</option>
+                            </select>
+                        </div>
+                        <div class="k row-item-body">
+                            <span class="k t t-avt-left">Dân tộc:</span>
+                            <select class="k t ip-avt-t">
+                                <option value="1">Kinh</option>
+                                <option value="1">Tày</option>
+                            </select>
+                        </div>
+                        <div class="k row-item-body">
+                            <span class="k t t-avt-left">Tôn giáo:</span>
+                            <input type="text" class="k t ip-avt-t" />
+                        </div>
+
+                        <div class="k row-item-body">
+                            <span class="k t t-avt-left">CMND:</span>
+                            <input type="text" class="k t ip-avt-t" />
+                        </div>
+                        <div class="k row-item-body">
+                            <span class="k t t-avt-left">Nơi cấp:</span>
+                            <input type="text" class="k t ip-avt-t" />
+                        </div>
+                        <div class="k row-item-body">
+                            <span class="k t t-avt-left">Quê quán:</span>
+                            <input type="text" class="k t ip-avt-t" />
+                        </div>
+                        <div class="k row-item-body">
+                            <span class="k t t-avt-left">Hộ khẩu thường trú:</span>
+                            <input type="text" class="k t ip-avt-t" />
+                        </div>
+                        <div class="k row-item-body">
+                            <span class="k t t-avt-left">Hôn nhân:</span>
+                            <select class="k t ip-avt-t">
+                                <option value="1">Đã có gia đình</option>
+                                <option value="1">Chưa có gia đình</option>
+                            </select>
+                        </div>
+                        <div class="k row-item-body">
+                            <span class="k t t-avt-left">Sức khỏe:</span>
+                            <input type="text" class="k t ip-avt-t" />
+                        </div>
+
+
+
+                        <div class="k row-item-body">
+                            <span class="k t t-avt-left">Nghề nghiệp:</span>
+                            <input type="text" class="k t ip-avt-t" />
+                        </div>
+
+                    </div>
+                    @*--------------------------------------------------------------------------------------------*@
+                    <div class="k tab-body">
+                        <div class="k row-item-body">
+                            <span class="k t t-avt-left">Đơn vị:</span>
+                            <select class="k t ip-avt-t">
+                                <option value="1">Phòng Giải pháp</option>
+                                <option value="1">Phòng mạng</option>
+                            </select>
+                        </div>
+
+                        <div class="k row-item-body">
+                            <span class="k t t-avt-left">Số lý lịch:</span>
+                            <input type="text" class="k t ip-avt-t" />
+                        </div>
+                        <div class="k row-item-body">
+                            <span class="k t t-avt-left">Số điện thoại:</span>
+                            <input type="text" class="k t ip-avt-t" />
+                        </div>
+                        <div class="k row-item-body">
+                            <span class="k t t-avt-left">Email:</span>
+                            <input type="text" class="k t ip-avt-t" />
+                        </div>
+
+                        <div class="k row-item-body">
+                            <span class="k t t-avt-left">Ngày vào Đảng chính thức:</span>
+                            <div class="form-group">
+                                <div class='input-group date' id='datepicker-udcb'>
+                                    <input type='text' class="form-control" id="day-update-cb" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="k row-item-body">
+                            <span class="k t t-avt-left">Ngày vào Đảng dự bị:</span>
+                            <div class="form-group">
+                                <div class='input-group date' id='datepicker-udcb'>
+                                    <input type='text' class="form-control" id="day-update-cb" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="k row-item-body">
+                            <span class="k t t-avt-left">Ngày vào Đoàn:</span>
+                            <div class="form-group">
+                                <div class='input-group date' id='datepicker-udcb'>
+                                    <input type='text' class="form-control" id="day-update-cb" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="k row-item-body">
+                            <span class="k t t-avt-left">Trình độ văn hóa:</span>
+                            <select class="k t ip-avt-t">
+                                <option value="1">Lớp 1</option>
+                                <option value="2">Lớp 2</option>
+                            </select>
+                        </div>
+                        <div class="k row-item-body">
+                            <span class="k t t-avt-left">Chuyên môn:</span>
+                            <input type="text" class="k t ip-avt-t" />
+                        </div>
+
+                        <div class="k row-item-body-add">
+                            <span class="k t t-avt-addres">Địa chỉ cư trú:</span>
+                            <select class="k t sl-avt-add">
+                                <option value="1">Tỉnh/Thành phố</option>
+                                <option value="1">HCM</option>
+                            </select>
+                            <select class="k t sl-avt-add">
+                                <option value="1">Quận/Huyện/Thị xã</option>
+                                <option value="1">Tuy Phong</option>
+                            </select>
+                            <select class="k t sl-avt-add">
+                                <option value="1">Xã/Phường/Thị trấn</option>
+                                <option value="1">Cày cây</option>
+                            </select>
+                            <input type="text" class="k t ip-avt-add" placeholder="Tên đường, thôn xóm, số nhà" />
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section Script{
+    <script src="~/js/admin/adfile.js"></script>
+}
+

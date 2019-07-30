@@ -54,9 +54,28 @@ create table Organization(
 	active bit,
 	createday datetime
 );
+Create table QTCT(
+	qtctid int not null primary key identity(1,1),
+	dayfrom datetime,
+	dayto datetime,
+	address nvarchar(100),
+	organization nvarchar(100),
+	chucvu nvarchar(100),
+	fileid int,
+	foreign key (fileid) references files(fileid)
+);
+
 Create table Files (
 	fileid int not null Identity(1,1),
 	usid int  not null,
+
+	cmnd nvarchar(12),
+	daycmnd datetime,
+	noicapcmnd nvarchar(200),
+	hokhauthuongtru nvarchar(200),
+	honnhan bit,
+	suckhoe nvarchar(100),
+
 	donvi int,
 	ngaythangnamsinh datetime,
 	hotendangdung nvarchar(200),

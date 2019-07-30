@@ -13,5 +13,16 @@ namespace WebApi.serrvice.admin.interfaces
         dynamic getAllUser(int page,int pagesize);
         void insertUser(Users user);
         void updateUser(Users user);
+        Users getUserByMaDv(string madv);
+
+        Users getUserById(int id);
+
+        void blockUser(int id);
+
+        dynamic getUserByRole(int role);
+
+        dynamic getUserByActive(int active);
+        dynamic getUserByBox(string filter);
+
     }
 }

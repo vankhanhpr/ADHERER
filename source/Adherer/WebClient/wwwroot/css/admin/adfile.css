@@ -1,0 +1,144 @@
+﻿@import url("adconfig.css");
+
+:root{
+    --bg-f-file:white;
+}
+
+@media only screen and (min-width:0){
+    .body-form{
+        width:100%;
+        padding:0 5%;
+        background-color:var(--bg-main);
+    }
+    .name-file{
+        color:var(--cl-text-bl);
+        font-weight:300;
+        text-align:left;
+    }
+    .f-bd-file{
+        width:100%;
+        background-color:var(--bg-f-file);
+    }
+    .row-item{
+        width:100%;
+    }
+    .tab-avt{
+        width:100%;
+    }
+    .brower-avt {
+        position: absolute;
+        padding: 2px 5px;
+        border: 1px solid rgba(51,51,51,0.1);
+        color: var(--cl-text-wt);
+        font-weight: 300;
+        background-color: rgba(51,51,51,0.3);
+        cursor: pointer;
+        border-radius: 4px;
+        width: 100px;
+        left: 0;
+        right: 0;
+        bottom: 5px;
+        margin: auto;
+        text-align: center;
+        display:none;
+    }
+    .img-avt-file {
+        cursor:pointer;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-image: url(/images/admin/avt-us-defaul.png);
+        border: 1px solid rgba(51,51,51,0.1);
+    }
+        .img-avt-file:hover .brower-avt{
+            display:block;
+        }
+
+        .t-avt-left, .t-avt-addres {
+            color: var(--cl-text-bl);
+            text-align: left;
+            font-weight: 300;
+        }
+    .ip-avt-t, .sl-avt-add, .ip-avt-add {
+        color: var(--cl-text-bl);
+        text-align: left;
+        font-weight: 300;
+        border: 1px solid rgba(51,51,51,0.1);
+        border-radius: 4px;
+    }
+    .bd-tab-body{
+        width:100%;
+    }
+    .tab-body {
+        width: 50%;
+        padding:0 10px;
+    }
+    .row-item-body{
+        width:100%;
+        padding:5px;
+    }
+    .row-item-body-add{
+        border:1px solid rgba(51,51,51,0.05);
+        padding:10px;
+        width:100%;
+        border-radius:4px;
+    }
+}
+
+@media only screen and (min-width:1200px){
+    .name-file {
+        font-size:var(--fs-tt);
+        margin-top:5px;
+    }
+    .tab-avt {
+        margin-bottom:20px;
+    }
+
+    .f-bd-file {
+        margin-top:20px;
+        padding:5px;
+    }
+    .img-avt-file {
+        width:20%;
+        height:150px;
+    }
+    .f-t-avt{
+        width:80%;
+        padding:10px 5%;
+    }
+
+    .row-item-body-add {
+        margin-top:20px;
+        padding: 10px;
+    }
+
+    .t-avt-left{
+        font-size:var(--fs-dt);
+        width:30%;
+        margin-top:5px;
+    }
+    .t-avt-addres {
+        font-size: var(--fs-dt);
+        width: 100%;
+        margin-top: 5px;
+    }
+    .ip-avt-t {
+        font-size: var(--fs-dt);
+        padding: 5px;
+        width: 70%;
+    }
+    .ip-avt-add {
+        font-size: var(--fs-dt);
+        padding: 5px;
+        width: 100%;
+        font-size: var(--fs-dt);
+        padding: 5px;
+        margin-top: 20px;
+    }
+    .sl-avt-add {
+        width: 33.333%;
+        padding: 5px;
+        margin-top: 2px;
+        cursor:pointer;
+    }
+}

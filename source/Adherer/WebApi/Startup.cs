@@ -66,6 +66,7 @@ namespace WebApi
             services.AddTransient<IDangBoResponsitory, DangBoResponsitory>();
             services.AddTransient<IChiBoResponsitory, ChiBoResponsitory>();
             services.AddTransient<IOrganizationResponsitory, OrganizationResponsitory>();
+            services.AddTransient<ITitleResponsitory, TitleResponsitory>();
 
             services.AddCors();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
@@ -88,6 +89,8 @@ namespace WebApi
                                     .AllowAnyHeader()
                                     .AllowCredentials());
             app.UseAuthentication();
+            app.UseDeveloperExceptionPage();//filter user
+            app.UseMvcWithDefaultRoute();///filter user
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseMvc();
