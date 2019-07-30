@@ -38,3 +38,4 @@ F:\ASP.NET\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\WebClient.Vi
 F:\ASP.NET\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\WebClient.dll
 F:\ASP.NET\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\WebClient.pdb
 F:\ASP.NET\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\WebClient.csproj.CopyComplete
+F:\ASP.NET\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\WebClient.csprojAssemblyReference.cache

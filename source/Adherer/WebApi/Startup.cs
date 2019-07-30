@@ -89,6 +89,8 @@ namespace WebApi
                                     .AllowAnyHeader()
                                     .AllowCredentials());
             app.UseAuthentication();
+            app.UseDeveloperExceptionPage();//filter user
+            app.UseMvcWithDefaultRoute();///filter user
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseMvc();

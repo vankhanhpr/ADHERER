@@ -1,12 +1,20 @@
-﻿
+﻿checkToken();
 var bolft = true;
 var cbid = 0;
 var role = 1;
 var titleid = 0;
 var page = 0;
 var pagesize = 10;
+var usidud = -1;
 getUser(bindingUser, page, pagesize)
-
+//lazyload user
+$(window).scroll(function () {
+    if ($(window).scrollTop() + $(window).height() === $(document).height()) {
+        page = page + 1;
+        getUser(bindingUser, page, pagesize);
+    }
+});
+//select insert  user
 $('#sl-chb-addnew').on('change', function () {
     cbid = parseInt(this.value);
 });
@@ -16,6 +24,17 @@ $('#sl-role-addnew').on('change', function () {
 $('#sl-title-addnew').on('change', function () {
     titleid = parseInt(this.value);
 });
+//select update user 
+$('#sl-chb-ud').on('change', function () {
+    cbid = parseInt(this.value);
+});
+$('#sl-role-ud').on('change', function () {
+    role = parseInt(this.value);
+});
+$('#sl-title-ud').on('change', function () {
+    titleid = parseInt(this.value);
+});
+
 
 function showTabFilter() {
     if (bolft) {
@@ -112,10 +131,10 @@ function bindingUser(data) {
                 '<i class="fa fa-id-card-o font-ic" aria-hidden="true"></i>' + user.madv + '' +
                 '</span>' +
                 '<span class="k t t-if-dv">' +
-                '<i class="fa fa-calendar-plus-o font-ic" aria - hidden="true" ></i > '+user.ngaydenchibo+'' +
+                '<i class="fa fa-calendar-plus-o font-ic" aria - hidden="true" ></i > ' + formatDate(new Date(user.ngaydenchibo)) +'' +
                 '</span>' +
                 '<span class="k t t-if-dv">' +
-                '<i class="fa fa-users font-ic" aria-hidden="true"></i>Phòng giải pháp' +
+                '<i class="fa fa-users font-ic" aria-hidden="true"></i>' + (user.roleid==1? 'Đảng viên':'Admin') + '' +
                 '</span>' +
                 '<span class="k t t-if-dv">' +
                 '<i class="fa fa-toggle-on font-ic" aria-hidden="true"></i>' + (user.active === true ? 'Hoạt động':'Khóa') + '' +
@@ -126,7 +145,7 @@ function bindingUser(data) {
                 '<a href="/admin/file" target="_blank"><span class="k t bnt-ed-dv">Chi tiết Đảng viên</span></a>' +
                 '</div>' +
                 '<div class="k bd-bnt">' +
-                '<span class="k t bnt-ed-dv">Khóa</span>' +
+                '<span class="k t bnt-ed-dv" onclick="blockUser(' + user.usid + ')">Khóa</span>' +
                 '</div>' +
                 '<div class="k bd-bnt">' +
                 '<span class="k t bnt-ed-dv" data-toggle="modal" onclick="getUserById(bindingUserBuId,' + user.usid + ')" data-target="#modalupdateuser">Cập nhật tài khoản</span>' +
@@ -169,6 +188,17 @@ function bindingChiBo(data) {
         bootbox.alert("Vui lòng thêm ít nhất một Chi bộ trước khi thêm mới Đảng viên");
     }
 }
+function bindingChiBoToUd(data) {
+    if (data.success && data.data.length > 0) {
+        $("#sl-cb-ud option").remove();
+        cbid = data.data[0].cbid;
+        for (var i in data.data) {
+            $("#sl-cb-ud").append('<option value="' + data.data[i].cbid + '">' + data.data[i].tencb + '</option>');
+        }
+    }
+}
+
+//positiin working
 function getOrganization(callback) {
     $.ajax({
         type: "get",
@@ -224,13 +254,22 @@ function bindingTitle(data) {
         bootbox.alert("Vui lòng thêm các chức vụ Đảng trước khi thêm Đảng viên!");
     }
 }
+function bindingTitleToUd(data) {
+    if (data.success && data.data.length > 0) {
+        $("#sl-og-ud option").remove();
+        titleid = data.data[0].titleid;
+        for (var i in data.data) {
+            var item = data.data[i];
+            $("#sl-og-ud").append('<option value="' + item.titleid + '">' + item.nametitle + '</option>');
+        }
+    }
+}
 
 function showTabInsertUser() {
     getAllChiBo(bindingChiBo);
     //getOrganization(bindingOrg);
     getTitle(bindingTitle);
 }
-
 function insertUser() {
     var bol = true;
     var madv = $("#ip-madv-addnew").val();
@@ -270,7 +309,8 @@ function insertUser() {
                         message: "Thêm tài khoản thành công!",
                         callback: function () {
                             emptyForm();
-                            //getDangBo(bindingDangBo);
+                            page = 0;
+                            getUser(bindingUser, page, pagesize)
                         }
                     })
                 }
@@ -310,9 +350,9 @@ function emptyForm() {
     $("#ip-cf-pass").val("");
     // $("#sl-db-att").append('<option value="' + item.dbid + '">' + item.tendb + '</option>');
 }
-
 //get detail user by id
-function getUserById(callback,id) {
+function getUserById(callback, id) {
+    usidud = id;
     $.ajax({
         type: "get",
         url: linkserver + "aduser/getDetalUser?id=" + id,
@@ -330,5 +370,208 @@ function getUserById(callback,id) {
 function bindingUserBuId(data) {
     if (data.success && data.data) {
         var item = data.data;
+        $("#madv-ud").val(item.madv);
+        $("#day-update-us").val(formatDate(new Date(item.ngaydenchibo)));
+        getAllChiBo(bindingChiBoToUd);
+        getTitle(bindingTitleToUd);
+        $("#sl-cb-ud option[value='" + item.cbid + "']").prop("selected", true);
+        $("#sl-og-ud option[value='" + item.titleid + "']").prop("selected", true);
+        $("#sl-role-ud option[value='" + item.roleid + "']").prop("selected", true);
     }
+}
+
+//update user
+var bolud = true;
+function updateUser() {
+    var madvud = $("#madv-ud").val();
+    var titleud = $("#sl-og-ud").children("option:selected").val();
+    var roleud = $("#sl-role-ud").children("option:selected").val();
+    var cbud = $("#sl-cb-ud").children("option:selected").val();
+    var pass = $("#pass-ud").val();
+    var cfpass = $("#cf-pass-ud").val();
+
+    if (checkDataUd(madvud.trim(), pass.trim(), cfpass.trim()) == true) {
+        var data = {
+
+            'usid': usidud,
+            'madv': madvud.trim(),
+            'cbid': parseInt(cbud),
+            'ngaydenchibo': $("#day-update-us").val(),
+            'roleid': parseInt(roleud),
+            'titleid': parseInt(titleud),
+            'active': 0,
+            'password': cfpass.trim(),
+        };
+        if (bolud) {
+            bol = false;
+            $.ajax({
+                url: linkserver + "aduser/updateUser",
+                type: 'POST',
+                dataType: 'json',
+                data: JSON.stringify(data),
+                async: false,
+                processData: false,
+                contentType: "application/json",
+                error: function (err) {
+                    bolud = true;
+                    bootbox.alert({
+                        message: "Error :" + err.message
+                    });
+                },
+                success: function (data) {
+                    bolud = true;
+                    if (data.success) {
+                        $('#modalupdateuser').modal('toggle');
+                        bootbox.alert({
+                            message: "Cập nhật khoản thành công!",
+                            callback: function () {
+                                page = 0;
+                                pagesize = 10;
+                                getUser(bindingUser, page, pagesize)
+                            }
+                        })
+                    }
+                    else {
+                        emptyForm();
+                        $('#modalupdateuser').modal('toggle');
+                        bootbox.alert(data.message);
+                    }
+                }
+            });
+        }
+    }
+}
+function checkDataUd(madv,pass,cfpass) {
+    if (madv.length != 8) {
+        $("#err-validate-ud").show();
+        $("#madv-ud").addClass("err-ip");
+        return false;
+    }
+    else {
+        $("#ip-madv-addnew").removeClass("err-ip");
+    }
+    if (pass != "" || cfpass != "") {
+        if (pass != cfpass || pass.length < 6) {
+            $("#pass-ud").addClass("err-ip");
+            $("#cf-pass-ud").addClass("err-ip");
+            $("#err-validate-ud").show();
+            return false;
+        }
+    }
+    else {
+        $("#pass-ud").removeClass("err-ip");
+        $("#cf-pass-ud").removeClass("err-ip");
+        $("#err-validate-ud").hide();
+        return true;
+    }
+    $("#err-validate-ud").hide();
+    $("#pass-ud").removeClass("err-ip");
+    $("#cf-pass-ud").removeClass("err-ip");
+    $("#ip-madv-addnew").removeClass("err-ip");
+    return true;
+}
+
+//block usser
+function blockUser(id) {
+    bootbox.confirm({
+        title: "Khóa tài khoản người dùng",
+        message: "Bạn có chắc muốn khóa tài khoản người dùng này không?",
+        buttons: {
+            cancel: {
+                label: '<i class="fa fa-times"></i> Hủy'
+            },
+            confirm: {
+                label: '<i class="fa fa-check"></i> Ok'
+            }
+        },
+        callback: function (result) {
+            if (result) {
+                callBlockUser(id);
+            }
+        }
+    });
+}
+function callBlockUser(id) {
+    $.ajax({
+        type: "get",
+        url: linkserver + "aduser/blockUser?id="+id,
+        data: null,
+        dataType: 'json',
+        contentType: "application/json",
+        error: function (err) {
+            bootbox.alert("Có lỗi xảy ra, vui lòng kiểm tra kết nối");
+        },
+        success: function (data) {
+            bootbox.alert("Tài khoản đã được khóa");
+            page = 0;
+            getUser(bindingUser, page, pagesize);
+        }
+    });
+}
+
+
+//filter 
+$('#sl-ft-role').on('change', function () {
+    var role = parseInt(this.value);
+    filterUserByRole(role, bindingUser);
+});
+$('#sl-ft-active').on('change', function () {
+    var active = parseInt(this.value);
+    filterUserByActive(active, bindingUser);
+});
+
+
+function filterUserByRole(role,callback) {
+    $.ajax({
+        type: "get",
+        url: linkserver + "aduser/getUserByRole?role=" + role,
+        data: null,
+        dataType: 'json',
+        contentType: "application/json",
+        error: function (err) {
+            bootbox.alert("Có lỗi xảy ra, vui lòng kiểm tra kết nối");
+        },
+        success: function (data) {
+            callback(data);
+        }
+    });
+}
+
+function filterUserByActive(active, callback) {
+    $.ajax({
+        type: "get",
+        url: linkserver + "aduser/getUserByActive?active=" + active,
+        data: null,
+        dataType: 'json',
+        contentType: "application/json",
+        error: function (err) {
+            bootbox.alert("Có lỗi xảy ra, vui lòng kiểm tra kết nối");
+        },
+        success: function (data) {
+            callback(data);
+        }
+    });
+}
+
+function filterUserByBox(callback) {
+    var data = { 'filter': $("#search-box").val() };
+    $.ajax({
+        url: linkserver + "aduser/filterUserByBox",
+        type: 'POST',
+        dataType: 'json',
+        data: JSON.stringify(data),
+        async: false,
+        processData: false,
+        contentType: "application/json",
+        error: function (err) {
+            bootbox.alert({
+                message: "Error :" + err.message
+            });
+        },
+        success: function (data) {
+            if (data.success) {
+                callback(data.data, true);
+            }
+        }
+    });
 }

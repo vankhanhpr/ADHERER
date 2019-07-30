@@ -95,5 +95,115 @@ namespace WebApi.controllers.admin
             }
             return data;
         }
+
+        [HttpPost("updateUser")]
+        public DataRespond updateUser([FromBody]UserRequest usrq)
+        {
+            DataRespond data = new DataRespond();
+            try
+            {
+                Users user = m_userResponsitory.getUserById(usrq.usid);
+
+                user.usid = usrq.usid;
+                user.madv = usrq.madv;
+                user.cbid = usrq.cbid;
+                user.titleid = usrq.titleid;
+                user.roleid = usrq.roleid;
+                user.active = usrq.active == 0 ? true : false;
+                DateTime udday = DateTime.ParseExact(usrq.ngaydenchibo, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                user.ngaydenchibo = udday;
+                if (usrq.password != "")
+                {
+                    user.password = usrq.password;
+                }
+
+                data.success = true;
+                m_userResponsitory.updateUser(user);
+                data.message = "success";
+            }
+            catch(Exception e)
+            {
+                data.error = e;
+                data.message = e.Message;
+                data.success = false;
+            }
+            return data;
+        }
+
+        [HttpGet("blockUser")]
+        public DataRespond blockUser(int id)
+        {
+            DataRespond data = new DataRespond();
+            try
+            {
+                m_userResponsitory.blockUser(id);
+                data.success = true;
+                data.message = "block success";
+            }
+            catch(Exception e)
+            {
+                data.error = e;
+                data.message = e.Message;
+                data.success = false;
+            }
+            return data;
+        }
+
+        [HttpGet("getUserByRole")]
+        public DataRespond getUserByRole(int role)
+        {
+            DataRespond data = new DataRespond();
+            try
+            {
+                data.success = true;
+                data.data = m_userResponsitory.getUserByRole(role);
+                data.message = "success";
+            }
+            catch(Exception e)
+            {
+                data.success = false;
+                data.error = e;
+                data.message = e.Message;
+            }
+            return data;
+        }
+
+        [HttpGet("getUserByActive")]
+        public DataRespond getUserByActive(int active)
+        {
+            DataRespond data = new DataRespond();
+            try
+            {
+                data.success = true;
+                data.data = m_userResponsitory.getUserByActive(active);
+                data.message = "success";
+            }
+            catch(Exception e)
+            {
+                data.success = false;
+                data.error = e;
+                data.message = e.Message;
+            }
+            return data;
+        }
+
+        [HttpPost("filterUserByBox")]
+        public DataRespond filterByBox([FromBody]Filter filter)
+        {
+            DataRespond data = new DataRespond();
+            try
+            {
+                data.success = true;
+                data.data = m_userResponsitory.getUserByBox(filter.filter);
+                data.message = "success";
+            }
+            catch(Exception e)
+            {
+                data.error = e;
+                data.success = false;
+                data.message = e.Message;
+            }
+            return data;
+        }
     }
 }

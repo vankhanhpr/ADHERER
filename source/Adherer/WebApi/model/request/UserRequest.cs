@@ -7,6 +7,7 @@ namespace WebApi.model.request
 {
     public class UserRequest
     {
+        public int usid { get; set; }
         public string madv { get; set; }
         public string password { get; set; }
 
