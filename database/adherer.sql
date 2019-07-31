@@ -65,6 +65,21 @@ Create table QTCT(
 	foreign key (fileid) references files(fileid)
 );
 
+ALTER TABLE Files
+ALTER COLUMN tongiao nvarchar(50);
+ALTER TABLE Files ;
+exec sp_rename 'Files.solylich', 'solylich';
+
+
+
+Alter table Files add cmnd nvarchar(12),
+	daycmnd datetime,
+	noicapcmnd nvarchar(200),
+	hokhauthuongtru nvarchar(200),
+	honnhan bit,
+	suckhoe nvarchar(100)
+
+
 Create table Files (
 	fileid int not null Identity(1,1),
 	usid int  not null,
@@ -105,11 +120,12 @@ Create table Files (
 	foreign key (dantoc) references Nation(nationid),
 	foreign key(donvi) references Organization(ogid)
 );
-ALTER TABLE Files
-ADD avatar nvarchar(20);
+ALTER TABLE Family
+ADD name nvarchar(20);
 Create table Family(
 	fmlid int not null Identity(1,1),
 	fileid int not null,
+	name nvarchar(100),
 	quanhe nvarchar(20),
 	noisinh nvarchar(200),
 	quequan nvarchar(200),

@@ -7,11 +7,8 @@ using WebApi.serrvice.admin.model;
 
 namespace WebApi.serrvice.admin.interfaces
 {
-    public interface IAdFileResponsitory:IResponsitory<Files>
+    public interface INationResponsitory:IResponsitory<Nation>
     {
-        dynamic getFileByUsid(int id);
-        void insertFile(Files file);
-        void updateFile(Files file);
-
+        IEnumerable<Nation> getNations();
     }
 }

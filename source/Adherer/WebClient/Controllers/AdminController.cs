@@ -28,10 +28,18 @@ namespace WebClient.Controllers
         {
             return View();
         }
-        public IActionResult File()
+        public IActionResult File(int? id)
         {
-            return View();
+            int usid = id ?? 0;
+            if (usid == 0)
+            {
+                return RedirectToAction("index", "home");
+            }
+            else
+            {
+                ViewBag.usid = usid;
+                return View();
+            }
         }
-
     }
 }
