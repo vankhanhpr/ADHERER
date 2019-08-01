@@ -1,4 +1,5 @@
-﻿
+﻿showLoading();
+var fileidmain = -1;
 var formData = new FormData();
 getProvinces(bindingProvinces);
 //date picker
@@ -40,7 +41,7 @@ $(document).ready(function () {
 });
 
 //show or hide tab family
-var bolfml = true;
+var bolfml = false;
 function changeTabFamily(obj) {
     $(obj).toggleClass("down");
     if (bolfml) {
@@ -53,7 +54,7 @@ function changeTabFamily(obj) {
     }
 }
 //show or hide tab bonus
-var bolbonus = true;
+var bolbonus = false;
 function changeTabBonus(obj) {
     $(obj).toggleClass("down");
     if (bolbonus) {
@@ -66,7 +67,7 @@ function changeTabBonus(obj) {
     }
 }
 //show or hide tab discipline
-var boldiscipline = true;
+var boldiscipline = false;
 function changeTabDiscipline(obj) {
     $(obj).toggleClass("down");
     if (boldiscipline) {
@@ -102,10 +103,10 @@ function readImageUpload(input) {
 }
 
 //get dangvien by id
-function getDangVien(id,callback) {
+function getDangVien(id, callback) {
     $.ajax({
         type: "get",
-        url: linkserver + "adfile/getFileByUsId?id="+id,
+        url: linkserver + "adfile/getFileByUsId?id=" + id,
         data: null,
         dataType: 'json',
         contentType: "application/json",
@@ -119,9 +120,14 @@ function getDangVien(id,callback) {
 }
 function bindingFile(data) {
     if (data.success && data.data) {
+        formData = new FormData();
         var user = data.data.user;
+        formData.append("usid", user.usid);
         var file = data.data.file;
         if (file) {
+            fileidmain = file.fileid;
+            getFamilies(file.fileid, bindigFamilies);
+            formData.append("fileid", file.fileid);
             $("#madv").val(user.madv);
             $("#namedv").val(file.hotendangdung);
             $("#sl-giotinh option[value='" + (file.gioitinh ? 0 : 1) + "']").prop("selected", true);
@@ -147,17 +153,23 @@ function bindingFile(data) {
             $("#sl-trinhdovanhoa option[value='" + file.trinhdovanhoa + "']").prop("selected", true);
             $("#chuyenmon").val(file.chuyenmon);
             $("#noicutru").val(file.noicutru);
+            if (file.avatar) {
+                $("#img-avt").css("background-image", "url("+linkfileuser + file.avatar+")");
+            }
+
             //distric/province/ward
             getDistricts(file.matp, bindingDistrict, file.maqh);
             getWard(file.maqh, bindingWard, file.xaid);
             $("#sl-province option[value='" + file.matp + "']").prop("selected", true);
-            
+
         }
         else {
-            getDistricts('01', bindingDistrict,'');
-            getWard('001', bindingWard,'');
+            formData.append("fileid", -1);
+            getDistricts('01', bindingDistrict, '');
+            getWard('001', bindingWard, '');
         }
     }
+    destroyLoading();
 }
 
 //get nations
@@ -181,7 +193,7 @@ function bindingNations(data) {
     if (data.success && data.data) {
         for (var i in data.data) {
             var nation = data.data[i];
-            $("#sl-nation").append('<option value="' + nation.nationid + '">'+nation.name+'</option>');
+            $("#sl-nation").append('<option value="' + nation.nationid + '">' + nation.name + '</option>');
         }
     }
 }
@@ -207,14 +219,14 @@ function bindingOrganization(data) {
     if (data.success && data.data) {
         for (var i in data.data) {
             var og = data.data[i];
-            $("#sl-org").append('<option value="' + og.ogid + '">' + og.nameog+'</option>');
+            $("#sl-org").append('<option value="' + og.ogid + '">' + og.nameog + '</option>');
         }
     }
 }
 
 //get province,district,warnd
 $('#sl-province').on('change', function () {
-    getDistricts(parseInt(this.value), bindingDistrict,'');
+    getDistricts(this.value, bindingDistrict, '');
 });
 function getProvinces(callback) {
     $.ajax({
@@ -224,7 +236,7 @@ function getProvinces(callback) {
         dataType: 'json',
         contentType: "application/json",
         error: function (err) {
-           // bootbox.alert("Có lỗi xảy ra, vui lòng kiểm tra kết nối");
+            // bootbox.alert("Có lỗi xảy ra, vui lòng kiểm tra kết nối");
         },
         success: function (data) {
             callback(data);
@@ -236,19 +248,19 @@ function bindingProvinces(data) {
         $("#sl-province option").remove();
         for (var i in data.data) {
             var pr = data.data[i];
-            $("#sl-province").append('<option value="' + pr.matp + '">' + pr.name +'</option>');
+            $("#sl-province").append('<option value="' + pr.matp + '">' + pr.name + '</option>');
         }
     }
 }
 
 //get district
 $('#sl-district').on('change', function () {
-    getWard(parseInt(this.value), bindingWard, '');
+    getWard(this.value, bindingWard, '');
 });
-function getDistricts(id,callback,district) {
+function getDistricts(id, callback, district) {
     $.ajax({
         type: "get",
-        url: linkserver + "unit/getDistrictByPrId?id="+id,
+        url: linkserver + "unit/getDistrictByPrId?id=" + id,
         data: null,
         dataType: 'json',
         contentType: "application/json",
@@ -265,19 +277,19 @@ function bindingDistrict(data, district) {
         $('#sl-district option').remove();
         for (var i in data.data) {
             var dst = data.data[i];
-            $('#sl-district').append('<option value="' + dst.maqh + '">' + dst.name +'</option>');
+            $('#sl-district').append('<option value="' + dst.maqh + '">' + dst.name + '</option>');
         }
-        if (district!='') {
+        if (district != '') {
             $("#sl-district option[value='" + district + "']").prop("selected", true);
         }
         else {
-            getWard(data.data[0].maqh, bindingWard,'');
+            getWard(data.data[0].maqh, bindingWard, '');
         }
     }
 }
 
 //get wards
-function getWard(id,callback,ward) {
+function getWard(id, callback, ward) {
     $.ajax({
         type: "get",
         url: linkserver + "unit/getWardByDsId?id=" + id,
@@ -299,7 +311,7 @@ function bindingWard(data, ward) {
             var wa = data.data[i];
             $('#sl-ward').append('<option value="' + wa.xaid + '">' + wa.name + '</option>');
         }
-        if (ward!='') {
+        if (ward != '') {
             $("#sl-ward option[value='" + ward + "']").prop("selected", true);
         }
     }
@@ -325,60 +337,193 @@ function validateFile() {
     var chuyenmon = $("#chuyenmon").val();
     var noicutru = $("#noicutru").val();
 
+    var checkdata = true;
     if (!checkStr(namekhaisinh)) {
-        tonggerClass('namekhaisinh');
-    }
-    if (!checkStr(tongiao)) {
-        tonggerClass('tongiao');
-    }
-    if (cmnd.length == 9 || cmnd.length == 12) {
-        //
+        addClass('namekhaisinh');
+        checkdata = false;
     }
     else {
-        tonggerClass('cmnd');
+        removeClass('namekhaisinh');
+    }
+    if (!checkStr(tongiao)) {
+        addClass('tongiao');
+        checkdata = false;
+    }
+    else {
+        removeClass('tongiao');
+    }
+    if (cmnd.length == 9 || cmnd.length == 12) {
+        removeClass('cmnd');
+    }
+    else {
+        addClass('cmnd');
         $('.err-validate').show();
+        checkdata = false;
     }
     if (!checkStr(noicapcmnd)) {
-        tonggerClass('noicapcmnd');
+        addClass('noicapcmnd');
+        checkdata = false;
+    }
+    else {
+        removeClass('noicapcmnd');
     }
     if (!checkStr(quequan)) {
-        tonggerClass('quequan');
+        addClass('quequan');
+        checkdata = false;
+    }
+    else {
+        removeClass('quequan');
     }
     if (!checkStr(hokhauthuongtru)) {
-        tonggerClass('hokhauthuongtru');
+        addClass('hokhauthuongtru');
+        checkdata = false;
+    }
+    else {
+        removeClass('hokhauthuongtru');
     }
     if (!checkStr(noicapcmnd)) {
-        tonggerClass('noicapcmnd');
+        addClass('noicapcmnd');
+        checkdata = false;
+    }
+    else {
+        removeClass('noicapcmnd');
     }
     if (!checkStr(namedangdung)) {
-        tonggerClass('namedangdung');
+        addClass('namedangdung');
+        checkdata = false;
+    }
+    else {
+        removeClass('namedangdung');
     }
     if (!checkStr(nghenghiep)) {
-        tonggerClass('nghenghiep');
+        addClass('nghenghiep');
+        checkdata = false;
+    }
+    else {
+        removeClass('nghenghiep');
     }
     if (!checkStr(email)) {
-        tonggerClass('email');
+        addClass('email');
+        checkdata = false;
+    }
+    else {
+        removeClass('email');
     }
     if (!checkStr(chuyenmon)) {
-        tonggerClass('chuyenmon');
+        addClass('chuyenmon');
+        checkdata = false;
+    }
+    else {
+        removeClass('chuyenmon');
     }
     if (!checkStr(noicutru)) {
-        tonggerClass('noicutru');
+        addClass('noicutru');
+        checkdata = false;
     }
-    if (!checkStr(sdt) || sdt.length!=9) {
-        tonggerClass('sdt');
+    else {
+        removeClass('noicutru');
+    }
+    if (!checkStr(sdt) || sdt.length != 9) {
+        addClass('sdt');
         $('.err-validate').show();
+        checkdata = false;
+    }
+    else {
+        removeClass('sdt');
+    }
+    if (checkdata == false) {
+        return;
+    }
+    else {
+        $('.err-validate').hide();
     }
 
+    formData.append("hotenkhaisinh", namekhaisinh);
+    formData.append("hotendangdung", namedangdung);
+    formData.append("ngaythangnamsinh", $("#birthday").val());
+    formData.append("gioitinh", parseInt($("#sl-giotinh").children("option:selected").val()));
+    formData.append("dantoc", parseInt($("#sl-nation").children("option:selected").val()));
+    formData.append("tongiao", tongiao);
+    formData.append("cmnd", cmnd);
+    formData.append("noicapcmnd", noicapcmnd);
+    formData.append("quequan", quequan);
+    formData.append("hokhauthuongtru", hokhauthuongtru);
+    formData.append("honnhan", parseInt($("#sl-honnhan").children("option:selected").val()));
+    formData.append("suckhoe", $("#suckhoe").val());
+    formData.append("nghenghiep", $("#nghenghiep").val());
+    formData.append("donvi", parseInt($("#sl-org").children("option:selected").val()));
+    formData.append("solylich", $("#solylich").val());
+    formData.append("sdt", sdt);
+    formData.append("email", email);
+    formData.append("ngayvaodangct", $("#ngayvaodangct").val());
+    formData.append("ngayvaodangdb", $("#ngayvaodangdb").val());
+    formData.append("ngayvaodoan", $("#ngayvaodoan").val());
+    formData.append("trinhdovanhoa", $("#sl-trinhdovanhoa").children("option:selected").val());
+    formData.append("chuyenmon", chuyenmon);
+    formData.append("matp", $("#sl-province").children("option:selected").val());
+    formData.append("maqh", $("#sl-district").children("option:selected").val());
+    formData.append("xaid", $("#sl-ward").children("option:selected").val());
+    formData.append("noicutru", noicutru);
+    updateUser();
 }
-function tonggerClass(obj) {
-    $('#' + obj).toggleClass('err-ip');
+function addClass(obj) {
+    $('#' + obj).addClass('err-ip');
+}
+function removeClass(obj) {
+    $('#' + obj).removeClass('err-ip');
 }
 function checkStr(str) {
     var st = str.trim();
-    if (st.length > 0) {
-        return true;
+    if (st.length < 1) {
         $('.err-validate').show();
+        return false;
     }
-    return false;
+    return true;
 }
+//update user
+var bolud = true;
+function updateUser() {
+    bootbox.confirm("Bạn có chắc muốn cập nhật thông tin!",
+        function (result) {
+            if (result) {
+                if (bolud) {
+                    showLoading();
+                    bolud = false;
+                    $.ajax({
+                        url: linkserver + "adfile/updateFile",
+                        type: 'POST',
+                        dataType: 'json',
+                        async: false,
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        cache: false,
+                        error: function (err) {
+                            destroyLoading();
+                            bolud = true;
+                            bootbox.alert({
+                                message: "Error :" + err.message
+                            });
+                        },
+                        success: function (data) {
+                            bolud = true;
+                            destroyLoading();
+                            if (data.success) {
+                                bootbox.alert({
+                                    message: "Cập nhật thông thành công!",
+                                    callback: function () {
+                                        getDangVien(formData.get('usid'),bindingFile);
+                                    }
+                                });
+                            }
+                            else {
+                                bootbox.alert("Có lỗi xảy ra vui lòng kiểm tra lại thông tin!");
+                            }
+                        }
+                    });
+                }
+            }
+        });
+}
+
+//call item family,bonus,..

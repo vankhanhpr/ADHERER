@@ -105,9 +105,7 @@
         font-size: 12px;
         display: none;
     }
-    .err-ip {
-        border: 1px solid rgba(255, 0, 0,0.4);
-    }
+   
     /*family*/
     .tab-note-family {
         width: 100%;
@@ -121,14 +119,30 @@
         color: red;
         cursor: pointer;
         transition: all 0.2s linear;
-        -ms-transform: rotate(0deg);
-        -moz-transform: rotate(0deg);
-        -webkit-transform: rotate(0deg);
-        transform: rotate(-90deg);
+        -ms-transform: rotate(-90deg);
+        -moz-transform: rotate(-90deg);
+        -webkit-transform: rotate(-90deg);
+        transform: rotate(0deg);
     }
-    .tab-family{
-        width:100%;
-        background-color:var(--bg-f-file);
+    .fa-cogs, .fa-trash-o {
+        cursor: pointer;
+        position: relative;
+        float: left;
+        color: var(--cl-text-bl);
+    }
+    .bnt-add-fml {
+        border-radius: 4px;
+        color: var(--cl-text-bl);
+        padding: 2px 5px;
+        text-align: right;
+        position: relative;
+        border: 1px solid rgba(51,51,51,0.1);
+        float: right;
+        cursor: pointer;
+    }
+    .tab-family {
+        width: 100%;
+        background-color: var(--bg-f-file);
     }
     .row-table {
         width: 100%;
@@ -145,21 +159,59 @@
         border-right: 1px solid rgba(51,51,51,0.1);
         padding: 10px;
     }
-
+    .modal-body{
+        width:100%;
+    }
+    .dl-sm-it{
+        width:100%;
+    }
+    .dl-name-fml {
+        color: var(--cl-text-bl);
+        text-align: left;
+    }
+    .dl-input-fml{
+        color:var(--cl-text-bl);
+        text-align:left;
+        border:1px solid rgba(51,51,51,0.1);
+        border-radius:4px;
+    }
+    .dl-sl-fml {
+        color: var(--cl-text-bl);
+        text-align: left;
+        border: 1px solid rgba(51,51,51,0.1);
+        border-radius: 4px;
+        cursor:pointer;
+        padding:5px;
+    }
+    .dl-bnt-save {
+        border-radius: 4px;
+        color: var(--cl-text-wt);
+        padding: 3px 5px;
+        text-align: right;
+        position: relative;
+        border: 1px solid rgba(51,51,51,0.1);
+        background-color: var(--bg-button);
+        float: right;
+        cursor: pointer;
+        text-align:center;
+    }
     /*bonus*/
     .tab-bonus, .tab-discipline {
         width: 100%;
         background-color: var(--bg-f-file);
     }
     #tab-family, #tab-bonus, #tab-boldiscipline {
-        display: none;
+        display: block;
     }
     .down {
-        -ms-transform: rotate(0deg);
-        -moz-transform: rotate(0deg);
-        -webkit-transform: rotate(0deg);
-        transform: rotate(0deg);
+        -ms-transform: rotate(-90deg);
+        -moz-transform: rotate(-90deg);
+        -webkit-transform: rotate(-90deg);
+        transform: rotate(-90deg);
         transition: all 0.4s linear;
+    }
+    .err-ip {
+        border: 1px solid rgba(255, 0, 0,0.4);
     }
 }
 
@@ -224,10 +276,43 @@
     /*family*/
     .tab-note-family {
         font-size: var(--fs-tt);
+        margin-top:30px
     }
     .ic-show-ft {
         margin-top: 5px;
         margin-left:10px;
         font-size:var(--f-ic);
+    }
+    .bnt-add-fml {
+       font-size:var(--fs-dt);
+       margin-right:5px;
+    }
+    .dl-sm-it {
+        margin-bottom:20px;
+    }
+    .dl-sl-fml{
+        width:70%;
+    }
+    .dl-name-fml {
+        font-size: var(--fs-dt);
+        width: 30%;
+    }
+    .dl-input-fml{
+        width:70%;
+        padding:5px;
+    }
+    .dl-bnt-save {
+        font-size: var(--fs-dt);
+        margin-top: 10px;
+        margin-bottom: 5px;
+        width:100%;
+    }
+    .fa-cogs, .fa-trash-o {
+        font-size: var(--fs-dt);
+        margin-left: 5px;
+    }
+    /*bomus*/
+    .note-bonus{
+        min-height:130px;
     }
 }

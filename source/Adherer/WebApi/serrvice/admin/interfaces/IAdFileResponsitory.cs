@@ -11,7 +11,9 @@ namespace WebApi.serrvice.admin.interfaces
     {
         dynamic getFileByUsid(int id);
         void insertFile(Files file);
-        void updateFile(Files file);
+        void updateFile(Files file,Boolean bol);
+
+        Files getFileById(int id);
 
     }
 }

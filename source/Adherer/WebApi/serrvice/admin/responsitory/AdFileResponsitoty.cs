@@ -11,13 +11,18 @@ using WebApi.serrvice.admin.model;
 
 namespace WebApi.serrvice.admin.responsitory
 {
-   
+
     public class AdFileResponsitory : Responsitory<Files>, IAdFileResponsitory
     {
         private DbSet<Files> fileEntity;
         public AdFileResponsitory(MyDBContext context) : base(context)
         {
             fileEntity = context.Set<Files>();
+        }
+
+        public Files getFileById(int id)
+        {
+            return context.Files.Where(m => m.fileid == id).FirstOrDefault();
         }
 
         public dynamic getFileByUsid(int id)
@@ -35,6 +40,7 @@ namespace WebApi.serrvice.admin.responsitory
                             {
                                 user.usid,
                                 user.madv,
+                                filesdv.fileid,
                                 filesdv.hotenkhaisinh,
                                 filesdv.hotendangdung,
                                 filesdv.ngaythangnamsinh,
@@ -63,22 +69,31 @@ namespace WebApi.serrvice.admin.responsitory
                                 filesdv.hokhauthuongtru,
                                 filesdv.honnhan,
                                 filesdv.suckhoe,
+                                filesdv.avatar
 
                             }).FirstOrDefault()
                 }).FirstOrDefault();
             return dangvien;
         }
 
-    public void insertFile(Files file)
-    {
-        context.Entry(file).State = EntityState.Added;
-        context.SaveChanges();
-    }
+        public void insertFile(Files file)
+        {
+            context.Entry(file).State = EntityState.Added;
+            context.SaveChanges();
+        }
 
-    public void updateFile(Files file)
-    {
-        context.Update(file);
-        context.SaveChanges();
+        public void updateFile(Files file, Boolean bol)
+        {
+            if (!bol)
+            {
+                context.Entry(file).State = EntityState.Added;
+                context.SaveChanges();
+            }
+            else
+            {
+                context.Update(file);
+                context.SaveChanges();
+            }
+        }
     }
-}
 }

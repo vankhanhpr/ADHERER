@@ -156,11 +156,13 @@ function updateDangBo() {
             processData: false,
             contentType: "application/json",
             error: function (err) {
+                bol = true;
                 bootbox.alert({
                     message: "Error :" + err.message
                 });
             },
             success: function (data) {
+                bol = true;
                 if (data.success) {
                     $('#modaladddangbo').modal('toggle');
                     bootbox.alert({

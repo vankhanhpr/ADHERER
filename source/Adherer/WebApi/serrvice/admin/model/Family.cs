@@ -18,6 +18,8 @@ namespace WebApi.serrvice.admin.model
         public string hoancanhkinhte { get; set;}
         public string lichsuchinhtri { get; set; }
         public DateTime updateday { get; set; }
+        public string name { get; set; }
+        public DateTime birthday { get; set; }
 
     }
 }

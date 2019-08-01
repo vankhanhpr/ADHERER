@@ -121,18 +121,17 @@ Create table Files (
 	foreign key(donvi) references Organization(ogid)
 );
 ALTER TABLE Family
-ADD name nvarchar(20);
+ADD birthday datetime;
 Create table Family(
 	fmlid int not null Identity(1,1),
 	fileid int not null,
 	name nvarchar(100),
 	quanhe nvarchar(20),
-	noisinh nvarchar(200),
-	quequan nvarchar(200),
 	nghenghiep nvarchar(100),
 	hoancanhkinhte nvarchar(1000),
 	lichsuchinhtri nvarchar(1000),
-	updatedate datetime,
+	updateday datetime,
+	birthday datetime,
 	primary key (fmlid),
 	foreign key (fileid) references files (fileid)
 );
