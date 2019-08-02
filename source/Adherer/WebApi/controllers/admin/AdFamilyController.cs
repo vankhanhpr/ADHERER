@@ -70,5 +70,70 @@ namespace WebApi.controllers.admin
             return data;
         }
 
+        [HttpGet("getFmlById")]
+        public DataRespond getFamilyById(int id)
+        {
+            DataRespond data = new DataRespond();
+            try
+            {
+                data.success = true;
+                data.data = m_adFamilyResponsitory.findFamilyById(id);
+                data.message = "success";
+            }
+            catch(Exception e)
+            {
+                data.error = e;
+                data.message = e.Message;
+                data.success = false;
+            }
+
+            return data;
+        }
+        
+        [HttpPost("updateFamily")]
+        public DataRespond updateFamily(FamilyRequest fmlrq)
+        {
+            DataRespond data = new DataRespond();
+            try
+            {
+                Family fml = m_adFamilyResponsitory.findFamilyById(fmlrq.fmlid);
+                fml.name = fmlrq.name;
+                fml.lichsuchinhtri = fmlrq.lichsuchinhtri;
+                fml.quanhe = fmlrq.quanhe;
+                fml.nghenghiep = fmlrq.nghenghiep;
+                fml.nghenghiep = fmlrq.nghenghiep;
+                DateTime bd = DateTime.ParseExact(fmlrq.birthday, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                fml.birthday = bd;
+                m_adFamilyResponsitory.updateFamily(fml);
+                data.success = true;
+                data.message = "update success";
+            }
+            catch(Exception e)
+            {
+                data.message = e.Message;
+                data.error = e;
+                data.success = false;
+            }
+            return data;
+        }
+
+        [HttpGet("deleteFml")]
+        public DataRespond deleteFml(int id)
+        {
+            DataRespond data = new DataRespond();
+            try
+            {
+                data.success = true;
+                m_adFamilyResponsitory.deleteFamily(id);
+                data.message = "delete success";
+            }
+            catch(Exception e)
+            {
+                data.message = e.Message;
+                data.error = e;
+                data.success = false;
+            }
+            return data;
+        }
     }
 }

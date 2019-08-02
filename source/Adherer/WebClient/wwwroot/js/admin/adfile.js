@@ -126,7 +126,9 @@ function bindingFile(data) {
         var file = data.data.file;
         if (file) {
             fileidmain = file.fileid;
-            getFamilies(file.fileid, bindigFamilies);
+            getFamilies(file.fileid, bindigFamilies);//get family
+            getBonus(fileidmain, bindingBonus);//get bonus
+            getDiscipline(fileidmain,bindingDiscipline);//discipline
             formData.append("fileid", file.fileid);
             $("#madv").val(user.madv);
             $("#namedv").val(file.hotendangdung);
@@ -357,7 +359,6 @@ function validateFile() {
     }
     else {
         addClass('cmnd');
-        $('.err-validate').show();
         checkdata = false;
     }
     if (!checkStr(noicapcmnd)) {
@@ -425,7 +426,6 @@ function validateFile() {
     }
     if (!checkStr(sdt) || sdt.length != 9) {
         addClass('sdt');
-        $('.err-validate').show();
         checkdata = false;
     }
     else {
@@ -435,7 +435,7 @@ function validateFile() {
         return;
     }
     else {
-        $('.err-validate').hide();
+        $('#err-validate').hide();
     }
 
     formData.append("hotenkhaisinh", namekhaisinh);
@@ -475,7 +475,7 @@ function removeClass(obj) {
 function checkStr(str) {
     var st = str.trim();
     if (st.length < 1) {
-        $('.err-validate').show();
+        //$('.err-validate').show();
         return false;
     }
     return true;

@@ -1,5 +1,6 @@
 ﻿
-function getFamilies(fileid,callback) {
+var fmlid = -1;
+function getFamilies(fileid, callback) {
     $.ajax({
         type: "get",
         url: linkserver + "adfamily/getFamilies?fileid=" + fileid,
@@ -16,17 +17,19 @@ function getFamilies(fileid,callback) {
 }
 function bindigFamilies(data) {
     if (data.success && data.data) {
+        $(".item-fml").remove();
         for (var i in data.data) {
             var fml = data.data[i];
             var j = parseInt(i) + 1;
-            $("#tab-family").append('<div class="k row-table">' +
-                '<span class= "k t tt-table-dt" >'+j+'</span >' +
-                '<span class="k t tt-table-dt">'+fml.quanhe+'</span>' +
-                '<span class="k t tt-table-dt">'+fml.name+'</span>' +
-                '<span class="k t tt-table-dt">'+fml.nghenghiep+'</span>' +
+            $("#tab-family").append('<div class="k row-table item-fml">' +
+                '<span class= "k t tt-table-dt" >' + j + '</span >' +
+                '<span class="k t tt-table-dt">' + fml.quanhe + '</span>' +
+                '<span class="k t tt-table-dt">' + fml.name + '</span>' +
+                '<span class="k t tt-table-dt">' + fml.nghenghiep + '</span>' +
                 '<div class="k t tt-table-dt">' +
-                '<i class="fa fa-cogs" data-toggle="modal" data-target="#modalupdatefamily"></i>' +
-                '<i class="fa fa-trash-o" aria-hidden="true"></i>' +
+                '<i class="fa fa-cogs" data-toggle="modal"' +
+                'data-target="#modalupdatefamily" onclick="getDetailFamily(' + fml.fmlid + ',bindingFamilyById)"></i>' +
+                '<i class="fa fa-trash-o" aria-hidden="true" onclick="deleteFml(' + fml.fmlid +')"></i>' +
                 '</div>' +
                 '</div>');
         }
@@ -38,18 +41,8 @@ function validateFormIsFml() {
     //var qhe = $("#sl-fml-qh").children("option:selected").text();
     var fmlwork = $("#fmlwork").val();
     var fmlchinhtri = $("#fmlchinhtri").val();
-    var bol = true;
-    if (!checkStr(namefml)) {
-        addClass('namefml');
-        $('.err-validate').show();
-        bol = false;
-    }
-    else {
-        removeClass('namefml');
-    }
     if (!checkStr(fmlwork)) {
         addClass('fmlwork');
-        $('.err-validate').show();
         bol = false;
     }
     else {
@@ -57,7 +50,6 @@ function validateFormIsFml() {
     }
     if (!checkStr(fmlchinhtri)) {
         addClass('fmlchinhtri');
-        $('.err-validate').show();
         bol = false;
     }
     else {
@@ -65,6 +57,7 @@ function validateFormIsFml() {
     }
 
     if (!bol) {
+        $("#err-add-fml").show();
         return;
     }
     var fml = {
@@ -103,7 +96,7 @@ function insertFml(data) {
                     bootbox.alert({
                         message: "Thêm thông tin thành công!",
                         callback: function () {
-                            //getDangBo(bindingDangBo);
+                            getFamilies(fileidmain, bindigFamilies);
                         }
                     })
                 }
@@ -115,10 +108,135 @@ function insertFml(data) {
     }
 }
 
+function getDetailFamily(id, callback) {
+    $.ajax({
+        type: "get",
+        url: linkserver + "adfamily/getFmlById?id=" + id,
+        data: null,
+        dataType: 'json',
+        contentType: "application/json",
+        error: function (err) {
+            //bootbox.alert("Có lỗi xảy ra, vui lòng kiểm tra kết nối");
+        },
+        success: function (data) {
+            callback(data);
+        }
+    });
+}
+function bindingFamilyById(data) {
+    if (data.success && data.data) {
+        var fml = data.data;
+        fmlid = fml.fmlid;
+        $("#fmlnameud").val(fml.name);
+        $("#sl-fml-qh-ud option[value='" + fml.quanhe + "']").prop("selected", true);
+        $("#fmlworkud").val(fml.nghenghiep);
+        $("#chinhtriud").val(fml.lichsuchinhtri);
+        $("#bdud").val(formatDate(new Date(fml.birthday)));
+    }
+}
+
+function validateUdFml() {
+    var fmlnameud = $("#fmlnameud").val();
+    var fmlworkud = $("#fmlworkud").val();
+    var bol = true;
+    if (!checkStr(fmlnameud)) {
+        addClass('fmlnameud');
+        bol = false;
+    }
+    else {
+        removeClass('fmlnameud');
+    }
+    if (!checkStr(fmlworkud)) {
+        addClass('fmlworkud');
+        bol = false;
+    }
+    else {
+        removeClass('fmlworkud');
+    }
+    if (bol) {
+        var data = {
+            'name': fmlnameud,
+            'fmlid': fmlid,
+            'quanhe': $("#sl-fml-qh-ud option:selected").text(),
+            'nghenghiep': fmlworkud,
+            'hoancanhkinhte': '',
+            'lichsuchinhtri': $('#chinhtriud').val(),
+            'birthday': $("#bdud").val()
+        };
+        updateFml(data);
+    }
+    else {
+        $('#err-ud-fml').show();
+    }
+}
+var bolfmlud = true;
+function updateFml(model) {
+    if (bolfmlud) {
+        bolfmlud = false;
+        $.ajax({
+            url: linkserver + "adfamily/updateFamily",
+            type: 'POST',
+            dataType: 'json',
+            data: JSON.stringify(model),
+            async: false,
+            processData: false,
+            contentType: "application/json",
+            error: function (err) {
+                bolfmlud = true;
+                bootbox.alert({
+                    message: "Error :" + err.message
+                });
+            },
+            success: function (data) {
+                bolfmlud = true;
+                if (data.success) {
+                    $('#modalupdatefamily').modal('toggle');
+                    bootbox.alert({
+                        message: "Cập nhật thông tin thành công!",
+                        callback: function () {
+                            getFamilies(fileidmain, bindigFamilies);
+                        }
+                    })
+                }
+                else {
+                    bootbox.alert(data.message);
+                }
+            }
+        });
+    }
+}
+//delete family
+
+function deleteFml(id) {
+    bootbox.confirm("Bạn có chắc muốn xóa thông tin này?",
+        function (result) {
+            if (result) {
+                $.ajax({
+                    type: "get",
+                    url: linkserver + "adfamily/deleteFml?id=" + id,
+                    data: null,
+                    dataType: 'json',
+                    contentType: "application/json",
+                    error: function (err) {
+                        bootbox.alert("Có lỗi xảy ra, vui lòng kiểm tra kết nối");
+                    },
+                    success: function (data) {
+                        if (data.success) {
+                            bootbox.alert("Xóa thành công!");
+                            getFamilies(fileidmain, bindigFamilies);
+                        }
+                        else {
+                            bootbox.alert(data.message);
+                        }
+                    }
+                });
+            }
+        });
+}
 
 //date picker
 $(document).ready(function () {
-    $('#datepicker-fml').datetimepicker({
+    $('#datepicker-fml,#datepicker-fmlud').datetimepicker({
         format: 'DD/MM/YYYY',
         extraFormats: false,
         stepping: 1,

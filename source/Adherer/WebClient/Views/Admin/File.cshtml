@@ -198,7 +198,7 @@
                                 <input type="text" class="k t ip-avt-add" id="noicutru" placeholder="Tên đường, thôn xóm, số nhà" />
                             </div>
                         </div>
-                        <span class="k t err-validate">**Vui lòng kiểm tra lại thông tin nhập trước khi cập nhật</span>
+                        <span class="k t err-validate" id="err-validate">**Vui lòng kiểm tra lại thông tin nhập trước khi cập nhật</span>
                         <span class="t bnt-update-file" onclick="validateFile()">Cập nhật Hồ sơ</span>
                     </div>
 
@@ -247,16 +247,7 @@
                     </div>
                 </div>
 
-                <div class="k row-table">
-                    <span class="k t tt-table-dt">1</span>
-                    <span class="k t tt-table-dt">Đi làm chuyên cần</span>
-                    <span class="k t tt-table-dt">Trung tâm IT</span>
-                    <span class="k t tt-table-dt">12/12/2012</span>
-                    <div class="k t tt-table-dt">
-                        <i class="fa fa-cogs" data-toggle="modal" data-target="#modalinsertdangbo" onclick="showTabEditDB(1)"></i>
-                        <i class="fa fa-trash-o" aria-hidden="true"></i>
-                    </div>
-                </div>
+                @*item bonus here -------------*@
 
             </div>
 
@@ -277,7 +268,7 @@
                     </div>
                 </div>
 
-                <div class="k row-table">
+                @*<div class="k row-table">
                     <span class="k t tt-table-dt">1</span>
                     <span class="k t tt-table-dt">Bàn tán xôn xao</span>
                     <span class="k t tt-table-dt">Trung tâm Ngã 3</span>
@@ -286,7 +277,7 @@
                         <i class="fa fa-cogs" data-toggle="modal" data-target="#modalinsertdangbo" onclick="showTabEditDB(1)"></i>
                         <i class="fa fa-trash-o" aria-hidden="true"></i>
                     </div>
-                </div>
+                </div>*@
 
             </div>
 
@@ -339,6 +330,7 @@
                                 </div>
                             </div>
                         </div>
+                        <span class="k t  " id="err-add-fml">**Vui lòng điền đầy đủ thông tin</span>
                         <span class="k dl-bnt-save" onclick="validateFormIsFml()">Thêm mới</span>
                     </div>
                     <div class="modal-footer">
@@ -348,7 +340,7 @@
 
             </div>
         </div>
-        @*update new family*@
+        @*update family*@
         <div class="modal fade" id="modalupdatefamily" role="dialog">
             <div class="modal-dialog">
                 <!-- Modal content-->
@@ -360,42 +352,43 @@
                     <div class="k modal-body">
                         <div class="k dl-sm-it">
                             <span class="k t dl-name-fml">Họ và tên: </span>
-                            <input class="k dl-input-fml" id="" type="text" />
+                            <input class="k dl-input-fml" id="fmlnameud" type="text" />
                         </div>
                         <div class="k dl-sm-it">
                             <span class="k t dl-name-fml">Quan hệ: </span>
-                            <select class="k dl-sl-fml" id="">
-                                <option value="0">Cha đẻ</option>
-                                <option value="1">Mẹ đẻ</option>
-                                <option value="2">Anh trai</option>
-                                <option value="3">Em trai</option>
-                                <option value="4">Chị gái</option>
-                                <option value="5">Em gái</option>
-                                <option value="6">Vợ</option>
-                                <option value="7">Chồng</option>
-                                <option value="8">Con</option>
+                            <select class="k dl-sl-fml" id="sl-fml-qh-ud">
+                                <option value="Cha đẻ">Cha đẻ</option>
+                                <option value="Mẹ đẻ">Mẹ đẻ</option>
+                                <option value="Anh trai">Anh trai</option>
+                                <option value="Em trai">Em trai</option>
+                                <option value="Chị gái">Chị gái</option>
+                                <option value="Em gái">Em gái</option>
+                                <option value="Vợ">Vợ</option>
+                                <option value="Chồng">Chồng</option>
+                                <option value="Con">Con</option>
                             </select>
                         </div>
                         <div class="k dl-sm-it">
                             <span class="k t dl-name-fml">Nghề nghiệp: </span>
-                            <input class="k dl-input-fml" id="" type="text" />
+                            <input class="k dl-input-fml" id="fmlworkud" type="text" />
                         </div>
                         <div class="k dl-sm-it">
                             <span class="k t dl-name-fml">Chính trị: </span>
-                            <input class="k dl-input-fml" id="" type="text" />
+                            <input class="k dl-input-fml" id="chinhtriud" type="text" />
                         </div>
                         <div class="k dl-sm-it">
                             <span class="k t dl-name-fml" id="">Ngày tháng năm sinh: </span>
                             <div class="form-group">
-                                <div class='input-group date' id='datepicker-addnew'>
-                                    <input type='text' class="form-control" id="" />
+                                <div class='input-group date' id='datepicker-fmlud'>
+                                    <input type='text' class="form-control" id="bdud" />
                                     <span class="input-group-addon">
                                         <span class="glyphicon glyphicon-calendar"></span>
                                     </span>
                                 </div>
                             </div>
                         </div>
-                        <span class="k dl-bnt-save" onclick="">Cập nhật</span>
+                        <span class="k t err-validate" id="err-ud-fml">**Vui lòng điền đầy đủ thông tin</span>
+                        <span class="k dl-bnt-save" onclick="validateUdFml()">Cập nhật</span>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -417,17 +410,17 @@
                     <div class="k modal-body">
                         <div class="k dl-sm-it">
                             <span class="k t dl-name-fml">Khen thưởng: </span>
-                            <input class="k dl-input-fml" id="" type="text" />
+                            <input class="k dl-input-fml" id="namebonus" type="text" />
                         </div>
                         <div class="k dl-sm-it">
                             <span class="k t dl-name-fml">Đơn vị: </span>
-                            <input class="k dl-input-fml" id="" type="text" />
+                            <input class="k dl-input-fml" id="orgname" type="text" />
                         </div>
                         <div class="k dl-sm-it">
                             <span class="k t dl-name-fml" id="">Thời gian khen thưởng: </span>
                             <div class="form-group">
-                                <div class='input-group date' id='datepicker-addnew'>
-                                    <input type='text' class="form-control" id="" />
+                                <div class='input-group date' id='datepicker-addnewbn'>
+                                    <input type='text' class="form-control" id="bonus-addnew" />
                                     <span class="input-group-addon">
                                         <span class="glyphicon glyphicon-calendar"></span>
                                     </span>
@@ -436,7 +429,97 @@
                         </div>
                         <div class="k dl-sm-it">
                             <span class="k t dl-name-fml">Ghi chú: </span>
-                            <textarea class="k dl-input-fml note-bonus" id="" type="text"></textarea>
+                            <textarea class="k dl-input-fml note-bonus" id="note-add-bonus" type="text"></textarea>
+                        </div>
+                        <span class="k t err-validate" id="err-add-bonus">**Vui lòng điền đầy đủ thông tin</span>
+                        <span class="k dl-bnt-save" onclick="validateInsertBonus()">Thêm mới</span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        @*update bonus*@
+        <div class="modal fade" id="modalupdatebonus" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Cập nhật khen thưởng</h4>
+                    </div>
+                    <div class="k modal-body">
+                        <div class="k dl-sm-it">
+                            <span class="k t dl-name-fml">Khen thưởng: </span>
+                            <input class="k dl-input-fml" id="namebonusud" type="text" />
+                        </div>
+                        <div class="k dl-sm-it">
+                            <span class="k t dl-name-fml">Đơn vị: </span>
+                            <input class="k dl-input-fml" id="orgbonusud" type="text" />
+                        </div>
+                        <div class="k dl-sm-it">
+                            <span class="k t dl-name-fml" id="">Thời gian khen thưởng: </span>
+                            <div class="form-group">
+                                <div class='input-group date' id='datepicker-bonusud'>
+                                    <input type='text' class="form-control" id="timebonusud" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="k dl-sm-it">
+                            <span class="k t dl-name-fml">Ghi chú: </span>
+                            <textarea class="k dl-input-fml note-bonus" id="notebonusud" type="text"></textarea>
+                        </div>
+                        <span class="k t err-validate" id="err-ud-bonus">**Vui lòng điền đầy đủ thông tin</span>
+                        <span class="k dl-bnt-save" onclick="validateUpdateBonus()">Cập nhật </span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+        @*add new desciption*@
+        <div class="modal fade" id="modaladddesciption" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Khai báo kỷ luật</h4>
+                    </div>
+                    <div class="k modal-body">
+                        <div class="k dl-sm-it">
+                            <span class="k t dl-name-fml">Kỷ luật: </span>
+                            <input class="k dl-input-fml" id="disname" type="text" />
+                        </div>
+                        <div class="k dl-sm-it">
+                            <span class="k t dl-name-fml">Đơn vị: </span>
+                            <input class="k dl-input-fml" id="orgadddis" type="text" />
+                        </div>
+                        <div class="k dl-sm-it">
+                            <span class="k t dl-name-fml" id="">Thời gian kỉ luật: </span>
+                            <div class="form-group">
+                                <div class='input-group date' id='datepicker-addnew'>
+                                    <input type='text' class="form-control" id="timedisaddnew" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="k dl-sm-it">
+                            <span class="k t dl-name-fml">Ghi chú: </span>
+                            <textarea class="k dl-input-fml note-bonus" id="notedisaddnew" type="text"></textarea>
                         </div>
                         <span class="k dl-bnt-save" onclick="">Thêm mới</span>
                     </div>
@@ -448,15 +531,14 @@
             </div>
         </div>
 
-
         @*add new desciption*@
-        <div class="modal fade" id="modaladddesciption" role="dialog">
+        <div class="modal fade" id="modalinsertesciption" role="dialog">
             <div class="modal-dialog">
                 <!-- Modal content-->
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Khai báo kỷ luật</h4>
+                        <h4 class="modal-title">Cập nhật kỷ luật</h4>
                     </div>
                     <div class="k modal-body">
                         <div class="k dl-sm-it">
@@ -492,16 +574,22 @@
             </div>
         </div>
 
+
     </div>
 
 @section Script{
+
     <script src="~/js/admin/adfile.js"></script>
     <script src="~/js/admin/adfamily.js"></script>
+    <script src="~/js/admin/adbonus.js"></script>
+    <script src="~/js/admin/addiscipline.js"></script>
+
+
     <script>
         try {
             var id = @ViewBag.usid;
             getDangVien(id, bindingFile);
-            
+
         }
         catch (er) {
             alert("error");

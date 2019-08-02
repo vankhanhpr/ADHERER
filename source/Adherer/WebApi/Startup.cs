@@ -68,6 +68,8 @@ namespace WebApi
             services.AddTransient<IAdFileResponsitory, AdFileResponsitory>();
             services.AddTransient<INationResponsitory, NationResponsitory>();
             services.AddTransient<IAdFamilyResponsitory, AdFamilyResponsitory>();
+            services.AddTransient<IAdBonusResponsitory, AdBonusResponsitory>();
+            services.AddTransient<IAdDisciplineResponsitory, AdDisciplineResponsitory>();
 
             services.AddCors();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);

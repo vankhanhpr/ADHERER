@@ -135,6 +135,7 @@ Create table Family(
 	primary key (fmlid),
 	foreign key (fileid) references files (fileid)
 );
+alter table bonus add daycreate datetime
 create table Bonus(
 	bnid int not null identity (1,1),
 	fileid int not null ,
@@ -142,15 +143,21 @@ create table Bonus(
 	donvi nvarchar(200),
 	ghichu nvarchar(1000),
 	primary key(bnid),
-	updatedate datetime,
+	updateday datetime,
+	daycreate datetime,
 	foreign key(fileid) references files(fileid)
 );
+alter table Discipline add daycreate datetime;
 create table Discipline(
 	dsid int not null identity (1,1) primary key,
 	fileid int not null,
+	donvi nvarchar(100),
 	noidung nvarchar(500),
 	ghichu nvarchar(1000),
-	updatedate datetime,
+	updateday datetime,
+	daycreate datetime,
+	active bit,
+	approved bit,
 	foreign key (fileid) references files(fileid)
 );
 create table Forms(
