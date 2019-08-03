@@ -65,6 +65,21 @@ Create table QTCT(
 	foreign key (fileid) references files(fileid)
 );
 
+ALTER TABLE Files
+ALTER COLUMN tongiao nvarchar(50);
+ALTER TABLE Files ;
+exec sp_rename 'Files.solylich', 'solylich';
+
+
+
+Alter table Files add cmnd nvarchar(12),
+	daycmnd datetime,
+	noicapcmnd nvarchar(200),
+	hokhauthuongtru nvarchar(200),
+	honnhan bit,
+	suckhoe nvarchar(100)
+
+
 Create table Files (
 	fileid int not null Identity(1,1),
 	usid int  not null,
@@ -82,7 +97,7 @@ Create table Files (
 	hotenkhaisinh nvarchar(200),
 	gioitinh bit ,
 	dantoc int ,
-	tongiao int,
+	tongiao nvarchar(100),
 	nghenghiep nvarchar(100),
 	ngayvaodangdb datetime ,
 	ngayvaodangct datetime,
@@ -94,7 +109,7 @@ Create table Files (
 	matp varchar(5),
 	maqh varchar(5),
 	xaid varchar(5),
-	solilich nvarchar(20),
+	solylich nvarchar(20),
 	createday datetime,
 	updateday datetime,
 	sdt nvarchar(10),
@@ -105,21 +120,22 @@ Create table Files (
 	foreign key (dantoc) references Nation(nationid),
 	foreign key(donvi) references Organization(ogid)
 );
-ALTER TABLE Files
-ADD avatar nvarchar(20);
+ALTER TABLE Family
+ADD birthday datetime;
 Create table Family(
 	fmlid int not null Identity(1,1),
 	fileid int not null,
+	name nvarchar(100),
 	quanhe nvarchar(20),
-	noisinh nvarchar(200),
-	quequan nvarchar(200),
 	nghenghiep nvarchar(100),
 	hoancanhkinhte nvarchar(1000),
 	lichsuchinhtri nvarchar(1000),
-	updatedate datetime,
+	updateday datetime,
+	birthday datetime,
 	primary key (fmlid),
 	foreign key (fileid) references files (fileid)
 );
+alter table bonus add daycreate datetime
 create table Bonus(
 	bnid int not null identity (1,1),
 	fileid int not null ,
@@ -127,15 +143,21 @@ create table Bonus(
 	donvi nvarchar(200),
 	ghichu nvarchar(1000),
 	primary key(bnid),
-	updatedate datetime,
+	updateday datetime,
+	daycreate datetime,
 	foreign key(fileid) references files(fileid)
 );
+alter table Discipline add daycreate datetime;
 create table Discipline(
 	dsid int not null identity (1,1) primary key,
 	fileid int not null,
+	donvi nvarchar(100),
 	noidung nvarchar(500),
 	ghichu nvarchar(1000),
-	updatedate datetime,
+	updateday datetime,
+	daycreate datetime,
+	active bit,
+	approved bit,
 	foreign key (fileid) references files(fileid)
 );
 create table Forms(

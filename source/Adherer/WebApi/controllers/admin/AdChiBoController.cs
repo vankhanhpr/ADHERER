@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.model;
 using WebApi.model.request;
+using WebApi.model.roles;
 using WebApi.serrvice.admin.interfaces;
 using WebApi.serrvice.admin.model;
 
 namespace WebApi.controllers.admin
 {
+    [Authorize(Roles = Roles.Admin)]
     [Route("api/[controller]")]
     [ApiController]
     public class AdChiBoController : Controller

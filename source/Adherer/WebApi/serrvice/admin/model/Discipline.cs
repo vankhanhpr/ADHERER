@@ -16,5 +16,9 @@ namespace WebApi.serrvice.admin.model
         public string noidung { get; set; }
         public string ghichu { get; set; }
         public DateTime updateday { get; set; }
+        public DateTime daycreate { get; set; }
+        public Boolean approved { get; set; }
+        public Boolean active { get; set; }
+        public string donvi { get; set; }
     }
 }

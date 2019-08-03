@@ -39,3 +39,4 @@ F:\ASP.NET\ADHERER\source\Adherer\WebApi\obj\Debug\netcoreapp2.1\WebApi.RazorTar
 F:\ASP.NET\ADHERER\source\Adherer\WebApi\obj\Debug\netcoreapp2.1\WebApi.dll
 F:\ASP.NET\ADHERER\source\Adherer\WebApi\obj\Debug\netcoreapp2.1\WebApi.pdb
 F:\ASP.NET\ADHERER\source\Adherer\WebApi\obj\Debug\netcoreapp2.1\WebApi.csprojAssemblyReference.cache
+E:\ASPMVC\WORK\ADHERER\source\Adherer\WebApi\obj\Debug\netcoreapp2.1\WebApi.csprojAssemblyReference.cache

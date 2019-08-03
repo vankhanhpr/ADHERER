@@ -1,4 +1,5 @@
 ﻿
+using System.IO;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -7,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
 using WebApi.data;
 using WebApi.serrvice.admin.interfaces;
@@ -49,13 +51,9 @@ namespace WebApi
                 };
             });
 
-            //services.AddSingleton<IFileProvider>(
-            //   new PhysicalFileProvider(
-            //       Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/user")));//image
-            //services.AddSingleton<IFileProvider>(
-            //   new PhysicalFileProvider(
-            //       Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/admin")));//image
-
+            services.AddSingleton<IFileProvider>(
+               new PhysicalFileProvider(
+                   Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/user")));//image
 
             services.AddScoped<IUserResponsitory, UserResponsitory>();
             services.AddScoped<IAuthentication, AuthenticationResponsitory>();
@@ -67,6 +65,11 @@ namespace WebApi
             services.AddTransient<IChiBoResponsitory, ChiBoResponsitory>();
             services.AddTransient<IOrganizationResponsitory, OrganizationResponsitory>();
             services.AddTransient<ITitleResponsitory, TitleResponsitory>();
+            services.AddTransient<IAdFileResponsitory, AdFileResponsitory>();
+            services.AddTransient<INationResponsitory, NationResponsitory>();
+            services.AddTransient<IAdFamilyResponsitory, AdFamilyResponsitory>();
+            services.AddTransient<IAdBonusResponsitory, AdBonusResponsitory>();
+            services.AddTransient<IAdDisciplineResponsitory, AdDisciplineResponsitory>();
 
             services.AddCors();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);

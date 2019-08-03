@@ -90,8 +90,9 @@ namespace WebApi.serrvice.authentication.responsitoty
         {
             var claims = new[] {
                 new Claim(JwtRegisteredClaimNames.Sub, user.madv),
-                new Claim(JwtRegisteredClaimNames.Email, user.password),
-                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+                new Claim(JwtRegisteredClaimNames.Typ, user.titleid.ToString()),
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                new Claim(ClaimTypes.Role,user.roleid.ToString())//check quyen
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(m_config["Jwt:Key"]));
@@ -100,7 +101,7 @@ namespace WebApi.serrvice.authentication.responsitoty
             var token = new JwtSecurityToken(m_config["Jwt:Issuer"],
                 m_config["Jwt:Issuer"],
                 claims,
-                expires: DateTime.Now.AddMinutes(1), //expire time là 30 phút
+                expires: DateTime.Now.AddMinutes(3), //expire time là 30 ngayf
                 signingCredentials: creds);
 
             return new JwtSecurityTokenHandler().WriteToken(token);

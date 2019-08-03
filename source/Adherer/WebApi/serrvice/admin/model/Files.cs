@@ -17,9 +17,9 @@ namespace WebApi.serrvice.admin.model
         public DateTime ngaythangnamsinh { get; set; }
         public string hotendangdung { get; set; }
         public string hotenkhaisinh { get; set; }
-        public int gioitinh { get; set; }
+        public Boolean gioitinh { get; set; }
         public int dantoc { get; set; }
-        public int tongiao { get; set; }
+        public string tongiao { get; set; }
         public string nghenghiep { get; set; }
         public DateTime ngayvaodangdb { get; set; }
         public DateTime ngayvaodangct { get; set; }
@@ -31,12 +31,19 @@ namespace WebApi.serrvice.admin.model
         public string matp { get; set; }
         public string maqh { get; set; }
         public string xaid { get; set; }
-        public string solilich { get; set; }
+        public string solylich { get; set; }
         public DateTime createday { get; set; }
         public DateTime updateday { get; set; }
         public string sdt { get; set; }
         public string email { get; set; }
         public string avatar { get; set; }
+
+        public string cmnd { get; set; }
+        public DateTime daycmnd { get; set; }
+        public string noicapcmnd { get; set; }
+        public string hokhauthuongtru { get; set; }
+        public Boolean honnhan { get; set;}
+        public string suckhoe { get; set; }
 
     }
 }

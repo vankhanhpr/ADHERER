@@ -9,9 +9,11 @@ namespace WebApi.serrvice.admin.interfaces
 {
     public interface IAdFileResponsitory:IResponsitory<Files>
     {
-        Files getFileByUsid(int id);
+        dynamic getFileByUsid(int id);
         void insertFile(Files file);
-        void updateFile(Files file);
+        void updateFile(Files file,Boolean bol);
+
+        Files getFileById(int id);
 
     }
 }

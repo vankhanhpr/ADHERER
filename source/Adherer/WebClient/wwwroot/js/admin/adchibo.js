@@ -3,6 +3,7 @@ var dbid = 0;
 var dbud = 0;
 var active = 0;
 var cbid = 0;
+var token = getTokenByLocal().token;
 getDangBo(bindingDangBo,0);
 
 function getDangBo(callback,id) {
@@ -10,6 +11,7 @@ function getDangBo(callback,id) {
         type: "get",
         url: linkserver + "addangbo/getalldangbo",
         data: null,
+        headers: { 'authorization': `Bearer ${token}` },
         dataType: 'json',
         contentType: "application/json",
         error: function (err) {
@@ -37,6 +39,7 @@ function getChiBoByDbId(id,callback) {
         type: "get",
         url: linkserver + "adchibo/getChiBoByDb?id="+id,
         data: null,
+        headers: { 'authorization': `Bearer ${token}` },
         dataType: 'json',
         contentType: "application/json",
         error: function (err) {
@@ -115,6 +118,7 @@ function insertChiBo() {
             type: 'POST',
             dataType: 'json',
             data: JSON.stringify(data),
+            headers: { 'authorization': `Bearer ${token}` },
             async: false,
             processData: false,
             contentType: "application/json",
@@ -202,6 +206,7 @@ function bindingToSlUd(data, id) {
             type: "get",
             url: linkserver + "adchibo/getChiBoById?id=" + id,
             data: null,
+            headers: { 'authorization': `Bearer ${token}` },
             dataType: 'json',
             contentType: "application/json",
             error: function (err) {
@@ -236,6 +241,7 @@ function updateChiBo() {
             type: 'POST',
             dataType: 'json',
             data: JSON.stringify(data),
+            headers: { 'authorization': `Bearer ${token}` },
             async: false,
             processData: false,
             contentType: "application/json",

@@ -1,4 +1,5 @@
 ﻿var linkserver = "https://localhost:44343/api/";
+var linkfileuser = "https://localhost:44343/images/user/";
 
 function formatDate(date) {
     var hours = date.getHours();
@@ -11,4 +12,22 @@ function formatDate(date) {
     var month = (date.getMonth() + 1) < 10 ? '0' + (date.getMonth() + 1) : (date.getMonth() + 1);
     var day = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
     return day + "/" + month + "/" + date.getFullYear();
+}
+function showLoading() {
+    $("body").append('<div class="lds-ring"><div></div><div></div><div></div><div></div></div>');
+}
+function destroyLoading() {
+    $(".lds-ring").hide();
+}
+function strToObj(str) {//convert string to object
+    var obj = {};
+    if (str && typeof str === 'string') {
+        var objStr = str.match(/\{(.)+\}/g);
+        eval("obj =" + objStr);
+    }
+    return obj;
+}
+function getTokenByLocal() {
+    var token = strToObj(sessionStorage.getItem('token_session'));
+    return token;
 }

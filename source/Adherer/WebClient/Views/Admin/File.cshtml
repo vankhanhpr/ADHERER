@@ -6,199 +6,607 @@
 @section Css{
     <link rel="stylesheet" type="text/css" href="~/css/admin/adfile.css">
 }
-<div class="k main-form">
-    <div class="k body-form">
-        <span class=" k t name-file">Thông tin hồ sơ Đảng viên</span>
+    <div class="k main-form">
+        <div class="k body-form">
+            <span class=" k t name-file">Thông tin hồ sơ Đảng viên</span>
 
-        <div class="k f-bd-file">
-            <div class="k row-item">
-                <div class="k tab-avt">
-                    <div class=" k img-avt-file">
-                        <span class="brower-avt">Brower</span>
+            <div class="k f-bd-file">
+                <div class="k row-item">
+                    <div class="k tab-avt">
+                        <div class=" k img-avt-file" id="img-avt">
+                            <span class="brower-avt" onclick="getImage()">Brower</span>
+                            <input id="multi-file" class="hidden" style="display:none" type="file" accept="image/*" multiple="">
+                        </div>
+                        <div class="k f-t-avt">
+                            <span class="k t t-avt-left">Mã Đảng viên:</span>
+                            <input type="text" class="k t ip-avt-t" disabled="disabled" id="madv" />
+                        </div>
+                        <div class="k f-t-avt">
+                            <span class="k t t-avt-left">Họ tên Đảng viên:</span>
+                            <input type="text" class="k t ip-avt-t" id="namedv" disabled="disabled" />
+                        </div>
                     </div>
-                    <div class="k f-t-avt">
-                        <span class="k t t-avt-left">Mã Đảng viên:</span>
-                        <input type="text" class="k t ip-avt-t" disabled="disabled" />
+                    <div class="k bd-tab-body">
+                        <div class="k tab-body">
+                            <div class="k row-item-body">
+                                <span class="k t t-avt-left">Họ tên khai sinh:</span>
+                                <input type="text" class="k t ip-avt-t" id="namekhaisinh" />
+                            </div>
+                            <div class="k row-item-body">
+                                <span class="k t t-avt-left">Họ tên đang dùng:</span>
+                                <input type="text" class="k t ip-avt-t" id="namedangdung" />
+                            </div>
+                            <div class="k row-item-body">
+                                <span class="k t t-avt-left">Ngày tháng năm sinh:</span>
+                                <div class="form-group">
+                                    <div class='input-group date' id='datepicker-birthday'>
+                                        <input type='text' class="form-control" id="birthday" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="k row-item-body">
+                                <span class="k t t-avt-left">Giới tính:</span>
+                                <select class="k t ip-avt-t" id="sl-giotinh">
+                                    <option value="0">Nam</option>
+                                    <option value="1">Nữ</option>
+                                </select>
+                            </div>
+                            <div class="k row-item-body">
+                                <span class="k t t-avt-left">Dân tộc:</span>
+                                <select class="k t ip-avt-t" id="sl-nation">
+                                    @*<option value="1">Kinh</option>
+                <option value="1">Tày</option>*@
+                                </select>
+                            </div>
+                            <div class="k row-item-body">
+                                <span class="k t t-avt-left">Tôn giáo:</span>
+                                <input type="text" class="k t ip-avt-t" id="tongiao" />
+                            </div>
+
+                            <div class="k row-item-body">
+                                <span class="k t t-avt-left">CMND:</span>
+                                <input type="text" class="k t ip-avt-t" maxlength="12" id="cmnd" />
+                            </div>
+                            <div class="k row-item-body">
+                                <span class="k t t-avt-left">Ngày cấp:</span>
+                                <div class="form-group">
+                                    <div class='input-group date' id='datepicker-daycmnd'>
+                                        <input type='text' class="form-control" id="daycmnd" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="k row-item-body">
+                                <span class="k t t-avt-left">Nơi cấp:</span>
+                                <input type="text" class="k t ip-avt-t" id="noicapcmnd" />
+                            </div>
+                            <div class="k row-item-body">
+                                <span class="k t t-avt-left">Quê quán:</span>
+                                <input type="text" class="k t ip-avt-t" id="quequan" />
+                            </div>
+                            <div class="k row-item-body">
+                                <span class="k t t-avt-left">Hộ khẩu thường trú:</span>
+                                <input type="text" class="k t ip-avt-t" id="hokhauthuongtru" />
+                            </div>
+                            <div class="k row-item-body">
+                                <span class="k t t-avt-left">Hôn nhân:</span>
+                                <select class="k t ip-avt-t" id="sl-honnhan">
+                                    <option value="0">Đã có gia đình</option>
+                                    <option value="1">Chưa có gia đình</option>
+                                </select>
+                            </div>
+                            <div class="k row-item-body">
+                                <span class="k t t-avt-left">Sức khỏe:</span>
+                                <input type="text" class="k t ip-avt-t" id="suckhoe" />
+                            </div>
+
+
+
+                            <div class="k row-item-body">
+                                <span class="k t t-avt-left">Nghề nghiệp:</span>
+                                <input type="text" class="k t ip-avt-t" id="nghenghiep" />
+                            </div>
+
+                        </div>
+                        @*--------------------------------------------------------------------------------------------*@
+                        <div class="k tab-body">
+                            <div class="k row-item-body">
+                                <span class="k t t-avt-left">Đơn vị:</span>
+                                <select class="k t ip-avt-t" id="sl-org">
+                                    @*<option value="1">Phòng Giải pháp</option>
+                                    <option value="1">Phòng mạng</option>*@
+                                </select>
+                            </div>
+
+                            <div class="k row-item-body">
+                                <span class="k t t-avt-left">Số lý lịch:</span>
+                                <input type="text" class="k t ip-avt-t" id="solylich" />
+                            </div>
+                            <div class="k row-item-body">
+                                <span class="k t t-avt-left">Số điện thoại:</span>
+                                <input type="text" class="k t ip-avt-t" maxlength="9" id="sdt" />
+                            </div>
+                            <div class="k row-item-body">
+                                <span class="k t t-avt-left">Email:</span>
+                                <input type="text" class="k t ip-avt-t" id="email" />
+                            </div>
+
+                            <div class="k row-item-body">
+                                <span class="k t t-avt-left">Ngày vào Đảng chính thức:</span>
+                                <div class="form-group">
+                                    <div class='input-group date' id='datepicker-vaodct'>
+                                        <input type='text' class="form-control" id="ngayvaodangct" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="k row-item-body">
+                                <span class="k t t-avt-left">Ngày vào Đảng dự bị:</span>
+                                <div class="form-group">
+                                    <div class='input-group date' id='datepicker-vaoddb'>
+                                        <input type='text' class="form-control" id="ngayvaodangdb" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="k row-item-body">
+                                <span class="k t t-avt-left">Ngày vào Đoàn:</span>
+                                <div class="form-group">
+                                    <div class='input-group date' id='datepicker-ngayvaodoan'>
+                                        <input type='text' class="form-control" id="ngayvaodoan" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="k row-item-body">
+                                <span class="k t t-avt-left">Trình độ văn hóa:</span>
+                                <select class="k t ip-avt-t" id="sl-trinhdovanhoa">
+                                    <option value="12">Lớp 12</option>
+                                    <option value="11">Lớp 11</option>
+                                    <option value="10">Lớp 10</option>
+                                    <option value="9">Lớp 9</option>
+                                    <option value="8">Lớp 8</option>
+                                    <option value="7">Lớp 7</option>
+                                    <option value="6">Lớp 6</option>
+                                    <option value="5">Lớp 5</option>
+                                    <option value="4">Lớp 4</option>
+                                    <option value="3">Lớp 3</option>
+                                    <option value="2">Lớp 2</option>
+                                    <option value="1">Lớp 1</option>
+                                </select>
+                            </div>
+                            <div class="k row-item-body">
+                                <span class="k t t-avt-left">Chuyên môn:</span>
+                                <input type="text" class="k t ip-avt-t" id="chuyenmon" />
+                            </div>
+
+                            <div class="k row-item-body-add">
+                                <span class="k t t-avt-addres">Địa chỉ cư trú:</span>
+                                <select class="k t sl-avt-add" id="sl-province">
+                                    @*<option value="1">Tỉnh/Thành phố</option>
+                                    <option value="1">HCM</option>*@
+                                </select>
+                                <select class="k t sl-avt-add" id="sl-district">
+                                    @*<option value="1">Quận/Huyện/Thị xã</option>
+                                    <option value="1">Tuy Phong</option>*@
+                                </select>
+                                <select class="k t sl-avt-add" id="sl-ward">
+                                    @*<option value="1">Xã/Phường/Thị trấn</option>
+                                    <option value="1">Cày cây</option>*@
+                                </select>
+                                <input type="text" class="k t ip-avt-add" id="noicutru" placeholder="Tên đường, thôn xóm, số nhà" />
+                            </div>
+                        </div>
+                        <span class="k t err-validate" id="err-validate">**Vui lòng kiểm tra lại thông tin nhập trước khi cập nhật</span>
+                        <span class="t bnt-update-file" onclick="validateFile()">Cập nhật Hồ sơ</span>
                     </div>
-                    <div class="k f-t-avt">
-                        <span class="k t t-avt-left">Họ tên Đảng viên:</span>
-                        <input type="text" class="k t ip-avt-t" disabled="disabled" />
+
+
+
+                </div>
+            </div>
+            <div class="k t tab-note-family">
+                <span class="k">Thành viên gia đình</span>
+                <i class="fa fa-angle-down ic-show-ft" aria-hidden="true" onclick="changeTabFamily(this)"></i>
+                <span class="k t bnt-add-fml" data-toggle="modal" data-target="#modaladdfamily">Thêm mới+</span>
+            </div>
+            <div class="k tab-family" id="tab-family">
+                <div class="k row-table">
+                    <span class="k t tt-table-dt bold">STT</span>
+                    <span class="k t tt-table-dt bold">Quan hệ</span>
+                    <span class="k t tt-table-dt bold">Họ tên</span>
+                    <span class="k t tt-table-dt bold">Nghề nghiệp</span>
+                    <div class="k t tt-table-dt bold">Cập nhật</div>
+                </div>
+                @*<div class="k row-table">
+                    <span class="k t tt-table-dt">1</span>
+                    <span class="k t tt-table-dt">Con</span>
+                    <span class="k t tt-table-dt">Nguyễn Văn Cha</span>
+                    <span class="k t tt-table-dt">Làm nông</span>
+                    <div class="k t tt-table-dt">
+                        <i class="fa fa-cogs" data-toggle="modal" data-target="#modalinsertdangbo" onclick="showTabEditDB(1)"></i>
+                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                    </div>
+                </div>*@
+            </div>
+
+            <div class="k t tab-note-family">
+                <span class="k">Khen thưởng</span>
+                <i class="fa fa-angle-down ic-show-ft" aria-hidden="true" onclick="changeTabBonus(this)"></i>
+                <span class="k t bnt-add-fml" data-toggle="modal" data-target="#modaladdbonus">Thêm mới+</span>
+            </div>
+            <div class="k tab-bonus" id="tab-bonus">
+                <div class="k row-table">
+                    <span class="k t tt-table-dt bold">STT</span>
+                    <span class="k t tt-table-dt bold">Khen thưởng</span>
+                    <span class="k t tt-table-dt bold">Đơn vị</span>
+                    <span class="k t tt-table-dt bold">Thời gian</span>
+                    <div class="k t tt-table-dt bold">
+                        Cập nhật
                     </div>
                 </div>
-                <div class="k bd-tab-body">
-                    <div class="k tab-body">
-                        <div class="k row-item-body">
-                            <span class="k t t-avt-left">Họ tên khai sinh:</span>
-                            <input type="text" class="k t ip-avt-t" />
-                        </div>
-                        <div class="k row-item-body">
-                            <span class="k t t-avt-left">Họ tên đang dùng:</span>
-                            <input type="text" class="k t ip-avt-t" />
-                        </div>
-                        <div class="k row-item-body">
-                            <span class="k t t-avt-left">Ngày tháng năm sinh:</span>
-                            <div class="form-group">
-                                <div class='input-group date' id='datepicker-udcb'>
-                                    <input type='text' class="form-control" id="day-update-cb" />
-                                    <span class="input-group-addon">
-                                        <span class="glyphicon glyphicon-calendar"></span>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="k row-item-body">
-                            <span class="k t t-avt-left">Giới tính:</span>
-                            <select class="k t ip-avt-t">
-                                <option value="1">Nam</option>
-                                <option value="1">Nữ</option>
-                            </select>
-                        </div>
-                        <div class="k row-item-body">
-                            <span class="k t t-avt-left">Dân tộc:</span>
-                            <select class="k t ip-avt-t">
-                                <option value="1">Kinh</option>
-                                <option value="1">Tày</option>
-                            </select>
-                        </div>
-                        <div class="k row-item-body">
-                            <span class="k t t-avt-left">Tôn giáo:</span>
-                            <input type="text" class="k t ip-avt-t" />
-                        </div>
 
-                        <div class="k row-item-body">
-                            <span class="k t t-avt-left">CMND:</span>
-                            <input type="text" class="k t ip-avt-t" />
-                        </div>
-                        <div class="k row-item-body">
-                            <span class="k t t-avt-left">Nơi cấp:</span>
-                            <input type="text" class="k t ip-avt-t" />
-                        </div>
-                        <div class="k row-item-body">
-                            <span class="k t t-avt-left">Quê quán:</span>
-                            <input type="text" class="k t ip-avt-t" />
-                        </div>
-                        <div class="k row-item-body">
-                            <span class="k t t-avt-left">Hộ khẩu thường trú:</span>
-                            <input type="text" class="k t ip-avt-t" />
-                        </div>
-                        <div class="k row-item-body">
-                            <span class="k t t-avt-left">Hôn nhân:</span>
-                            <select class="k t ip-avt-t">
-                                <option value="1">Đã có gia đình</option>
-                                <option value="1">Chưa có gia đình</option>
-                            </select>
-                        </div>
-                        <div class="k row-item-body">
-                            <span class="k t t-avt-left">Sức khỏe:</span>
-                            <input type="text" class="k t ip-avt-t" />
-                        </div>
+                @*item bonus here -------------*@
 
+            </div>
 
+            <div class="k t tab-note-family">
+                <span class="k">Kỷ luật</span>
+                <i class="fa fa-angle-down ic-show-ft" aria-hidden="true" onclick="changeTabDiscipline(this)"></i>
+                <span class="k t bnt-add-fml" data-toggle="modal" data-target="#modaladddesciption">Thêm mới+</span>
+            </div>
 
-                        <div class="k row-item-body">
-                            <span class="k t t-avt-left">Nghề nghiệp:</span>
-                            <input type="text" class="k t ip-avt-t" />
-                        </div>
-
-                    </div>
-                    @*--------------------------------------------------------------------------------------------*@
-                    <div class="k tab-body">
-                        <div class="k row-item-body">
-                            <span class="k t t-avt-left">Đơn vị:</span>
-                            <select class="k t ip-avt-t">
-                                <option value="1">Phòng Giải pháp</option>
-                                <option value="1">Phòng mạng</option>
-                            </select>
-                        </div>
-
-                        <div class="k row-item-body">
-                            <span class="k t t-avt-left">Số lý lịch:</span>
-                            <input type="text" class="k t ip-avt-t" />
-                        </div>
-                        <div class="k row-item-body">
-                            <span class="k t t-avt-left">Số điện thoại:</span>
-                            <input type="text" class="k t ip-avt-t" />
-                        </div>
-                        <div class="k row-item-body">
-                            <span class="k t t-avt-left">Email:</span>
-                            <input type="text" class="k t ip-avt-t" />
-                        </div>
-
-                        <div class="k row-item-body">
-                            <span class="k t t-avt-left">Ngày vào Đảng chính thức:</span>
-                            <div class="form-group">
-                                <div class='input-group date' id='datepicker-udcb'>
-                                    <input type='text' class="form-control" id="day-update-cb" />
-                                    <span class="input-group-addon">
-                                        <span class="glyphicon glyphicon-calendar"></span>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="k row-item-body">
-                            <span class="k t t-avt-left">Ngày vào Đảng dự bị:</span>
-                            <div class="form-group">
-                                <div class='input-group date' id='datepicker-udcb'>
-                                    <input type='text' class="form-control" id="day-update-cb" />
-                                    <span class="input-group-addon">
-                                        <span class="glyphicon glyphicon-calendar"></span>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="k row-item-body">
-                            <span class="k t t-avt-left">Ngày vào Đoàn:</span>
-                            <div class="form-group">
-                                <div class='input-group date' id='datepicker-udcb'>
-                                    <input type='text' class="form-control" id="day-update-cb" />
-                                    <span class="input-group-addon">
-                                        <span class="glyphicon glyphicon-calendar"></span>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="k row-item-body">
-                            <span class="k t t-avt-left">Trình độ văn hóa:</span>
-                            <select class="k t ip-avt-t">
-                                <option value="1">Lớp 1</option>
-                                <option value="2">Lớp 2</option>
-                            </select>
-                        </div>
-                        <div class="k row-item-body">
-                            <span class="k t t-avt-left">Chuyên môn:</span>
-                            <input type="text" class="k t ip-avt-t" />
-                        </div>
-
-                        <div class="k row-item-body-add">
-                            <span class="k t t-avt-addres">Địa chỉ cư trú:</span>
-                            <select class="k t sl-avt-add">
-                                <option value="1">Tỉnh/Thành phố</option>
-                                <option value="1">HCM</option>
-                            </select>
-                            <select class="k t sl-avt-add">
-                                <option value="1">Quận/Huyện/Thị xã</option>
-                                <option value="1">Tuy Phong</option>
-                            </select>
-                            <select class="k t sl-avt-add">
-                                <option value="1">Xã/Phường/Thị trấn</option>
-                                <option value="1">Cày cây</option>
-                            </select>
-                            <input type="text" class="k t ip-avt-add" placeholder="Tên đường, thôn xóm, số nhà" />
-                        </div>
-
+            <div class="k tab-discipline" id="tab-boldiscipline">
+                <div class="k row-table">
+                    <span class="k t tt-table-dt bold">STT</span>
+                    <span class="k t tt-table-dt bold">Kỷ luật</span>
+                    <span class="k t tt-table-dt bold">Đơn vị</span>
+                    <span class="k t tt-table-dt bold">Thời gian</span>
+                    <div class="k t tt-table-dt bold">
+                        Cập nhật
                     </div>
                 </div>
 
+                @*<div class="k row-table">
+                    <span class="k t tt-table-dt">1</span>
+                    <span class="k t tt-table-dt">Bàn tán xôn xao</span>
+                    <span class="k t tt-table-dt">Trung tâm Ngã 3</span>
+                    <span class="k t tt-table-dt">11/12/2012</span>
+                    <div class="k t tt-table-dt">
+                        <i class="fa fa-cogs" data-toggle="modal" data-target="#modalinsertdangbo" onclick="showTabEditDB(1)"></i>
+                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                    </div>
+                </div>*@
 
+            </div>
+
+        </div>
+
+        @*add new family*@
+        <div class="modal fade" id="modaladdfamily" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Thêm mới thành viên gia đình</h4>
+                    </div>
+                    <div class="k modal-body">
+                        <div class="k dl-sm-it">
+                            <span class="k t dl-name-fml">Họ và tên: </span>
+                            <input class="k dl-input-fml" id="namefml" type="text" />
+                        </div>
+                        <div class="k dl-sm-it">
+                            <span class="k t dl-name-fml">Quan hệ: </span>
+                            <select class="k dl-sl-fml" id="sl-fml-qh">
+                                <option value="0">Cha đẻ</option>
+                                <option value="1">Mẹ đẻ</option>
+                                <option value="2">Anh trai</option>
+                                <option value="3">Em trai</option>
+                                <option value="4">Chị gái</option>
+                                <option value="5">Em gái</option>
+                                <option value="6">Vợ</option>
+                                <option value="7">Chồng</option>
+                                <option value="8">Con</option>
+                            </select>
+                        </div>
+                        <div class="k dl-sm-it">
+                            <span class="k t dl-name-fml">Nghề nghiệp: </span>
+                            <input class="k dl-input-fml" id="fmlwork" type="text" />
+                        </div>
+                        <div class="k dl-sm-it">
+                            <span class="k t dl-name-fml">Chính trị: </span>
+                            <input class="k dl-input-fml" id="fmlchinhtri" type="text" />
+                        </div>
+                        <div class="k dl-sm-it">
+                            <span class="k t dl-name-fml" id="">Ngày tháng năm sinh: </span>
+                            <div class="form-group">
+                                <div class='input-group date' id='datepicker-fml'>
+                                    <input type='text' class="form-control" id="fml-bd" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="k t err-validate " id="err-add-fml">**Vui lòng điền đầy đủ thông tin</span>
+                        <span class="k dl-bnt-save" onclick="validateFormIsFml()">Thêm mới</span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        @*update family*@
+        <div class="modal fade" id="modalupdatefamily" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Cập nhật thông tin thành viên</h4>
+                    </div>
+                    <div class="k modal-body">
+                        <div class="k dl-sm-it">
+                            <span class="k t dl-name-fml">Họ và tên: </span>
+                            <input class="k dl-input-fml" id="fmlnameud" type="text" />
+                        </div>
+                        <div class="k dl-sm-it">
+                            <span class="k t dl-name-fml">Quan hệ: </span>
+                            <select class="k dl-sl-fml" id="sl-fml-qh-ud">
+                                <option value="Cha đẻ">Cha đẻ</option>
+                                <option value="Mẹ đẻ">Mẹ đẻ</option>
+                                <option value="Anh trai">Anh trai</option>
+                                <option value="Em trai">Em trai</option>
+                                <option value="Chị gái">Chị gái</option>
+                                <option value="Em gái">Em gái</option>
+                                <option value="Vợ">Vợ</option>
+                                <option value="Chồng">Chồng</option>
+                                <option value="Con">Con</option>
+                            </select>
+                        </div>
+                        <div class="k dl-sm-it">
+                            <span class="k t dl-name-fml">Nghề nghiệp: </span>
+                            <input class="k dl-input-fml" id="fmlworkud" type="text" />
+                        </div>
+                        <div class="k dl-sm-it">
+                            <span class="k t dl-name-fml">Chính trị: </span>
+                            <input class="k dl-input-fml" id="chinhtriud" type="text" />
+                        </div>
+                        <div class="k dl-sm-it">
+                            <span class="k t dl-name-fml" id="">Ngày tháng năm sinh: </span>
+                            <div class="form-group">
+                                <div class='input-group date' id='datepicker-fmlud'>
+                                    <input type='text' class="form-control" id="bdud" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="k t err-validate" id="err-ud-fml">**Vui lòng điền đầy đủ thông tin</span>
+                        <span class="k dl-bnt-save" onclick="validateUdFml()">Cập nhật</span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
 
             </div>
         </div>
 
+        @*add new bonus*@
+        <div class="modal fade" id="modaladdbonus" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Thêm khen thưởng</h4>
+                    </div>
+                    <div class="k modal-body">
+                        <div class="k dl-sm-it">
+                            <span class="k t dl-name-fml">Khen thưởng: </span>
+                            <input class="k dl-input-fml" id="namebonus" type="text" />
+                        </div>
+                        <div class="k dl-sm-it">
+                            <span class="k t dl-name-fml">Đơn vị: </span>
+                            <input class="k dl-input-fml" id="orgname" type="text" />
+                        </div>
+                        <div class="k dl-sm-it">
+                            <span class="k t dl-name-fml" id="">Thời gian khen thưởng: </span>
+                            <div class="form-group">
+                                <div class='input-group date' id='datepicker-addnewbn'>
+                                    <input type='text' class="form-control" id="bonus-addnew" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="k dl-sm-it">
+                            <span class="k t dl-name-fml">Ghi chú: </span>
+                            <textarea class="k dl-input-fml note-bonus" id="note-add-bonus" type="text"></textarea>
+                        </div>
+                        <span class="k t err-validate" id="err-add-bonus">**Vui lòng điền đầy đủ thông tin</span>
+                        <span class="k dl-bnt-save" onclick="validateInsertBonus()">Thêm mới</span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        @*update bonus*@
+        <div class="modal fade" id="modalupdatebonus" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Cập nhật khen thưởng</h4>
+                    </div>
+                    <div class="k modal-body">
+                        <div class="k dl-sm-it">
+                            <span class="k t dl-name-fml">Khen thưởng: </span>
+                            <input class="k dl-input-fml" id="namebonusud" type="text" />
+                        </div>
+                        <div class="k dl-sm-it">
+                            <span class="k t dl-name-fml">Đơn vị: </span>
+                            <input class="k dl-input-fml" id="orgbonusud" type="text" />
+                        </div>
+                        <div class="k dl-sm-it">
+                            <span class="k t dl-name-fml" id="">Thời gian khen thưởng: </span>
+                            <div class="form-group">
+                                <div class='input-group date' id='datepicker-bonusud'>
+                                    <input type='text' class="form-control" id="timebonusud" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="k dl-sm-it">
+                            <span class="k t dl-name-fml">Ghi chú: </span>
+                            <textarea class="k dl-input-fml note-bonus" id="notebonusud" type="text"></textarea>
+                        </div>
+                        <span class="k t err-validate" id="err-ud-bonus">**Vui lòng điền đầy đủ thông tin</span>
+                        <span class="k dl-bnt-save" onclick="validateUpdateBonus()">Cập nhật </span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+        @*add new desciption*@
+        <div class="modal fade" id="modaladddesciption" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Khai báo kỷ luật</h4>
+                    </div>
+                    <div class="k modal-body">
+                        <div class="k dl-sm-it">
+                            <span class="k t dl-name-fml">Kỷ luật: </span>
+                            <input class="k dl-input-fml" id="disname" type="text" />
+                        </div>
+                        <div class="k dl-sm-it">
+                            <span class="k t dl-name-fml">Đơn vị: </span>
+                            <input class="k dl-input-fml" id="orgadddis" type="text" />
+                        </div>
+                        <div class="k dl-sm-it">
+                            <span class="k t dl-name-fml" id="">Thời gian kỉ luật: </span>
+                            <div class="form-group">
+                                <div class='input-group date' id='datepicker-add-des'>
+                                    <input type='text' class="form-control" id="timedisaddnew" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="k dl-sm-it">
+                            <span class="k t dl-name-fml">Ghi chú: </span>
+                            <textarea class="k dl-input-fml note-bonus" id="notedisaddnew" type="text"></textarea>
+                        </div>
+                        <span class="k t err-validate" id="err-add-discipline">**Vui lòng điền đầy đủ thông tin</span>
+                        <span class="k dl-bnt-save" onclick="validateDis()">Thêm mới</span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        @*update desciption*@
+        <div class="modal fade" id="modalupdatedesciption" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Cập nhật kỷ luật</h4>
+                    </div>
+                    <div class="k modal-body">
+                        <div class="k dl-sm-it">
+                            <span class="k t dl-name-fml">Kỷ luật: </span>
+                            <input class="k dl-input-fml" id="namedisciplineupdate" type="text" />
+                        </div>
+                        <div class="k dl-sm-it">
+                            <span class="k t dl-name-fml">Đơn vị: </span>
+                            <input class="k dl-input-fml" id="orgdisciplineupdate" type="text" />
+                        </div>
+                        <div class="k dl-sm-it">
+                            <span class="k t dl-name-fml" id="">Thời gian kỉ luật: </span>
+                            <div class="form-group">
+                                <div class='input-group date' id='datepicker-update-discipline'>
+                                    <input type='text' class="form-control" id="timeupdatediscipline" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="k dl-sm-it">
+                            <span class="k t dl-name-fml">Ghi chú: </span>
+                            <textarea class="k dl-input-fml note-bonus" id="notedisciplineupdate" type="text"></textarea>
+                        </div>
+                        <span class="k t err-validate" id="err-update-discipline">**Vui lòng điền đầy đủ thông tin</span>
+                        <span class="k dl-bnt-save" onclick="validateDiscipline()">Cập nhật</span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
     </div>
-</div>
 
 @section Script{
+
     <script src="~/js/admin/adfile.js"></script>
+    <script src="~/js/admin/adfamily.js"></script>
+    <script src="~/js/admin/adbonus.js"></script>
+    <script src="~/js/admin/addiscipline.js"></script>
+
+
+    <script>
+        try {
+            var id = @ViewBag.usid;
+            getDangVien(id, bindingFile);
+
+        }
+        catch (er) {
+            alert("error");
+        }
+    </script>
 }
 

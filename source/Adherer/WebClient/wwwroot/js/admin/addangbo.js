@@ -22,13 +22,17 @@ var dbid = -1;
 var truthuoc = 0;
 var truthuocaddnew = 0;
 var active = 0;
+var token = getTokenByLocal().token;
 getDangBo(bindingDangBo);
+
+
 //get dang bo
 function getDangBo(callback) {
     $.ajax({
         type: "get",
         url: linkserver + "addangbo/getalldangbo",
         data: null,
+        headers: { 'authorization': `Bearer ${token}` },
         dataType: 'json',
         contentType: "application/json",
         error: function (err) {
@@ -80,6 +84,7 @@ function getDetailDangBo(id) {
         url: linkserver + "addangbo/getDangBoById?id=" + id,
         data: null,
         dataType: 'json',
+        headers: { 'authorization': `Bearer ${token}` },
         contentType: "application/json",
         error: function (err) {
             bootbox.alert("Có lỗi xảy ra, vui lòng kiểm tra kết nối");
@@ -105,6 +110,7 @@ function getDangBoNotAttached(id) {
         type: "get",
         url: linkserver + "addangbo/getDangBoNotAttached?id=" + id,
         data: null,
+        headers: { 'authorization': `Bearer ${token}` },
         dataType: 'json',
         contentType: "application/json",
         error: function (err) {
@@ -152,15 +158,18 @@ function updateDangBo() {
             type: 'POST',
             dataType: 'json',
             data: JSON.stringify(data),
+            headers: { 'authorization': `Bearer ${token}` },
             async: false,
             processData: false,
             contentType: "application/json",
             error: function (err) {
+                bol = true;
                 bootbox.alert({
                     message: "Error :" + err.message
                 });
             },
             success: function (data) {
+                bol = true;
                 if (data.success) {
                     $('#modaladddangbo').modal('toggle');
                     bootbox.alert({
@@ -245,6 +254,7 @@ function insertDangbo() {
             type: 'POST',
             dataType: 'json',
             data: JSON.stringify(data),
+            headers: { 'authorization': `Bearer ${token}` },
             async: false,
             processData: false,
             contentType: "application/json",

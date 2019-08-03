@@ -117,7 +117,7 @@ function bindingUser(data) {
                 '<i class="fa fa-user-circle-o font-ic" aria-hidden="true"></i> ' + (file && file.hotendangdung != null ? file.hotendangdung:'' ) + '' +
                 '</span>' +
                 '<span class="k t t-if-dv">' +
-                '<i class="fa fa-birthday-cake font-ic" aria-hidden="true"></i> ' + (file && file.ngaythangnamsinh != null ? formatDate(file.ngaythangnamsinh): '')+'' +
+                '<i class="fa fa-birthday-cake font-ic" aria-hidden="true"></i> ' + (file && file.ngaythangnamsinh != null ? formatDate(new Date(file.ngaythangnamsinh)): '')+'' +
                 '</span>' +
                 '<span class="k t t-if-dv">' +
                 '<i class="fa fa-phone-square font-ic" aria-hidden="true"></i> ' + (file && file.sdt != null ? file.sdt : '')+'' +
@@ -142,7 +142,7 @@ function bindingUser(data) {
                 '</div>' +
                 '<div class="k f-name">' +
                 '<div class="k bd-bnt">' +
-                '<a href="/admin/file" target="_blank"><span class="k t bnt-ed-dv">Chi tiết Đảng viên</span></a>' +
+                '<a href="/admin/file?id=' + user.usid + '" target="_blank"><span class="k t bnt-ed-dv">Chi tiết Đảng viên</span></a>' +
                 '</div>' +
                 '<div class="k bd-bnt">' +
                 '<span class="k t bnt-ed-dv" onclick="blockUser(' + user.usid + ')">Khóa</span>' +

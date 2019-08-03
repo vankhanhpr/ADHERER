@@ -1,14 +1,14 @@
 ﻿-- ----------------------------
 -- Table structure for devvn_xaphuongthitran
 -- ----------------------------
---DROP TABLE IF EXISTS devvn_xaphuongthitran;
---CREATE TABLE devvn_xaphuongthitran (
---  xaid nvarchar(5) NOT NULL,
---  name nvarchar(100) NOT NULL,
---  type nvarchar(30) NOT NULL,
---  maqh nvarchar(5)  NOT NULL,
---  PRIMARY KEY (xaid)
---);
+DROP TABLE IF EXISTS devvn_xaphuongthitran;
+CREATE TABLE devvn_xaphuongthitran (
+  xaid nvarchar(5) NOT NULL,
+  name nvarchar(100) NOT NULL,
+  type nvarchar(30) NOT NULL,
+  maqh nvarchar(5)  NOT NULL,
+  PRIMARY KEY (xaid)
+);
 
 -- ----------------------------
 -- Records of devvn_xaphuongthitran
