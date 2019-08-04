@@ -60,7 +60,7 @@ function bindingChiBo(data) {
                 $("#f-inf-chb").append('<div class="k row-table">' +
                     '<span class= "k t tt-table-dt" >' + item.tencb + '</span >' +
                     '<span class="k t tt-table-dt">' + formatDate(new Date(item.ngaythanhlap)) + '</span>' +
-                    '<span class="k t tt-table-dt">'+(item.active === 0?'Hoạt động':'Khóa')+'</span>' +
+                    '<span class="k t tt-table-dt">'+(item.active === true?'Hoạt động':'Khóa')+'</span>' +
                     '<div class="k t tt-table-dt">' +
                     '<i class="fa fa-cogs" data-toggle="modal" data-target="#modalupdatechibo" onclick="showFormUdCb(' + item.cbid + ')"></i>' +
                     '<i class="fa fa-trash-o" aria-hidden="true"></i>' +
@@ -231,7 +231,7 @@ function updateChiBo() {
         'cbid': parseInt(cbid),
         'tencb': $("#ip-name-db-ud").val(),
         'dbid': dbud,
-        'active': active,
+        'active': $("#sl-active-chibo").children("option:selected").val(),
         'ngaythanhlap': $("#day-update-cb").val()
     };
     if (boud) {

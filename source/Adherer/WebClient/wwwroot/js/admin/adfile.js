@@ -1,5 +1,7 @@
-﻿showLoading();
+﻿checkToken();
+showLoading();
 var fileidmain = -1;
+var token = getTokenByLocal().token;
 var formData = new FormData();
 getProvinces(bindingProvinces);
 //date picker
@@ -108,6 +110,7 @@ function getDangVien(id, callback) {
         type: "get",
         url: linkserver + "adfile/getFileByUsId?id=" + id,
         data: null,
+        headers: { 'authorization': `Bearer ${token}` },
         dataType: 'json',
         contentType: "application/json",
         error: function (err) {
@@ -181,6 +184,7 @@ function getNations(callback) {
         type: "get",
         url: linkserver + "adnation/getNations",
         data: null,
+        headers: { 'authorization': `Bearer ${token}` },
         dataType: 'json',
         contentType: "application/json",
         error: function (err) {
@@ -207,6 +211,7 @@ function getOrganizations(callback) {
         type: "get",
         url: linkserver + "AdOrganization/getAllOrganization",
         data: null,
+        headers: { 'authorization': `Bearer ${token}` },
         dataType: 'json',
         contentType: "application/json",
         error: function (err) {
@@ -235,6 +240,7 @@ function getProvinces(callback) {
         type: "get",
         url: linkserver + "unit/getProvince",
         data: null,
+        headers: { 'authorization': `Bearer ${token}` },
         dataType: 'json',
         contentType: "application/json",
         error: function (err) {
@@ -264,6 +270,7 @@ function getDistricts(id, callback, district) {
         type: "get",
         url: linkserver + "unit/getDistrictByPrId?id=" + id,
         data: null,
+        headers: { 'authorization': `Bearer ${token}` },
         dataType: 'json',
         contentType: "application/json",
         error: function (err) {
@@ -296,6 +303,7 @@ function getWard(id, callback, ward) {
         type: "get",
         url: linkserver + "unit/getWardByDsId?id=" + id,
         data: null,
+        headers: { 'authorization': `Bearer ${token}` },
         dataType: 'json',
         contentType: "application/json",
         error: function (err) {
@@ -497,6 +505,7 @@ function updateUser() {
                         dataType: 'json',
                         async: false,
                         data: formData,
+                        headers: { 'authorization': `Bearer ${token}` },
                         processData: false,
                         contentType: false,
                         cache: false,

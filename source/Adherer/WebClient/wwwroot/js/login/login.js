@@ -1,5 +1,6 @@
 ﻿
 function login() {
+    showLoading();
     if (validateData()) {
         var madv = $("#t-madv").val();
         var password = $("#t-password").val();
@@ -15,6 +16,7 @@ function login() {
             contentType: "application/json",
             error: function (err) {
                 bol = true;
+                destroyLoading();
                 bootbox.alert({
                     message: "Error :" + err.message
                 });
@@ -46,6 +48,7 @@ function login() {
                 else {
                     bootbox.alert(data.message);
                 }
+                destroyLoading();
             }
         });
     }

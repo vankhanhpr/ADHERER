@@ -41,5 +41,18 @@ namespace WebClient.Controllers
                 return View();
             }
         }
+        public IActionResult Abroad(int? id)
+        {
+            int usid = id ?? 0;
+            if (usid == 0)
+            {
+                return RedirectToAction("index", "home");
+            }
+            else
+            {
+                ViewBag.usid = usid;
+                return View();
+            }
+        }
     }
 }

@@ -1,10 +1,12 @@
 ﻿
 var bnid = -1;
+var token = getTokenByLocal().token;
 function getBonus(fileid, callback) {
     $.ajax({
         type: "get",
         url: linkserver + "adbonus/getBonuss?id="+fileid,
         data: null,
+        headers: { 'authorization': `Bearer ${token}` },
         dataType: 'json',
         contentType: "application/json",
         error: function (err) {
@@ -79,6 +81,7 @@ function insertBonus(model) {
             type: 'POST',
             dataType: 'json',
             data: JSON.stringify(model),
+            headers: { 'authorization': `Bearer ${token}` },
             async: false,
             processData: false,
             contentType: "application/json",
@@ -150,6 +153,7 @@ function getBonusById(id,callback) {
         type: "get",
         url: linkserver + "adbonus/getBonusById?id=" + id,
         data: null,
+        headers: { 'authorization': `Bearer ${token}` },
         dataType: 'json',
         contentType: "application/json",
         error: function (err) {
@@ -216,6 +220,7 @@ function updateBonus(model) {
             type: 'POST',
             dataType: 'json',
             data: JSON.stringify(model),
+            headers: { 'authorization': `Bearer ${token}` },
             async: false,
             processData: false,
             contentType: "application/json",
@@ -252,6 +257,7 @@ function deleteBonus(id) {
                     type: "get",
                     url: linkserver + "adbonus/deleteBonus?id=" + id,
                     data: null,
+                    headers: { 'authorization': `Bearer ${token}` },
                     dataType: 'json',
                     contentType: "application/json",
                     error: function (err) {

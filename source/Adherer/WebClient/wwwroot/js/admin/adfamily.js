@@ -1,10 +1,12 @@
 ﻿
 var fmlid = -1;
+var token = getTokenByLocal().token;
 function getFamilies(fileid, callback) {
     $.ajax({
         type: "get",
         url: linkserver + "adfamily/getFamilies?fileid=" + fileid,
         data: null,
+        headers: { 'authorization': `Bearer ${token}` },
         dataType: 'json',
         contentType: "application/json",
         error: function (err) {
@@ -81,6 +83,7 @@ function insertFml(data) {
             type: 'POST',
             dataType: 'json',
             data: JSON.stringify(data),
+            headers: { 'authorization': `Bearer ${token}` },
             async: false,
             processData: false,
             contentType: "application/json",
@@ -114,6 +117,7 @@ function getDetailFamily(id, callback) {
         type: "get",
         url: linkserver + "adfamily/getFmlById?id=" + id,
         data: null,
+        headers: { 'authorization': `Bearer ${token}` },
         dataType: 'json',
         contentType: "application/json",
         error: function (err) {
@@ -179,6 +183,7 @@ function updateFml(model) {
             type: 'POST',
             dataType: 'json',
             data: JSON.stringify(model),
+            headers: { 'authorization': `Bearer ${token}` },
             async: false,
             processData: false,
             contentType: "application/json",
@@ -216,6 +221,7 @@ function deleteFml(id) {
                     type: "get",
                     url: linkserver + "adfamily/deleteFml?id=" + id,
                     data: null,
+                    headers: { 'authorization': `Bearer ${token}` },
                     dataType: 'json',
                     contentType: "application/json",
                     error: function (err) {

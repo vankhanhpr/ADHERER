@@ -1,10 +1,12 @@
 ﻿
 var disciplineid = -1;
+var token = getTokenByLocal().token;
 function getDiscipline(fileid,callback) {
     $.ajax({
         type: "get",
         url: linkserver + "addiscipline/getDiscipline?fileid=" + fileid,
         data: null,
+        headers: { 'authorization': `Bearer ${token}` },
         dataType: 'json',
         contentType: "application/json",
         error: function (err) {
@@ -83,6 +85,7 @@ function insertDiscipline(model) {
             type: 'POST',
             dataType: 'json',
             data: JSON.stringify(model),
+            headers: { 'authorization': `Bearer ${token}` },
             async: false,
             processData: false,
             contentType: "application/json",
@@ -154,6 +157,7 @@ function getDisciptionById(id,callback) {
         type: "get",
         url: linkserver + "addiscipline/getDisciplineById?id=" + id,
         data: null,
+        headers: { 'authorization': `Bearer ${token}` },
         dataType: 'json',
         contentType: "application/json",
         error: function (err) {
@@ -224,6 +228,7 @@ function updateDiscipline(model) {
             type: 'POST',
             dataType: 'json',
             data: JSON.stringify(model),
+            headers: { 'authorization': `Bearer ${token}` },
             async: false,
             processData: false,
             contentType: "application/json",
