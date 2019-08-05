@@ -69,7 +69,7 @@ namespace WebApi.controllers.admin
                     var x = deleteFileImg(file.avatar);
                     file.avatar = await uploadFileImg(filerq.avatar);
                 }
-                file.fileid = filerq.fileid;
+               // file.fileid = filerq.fileid;
                 file.usid = filerq.usid;
                 file.donvi = filerq.donvi;
                 DateTime bd = DateTime.ParseExact(filerq.ngaythangnamsinh, "dd/MM/yyyy", CultureInfo.InvariantCulture);
@@ -99,6 +99,8 @@ namespace WebApi.controllers.admin
                 file.email = filerq.email;
                 file.cmnd = filerq.cmnd;
                 file.noicapcmnd = filerq.noicapcmnd;
+                DateTime ngaycmnd = DateTime.ParseExact(filerq.daycmnd, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                file.daycmnd = ngaycmnd;
                 file.hokhauthuongtru = filerq.hokhauthuongtru;
                 file.honnhan = filerq.honnhan == 0 ? true : false;
                 file.suckhoe = filerq.suckhoe;

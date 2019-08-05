@@ -16,6 +16,6 @@ namespace WebApi.serrvice.admin.model
         public string namefile { get; set; }
         public string note { get; set; }
         public DateTime updateday { get; set; }
-        public int active { get; set; }
+        public Boolean active { get; set; }
     }
 }

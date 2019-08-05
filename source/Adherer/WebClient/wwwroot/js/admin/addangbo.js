@@ -22,13 +22,17 @@ var dbid = -1;
 var truthuoc = 0;
 var truthuocaddnew = 0;
 var active = 0;
+var token = getTokenByLocal().token;
 getDangBo(bindingDangBo);
+
+
 //get dang bo
 function getDangBo(callback) {
     $.ajax({
         type: "get",
         url: linkserver + "addangbo/getalldangbo",
         data: null,
+        headers: { 'authorization': `Bearer ${token}` },
         dataType: 'json',
         contentType: "application/json",
         error: function (err) {
@@ -57,7 +61,7 @@ function bindingDangBo(data) {
                 '<span class="k t tt-table-dt">' + formatDate(new Date(db.ngaythanhlap)) + '</span>' +
                 '<span class="k t tt-table-dt">' + (db.active == true ? 'Hoạt động' : 'Khóa') + '</span>' +
                 '<div class="k t tt-table-dt">' +
-                '<i class="fa fa-cogs" data-toggle="modal" data-target="#modalinsertdangbo" onclick="showTabEditDB(' + db.dbid + ')"></i>' +
+                '<i class="fa fa-cogs" data-toggle="modal" data-target="#modalupdatedangbo" onclick="showTabEditDB(' + db.dbid + ')"></i>' +
                 '<i class="fa fa-trash-o" aria-hidden="true"></i>' +
                 '<i class="fa fa-plus" aria-hidden="true" onclick="toggeChibo(this)"></i>' +
                 '</div>' +
@@ -80,6 +84,7 @@ function getDetailDangBo(id) {
         url: linkserver + "addangbo/getDangBoById?id=" + id,
         data: null,
         dataType: 'json',
+        headers: { 'authorization': `Bearer ${token}` },
         contentType: "application/json",
         error: function (err) {
             bootbox.alert("Có lỗi xảy ra, vui lòng kiểm tra kết nối");
@@ -105,6 +110,7 @@ function getDangBoNotAttached(id) {
         type: "get",
         url: linkserver + "addangbo/getDangBoNotAttached?id=" + id,
         data: null,
+        headers: { 'authorization': `Bearer ${token}` },
         dataType: 'json',
         contentType: "application/json",
         error: function (err) {
@@ -142,7 +148,7 @@ function updateDangBo() {
         'dbid': dbid,
         'tendb': $("#ip-name-db").val(),
         'tructhuoc': parseInt(truthuoc),
-        'active': parseInt(active),
+        'active': $("#sl-ud-danngbo ").children("option:selected").val(),
         'ngaythanhlap': $("#day-create-db").val()
     };
     if (bol) {
@@ -152,6 +158,7 @@ function updateDangBo() {
             type: 'POST',
             dataType: 'json',
             data: JSON.stringify(data),
+            headers: { 'authorization': `Bearer ${token}` },
             async: false,
             processData: false,
             contentType: "application/json",
@@ -164,13 +171,13 @@ function updateDangBo() {
             success: function (data) {
                 bol = true;
                 if (data.success) {
-                    $('#modaladddangbo').modal('toggle');
+                    $('#modalupdatedangbo').modal('toggle');
                     bootbox.alert({
                         message: "Cập nhật thông tin thành công!",
                         callback: function () {
                             getDangBo(bindingDangBo);
                         }
-                    })
+                    });
                 }
                 else {
                     bootbox.alert("Có lỗi xảy ra vui lòng kiểm tra lại thông tin!");
@@ -247,6 +254,7 @@ function insertDangbo() {
             type: 'POST',
             dataType: 'json',
             data: JSON.stringify(data),
+            headers: { 'authorization': `Bearer ${token}` },
             async: false,
             processData: false,
             contentType: "application/json",

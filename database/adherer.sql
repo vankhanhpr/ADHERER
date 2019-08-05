@@ -97,7 +97,7 @@ Create table Files (
 	hotenkhaisinh nvarchar(200),
 	gioitinh bit ,
 	dantoc int ,
-	tongiao int,
+	tongiao nvarchar(100),
 	nghenghiep nvarchar(100),
 	ngayvaodangdb datetime ,
 	ngayvaodangct datetime,
@@ -109,7 +109,7 @@ Create table Files (
 	matp varchar(5),
 	maqh varchar(5),
 	xaid varchar(5),
-	solilich nvarchar(20),
+	solylich nvarchar(20),
 	createday datetime,
 	updateday datetime,
 	sdt nvarchar(10),
@@ -176,8 +176,8 @@ create table Toabroad (
 	thoigiandi datetime,
 	thoigiantrove datetime,
 	createday datetime,
-	active int,
-	status int ,
+	active bit,
+	status bit ,
 	foreign key (fileid) references Files(fileid)
 );
 Create table Report (

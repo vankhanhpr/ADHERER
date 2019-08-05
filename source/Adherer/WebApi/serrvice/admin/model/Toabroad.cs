@@ -18,7 +18,7 @@ namespace WebApi.serrvice.admin.model
         public DateTime thoigiandi { get; set; }
         public DateTime thoigiantrove { get; set; }
         public DateTime createday { get; set; }
-        public int active { get; set; }
-        public int status { get; set; }
+        public Boolean active { get; set; }
+        public Boolean status { get; set; }
     }
 }

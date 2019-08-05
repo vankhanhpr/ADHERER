@@ -6,12 +6,13 @@ var titleid = 0;
 var page = 0;
 var pagesize = 10;
 var usidud = -1;
+var token = getTokenByLocal().token;
 getUser(bindingUser, page, pagesize)
 //lazyload user
 $(window).scroll(function () {
     if ($(window).scrollTop() + $(window).height() === $(document).height()) {
         page = page + 1;
-        getUser(bindingUser, page, pagesize);
+        bindingUserLazyLoad(bindingUser, page, pagesize);
     }
 });
 //select insert  user
@@ -94,6 +95,7 @@ function getUser(callback, page, pagesize) {
         type: "get",
         url: linkserver + "aduser/getalluser?page=" + page + "&&pagesize=" + pagesize + "",
         data: null,
+        headers: { 'authorization': `Bearer ${token}` },
         dataType: 'json',
         contentType: "application/json",
         error: function (err) {
@@ -142,7 +144,10 @@ function bindingUser(data) {
                 '</div>' +
                 '<div class="k f-name">' +
                 '<div class="k bd-bnt">' +
-                '<a href="/admin/file?id=' + user.usid + '" target="_blank"><span class="k t bnt-ed-dv">Chi tiết Đảng viên</span></a>' +
+                '<a href="/admin/file?id=' + user.usid + '" target="_blank"><span class="k t bnt-ed-dv">Chi tiết Hồ sơ</span></a>' +
+                '</div>' +
+                '<div class="k bd-bnt">' +
+                '<a href="#" target="_blank"><span class="k t bnt-ed-dv">Duyệt hồ sơ</span></a>' +
                 '</div>' +
                 '<div class="k bd-bnt">' +
                 '<span class="k t bnt-ed-dv" onclick="blockUser(' + user.usid + ')">Khóa</span>' +
@@ -153,12 +158,64 @@ function bindingUser(data) {
                 '</div>' +
                 '</div>';
             $("#list-item-us").append(view);
-
-            ;
         }
     }
 }
 
+function bindingUserLazyLoad(data) {
+    if (data.success && data.data.length > 0) {
+        for (var i in data.data) {
+            var user = data.data[i].user;
+            var file = data.data[i].file;
+            var view = '<div class="k item-dv">' +
+                '<div class="k img-avt-dv" ></div >' +
+                '<div class="k f-name">' +
+                '<span class="k t t-if-dv">' +
+                '<i class="fa fa-user-circle-o font-ic" aria-hidden="true"></i> ' + (file && file.hotendangdung != null ? file.hotendangdung : '') + '' +
+                '</span>' +
+                '<span class="k t t-if-dv">' +
+                '<i class="fa fa-birthday-cake font-ic" aria-hidden="true"></i> ' + (file && file.ngaythangnamsinh != null ? formatDate(new Date(file.ngaythangnamsinh)) : '') + '' +
+                '</span>' +
+                '<span class="k t t-if-dv">' +
+                '<i class="fa fa-phone-square font-ic" aria-hidden="true"></i> ' + (file && file.sdt != null ? file.sdt : '') + '' +
+                '</span>' +
+                '<span class="k t t-if-dv">' +
+                '<i class="fa fa-envelope-o font-ic" aria-hidden="true"></i> ' + (file && file.email != null ? file.email : '') + '' +
+                '</span>' +
+                '</div>' +
+                '<div class="k f-name">' +
+                '<span class="k t t-if-dv">' +
+                '<i class="fa fa-id-card-o font-ic" aria-hidden="true"></i>' + user.madv + '' +
+                '</span>' +
+                '<span class="k t t-if-dv">' +
+                '<i class="fa fa-calendar-plus-o font-ic" aria - hidden="true" ></i > ' + formatDate(new Date(user.ngaydenchibo)) + '' +
+                '</span>' +
+                '<span class="k t t-if-dv">' +
+                '<i class="fa fa-users font-ic" aria-hidden="true"></i>' + (user.roleid == 1 ? 'Đảng viên' : 'Admin') + '' +
+                '</span>' +
+                '<span class="k t t-if-dv">' +
+                '<i class="fa fa-toggle-on font-ic" aria-hidden="true"></i>' + (user.active === true ? 'Hoạt động' : 'Khóa') + '' +
+                '</span>' +
+                '</div>' +
+                '<div class="k f-name">' +
+                '<div class="k bd-bnt">' +
+                '<a href="/admin/file?id=' + user.usid + '" target="_blank"><span class="k t bnt-ed-dv">Chi tiết Hồ sơ</span></a>' +
+                '</div>' +
+                '<div class="k bd-bnt">' +
+                '<a href="#" target="_blank"><span class="k t bnt-ed-dv">Duyệt hồ sơ</span></a>' +
+                '</div>' +
+                '<div class="k bd-bnt">' +
+                '<span class="k t bnt-ed-dv" onclick="blockUser(' + user.usid + ')">Khóa</span>' +
+                '</div>' +
+                '<div class="k bd-bnt">' +
+                '<span class="k t bnt-ed-dv" data-toggle="modal" onclick="getUserById(bindingUserBuId,' + user.usid + ')" data-target="#modalupdateuser">Cập nhật tài khoản</span>' +
+                '</div>' +
+                '</div>' +
+                '</div>';
+            $("#list-item-us").append(view);
+        }
+    }
+}
 //get all chibo
 function getAllChiBo(callback) {
 
@@ -166,6 +223,7 @@ function getAllChiBo(callback) {
         type: "get",
         url: linkserver + "adchibo/getAllChiBo",
         data: null,
+        headers: { 'authorization': `Bearer ${token}` },
         dataType: 'json',
         contentType: "application/json",
         error: function (err) {
@@ -204,6 +262,7 @@ function getOrganization(callback) {
         type: "get",
         url: linkserver + "AdOrganization/getAllOrganization",
         data: null,
+        headers: { 'authorization': `Bearer ${token}` },
         dataType: 'json',
         contentType: "application/json",
         error: function (err) {
@@ -231,6 +290,7 @@ function getTitle(callback) {
         type: "get",
         url: linkserver + "AdTitle/getAllTitle",
         data: null,
+        headers: { 'authorization': `Bearer ${token}` },
         dataType: 'json',
         contentType: "application/json",
         error: function (err) {
@@ -294,6 +354,7 @@ function insertUser() {
             type: 'POST',
             dataType: 'json',
             data: JSON.stringify(data),
+            headers: { 'authorization': `Bearer ${token}` },
             async: false,
             processData: false,
             contentType: "application/json",
@@ -353,10 +414,13 @@ function emptyForm() {
 //get detail user by id
 function getUserById(callback, id) {
     usidud = id;
+    getAllChiBo(bindingChiBoToUd);
+    getTitle(bindingTitleToUd);
     $.ajax({
         type: "get",
         url: linkserver + "aduser/getDetalUser?id=" + id,
         data: null,
+        headers: { 'authorization': `Bearer ${token}` },
         dataType: 'json',
         contentType: "application/json",
         error: function (err) {
@@ -372,8 +436,6 @@ function bindingUserBuId(data) {
         var item = data.data;
         $("#madv-ud").val(item.madv);
         $("#day-update-us").val(formatDate(new Date(item.ngaydenchibo)));
-        getAllChiBo(bindingChiBoToUd);
-        getTitle(bindingTitleToUd);
         $("#sl-cb-ud option[value='" + item.cbid + "']").prop("selected", true);
         $("#sl-og-ud option[value='" + item.titleid + "']").prop("selected", true);
         $("#sl-role-ud option[value='" + item.roleid + "']").prop("selected", true);
@@ -409,6 +471,7 @@ function updateUser() {
                 type: 'POST',
                 dataType: 'json',
                 data: JSON.stringify(data),
+                headers: { 'authorization': `Bearer ${token}` },
                 async: false,
                 processData: false,
                 contentType: "application/json",
@@ -496,6 +559,7 @@ function callBlockUser(id) {
         type: "get",
         url: linkserver + "aduser/blockUser?id="+id,
         data: null,
+        headers: { 'authorization': `Bearer ${token}` },
         dataType: 'json',
         contentType: "application/json",
         error: function (err) {
@@ -526,6 +590,7 @@ function filterUserByRole(role,callback) {
         type: "get",
         url: linkserver + "aduser/getUserByRole?role=" + role,
         data: null,
+        headers: { 'authorization': `Bearer ${token}` },
         dataType: 'json',
         contentType: "application/json",
         error: function (err) {
@@ -542,6 +607,7 @@ function filterUserByActive(active, callback) {
         type: "get",
         url: linkserver + "aduser/getUserByActive?active=" + active,
         data: null,
+        headers: { 'authorization': `Bearer ${token}` },
         dataType: 'json',
         contentType: "application/json",
         error: function (err) {
@@ -560,6 +626,7 @@ function filterUserByBox(callback) {
         type: 'POST',
         dataType: 'json',
         data: JSON.stringify(data),
+        headers: { 'authorization': `Bearer ${token}` },
         async: false,
         processData: false,
         contentType: "application/json",

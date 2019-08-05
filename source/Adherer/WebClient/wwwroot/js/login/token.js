@@ -1,8 +1,8 @@
 ﻿
 function checkToken() {
-    var data = sessionStorage.getItem('token_session');
+    var data = window.localStorage.getItem('token_session');
     if (!data) {
-        window.location.href = "/login";
+        //window.location.href = "/login";
     }
     else {
         $.ajax({
@@ -14,7 +14,7 @@ function checkToken() {
             processData: false,
             contentType: "application/json",
             error: function (err) {
-                window.location.href = "/login";
+                //window.location.href = "/login";
             },
             success: function (data) {
                 if (!data.success) {

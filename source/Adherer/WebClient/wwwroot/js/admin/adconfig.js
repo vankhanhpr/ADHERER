@@ -19,3 +19,15 @@ function showLoading() {
 function destroyLoading() {
     $(".lds-ring").hide();
 }
+function strToObj(str) {//convert string to object
+    var obj = {};
+    if (str && typeof str === 'string') {
+        var objStr = str.match(/\{(.)+\}/g);
+        eval("obj =" + objStr);
+    }
+    return obj;
+}
+function getTokenByLocal() {
+    var token = strToObj(window.localStorage.getItem('token_session'));
+    return token;
+}

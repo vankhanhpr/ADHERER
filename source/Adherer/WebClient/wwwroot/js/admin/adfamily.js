@@ -1,10 +1,12 @@
 ﻿
 var fmlid = -1;
+var token = getTokenByLocal().token;
 function getFamilies(fileid, callback) {
     $.ajax({
         type: "get",
         url: linkserver + "adfamily/getFamilies?fileid=" + fileid,
         data: null,
+        headers: { 'authorization': `Bearer ${token}` },
         dataType: 'json',
         contentType: "application/json",
         error: function (err) {
@@ -37,26 +39,27 @@ function bindigFamilies(data) {
 }
 
 function validateFormIsFml() {
+    var check_update_fml = true;
     var namefml = $("#namefml").val();
     //var qhe = $("#sl-fml-qh").children("option:selected").text();
     var fmlwork = $("#fmlwork").val();
     var fmlchinhtri = $("#fmlchinhtri").val();
     if (!checkStr(fmlwork)) {
         addClass('fmlwork');
-        bol = false;
+        check_update_fml = false;
     }
     else {
         removeClass('fmlwork');
     }
     if (!checkStr(fmlchinhtri)) {
         addClass('fmlchinhtri');
-        bol = false;
+        check_update_fml = false;
     }
     else {
         removeClass('fmlchinhtri');
     }
 
-    if (!bol) {
+    if (!check_update_fml) {
         $("#err-add-fml").show();
         return;
     }
@@ -68,7 +71,7 @@ function validateFormIsFml() {
         'lichsuchinhtri': fmlchinhtri,
         'name': namefml,
         'birthday': $("#fml-bd").val(),
-    }
+    };
     insertFml(fml);
 }
 var bisfml = true;
@@ -80,6 +83,7 @@ function insertFml(data) {
             type: 'POST',
             dataType: 'json',
             data: JSON.stringify(data),
+            headers: { 'authorization': `Bearer ${token}` },
             async: false,
             processData: false,
             contentType: "application/json",
@@ -113,6 +117,7 @@ function getDetailFamily(id, callback) {
         type: "get",
         url: linkserver + "adfamily/getFmlById?id=" + id,
         data: null,
+        headers: { 'authorization': `Bearer ${token}` },
         dataType: 'json',
         contentType: "application/json",
         error: function (err) {
@@ -178,6 +183,7 @@ function updateFml(model) {
             type: 'POST',
             dataType: 'json',
             data: JSON.stringify(model),
+            headers: { 'authorization': `Bearer ${token}` },
             async: false,
             processData: false,
             contentType: "application/json",
@@ -215,6 +221,7 @@ function deleteFml(id) {
                     type: "get",
                     url: linkserver + "adfamily/deleteFml?id=" + id,
                     data: null,
+                    headers: { 'authorization': `Bearer ${token}` },
                     dataType: 'json',
                     contentType: "application/json",
                     error: function (err) {

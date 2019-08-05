@@ -54,6 +54,9 @@ namespace WebApi
             services.AddSingleton<IFileProvider>(
                new PhysicalFileProvider(
                    Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/user")));//image
+            services.AddSingleton<IFileProvider>(
+               new PhysicalFileProvider(
+                   Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/files")));//form file
 
             services.AddScoped<IUserResponsitory, UserResponsitory>();
             services.AddScoped<IAuthentication, AuthenticationResponsitory>();
@@ -70,6 +73,8 @@ namespace WebApi
             services.AddTransient<IAdFamilyResponsitory, AdFamilyResponsitory>();
             services.AddTransient<IAdBonusResponsitory, AdBonusResponsitory>();
             services.AddTransient<IAdDisciplineResponsitory, AdDisciplineResponsitory>();
+            services.AddTransient<IAdToabroadResponsitory, AdToabroadResponsitory>();
+            services.AddTransient<IAdFormResponsitory, AdFormResponsitory>();
 
             services.AddCors();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);

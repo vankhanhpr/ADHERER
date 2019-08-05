@@ -33,7 +33,7 @@ namespace WebApi.serrvice.admin.responsitory
             return context.Toabroad.Where(m => m.brid == id).FirstOrDefault();
         }
 
-        public IEnumerable<Toabroad> getAllToabroad(int fileid)
+        public IEnumerable<Toabroad> getToabroadByFileId(int fileid)
         {
             return context.Toabroad.Where(m => m.fileid == fileid).ToList();
         }

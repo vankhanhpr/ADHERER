@@ -28,6 +28,10 @@ namespace WebClient.Controllers
         {
             return View();
         }
+        public IActionResult Form()
+        {
+            return View();
+        }
         public IActionResult File(int? id)
         {
             int usid = id ?? 0;
@@ -38,6 +42,19 @@ namespace WebClient.Controllers
             else
             {
                 ViewBag.usid = usid;
+                return View();
+            }
+        }
+        public IActionResult Abroad(int? id)
+        {
+            int fileid = id ?? 0;
+            if (fileid == 0)
+            {
+                return RedirectToAction("index", "home");
+            }
+            else
+            {
+                ViewBag.fileid = fileid;
                 return View();
             }
         }

@@ -9,7 +9,7 @@ namespace WebApi.serrvice.admin.interfaces
 {
     public interface IAdToabroadResponsitory:IResponsitory<Toabroad>
     {
-        IEnumerable<Toabroad> getAllToabroad(int fileid);
+        IEnumerable<Toabroad> getToabroadByFileId(int fileid);
         void insertToabroad(Toabroad toabroad);
         void updateToabraod(Toabroad toabroad);
         void deleteToabroad(int id);

@@ -1,10 +1,15 @@
-﻿showLoading();
+﻿checkToken();
+showLoading();
 var fileidmain = -1;
+var token = getTokenByLocal().token;
 var formData = new FormData();
+function toAbroad() {
+    window.location.href = "/admin/abroad?id=" + fileidmain;
+}
 getProvinces(bindingProvinces);
 //date picker
 $(document).ready(function () {
-    $('#datepicker-birthday, #datepicker-vaodct,#datepicker-vaoddb,#datepicker-ngayvaodoan').datetimepicker({
+    $('#datepicker-birthday, #datepicker-vaodct,#datepicker-vaoddb,#datepicker-ngayvaodoan ,#datepicker-daycmnd').datetimepicker({
         format: 'DD/MM/YYYY',
         extraFormats: false,
         stepping: 1,
@@ -108,6 +113,7 @@ function getDangVien(id, callback) {
         type: "get",
         url: linkserver + "adfile/getFileByUsId?id=" + id,
         data: null,
+        headers: { 'authorization': `Bearer ${token}` },
         dataType: 'json',
         contentType: "application/json",
         error: function (err) {
@@ -122,6 +128,7 @@ function bindingFile(data) {
     if (data.success && data.data) {
         formData = new FormData();
         var user = data.data.user;
+        $("#madv").val(user.madv);
         formData.append("usid", user.usid);
         var file = data.data.file;
         if (file) {
@@ -130,7 +137,6 @@ function bindingFile(data) {
             getBonus(fileidmain, bindingBonus);//get bonus
             getDiscipline(fileidmain,bindingDiscipline);//discipline
             formData.append("fileid", file.fileid);
-            $("#madv").val(user.madv);
             $("#namedv").val(file.hotendangdung);
             $("#sl-giotinh option[value='" + (file.gioitinh ? 0 : 1) + "']").prop("selected", true);
             $("#namekhaisinh").val(file.hotenkhaisinh);
@@ -181,6 +187,7 @@ function getNations(callback) {
         type: "get",
         url: linkserver + "adnation/getNations",
         data: null,
+        headers: { 'authorization': `Bearer ${token}` },
         dataType: 'json',
         contentType: "application/json",
         error: function (err) {
@@ -207,6 +214,7 @@ function getOrganizations(callback) {
         type: "get",
         url: linkserver + "AdOrganization/getAllOrganization",
         data: null,
+        headers: { 'authorization': `Bearer ${token}` },
         dataType: 'json',
         contentType: "application/json",
         error: function (err) {
@@ -235,6 +243,7 @@ function getProvinces(callback) {
         type: "get",
         url: linkserver + "unit/getProvince",
         data: null,
+        headers: { 'authorization': `Bearer ${token}` },
         dataType: 'json',
         contentType: "application/json",
         error: function (err) {
@@ -264,6 +273,7 @@ function getDistricts(id, callback, district) {
         type: "get",
         url: linkserver + "unit/getDistrictByPrId?id=" + id,
         data: null,
+        headers: { 'authorization': `Bearer ${token}` },
         dataType: 'json',
         contentType: "application/json",
         error: function (err) {
@@ -296,6 +306,7 @@ function getWard(id, callback, ward) {
         type: "get",
         url: linkserver + "unit/getWardByDsId?id=" + id,
         data: null,
+        headers: { 'authorization': `Bearer ${token}` },
         dataType: 'json',
         contentType: "application/json",
         error: function (err) {
@@ -432,6 +443,7 @@ function validateFile() {
         removeClass('sdt');
     }
     if (checkdata == false) {
+        $('#err-validate').show();
         return;
     }
     else {
@@ -446,6 +458,7 @@ function validateFile() {
     formData.append("tongiao", tongiao);
     formData.append("cmnd", cmnd);
     formData.append("noicapcmnd", noicapcmnd);
+    formData.append("daycmnd", $('#daycmnd').val());
     formData.append("quequan", quequan);
     formData.append("hokhauthuongtru", hokhauthuongtru);
     formData.append("honnhan", parseInt($("#sl-honnhan").children("option:selected").val()));
@@ -483,7 +496,7 @@ function checkStr(str) {
 //update user
 var bolud = true;
 function updateUser() {
-    bootbox.confirm("Bạn có chắc muốn cập nhật thông tin!",
+    bootbox.confirm("Bạn có chắc muốn cập nhật thông tin ?",
         function (result) {
             if (result) {
                 if (bolud) {
@@ -495,6 +508,7 @@ function updateUser() {
                         dataType: 'json',
                         async: false,
                         data: formData,
+                        headers: { 'authorization': `Bearer ${token}` },
                         processData: false,
                         contentType: false,
                         cache: false,

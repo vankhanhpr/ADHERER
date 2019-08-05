@@ -80,3 +80,6 @@ E:\ASPMVC\WORK\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\WebClien
 E:\ASPMVC\WORK\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\WebClient.dll
 E:\ASPMVC\WORK\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\WebClient.pdb
 E:\ASPMVC\WORK\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\WebClient.csproj.CopyComplete
+E:\ASPMVC\WORK\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\Razor\Views\Admin\Abroad.g.cshtml.cs
+F:\ASP.NET\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\Razor\Views\Admin\Abroad.g.cshtml.cs
+F:\ASP.NET\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\Razor\Views\Admin\Form.g.cshtml.cs

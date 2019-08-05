@@ -19,7 +19,7 @@ namespace WebApi.serrvice.admin.responsitory
         }
         public dynamic getAllDangBo()
         {
-            var dangbo = context.Dangbo.Where(x=>x.active==true).Select(db => new
+            var dangbo = context.Dangbo.Select(db => new
             {
                 db,
                 chibo = context.Chibo.Where(m => m.dbid == db.dbid).ToList()

@@ -9,7 +9,7 @@
     <div class="k main-form">
         <div class="k body-form">
             <span class=" k t name-file">Thông tin hồ sơ Đảng viên</span>
-
+            <span class="t bnt-to-abroad" onclick="toAbroad()">Khai báo đi nước ngoài</span>
             <div class="k f-bd-file">
                 <div class="k row-item">
                     <div class="k tab-avt">
@@ -58,7 +58,7 @@
                                 <span class="k t t-avt-left">Dân tộc:</span>
                                 <select class="k t ip-avt-t" id="sl-nation">
                                     @*<option value="1">Kinh</option>
-                                    <option value="1">Tày</option>*@
+                <option value="1">Tày</option>*@
                                 </select>
                             </div>
                             <div class="k row-item-body">
@@ -69,6 +69,17 @@
                             <div class="k row-item-body">
                                 <span class="k t t-avt-left">CMND:</span>
                                 <input type="text" class="k t ip-avt-t" maxlength="12" id="cmnd" />
+                            </div>
+                            <div class="k row-item-body">
+                                <span class="k t t-avt-left">Ngày cấp:</span>
+                                <div class="form-group">
+                                    <div class='input-group date' id='datepicker-daycmnd'>
+                                        <input type='text' class="form-control" id="daycmnd" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
                             <div class="k row-item-body">
                                 <span class="k t t-avt-left">Nơi cấp:</span>
@@ -330,7 +341,7 @@
                                 </div>
                             </div>
                         </div>
-                        <span class="k t  " id="err-add-fml">**Vui lòng điền đầy đủ thông tin</span>
+                        <span class="k t err-validate " id="err-add-fml">**Vui lòng điền đầy đủ thông tin</span>
                         <span class="k dl-bnt-save" onclick="validateFormIsFml()">Thêm mới</span>
                     </div>
                     <div class="modal-footer">
@@ -509,7 +520,7 @@
                         <div class="k dl-sm-it">
                             <span class="k t dl-name-fml" id="">Thời gian kỉ luật: </span>
                             <div class="form-group">
-                                <div class='input-group date' id='datepicker-addnew'>
+                                <div class='input-group date' id='datepicker-add-des'>
                                     <input type='text' class="form-control" id="timedisaddnew" />
                                     <span class="input-group-addon">
                                         <span class="glyphicon glyphicon-calendar"></span>
@@ -521,7 +532,8 @@
                             <span class="k t dl-name-fml">Ghi chú: </span>
                             <textarea class="k dl-input-fml note-bonus" id="notedisaddnew" type="text"></textarea>
                         </div>
-                        <span class="k dl-bnt-save" onclick="">Thêm mới</span>
+                        <span class="k t err-validate" id="err-add-discipline">**Vui lòng điền đầy đủ thông tin</span>
+                        <span class="k dl-bnt-save" onclick="validateDis()">Thêm mới</span>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -531,8 +543,8 @@
             </div>
         </div>
 
-        @*add new desciption*@
-        <div class="modal fade" id="modalinsertesciption" role="dialog">
+        @*update desciption*@
+        <div class="modal fade" id="modalupdatedesciption" role="dialog">
             <div class="modal-dialog">
                 <!-- Modal content-->
                 <div class="modal-content">
@@ -543,17 +555,17 @@
                     <div class="k modal-body">
                         <div class="k dl-sm-it">
                             <span class="k t dl-name-fml">Kỷ luật: </span>
-                            <input class="k dl-input-fml" id="" type="text" />
+                            <input class="k dl-input-fml" id="namedisciplineupdate" type="text" />
                         </div>
                         <div class="k dl-sm-it">
                             <span class="k t dl-name-fml">Đơn vị: </span>
-                            <input class="k dl-input-fml" id="" type="text" />
+                            <input class="k dl-input-fml" id="orgdisciplineupdate" type="text" />
                         </div>
                         <div class="k dl-sm-it">
                             <span class="k t dl-name-fml" id="">Thời gian kỉ luật: </span>
                             <div class="form-group">
-                                <div class='input-group date' id='datepicker-addnew'>
-                                    <input type='text' class="form-control" id="" />
+                                <div class='input-group date' id='datepicker-update-discipline'>
+                                    <input type='text' class="form-control" id="timeupdatediscipline" />
                                     <span class="input-group-addon">
                                         <span class="glyphicon glyphicon-calendar"></span>
                                     </span>
@@ -562,9 +574,10 @@
                         </div>
                         <div class="k dl-sm-it">
                             <span class="k t dl-name-fml">Ghi chú: </span>
-                            <textarea class="k dl-input-fml note-bonus" id="" type="text"></textarea>
+                            <textarea class="k dl-input-fml note-bonus" id="notedisciplineupdate" type="text"></textarea>
                         </div>
-                        <span class="k dl-bnt-save" onclick="">Thêm mới</span>
+                        <span class="k t err-validate" id="err-update-discipline">**Vui lòng điền đầy đủ thông tin</span>
+                        <span class="k dl-bnt-save" onclick="validateDiscipline()">Cập nhật</span>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

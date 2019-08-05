@@ -36,7 +36,7 @@ namespace WebApi.model.request
         public IFormFile avatar { get; set; }
 
         public string cmnd { get; set; }
-        public DateTime daycmnd { get; set; }
+        public string daycmnd { get; set; }
         public string noicapcmnd { get; set; }
         public string hokhauthuongtru { get; set; }
         public int honnhan { get; set; }

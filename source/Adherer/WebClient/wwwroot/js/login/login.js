@@ -1,5 +1,6 @@
 ﻿
 function login() {
+    showLoading();
     if (validateData()) {
         var madv = $("#t-madv").val();
         var password = $("#t-password").val();
@@ -15,6 +16,7 @@ function login() {
             contentType: "application/json",
             error: function (err) {
                 bol = true;
+                destroyLoading();
                 bootbox.alert({
                     message: "Error :" + err.message
                 });
@@ -24,7 +26,7 @@ function login() {
                 if (data.success) {
                     if (typeof (Storage) !== 'undefined') {
                         var value = { "usid": data.data.user.usid, "token": data.data.token, "roleid": data.data.user.roleid };
-                        sessionStorage.setItem("token_session", JSON.stringify(value));
+                        window.localStorage.setItem("token_session", JSON.stringify(value));
                         if (data.data.user.roleid === 2) {
                             window.location.href = "/admin";
                         }
@@ -46,6 +48,7 @@ function login() {
                 else {
                     bootbox.alert(data.message);
                 }
+                destroyLoading();
             }
         });
     }
