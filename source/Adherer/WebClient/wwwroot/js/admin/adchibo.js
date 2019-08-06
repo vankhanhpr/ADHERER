@@ -14,6 +14,11 @@ function getDangBo(callback,id) {
         headers: { 'authorization': `Bearer ${token}` },
         dataType: 'json',
         contentType: "application/json",
+        statusCode: {
+            401: function () {
+                window.location.href = "/login";
+            }
+        },
         error: function (err) {
             bootbox.alert("Có lỗi xảy ra, vui lòng kiểm tra kết nối");
         },

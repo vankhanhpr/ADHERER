@@ -62,13 +62,14 @@ namespace WebApi.serrvice.authentication.responsitoty
         }
         public void savaToken(int usid,TokenRequest token)
         {
-            foreach (KeyValuePair<int, TokenRequest> item in m_tokens)
-            {
-                if (item.Key == usid)
-                {
-                    m_tokens.Remove(usid);
-                }
-            }
+            //foreach (KeyValuePair<int, TokenRequest> item in m_tokens)
+            //{
+            //    if (item.Key == usid)
+            //    {
+                   
+            //    }
+            //}
+            m_tokens.Remove(usid);
             m_tokens.Add(usid, token);
         }
         public void logout(int madv)

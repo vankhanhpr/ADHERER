@@ -3,17 +3,20 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.model;
 using WebApi.model.iformfile;
 using WebApi.model.request;
+using WebApi.model.roles;
 using WebApi.serrvice.admin.interfaces;
 using WebApi.serrvice.admin.model;
 
 namespace WebApi.controllers.admin
 {
+    [Authorize(Roles = Roles.Admin)]
     [Route("api/[controller]")]
     [ApiController]
     public class AdFormController : Controller
@@ -73,6 +76,25 @@ namespace WebApi.controllers.admin
             return data;
         }
 
+        [HttpGet("getFormById")]
+        public DataRespond getFormById(int id)
+        {
+            DataRespond data = new DataRespond();
+            try
+            {
+                data.success = true;
+                data.message = "success";
+                data.data = m_adFormResponsitory.findFormById(id);
+            }
+            catch(Exception e)
+            {
+                data.error = e;
+                data.message = e.Message;
+                data.success = false;
+            }
+            return data;
+        }
+
         [HttpPost("updateForm")]
         public async Task<DataRespond> updateFormAsync([FromForm]FormRequest formrequest)
         {
@@ -100,12 +122,34 @@ namespace WebApi.controllers.admin
             return data;
         }
 
+        [HttpGet("deleteForm")]
+        public DataRespond deleteForm(int id)
+        {
+            DataRespond data = new DataRespond();
+            try
+            {
+                data.success = true;
+                data.message = "delete success";
+                Forms forms = m_adFormResponsitory.findFormById(id);
+                var x = deleteFile(forms.namefile);
+                m_adFormResponsitory.deleteForm(id);
+            }
+            catch(Exception e)
+            {
+                data.error = e;
+                data.message = e.Message;
+                data.success = false;
+            }
+            return data;
+        }
+
+
         public async Task<string> uploadFile(IFormFile file)
         {
             if (file == null || file.Length == 0)
                 return "";
             var temp = file.GetFilename().Split(".");
-            var nameimgmain = RandomString(10) + "." + temp[1];
+            var nameimgmain = RandomString(10) + "." + temp[temp.Length-1];
             var fpath = Path.Combine(
                         Directory.GetCurrentDirectory(), "wwwroot/files",
                         nameimgmain);//post image to forder 
@@ -120,7 +164,7 @@ namespace WebApi.controllers.admin
             //delete old file
             string webRootPath = m_hostingEnvironment.WebRootPath;
             string contentRootPath = m_hostingEnvironment.ContentRootPath;
-            var file1 = System.IO.Path.Combine(webRootPath, "images/user/" + file);
+            var file1 = System.IO.Path.Combine(webRootPath, "files/" + file);
             System.IO.File.Delete(file1);//delete in forder
             return "success";
         }

@@ -1,5 +1,6 @@
 ﻿var linkserver = "https://localhost:44343/api/";
 var linkfileuser = "https://localhost:44343/images/user/";
+var linkfiledownload = "https://localhost:44343/files/";
 
 function formatDate(date) {
     var hours = date.getHours();

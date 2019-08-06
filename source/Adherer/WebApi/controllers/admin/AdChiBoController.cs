@@ -53,6 +53,7 @@ namespace WebApi.controllers.admin
                 chb.active = cb.active == 0 ? true : false;
                 DateTime ngaytl = DateTime.ParseExact(cb.ngaythanhlap, "dd/MM/yyyy", CultureInfo.InvariantCulture);
                 chb.ngaythanhlap = ngaytl;
+                chb.createday = DateTime.Now;
 
                 data.success = true;
                 m_chiBoResponsitory.insertChoBo(chb);
@@ -73,7 +74,7 @@ namespace WebApi.controllers.admin
             DataRespond data = new DataRespond();
             try
             {
-                ChiBo chb = new ChiBo();
+                ChiBo chb = m_chiBoResponsitory.getChiBoById(cb.cbid);
                 chb.cbid = cb.cbid;
                 chb.tencb = cb.tencb;
                 chb.dbid = cb.dbid;

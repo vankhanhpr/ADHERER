@@ -6,6 +6,11 @@ function getDiscipline(fileid,callback) {
         type: "get",
         url: linkserver + "addiscipline/getDiscipline?fileid=" + fileid,
         data: null,
+        statusCode: {
+            401: function () {
+                window.location.href = "/login";
+            }
+        },
         headers: { 'authorization': `Bearer ${token}` },
         dataType: 'json',
         contentType: "application/json",
@@ -90,13 +95,13 @@ function insertDiscipline(model) {
             processData: false,
             contentType: "application/json",
             error: function (err) {
-                checkinsertabroad = true;
+                check_inst_des = true;
                 bootbox.alert({
                     message: "Error :" + err.message
                 });
             },
             success: function (data) {
-                checkinsertabroad = true;
+                check_inst_des = true;
                 if (data.success) {
                     $('#modaladddesciption').modal('toggle');
                     bootbox.alert({

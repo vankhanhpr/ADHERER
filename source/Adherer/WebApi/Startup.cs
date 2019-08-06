@@ -76,6 +76,8 @@ namespace WebApi
             services.AddTransient<IAdToabroadResponsitory, AdToabroadResponsitory>();
             services.AddTransient<IAdFormResponsitory, AdFormResponsitory>();
 
+            services.AddTransient<IDashBoardResponsitory, DashBoardResponsitory>();
+
             services.AddCors();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

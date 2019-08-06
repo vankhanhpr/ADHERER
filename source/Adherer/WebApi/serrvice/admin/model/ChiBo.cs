@@ -16,5 +16,6 @@ namespace WebApi.serrvice.admin.model
         public int dbid { get; set; }
         public Boolean active { get; set; }
         public DateTime ngaythanhlap { get; set; }
+        public DateTime createday { get; set; }
     }
 }

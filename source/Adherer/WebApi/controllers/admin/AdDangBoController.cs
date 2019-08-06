@@ -54,6 +54,7 @@ namespace WebApi.controllers.admin
                 dangbo.tructhuoc = db.tructhuoc;
                 DateTime ngaytl = DateTime.ParseExact(db.ngaythanhlap, "dd/MM/yyyy", CultureInfo.InvariantCulture);
                 dangbo.ngaythanhlap = ngaytl;
+                dangbo.createday = DateTime.Now;
                 data.success = true;
                 m_dangBoResponsitory.insertDangBo(dangbo);
             }
@@ -71,7 +72,7 @@ namespace WebApi.controllers.admin
             DataRespond data = new DataRespond();
             try
             {
-                DangBo dangbo = new DangBo();
+                DangBo dangbo = m_dangBoResponsitory.getDangBoById(db.dbid);
                 dangbo.dbid = db.dbid;
                 dangbo.tendb = db.tendb;
                 dangbo.active = db.active == 0 ? true : false;

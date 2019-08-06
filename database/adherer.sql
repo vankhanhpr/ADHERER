@@ -8,7 +8,7 @@ create table DangBo(
 	active bit,
 	ngaythanhlap datetime
 );
-alter table  DangBo add tructhuoc int;
+alter table  Chibo add createday datetime;
 create table ChiBo(
 	cbid int not null identity(1,1) primary key,
 	tencb nvarchar(200),
