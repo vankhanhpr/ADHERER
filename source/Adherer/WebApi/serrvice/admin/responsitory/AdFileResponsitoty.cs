@@ -36,6 +36,7 @@ namespace WebApi.serrvice.admin.responsitory
                     file = (from filesdv in context.Files
                             join nation in context.Nation
                             on filesdv.dantoc equals nation.nationid
+                            where filesdv.usid== user.usid
                             select new
                             {
                                 user.usid,

@@ -66,8 +66,11 @@ namespace WebApi.controllers.admin
                 DateTime udday = DateTime.ParseExact(usrq.ngaydenchibo, "dd/MM/yyyy", CultureInfo.InvariantCulture);
                 user.ngaydenchibo = udday;
                 user.password = usrq.password;
-                m_userResponsitory.insertUser(user);
+                user.lydoden = usrq.lydoden;
+                user.lydodi = -1;//nothing
+                user.cbidold = -1;//nothing
 
+                m_userResponsitory.insertUser(user);
                 data.success = true;
                 data.message = "insert success";
             }
@@ -113,6 +116,7 @@ namespace WebApi.controllers.admin
                 user.titleid = usrq.titleid;
                 user.roleid = usrq.roleid;
                 user.active = usrq.active == 0 ? true : false;
+                user.cbidold = usrq.cbid;
                 DateTime udday = DateTime.ParseExact(usrq.ngaydenchibo, "dd/MM/yyyy", CultureInfo.InvariantCulture);
                 user.ngaydenchibo = udday;
                 if (usrq.password != "")
@@ -133,13 +137,17 @@ namespace WebApi.controllers.admin
             return data;
         }
 
-        [HttpGet("blockUser")]
-        public DataRespond blockUser(int id)
+        [HttpPost("blockUser")]
+        public DataRespond blockUser([FromBody]UserRequest usrq)
         {
             DataRespond data = new DataRespond();
             try
             {
-                m_userResponsitory.blockUser(id);
+                Users user = m_userResponsitory.getUserById(usrq.usid);
+                user.lydodi = usrq.lydodi;
+                user.active = false;
+
+                m_userResponsitory.updateUser(user);
                 data.success = true;
                 data.message = "block success";
             }
@@ -148,6 +156,29 @@ namespace WebApi.controllers.admin
                 data.error = e;
                 data.message = e.Message;
                 data.success = false;
+            }
+            return data;
+        }
+
+        [HttpGet("unlockUser")]
+        public DataRespond unblockUser(int id)
+        {
+            DataRespond data = new DataRespond();
+            try
+            {
+                Users user = m_userResponsitory.getUserById(id);
+                user.active = true;
+                user.lydodi = -1;
+
+                m_userResponsitory.updateUser(user);
+                data.success = true;
+                data.message = "unlock success";
+            }
+            catch(Exception e)
+            {
+                data.success = false;
+                data.error = e;
+                data.message = e.Message;
             }
             return data;
         }

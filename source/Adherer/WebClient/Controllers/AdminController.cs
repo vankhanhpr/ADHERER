@@ -58,5 +58,10 @@ namespace WebClient.Controllers
                 return View();
             }
         }
+
+        public IActionResult Report()
+        {
+            return View();
+        }
     }
 }

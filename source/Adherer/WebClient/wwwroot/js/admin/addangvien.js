@@ -117,20 +117,35 @@ function bindingUser(data) {
         for (var i in data.data) {
             var user = data.data[i].user;
             var file = data.data[i].file;
+            var viewkey = "";
+            if (user.active) {
+                viewkey =   '<div class="k bd-bnt">' +
+                            '<span  data-toggle="modal" data-target="#modalchuyendang">' +
+                            '<span class="k t bnt-ed-dv" onclick="openTabBlockUser(' + user.usid + ',true) "> Khóa </span></span>' +
+                            '</div>';
+            }
+            else {
+                viewkey =   '<div class="k bd-bnt">' +
+                            '<span>' +
+                            '<span class="k t bnt-ed-dv" onclick="openTabBlockUser(' + user.usid + ',false) "> Mở khóa </span></span>' +
+                            '</div>'
+            }
+
+
             var view = '<div class="k item-dv">' +
                 '<div class="k img-avt-dv" ></div >' +
                 '<div class="k f-name">' +
                 '<span class="k t t-if-dv">' +
-                '<i class="fa fa-user-circle-o font-ic" aria-hidden="true"></i> ' + (file && file.hotendangdung != null ? file.hotendangdung:'' ) + '' +
+                '<i class="fa fa-user-circle-o font-ic" aria-hidden="true"></i> ' + (file && file.hotendangdung != null ? file.hotendangdung : '') + '' +
                 '</span>' +
                 '<span class="k t t-if-dv">' +
-                '<i class="fa fa-birthday-cake font-ic" aria-hidden="true"></i> ' + (file && file.ngaythangnamsinh != null ? formatDate(new Date(file.ngaythangnamsinh)): '')+'' +
+                '<i class="fa fa-birthday-cake font-ic" aria-hidden="true"></i> ' + (file && file.ngaythangnamsinh != null ? formatDate(new Date(file.ngaythangnamsinh)) : '') + '' +
                 '</span>' +
                 '<span class="k t t-if-dv">' +
-                '<i class="fa fa-phone-square font-ic" aria-hidden="true"></i> ' + (file && file.sdt != null ? file.sdt : '')+'' +
+                '<i class="fa fa-phone-square font-ic" aria-hidden="true"></i> ' + (file && file.sdt != null ? file.sdt : '') + '' +
                 '</span>' +
                 '<span class="k t t-if-dv">' +
-                '<i class="fa fa-envelope-o font-ic" aria-hidden="true"></i> ' + (file && file.email != null ? file.email : '')+'' +
+                '<i class="fa fa-envelope-o font-ic" aria-hidden="true"></i> ' + (file && file.email != null ? file.email : '') + '' +
                 '</span>' +
                 '</div>' +
                 '<div class="k f-name">' +
@@ -138,24 +153,22 @@ function bindingUser(data) {
                 '<i class="fa fa-id-card-o font-ic" aria-hidden="true"></i>' + user.madv + '' +
                 '</span>' +
                 '<span class="k t t-if-dv">' +
-                '<i class="fa fa-calendar-plus-o font-ic" aria - hidden="true" ></i > ' + formatDate(new Date(user.ngaydenchibo)) +'' +
+                '<i class="fa fa-calendar-plus-o font-ic" aria - hidden="true" ></i > ' + formatDate(new Date(user.ngaydenchibo)) + '' +
                 '</span>' +
                 '<span class="k t t-if-dv">' +
-                '<i class="fa fa-users font-ic" aria-hidden="true"></i>' + (user.roleid==1? 'Đảng viên':'Admin') + '' +
+                '<i class="fa fa-users font-ic" aria-hidden="true"></i>' + (user.roleid == 1 ? 'Đảng viên' : 'Admin') + '' +
                 '</span>' +
                 '<span class="k t t-if-dv">' +
-                '<i class="fa fa-toggle-on font-ic" aria-hidden="true"></i>' + (user.active === true ? 'Hoạt động':'Khóa') + '' +
+                '<i class="fa fa-toggle-on font-ic" aria-hidden="true"></i>' + (user.active === true ? 'Hoạt động' : 'Khóa') + '' +
                 '</span>' +
                 '</div>' +
                 '<div class="k f-name">' +
                 '<div class="k bd-bnt">' +
                 '<a href="/admin/file?id=' + user.usid + '" target="_blank"><span class="k t bnt-ed-dv">Chi tiết Hồ sơ</span></a>' +
                 '</div>' +
+                viewkey +
                 '<div class="k bd-bnt">' +
-                '<a href="#" target="_blank"><span class="k t bnt-ed-dv">Duyệt hồ sơ</span></a>' +
-                '</div>' +
-                '<div class="k bd-bnt">' +
-                '<span class="k t bnt-ed-dv" onclick="blockUser(' + user.usid + ')">Khóa</span>' +
+                '<span class="k t bnt-ed-dv">Duyệt tài khoản</span>' +
                 '</div>' +
                 '<div class="k bd-bnt">' +
                 '<span class="k t bnt-ed-dv" data-toggle="modal" onclick="getUserById(bindingUserBuId,' + user.usid + ')" data-target="#modalupdateuser">Cập nhật tài khoản</span>' +
@@ -351,6 +364,7 @@ function insertUser() {
         'titleid': titleid,
         'active': 0,
         'password': cfpass.trim(),
+        'lydoden': parseInt($("#reason-create").children("option:selected").val())
     };
     if (bol) {
         bol = false;
@@ -509,7 +523,7 @@ function updateUser() {
         }
     }
 }
-function checkDataUd(madv,pass,cfpass) {
+function checkDataUd(madv, pass, cfpass) {
     if (madv.length != 8) {
         $("#err-validate-ud").show();
         $("#madv-ud").addClass("err-ip");
@@ -539,22 +553,67 @@ function checkDataUd(madv,pass,cfpass) {
     return true;
 }
 
-//block usser
-function blockUser(id) {
-    bootbox.confirm({
-        title: "Khóa tài khoản người dùng",
-        message: "Bạn có chắc muốn khóa tài khoản người dùng này không?",
-        buttons: {
-            cancel: {
-                label: '<i class="fa fa-times"></i> Hủy'
+function openTabBlockUser(id, checkactive) {
+    usidud = id;
+    if (!checkactive) {
+        $.ajax({
+            type: "get",
+            url: linkserver + "aduser/unlockUser?id=" + id,
+            data: null,
+            headers: { 'authorization': `Bearer ${token}` },
+            dataType: 'json',
+            contentType: "application/json",
+            statusCode: {
+                401: function () {
+                    window.location.href = "/login";
+                }
             },
-            confirm: {
-                label: '<i class="fa fa-check"></i> Ok'
+            error: function (err) {
+                bootbox.alert("Có lỗi xảy ra, vui lòng kiểm tra kết nối");
+            },
+            success: function (data) {
+                bootbox.alert({
+                    message: "Mở khóa tài khoản thành công!",
+                    callback: function () {
+                        window.location.href = "/admin/dangvien";
+                    }
+                })
             }
+        });
+    }
+}
+//block usser
+function blockUser() {
+    var data = {
+        'usid': usidud,
+        'lydodi': parseInt($("#sl-reason").children("option:selected").val()),
+    };
+    $.ajax({
+        url: linkserver + "aduser/blockUser",
+        type: 'POST',
+        dataType: 'json',
+        data: JSON.stringify(data),
+        headers: { 'authorization': `Bearer ${token}` },
+        async: false,
+        processData: false,
+        contentType: "application/json",
+        error: function (err) {
+            bootbox.alert({
+                message: "Error :" + err.message
+            });
         },
-        callback: function (result) {
-            if (result) {
-                callBlockUser(id);
+        success: function (data) {
+            if (data.success) {
+                $('#modalchuyendang').modal('toggle');
+                bootbox.alert({
+                    message: "Khóa tài khoản thành công!",
+                    callback: function () {
+                        window.location.href = "/admin/dangvien";
+                    }
+                })
+            }
+            else {
+                bootbox.alert(data.message);
             }
         }
     });
@@ -562,7 +621,7 @@ function blockUser(id) {
 function callBlockUser(id) {
     $.ajax({
         type: "get",
-        url: linkserver + "aduser/blockUser?id="+id,
+        url: linkserver + "aduser/blockUser?id=" + id,
         data: null,
         headers: { 'authorization': `Bearer ${token}` },
         dataType: 'json',
@@ -578,7 +637,6 @@ function callBlockUser(id) {
     });
 }
 
-
 //filter 
 $('#sl-ft-role').on('change', function () {
     var role = parseInt(this.value);
@@ -590,7 +648,7 @@ $('#sl-ft-active').on('change', function () {
 });
 
 
-function filterUserByRole(role,callback) {
+function filterUserByRole(role, callback) {
     $.ajax({
         type: "get",
         url: linkserver + "aduser/getUserByRole?role=" + role,

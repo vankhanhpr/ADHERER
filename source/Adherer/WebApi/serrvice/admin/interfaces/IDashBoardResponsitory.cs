@@ -12,5 +12,7 @@ namespace WebApi.serrvice.admin.interfaces
         dynamic getDashBoard();
 
         dynamic coundDangVienByMounth(int year);
+
+        dynamic getRevanue();
     }
 }

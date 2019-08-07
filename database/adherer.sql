@@ -28,11 +28,15 @@ Create table Roles(
 	rolename nvarchar(100) not null,
 	active bit
 );
+alter table Users add lydoden int ,lydodi int,cbidold int;
 create table Users (
 	usid int not null Identity(1,1),
 	madv nvarchar(9),
 	cbid int not null,
 	ngaydenchibo datetime,
+	lydoden int,
+	lydodi int,
+	cbidold int,
 	createday datetime,
 	password nvarchar(100),
 	primary key(usid),

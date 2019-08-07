@@ -17,5 +17,9 @@ namespace WebApi.model.request
         public int roleid { get; set; }
         public int titleid { get; set; }
         public int active { get; set; }
+        public int lydoden { get; set; }
+        public int lydodi { get; set; }
+
+        public int cbidold { get; set; }
     }
 }

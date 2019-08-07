@@ -35,7 +35,7 @@
                         <option value="2">Tất cả</option>
                     </select>
                     <div class="k f-search-ft">
-                        <input class="k search-ft"id="search-box" onkeyup="filterUserByBox(bindingUser)" type="text" />
+                        <input class="k search-ft" id="search-box" onkeyup="filterUserByBox(bindingUser)" type="text" />
                         <i class="fa fa-search bnt-search" aria-hidden="true"></i>
                     </div>
                 </div>
@@ -110,7 +110,7 @@
                     <div class="k modal-body">
                         <div class="k dl-sm-it">
                             <span class="k t dl-name-dv">Mã Đảng viên: </span>
-                            <input class="k dl-input-dv"id="ip-madv-addnew" type="text" />
+                            <input class="k dl-input-dv" id="ip-madv-addnew" type="text" />
                         </div>
                         <div class="k dl-sm-it">
                             <span class="k t dl-name-dv">Chi bộ: </span>
@@ -123,6 +123,13 @@
                             <select class="k dl-sl-dv" id="sl-title-addnew">
                                 @*<option value="0">Ủy viên</option>
                                 <option value="0">Bí thư chi bộ</option>*@
+                            </select>
+                        </div>
+                        <div class="k dl-sm-it">
+                            <span class="k t dl-name-dv">Lý do tạo: </span>
+                            <select class="k dl-sl-dv" id="reason-create">
+                                <option value="0">Kết nạp</option>
+                                <option value="1">Chuyển đếns</option>
                             </select>
                         </div>
                         <div class="k dl-sm-it">
@@ -146,11 +153,11 @@
 
                         <div class="k dl-sm-it">
                             <span class="k t dl-name-dv">Mật khẩu: </span>
-                            <input class="k dl-input-dv"id="ip-pass" type="password" />
+                            <input class="k dl-input-dv" id="ip-pass" type="password" />
                         </div>
                         <div class="k dl-sm-it">
                             <span class="k t dl-name-dv">Nhập lại mật khẩu: </span>
-                            <input class="k dl-input-dv" id ="ip-cf-pass"type="password" />
+                            <input class="k dl-input-dv" id="ip-cf-pass" type="password" />
                             <span class="k t err-validate">**Vui lòng kiểm tra lại thông tin</span>
                         </div>
 
@@ -176,7 +183,7 @@
                     <div class="k modal-body">
                         <div class="k dl-sm-it">
                             <span class="k t dl-name-dv">Mã Đảng viên: </span>
-                            <input class="k dl-input-dv" disabled="disabled" id ="madv-ud"type="text" />
+                            <input class="k dl-input-dv" disabled="disabled" id="madv-ud" type="text" />
                         </div>
                         <div class="k dl-sm-it">
                             <span class="k t dl-name-dv">Chi bộ: </span>
@@ -193,7 +200,7 @@
                         </div>
                         <div class="k dl-sm-it">
                             <span class="k t dl-name-dv">Phân quyền: </span>
-                            <select class="k dl-sl-dv"id="sl-role-ud">
+                            <select class="k dl-sl-dv" id="sl-role-ud">
                                 <option value="1">Đảng viên</option>
                                 <option value="2">Admin</option>
                             </select>
@@ -212,12 +219,12 @@
 
                         <div class="k dl-sm-it">
                             <span class="k t dl-name-dv">Mật khẩu: </span>
-                            <input class="k dl-input-dv"id="pass-ud" type="password" />
+                            <input class="k dl-input-dv" id="pass-ud" type="password" />
                         </div>
                         <div class="k dl-sm-it">
                             <span class="k t dl-name-dv">Nhập lại mật khẩu: </span>
                             <input class="k dl-input-dv" id="cf-pass-ud" type="password" />
-                            <span class="k t err-validate"id="err-validate-ud">**Vui lòng kiểm tra lại thông tin, nếu không thay đổi mật khẩu vui lòng xóa trắng 2 trường mật khẩu</span>
+                            <span class="k t err-validate" id="err-validate-ud">**Vui lòng kiểm tra lại thông tin, nếu không thay đổi mật khẩu vui lòng xóa trắng 2 trường mật khẩu</span>
                         </div>
 
                         <span class="k dl-bnt-save" onclick="updateUser()">Cập nhật</span>
@@ -229,6 +236,37 @@
 
             </div>
         </div>
+
+        @*change  chibo*@
+        <div class="modal fade" id="modalchuyendang" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Khóa tài khoản người dùng</h4>
+                    </div>
+                    <div class="k modal-body">
+                        <div class="k dl-sm-it">
+                            <span class="k t dl-name-dv">Lý do khóa: </span>
+                            <select class="k dl-sl-dv" id="sl-reason">
+                               <option value="5">Chuyển đi</option>
+                               <option value="4">Xin ra khỏi Đảng</option>
+                               <option value="3">Xóa tên</option>
+                               <option value="2">Khai trừ</option>
+                               <option value="1">Từ trần</option>
+                            </select>
+                        </div>
+                        <span class="k dl-bnt-save" onclick="blockUser()">Khóa tài khoản</span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
 
     </div>
 

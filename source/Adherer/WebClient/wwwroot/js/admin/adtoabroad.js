@@ -122,7 +122,7 @@ function insertAbroad(model) {
     if (checkinsertabroad) {
         checkinsertabroad = false;
         $.ajax({
-            url: linkserver + "AdAbroad/updateAbroad",
+            url: linkserver + "AdAbroad/insertAbroad",
             type: 'POST',
             dataType: 'json',
             data: JSON.stringify(model),
