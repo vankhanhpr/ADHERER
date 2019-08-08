@@ -1,4 +1,5 @@
-﻿getAllOganizatio(bindingOrganization);
+﻿var token = getTokenByLocal().token;
+getAllOganizatio(bindingOrganization);
 var active = 0;
 var ogid = 0;
 $('#dv-sl-act-ud').on('change', function () {
@@ -9,6 +10,7 @@ function getAllOganizatio(callback) {
         type: "get",
         url: linkserver + "AdOrganization/getAllOrganization",
         data: null,
+        headers: { 'authorization': `Bearer ${token}` },
         dataType: 'json',
         contentType: "application/json",
         statusCode: {
@@ -55,6 +57,7 @@ function insertOrganization() {
             type: 'POST',
             dataType: 'json',
             data: JSON.stringify(data),
+            headers: { 'authorization': `Bearer ${token}` },
             async: false,
             processData: false,
             contentType: "application/json",
@@ -88,6 +91,7 @@ function getDetailOg(id) {
         type: "get",
         url: linkserver + "AdOrganization/getOgById?id=" + id,
         data: null,
+        headers: { 'authorization': `Bearer ${token}` },
         dataType: 'json',
         contentType: "application/json",
         error: function (err) {

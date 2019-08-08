@@ -13,7 +13,7 @@
                 <span class="k t text-note-filter">Đến chi bộ từ: </span>
                 <div class="form-group">
                     <div class='input-group date' id='datepicker-startday'>
-                        <input type='text' class="form-control" id="day-update-cb" />
+                        <input type='text' class="form-control" id="fromday" />
                         <span class="input-group-addon">
                             <span class="glyphicon glyphicon-calendar"></span>
                         </span>
@@ -24,7 +24,7 @@
                 <span class="k t text-note-filter">đến: </span>
                 <div class="form-group">
                     <div class='input-group date' id='datepicker-endday'>
-                        <input type='text' class="form-control" id="day-update-cb" />
+                        <input type='text' class="form-control" id="endday" />
                         <span class="input-group-addon">
                             <span class="glyphicon glyphicon-calendar"></span>
                         </span>
@@ -33,35 +33,43 @@
             </div>
 
             <div class="k smail-item">
-                <select class="type-user">
-                    <option>Đảng bộ</option>
+                <select class="type-user"id="select-dangbo">
+                    @*<option>Đảng bộ</option>
                     <option>Đảng bộ X</option>
-                    <option>Đảng bộ Y</option>
+                    <option>Đảng bộ Y</option>*@
                 </select>
             </div>
             <div class="k smail-item">
-                <select class="type-user">
-                    <option>Chi bộ</option>
-                    <option>Chi bộ X</option>
-                    <option>Chi bộ Y</option>
-                </select>
+                <select class="type-user" id="select-chibo"></select>
             </div>
-
-            <div class="k smail-item">
-                <select class="type-user">
-                    <option>Đảng viên chính thức</option>
-                    <option>Đảng viên dự bị</option>
-                    <option>Tất cả</option>
-                </select>
-            </div>
-
-            <div class="k smail-item">
+            @*<div class="k smail-item">
                 <div class="k f-search-ft">
                     <input class="k search-ft" id="search-box" onkeyup="filterUserByBox(bindingUser)" type="text">
                     <i class="fa fa-search bnt-search" aria-hidden="true"></i>
                 </div>
+            </div>*@
+            <div class="k smail-item">
+                <span class="t bnt-filter" onclick="filterUser()">Filter</span>
             </div>
         </div>
+
+        <div class="k form-show-info-user" id="form-show-info-user">
+            <div class="k form-item-user-main">
+                <div class="k t left-text bold-text">Mã Đảng viên</div>
+                <div class="k t left-text bold-text">Quyền</div>
+                <div class="k t left-text bold-text">Phân quyền</div>
+                <div class="k t left-text bold-text">Ngày đến Chi Bộ</div>
+                <div class="k t left-text bold-text">Lý do</div>
+            </div>
+            @*<div class="k form-item-user">
+                    <div class="k t left-text">LH0123232</div>
+                    <div class="k t left-text">Nguyen Van A</div>
+                    <div class="k t left-text">Admin</div>
+                    <div class="k t left-text">12/12/2012</div>
+                    <div class="k t left-text">Kết nạp</div>
+                </div>*@
+        </div>
+
         <div id="container" class="k linechart"></div>
     </div>
 </div>

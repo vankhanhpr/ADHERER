@@ -30,7 +30,7 @@ namespace WebApi.controllers.admin
                 data.data = m_dashBoardResponsitory.getDashBoard();
                 data.message = "success";
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 data.message = e.Message;
                 data.error = e;
@@ -47,6 +47,25 @@ namespace WebApi.controllers.admin
             {
                 data.success = true;
                 data.data = m_dashBoardResponsitory.coundDangVienByMounth(year);
+                data.message = "success";
+            }
+            catch (Exception e)
+            {
+                data.error = e;
+                data.message = e.Message;
+                data.success = false;
+            }
+            return data;
+        }
+
+        [HttpGet("getRevanue")]
+        public DataRespond getRevanue(int id)
+        {
+            DataRespond data = new DataRespond();
+            try
+            {
+                data.success = true;
+                data.data = m_dashBoardResponsitory.getRevanue(id);
                 data.message = "success";
             }
             catch(Exception e)

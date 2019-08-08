@@ -27,7 +27,7 @@
         text-align:center;
     }
     .smail-item{
-
+        text-align:center;
     }
     .type-user {
         border: 1px solid rgba(51,51,51,0.1);
@@ -53,6 +53,38 @@
     }
     .linechart{
         border:1px solid rgba(51,51,51,0.1);
+    }
+    .input-group{
+        cursor:pointer;
+    }
+    .form-show-info-user{
+        width: 100%;
+        background-color: var(--background-item);
+    }
+    .form-item-user, .form-item-user-main {
+        width: 100%;
+        border: 1px solid rgba(51,51,51,0.1);
+        border-bottom: none;
+    }
+    .left-text{
+        color:var(--cl-text-bl);
+        font-weight:300;
+        text-align:left;
+    }
+    .bold-text {
+        font-weight: 600;
+    }
+    .bnt-filter{
+        width:50%;
+        border:1px solid rgba(51,51,51,0.1);
+        border-radius:4px;
+        background-color:var(--bg-button);
+        text-align:center;
+        position:relative;
+        float:none;
+        display:inline-block;
+        cursor:pointer;
+        color:var(--cl-text-wt);
     }
 }
 @media only screen and (min-width:1200px){
@@ -91,5 +123,18 @@
         height: 400px;
         margin: 0 auto;
         margin-top: 20px;
+    }
+    .form-show-info-user {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .left-text {
+       width:20%;
+       padding:10px;
+       font-size:var(--fs-dt);
+    }
+    .bnt-filter {
+        padding: 2px 5px;
+        width:100px;
     }
 }

@@ -97,6 +97,11 @@ namespace WebApi.serrvice.admin.responsitory
             return dangvien;
         }
 
+        public dynamic getUserByChiBo(int id, DateTime fromday, DateTime endday)
+        {
+            return context.Users.Where(m => m.cbid == id && m.ngaydenchibo >= fromday && m.ngaydenchibo <= endday ).ToList();
+        }
+
         public Users getUserById(int id)
         {
             return context.Users.Where(m => m.usid == id).FirstOrDefault();

@@ -1,4 +1,4 @@
-﻿
+﻿var token = getTokenByLocal().token;
 //datetime picker
 $(document).ready(function () {
     $('#datepicker-startday ,#datepicker-endday').datetimepicker({
@@ -36,16 +36,100 @@ $(document).ready(function () {
         }
     });
 });
+getDangBo();
+function getChiBoById(id) {
+    $.ajax({
+        type: "get",
+        url: linkserver + "adchibo/getChiBoByDb?id=" + id,
+        data: null,
+        headers: { 'authorization': `Bearer ${token}` },
+        dataType: 'json',
+        contentType: "application/json",
+        statusCode: {
+            401: function () {
+                window.location.href = "/login";
+            }
+        },
+        error: function (err) {
+            bootbox.alert("Có lỗi xảy ra, vui lòng kiểm tra kết nối");
+        },
+        success: function (data) {
+            if (data.success && data.data) {
+                $("#select-chibo option").remove();
+                for (var i in data.data) {
+                    var cb = data.data[i];
+                    $("#select-chibo").append('<option value=' + cb.cbid + '>' + cb.tencb + '</option>');
+                }
+                if (data.data.length > 0) {
+                    getRevanue(data.data[0].cbid, bindingRevanue);
+                    getUser(data.data[0].cbid, bindingUserByChiBo);
+                }
 
-drawChart();
+            }
+        }
+    });
+}
+function filterUser() {
+    var chibo = parseInt($("#select-chibo").children("option:selected").val());
+    getUser(chibo, bindingUserByChiBo);
+}
+$('#select-chibo').on('change', function () {
+    getRevanue(parseInt(this.value), bindingRevanue);
+    getUser(parseInt(this.value), bindingUserByChiBo);
+});
+$('#select-dangbo').on('change', function () {
+    getChiBoById(parseInt(this.value));
+    $(".form-item-user").remove();
+});
 
-function drawChart() {
+function getRevanue(id, callback) {
+    $.ajax({
+        type: "get",
+        url: linkserver + "dashboard/getRevanue?id=" + id,
+        data: null,
+        headers: { 'authorization': `Bearer ${token}` },
+        dataType: 'json',
+        contentType: "application/json",
+        statusCode: {
+            401: function () {
+                window.location.href = "/login";
+            }
+        },
+        error: function (err) {
+            bootbox.alert("Có lỗi xảy ra, vui lòng kiểm tra kết nối");
+        },
+        success: function (data) {
+            callback(data);
+        }
+    });
+}
+function bindingRevanue(data) {
+    if (data.success && data.data) {
+        var revanue = data.data;
+        var arr =
+            [
+                ['Chính thức', revanue.chinhthuc],
+                ['Dự bị', revanue.dubi],
+                ['Chuyển đến', revanue.ketnap],
+                ['Chuyển đi', revanue.chuyendi],
+                ['Kết nạp', revanue.chuyenden],
+                ['Từ trần', revanue.tutran],
+                ['Khai trừ', revanue.khaitru],
+                ['Xóa tên', revanue.xoaten],
+                ['Xin khỏi Đảng', revanue.rakhoidang],
+                ['Đi nước ngoài', revanue.dinuocngoai],
+                ['Tổng số', revanue.all]
+            ];
+        drawChart(arr, data.data.namechibo);
+    }
+}
+function drawChart(arr,namechibo) {
     Highcharts.chart('container', {
         chart: {
             type: 'column'
         },
         title: {
-            text: 'Thống kê tình hình Đảng viên năm 2019'
+            text: 'Thống kê tình hình Đảng viên Chi bộ ' + namechibo+' năm ' + new Date().getFullYear().toString()
         },
         subtitle: {
             text: 'Nguồn: TT CNTT'
@@ -74,18 +158,7 @@ function drawChart() {
         },
         series: [{
             name: 'Population',
-            data: [
-                ['Chính thức', 24],
-                ['Dự bị', 20],
-                ['Chuyển đến', 14],
-                ['Chuyển đi', 13],
-                ['Kết nạp', 13],
-                ['Từ trần', 12],
-                ['Khai trừ', 12],
-                ['Xóa tên', 12],
-                ['Xin khỏi Đảng', 12],
-                ['Tổng số', 40]
-            ],
+            data: arr,
             dataLabels: {
                 enabled: true,
                 rotation: -90,
@@ -99,5 +172,71 @@ function drawChart() {
                 }
             }
         }]
+    });
+}
+function getUser(id, callback) {
+    var fromday = $("#fromday").val();
+    var endday = $("#endday").val();
+    $.ajax({
+        type: "get",
+        url: linkserver + "aduser/getUserByChiBo?id=" + id + '&fromday=' + fromday + '&endday=' + endday,
+        data: null,
+        headers: { 'authorization': `Bearer ${token}` },
+        dataType: 'json',
+        contentType: "application/json",
+        statusCode: {
+            401: function () {
+                window.location.href = "/login";
+            }
+        },
+        error: function (err) {
+            bootbox.alert("Có lỗi xảy ra, vui lòng kiểm tra kết nối");
+        },
+        success: function (data) {
+            callback(data);
+        }
+    });
+}
+function bindingUserByChiBo(data) {
+    if (data.success && data.data) {
+        $(".form-item-user").remove();
+        for (var i in data.data) {
+            var item = data.data[i];
+            $("#form-show-info-user").append('<div class="k form-item-user">' +
+                '<div class= "k t left-text" >' + item.madv + '</div >' +
+                '<div class="k t left-text">' + (item.roleid === 2 ? 'Admin' : 'Đảng viên') + '</div>' +
+                '<div class="k t left-text">' + (item.active ? 'Hoạt động' : 'Không hoạt động') + '</div>' +
+                '<div class="k t left-text">' + formatDate(new Date(item.ngaydenchibo)) + '</div>' +
+                '<div class="k t left-text">' + (item.lydoden === 0 ? 'Kết nạp' : 'Chuyển đến') + '</div>' +
+                '</div>');
+        }
+    }
+}
+
+function getDangBo() {
+    $.ajax({
+        type: "get",
+        url: linkserver + "addangbo/getalldangbo",
+        data: null,
+        headers: { 'authorization': `Bearer ${token}` },
+        dataType: 'json',
+        contentType: "application/json",
+        statusCode: {
+            401: function () {
+                window.location.href = "/login";
+            }
+        },
+        error: function (err) {
+            bootbox.alert("Có lỗi xảy ra, vui lòng kiểm tra kết nối");
+        },
+        success: function (data) {
+            if (data.data.length > 0 && data.success) {
+                for (var i in data.data) {
+                    var item = data.data[i].db;
+                    $("#select-dangbo").append(' <option value=' + item.dbid + '>' + item.tendb + '</option>');
+                }
+                getChiBoById(data.data[0].db.dbid);
+            }
+        }
     });
 }

@@ -38,7 +38,7 @@ function login() {
                         // lấy ra số lượng session đã lưu trữ
                         //sessionStorage.length;
                         // xóa 1 item localStorage
-                       // sessionStorage.removeItem('name');
+                        // sessionStorage.removeItem('name');
                         // xóa tất cả item trong sessionStorage
                         //sessionStorage.clear();
                     } else {
@@ -51,6 +51,9 @@ function login() {
                 destroyLoading();
             }
         });
+    }
+    else {
+        destroyLoading();
     }
 }
 

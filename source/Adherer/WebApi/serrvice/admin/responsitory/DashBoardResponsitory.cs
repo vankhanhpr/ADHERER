@@ -49,31 +49,38 @@ namespace WebApi.serrvice.admin.responsitory
             return dashboard;
         }
 
-        public dynamic getRevanue()
+        public dynamic getRevanue(int id)
         {
             var revanue = new
             {
-                all = context.Users.Count(),
-                chinhthuc = (from us in context.Users
+                all = context.Users.Where(n => n.cbid == id).Count(),
+                chinhthuc = (from us in context.Users.Where(m => m.cbid == id && m.ngaydenchibo.Year == DateTime.Now.Year)
                              join file in context.Files on us.usid equals file.usid
                              where (file.ngayvaodangct <= DateTime.Now)
                              select us
                              ).Count(),
-                dubi = (from us in context.Users
+                dubi = (from us in context.Users.Where(m => m.cbid == id && m.ngaydenchibo.Year == DateTime.Now.Year)
                         join file in context.Files on us.usid equals file.usid
                         where (file.ngayvaodangct > DateTime.Now)
                         select us
                              ).Count(),
-                ketnap = context.Users.Where(m => m.lydoden == 0).Count(),
-                chuyenden = context.Users.Where(m => m.lydoden == 1).Count(),
-                chuyendi = context.Users.Where(m => m.lydodi == 0).Count(),
-                tutran = context.Users.Where(m => m.lydodi == 4).Count(),
-                khaitru = context.Users.Where(m => m.lydodi == 3).Count(),
-                xoaten = context.Users.Where(m => m.lydodi == 2).Count(),
-                rakhoidang = context.Users.Where(m => m.lydodi == 1).Count(),
+                ketnap = context.Users.Where(m => m.cbid == id && m.lydoden == 0 && m.ngaydenchibo.Year == DateTime.Now.Year).Count(),
+                chuyenden = context.Users.Where(m => m.cbid == id && m.lydoden == 1 && m.ngaydenchibo.Year == DateTime.Now.Year).Count(),
+                chuyendi = context.Users.Where(m => (m.cbid == id && m.lydodi == 0 && m.ngaydenchibo.Year == DateTime.Now.Year) || m.cbidold == id).Count(),
+                tutran = context.Users.Where(m => m.cbid == id && m.lydodi == 1 && m.ngaydenchibo.Year == DateTime.Now.Year).Count(),
+                khaitru = context.Users.Where(m => m.cbid == id && m.lydodi == 2 && m.ngaydenchibo.Year == DateTime.Now.Year).Count(),
+                xoaten = context.Users.Where(m => m.cbid == id && m.lydodi == 3 && m.ngaydenchibo.Year == DateTime.Now.Year).Count(),
+                rakhoidang = context.Users.Where(m => m.cbid == id && m.lydodi == 4 && m.ngaydenchibo.Year == DateTime.Now.Year).Count(),
+                dinuocngoai = (from abroad in context.Toabroad
+                               join file in context.Files on abroad.fileid equals file.fileid
+                               join user in context.Users on file.usid equals user.usid
+                               where (user.cbid == id)
+                               select abroad
+                               ).GroupBy(m => m.fileid).Count(),
+                namechibo = context.Chibo.Where(m => m.cbid == id).FirstOrDefault().tencb
             };
 
-            return null;
+            return revanue;
         }
     }
 }

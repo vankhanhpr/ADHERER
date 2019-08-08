@@ -13,6 +13,6 @@ namespace WebApi.serrvice.admin.interfaces
 
         dynamic coundDangVienByMounth(int year);
 
-        dynamic getRevanue();
+        dynamic getRevanue(int id);
     }
 }

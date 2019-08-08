@@ -24,5 +24,6 @@ namespace WebApi.serrvice.admin.interfaces
         dynamic getUserByActive(int active);
         dynamic getUserByBox(string filter);
 
+        dynamic getUserByChiBo(int id,DateTime fromday,DateTime endday);
     }
 }

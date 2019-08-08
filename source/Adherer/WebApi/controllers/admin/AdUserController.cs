@@ -41,6 +41,28 @@ namespace WebApi.controllers.admin
             return data;
         }
 
+        [HttpGet("getUserByChiBo")]
+        public DataRespond getUserByCBId(int id,string fromday,string endday)
+        {
+            DataRespond data = new DataRespond();
+            try
+            {
+                DateTime frday = DateTime.ParseExact(fromday, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                DateTime eday = DateTime.ParseExact(endday, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                data.success = true;
+                data.data = m_userResponsitory.getUserByChiBo(id,frday,eday);
+                data.message = "success";
+            }
+            catch(Exception e)
+            {
+                data.success = false;
+                data.error = e;
+                data.message = e.Message;
+            }
+            return data;
+        }
+
+
         [HttpPost("insertUser")]
         public DataRespond insertUser([FromBody]UserRequest usrq)
         {
@@ -109,14 +131,18 @@ namespace WebApi.controllers.admin
             try
             {
                 Users user = m_userResponsitory.getUserById(usrq.usid);
-
+                user.cbidold = user.cbid;
+                if (user.cbid != usrq.cbid)
+                {
+                    user.lydoden = 1;
+                }
                 user.usid = usrq.usid;
                 user.madv = usrq.madv;
                 user.cbid = usrq.cbid;
                 user.titleid = usrq.titleid;
                 user.roleid = usrq.roleid;
                 user.active = usrq.active == 0 ? true : false;
-                user.cbidold = usrq.cbid;
+                
                 DateTime udday = DateTime.ParseExact(usrq.ngaydenchibo, "dd/MM/yyyy", CultureInfo.InvariantCulture);
                 user.ngaydenchibo = udday;
                 if (usrq.password != "")
