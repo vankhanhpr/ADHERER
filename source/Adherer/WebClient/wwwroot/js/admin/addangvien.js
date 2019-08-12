@@ -36,16 +36,15 @@ $('#sl-title-ud').on('change', function () {
     titleid = parseInt(this.value);
 });
 
-
 function showTabFilter() {
     if (bolft) {
         bolft = false;
-        $(".tab-filter").show(300);
+        $(".tab-filter").hide(400);
         $(".ic-show-ft").toggleClass("down");
     }
     else {
         bolft = true;
-        $(".tab-filter").hide(300);
+        $(".tab-filter").show(400);
         $(".ic-show-ft").toggleClass("down");
 
     }
@@ -125,13 +124,11 @@ function bindingUser(data) {
                             '</div>';
             }
             else {
-                viewkey =   '<div class="k bd-bnt">' +
-                            '<span>' +
-                            '<span class="k t bnt-ed-dv" onclick="openTabBlockUser(' + user.usid + ',false) "> Mở khóa </span></span>' +
-                            '</div>'
+                viewkey = '<div class="k bd-bnt">' +
+                    '<span>' +
+                    '<span class="k t bnt-ed-dv" onclick="openTabBlockUser(' + user.usid + ',false) "> Mở khóa </span></span>' +
+                    '</div>';
             }
-
-
             var view = '<div class="k item-dv">' +
                 '<div class="k img-avt-dv" ></div >' +
                 '<div class="k f-name">' +
@@ -168,7 +165,7 @@ function bindingUser(data) {
                 '</div>' +
                 viewkey +
                 '<div class="k bd-bnt">' +
-                '<span class="k t bnt-ed-dv">Duyệt tài khoản</span>' +
+                '<span class="k t bnt-ed-dv" onclick="acceptUser(' + user.usid + ')">' + (!user.accept ? 'Duyệt tài khoản' : 'Cho phép chỉnh sửa tài khoản') + '</span>' +
                 '</div>' +
                 '<div class="k bd-bnt">' +
                 '<span class="k t bnt-ed-dv" data-toggle="modal" onclick="getUserById(bindingUserBuId,' + user.usid + ')" data-target="#modalupdateuser">Cập nhật tài khoản</span>' +
@@ -390,9 +387,9 @@ function insertUser() {
                         callback: function () {
                             emptyForm();
                             page = 0;
-                            getUser(bindingUser, page, pagesize)
+                            getUser(bindingUser, page, pagesize);
                         }
-                    })
+                    });
                 }
                 else {
                     emptyForm();
@@ -701,6 +698,33 @@ function filterUserByBox(callback) {
         success: function (data) {
             if (data.success) {
                 callback(data);
+            }
+        }
+    });
+}
+
+function acceptUser(id) {
+    $.ajax({
+        type: "get",
+        url: linkserver + "aduser/acceptUser?id=" + id,
+        data: null,
+        headers: { 'authorization': `Bearer ${token}` },
+        dataType: 'json',
+        contentType: "application/json",
+        error: function (err) {
+            bootbox.alert("Có lỗi xảy ra, vui lòng kiểm tra kết nối");
+        },
+        success: function (data) {
+            if (data.success) {
+                
+                if (data.data) {
+                    bootbox.alert("Duyệt tài khoản thành công!");
+                }
+                else {
+                    bootbox.alert("Đã mở khóa chỉnh sửa tài khoản!");
+                }
+                page = 0;
+                getUser(bindingUser, page, pagesize);
             }
         }
     });

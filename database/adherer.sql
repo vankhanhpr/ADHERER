@@ -29,6 +29,9 @@ Create table Roles(
 	active bit
 );
 alter table Users add lydoden int ,lydodi int,cbidold int;
+
+alter table Users add accept bit
+
 create table Users (
 	usid int not null Identity(1,1),
 	madv nvarchar(9),
@@ -43,6 +46,7 @@ create table Users (
 	roleid int,
 	titleid int ,
 	active bit not null,
+	accept bit,
 	foreign key (cbid) references Chibo(cbid),
 	foreign key (roleid) references Roles(roleid),
 	foreign key (titleid) references Title(titleid)

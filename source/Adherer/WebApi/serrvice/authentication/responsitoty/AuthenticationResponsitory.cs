@@ -102,7 +102,7 @@ namespace WebApi.serrvice.authentication.responsitoty
             var token = new JwtSecurityToken(m_config["Jwt:Issuer"],
                 m_config["Jwt:Issuer"],
                 claims,
-                expires: DateTime.Now.AddMinutes(3), //expire time là 30 ngayf
+                expires: DateTime.Now.AddMinutes(30), //expire time là 30 ngayf
                 signingCredentials: creds);
 
             return new JwtSecurityTokenHandler().WriteToken(token);

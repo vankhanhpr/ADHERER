@@ -22,7 +22,7 @@ namespace WebApi.serrvice.admin.model
         public Boolean active { get; set; }
         public int lydoden { get; set; }
         public int lydodi { get; set; }
-
         public int cbidold { get; set; }
+        public Boolean accept { get; set; }
     }
 }

@@ -87,11 +87,10 @@ namespace WebApi.controllers.admin
             DataRespond data = new DataRespond();
             try
             {
-                Organization og = new Organization();
+                Organization og = m_organizationResponsitory.findOrganizationById(ogrq.ogid);
                 og.ogid = ogrq.ogid;
                 og.nameog = ogrq.nameog;
                 og.active = ogrq.active == 0 ? true : false;
-                og.createday = DateTime.Now;
                 m_organizationResponsitory.updateOrganization(og);
                 data.success = true;
                 data.message = "update success!";

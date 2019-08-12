@@ -21,5 +21,7 @@ namespace WebApi.model.request
         public int lydodi { get; set; }
 
         public int cbidold { get; set; }
+
+        public Boolean accept { get; set; }
     }
 }

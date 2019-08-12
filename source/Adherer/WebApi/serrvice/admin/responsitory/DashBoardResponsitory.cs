@@ -53,7 +53,7 @@ namespace WebApi.serrvice.admin.responsitory
         {
             var revanue = new
             {
-                all = context.Users.Where(n => n.cbid == id).Count(),
+                all = context.Users.Where(n => n.cbid == id && n.active== true).Count(),
                 chinhthuc = (from us in context.Users.Where(m => m.cbid == id && m.ngaydenchibo.Year == DateTime.Now.Year)
                              join file in context.Files on us.usid equals file.usid
                              where (file.ngayvaodangct <= DateTime.Now)

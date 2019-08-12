@@ -91,6 +91,7 @@ namespace WebApi.controllers.admin
                 user.lydoden = usrq.lydoden;
                 user.lydodi = -1;//nothing
                 user.cbidold = -1;//nothing
+                user.accept = false;
 
                 m_userResponsitory.insertUser(user);
                 data.success = true;
@@ -261,6 +262,28 @@ namespace WebApi.controllers.admin
             {
                 data.error = e;
                 data.success = false;
+                data.message = e.Message;
+            }
+            return data;
+        }
+
+        [HttpGet("acceptUser")]
+        public DataRespond acceptUser(int id)
+        {
+            DataRespond data = new DataRespond();
+            try
+            {
+                data.success = true;
+                Users us = m_userResponsitory.getUserById(id);
+                us.accept = us.accept ? false : true;
+                data.data = us.accept;
+                m_userResponsitory.updateUser(us);
+                data.message = "accept success";
+            }
+            catch(Exception e)
+            {
+                data.success = false;
+                data.error = e;
                 data.message = e.Message;
             }
             return data;

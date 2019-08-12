@@ -63,5 +63,9 @@ namespace WebClient.Controllers
         {
             return View();
         }
+        public IActionResult DetailReport()
+        {
+            return View();
+        }
     }
 }

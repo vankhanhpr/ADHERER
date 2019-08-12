@@ -8,43 +8,43 @@
     <link rel="stylesheet" type="text/css" href="~/css/admin/addangvien.css">
 }
 
-    <div class=" main-form">
-        <div class="k body-form">
-            <div class="k f-add-dv">
-                <span class="k t t-name-dv">Thông tin Đảng Viên</span>
-                <i class="fa fa-angle-down ic-show-ft" aria-hidden="true" onclick="showTabFilter()"></i>
-                <span class="k t bnt-add-dv" onclick="showTabInsertUser()" data-toggle="modal" data-target="#modalinsertdangvien"> + Thêm mới</span>
+<div class=" main-form">
+    <div class="k body-form">
+        <div class="k f-add-dv">
+            <span class="k t t-name-dv">Thông tin Đảng Viên</span>
+            <i class="fa fa-angle-down ic-show-ft" aria-hidden="true" onclick="showTabFilter()"></i>
+            <span class="k t bnt-add-dv" onclick="showTabInsertUser()" data-toggle="modal" data-target="#modalinsertdangvien"> + Thêm mới</span>
 
-                <div class="k tab-filter">
-                    <select class="k sl-ft-og" id="sl-ft-role">
-                        <option value="0" disabled="disabled" selected="selected">Phân quyền</option>
-                        <option value="2">Admin</option>
-                        <option value="1">Đảng viên</option>
-                        <option value="0">Tất cả</option>
-                    </select>
-                    <select class="k sl-ft-og" id="sl-ft-active">
-                        <option value="" disabled="disabled" selected="selected">Trạng thái hoạt động</option>
-                        <option value="0">Đang hoạt động</option>
-                        <option value="1">Khóa</option>
-                        <option value="2">Tất cả</option>
-                    </select>
-                    <select class="k sl-ft-og">
-                        <option value="9" disabled="disabled" selected="selected">Chọn trạng thái Đảng viên</option>
-                        <option value="0">Đảng viên dự bị</option>
-                        <option value="1">Đảng viên chính thức</option>
-                        <option value="2">Tất cả</option>
-                    </select>
-                    <div class="k f-search-ft">
-                        <input class="k search-ft" id="search-box" onkeyup="filterUserByBox(bindingUser)" type="text" />
-                        <i class="fa fa-search bnt-search" aria-hidden="true"></i>
-                    </div>
+            <div class="k tab-filter">
+                <select class="k sl-ft-og" id="sl-ft-role">
+                    <option value="0" disabled="disabled" selected="selected">Phân quyền</option>
+                    <option value="2">Admin</option>
+                    <option value="1">Đảng viên</option>
+                    <option value="0">Tất cả</option>
+                </select>
+                <select class="k sl-ft-og" id="sl-ft-active">
+                    <option value="" disabled="disabled" selected="selected">Trạng thái hoạt động</option>
+                    <option value="0">Đang hoạt động</option>
+                    <option value="1">Khóa</option>
+                    <option value="2">Tất cả</option>
+                </select>
+                <select class="k sl-ft-og">
+                    <option value="9" disabled="disabled" selected="selected">Chọn trạng thái Đảng viên</option>
+                    <option value="0">Đảng viên dự bị</option>
+                    <option value="1">Đảng viên chính thức</option>
+                    <option value="2">Tất cả</option>
+                </select>
+                <div class="k f-search-ft">
+                    <input class="k search-ft" id="search-box" onkeyup="filterUserByBox(bindingUser)" type="text" />
+                    <i class="fa fa-search bnt-search" aria-hidden="true"></i>
                 </div>
-
             </div>
 
-            <div class="k f-body-ldv" id="list-item-us">
+        </div>
 
-                @*<div class="k item-dv">
+        <div class="k f-body-ldv" id="list-item-us">
+
+            @*<div class="k item-dv">
                     <div class="k img-avt-dv"></div>
                     <div class="k f-name">
                         <span class="k t t-if-dv">
@@ -95,180 +95,180 @@
                     </div>
                 </div>*@
 
-            </div>
         </div>
-
-        @*add new dang vien*@
-        <div class="modal fade" id="modalinsertdangvien" role="dialog">
-            <div class="modal-dialog">
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Thêm mới tài khoản</h4>
-                    </div>
-                    <div class="k modal-body">
-                        <div class="k dl-sm-it">
-                            <span class="k t dl-name-dv">Mã Đảng viên: </span>
-                            <input class="k dl-input-dv" id="ip-madv-addnew" type="text" />
-                        </div>
-                        <div class="k dl-sm-it">
-                            <span class="k t dl-name-dv">Chi bộ: </span>
-                            <select class="k dl-sl-dv" id="sl-chb-addnew">
-                                @*<option value="0">Chi bộ trung tâm CNTT</option>*@
-                            </select>
-                        </div>
-                        <div class="k dl-sm-it">
-                            <span class="k t dl-name-dv">Chức vụ Đảng: </span>
-                            <select class="k dl-sl-dv" id="sl-title-addnew">
-                                @*<option value="0">Ủy viên</option>
-                                <option value="0">Bí thư chi bộ</option>*@
-                            </select>
-                        </div>
-                        <div class="k dl-sm-it">
-                            <span class="k t dl-name-dv">Lý do tạo: </span>
-                            <select class="k dl-sl-dv" id="reason-create">
-                                <option value="0">Kết nạp</option>
-                                <option value="1">Chuyển đếns</option>
-                            </select>
-                        </div>
-                        <div class="k dl-sm-it">
-                            <span class="k t dl-name-dv">Phân quyền: </span>
-                            <select class="k dl-sl-dv" id="sl-role-addnew">
-                                <option value="1">Đảng viên</option>
-                                <option value="2">Admin</option>
-                            </select>
-                        </div>
-                        <div class="k dl-sm-it">
-                            <span class="k t dl-name-dv" id="sl-db-active">Ngày đến Chi bộ: </span>
-                            <div class="form-group">
-                                <div class='input-group date' id='datepicker-addnew'>
-                                    <input type='text' class="form-control" id="day-create-cb" />
-                                    <span class="input-group-addon">
-                                        <span class="glyphicon glyphicon-calendar"></span>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="k dl-sm-it">
-                            <span class="k t dl-name-dv">Mật khẩu: </span>
-                            <input class="k dl-input-dv" id="ip-pass" type="password" />
-                        </div>
-                        <div class="k dl-sm-it">
-                            <span class="k t dl-name-dv">Nhập lại mật khẩu: </span>
-                            <input class="k dl-input-dv" id="ip-cf-pass" type="password" />
-                            <span class="k t err-validate">**Vui lòng kiểm tra lại thông tin</span>
-                        </div>
-
-                        <span class="k dl-bnt-save" onclick="insertUser()">Thêm mới</span>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        @*change account password*@
-        <div class="modal fade" id="modalupdateuser" role="dialog">
-            <div class="modal-dialog">
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Cập nhật tài khoản</h4>
-                    </div>
-                    <div class="k modal-body">
-                        <div class="k dl-sm-it">
-                            <span class="k t dl-name-dv">Mã Đảng viên: </span>
-                            <input class="k dl-input-dv" disabled="disabled" id="madv-ud" type="text" />
-                        </div>
-                        <div class="k dl-sm-it">
-                            <span class="k t dl-name-dv">Chi bộ: </span>
-                            <select class="k dl-sl-dv" id="sl-cb-ud">
-                                @*<option value="0">Chi bộ trung tâm CNTT</option>*@
-                            </select>
-                        </div>
-                        <div class="k dl-sm-it">
-                            <span class="k t dl-name-dv">Chức vụ Đảng: </span>
-                            <select class="k dl-sl-dv" id="sl-og-ud">
-                                @*<option value="0">Ủy viên</option>
-                                <option value="0">Bí thư chi bộ</option>*@
-                            </select>
-                        </div>
-                        <div class="k dl-sm-it">
-                            <span class="k t dl-name-dv">Phân quyền: </span>
-                            <select class="k dl-sl-dv" id="sl-role-ud">
-                                <option value="1">Đảng viên</option>
-                                <option value="2">Admin</option>
-                            </select>
-                        </div>
-                        <div class="k dl-sm-it">
-                            <span class="k t dl-name-dv" id="sl-db-active">Ngày đến Chi bộ: </span>
-                            <div class="form-group">
-                                <div class='input-group date' id='datepicker-update'>
-                                    <input type='text' class="form-control" id="day-update-us" />
-                                    <span class="input-group-addon">
-                                        <span class="glyphicon glyphicon-calendar"></span>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="k dl-sm-it">
-                            <span class="k t dl-name-dv">Mật khẩu: </span>
-                            <input class="k dl-input-dv" id="pass-ud" type="password" />
-                        </div>
-                        <div class="k dl-sm-it">
-                            <span class="k t dl-name-dv">Nhập lại mật khẩu: </span>
-                            <input class="k dl-input-dv" id="cf-pass-ud" type="password" />
-                            <span class="k t err-validate" id="err-validate-ud">**Vui lòng kiểm tra lại thông tin, nếu không thay đổi mật khẩu vui lòng xóa trắng 2 trường mật khẩu</span>
-                        </div>
-
-                        <span class="k dl-bnt-save" onclick="updateUser()">Cập nhật</span>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        @*change  chibo*@
-        <div class="modal fade" id="modalchuyendang" role="dialog">
-            <div class="modal-dialog">
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Khóa tài khoản người dùng</h4>
-                    </div>
-                    <div class="k modal-body">
-                        <div class="k dl-sm-it">
-                            <span class="k t dl-name-dv">Lý do khóa: </span>
-                            <select class="k dl-sl-dv" id="sl-reason">
-                               <option value="5">Chuyển đi</option>
-                               <option value="4">Xin ra khỏi Đảng</option>
-                               <option value="3">Xóa tên</option>
-                               <option value="2">Khai trừ</option>
-                               <option value="1">Từ trần</option>
-                            </select>
-                        </div>
-                        <span class="k dl-bnt-save" onclick="blockUser()">Khóa tài khoản</span>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-
     </div>
+
+    @*add new dang vien*@
+    <div class="modal fade" id="modalinsertdangvien" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Thêm mới tài khoản</h4>
+                </div>
+                <div class="k modal-body">
+                    <div class="k dl-sm-it">
+                        <span class="k t dl-name-dv">Mã Đảng viên: </span>
+                        <input class="k dl-input-dv" id="ip-madv-addnew" type="text" />
+                    </div>
+                    <div class="k dl-sm-it">
+                        <span class="k t dl-name-dv">Chi bộ: </span>
+                        <select class="k dl-sl-dv" id="sl-chb-addnew">
+                            @*<option value="0">Chi bộ trung tâm CNTT</option>*@
+                        </select>
+                    </div>
+                    <div class="k dl-sm-it">
+                        <span class="k t dl-name-dv">Chức vụ Đảng: </span>
+                        <select class="k dl-sl-dv" id="sl-title-addnew">
+                            @*<option value="0">Ủy viên</option>
+                                <option value="0">Bí thư chi bộ</option>*@
+                        </select>
+                    </div>
+                    <div class="k dl-sm-it">
+                        <span class="k t dl-name-dv">Lý do tạo: </span>
+                        <select class="k dl-sl-dv" id="reason-create">
+                            <option value="0">Kết nạp</option>
+                            <option value="1">Chuyển đếns</option>
+                        </select>
+                    </div>
+                    <div class="k dl-sm-it">
+                        <span class="k t dl-name-dv">Phân quyền: </span>
+                        <select class="k dl-sl-dv" id="sl-role-addnew">
+                            <option value="1">Đảng viên</option>
+                            <option value="2">Admin</option>
+                        </select>
+                    </div>
+                    <div class="k dl-sm-it">
+                        <span class="k t dl-name-dv" id="sl-db-active">Ngày đến Chi bộ: </span>
+                        <div class="form-group">
+                            <div class='input-group date' id='datepicker-addnew'>
+                                <input type='text' class="form-control" id="day-create-cb" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="k dl-sm-it">
+                        <span class="k t dl-name-dv">Mật khẩu: </span>
+                        <input class="k dl-input-dv" id="ip-pass" type="password" />
+                    </div>
+                    <div class="k dl-sm-it">
+                        <span class="k t dl-name-dv">Nhập lại mật khẩu: </span>
+                        <input class="k dl-input-dv" id="ip-cf-pass" type="password" />
+                        <span class="k t err-validate">**Vui lòng kiểm tra lại thông tin</span>
+                    </div>
+
+                    <span class="k dl-bnt-save" onclick="insertUser()">Thêm mới</span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    @*change account password*@
+    <div class="modal fade" id="modalupdateuser" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Cập nhật tài khoản</h4>
+                </div>
+                <div class="k modal-body">
+                    <div class="k dl-sm-it">
+                        <span class="k t dl-name-dv">Mã Đảng viên: </span>
+                        <input class="k dl-input-dv" disabled="disabled" id="madv-ud" type="text" />
+                    </div>
+                    <div class="k dl-sm-it">
+                        <span class="k t dl-name-dv">Chi bộ: </span>
+                        <select class="k dl-sl-dv" id="sl-cb-ud">
+                            @*<option value="0">Chi bộ trung tâm CNTT</option>*@
+                        </select>
+                    </div>
+                    <div class="k dl-sm-it">
+                        <span class="k t dl-name-dv">Chức vụ Đảng: </span>
+                        <select class="k dl-sl-dv" id="sl-og-ud">
+                            @*<option value="0">Ủy viên</option>
+                                <option value="0">Bí thư chi bộ</option>*@
+                        </select>
+                    </div>
+                    <div class="k dl-sm-it">
+                        <span class="k t dl-name-dv">Phân quyền: </span>
+                        <select class="k dl-sl-dv" id="sl-role-ud">
+                            <option value="1">Đảng viên</option>
+                            <option value="2">Admin</option>
+                        </select>
+                    </div>
+                    <div class="k dl-sm-it">
+                        <span class="k t dl-name-dv" id="sl-db-active">Ngày đến Chi bộ: </span>
+                        <div class="form-group">
+                            <div class='input-group date' id='datepicker-update'>
+                                <input type='text' class="form-control" id="day-update-us" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="k dl-sm-it">
+                        <span class="k t dl-name-dv">Mật khẩu: </span>
+                        <input class="k dl-input-dv" id="pass-ud" type="password" />
+                    </div>
+                    <div class="k dl-sm-it">
+                        <span class="k t dl-name-dv">Nhập lại mật khẩu: </span>
+                        <input class="k dl-input-dv" id="cf-pass-ud" type="password" />
+                        <span class="k t err-validate" id="err-validate-ud">**Vui lòng kiểm tra lại thông tin, nếu không thay đổi mật khẩu vui lòng xóa trắng 2 trường mật khẩu</span>
+                    </div>
+
+                    <span class="k dl-bnt-save" onclick="updateUser()">Cập nhật</span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    @*change  chibo*@
+    <div class="modal fade" id="modalchuyendang" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Khóa tài khoản người dùng</h4>
+                </div>
+                <div class="k modal-body">
+                    <div class="k dl-sm-it">
+                        <span class="k t dl-name-dv">Lý do khóa: </span>
+                        <select class="k dl-sl-dv" id="sl-reason">
+                            <option value="5">Chuyển đi</option>
+                            <option value="4">Xin ra khỏi Đảng</option>
+                            <option value="3">Xóa tên</option>
+                            <option value="2">Khai trừ</option>
+                            <option value="1">Từ trần</option>
+                        </select>
+                    </div>
+                    <span class="k dl-bnt-save" onclick="blockUser()">Khóa tài khoản</span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
 
 @section Script{
     <script src="~/js/admin/addangvien.js"></script>

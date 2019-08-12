@@ -8,7 +8,7 @@ using WebApi.model.roles;
 
 namespace WebApi.Controllers
 {
-    [Authorize(Roles = Roles.Admin)]
+    //[Authorize(Roles = Roles.Admin)]
     [Route("api/[controller]")]
     [ApiController]
     public class ValuesController : ControllerBase

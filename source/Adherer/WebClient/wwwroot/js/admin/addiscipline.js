@@ -145,7 +145,7 @@ $(document).ready(function () {
         sideBySide: false,
         daysOfWeekDisabled: [],
         calendarWeeks: false,
-        viewMode: 'days',
+        viewMode: 'years',
         toolbarPlacement: 'default',
         showTodayButton: false,
         showClear: false,
