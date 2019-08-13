@@ -93,6 +93,155 @@
         display:none;
     }*/
 }
+
+@media only screen and (max-width: 600px) {
+    .name-f {
+        margin-top: 10px;
+        font-size: var(--fs-tt);
+    }
+
+    .row-table {
+        margin-top: 20px;
+    }
+
+    .tt-table {
+        font-size: var(--fs-dt);
+    }
+
+    .dl-sm-it {
+        margin-bottom: 10px;
+    }
+
+    .dl-name-dv {
+        width: 30%;
+    }
+
+    .dl-input-dv {
+        width: 70%;
+    }
+
+    .dl-sl-dv {
+        width: 70%;
+    }
+
+    .dv-bnt-save {
+        padding: 5px;
+        font-size: var(--fs-dt);
+        margin-top: 20px;
+    }
+}
+
+@media only screen and (min-width: 600px) and (max-width:768px) {
+    .name-f {
+        margin-top: 10px;
+        font-size: var(--fs-tt);
+    }
+
+    .row-table {
+        margin-top: 20px;
+    }
+
+    .tt-table {
+        font-size: var(--fs-dt);
+    }
+
+    .dl-sm-it {
+        margin-bottom: 10px;
+    }
+
+    .dl-name-dv {
+        width: 30%;
+    }
+
+    .dl-input-dv {
+        width: 70%;
+    }
+
+    .dl-sl-dv {
+        width: 70%;
+    }
+
+    .dv-bnt-save {
+        padding: 5px;
+        font-size: var(--fs-dt);
+        margin-top: 20px;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+    .name-f {
+        margin-top: 10px;
+        font-size: var(--fs-tt);
+    }
+
+    .row-table {
+        margin-top: 20px;
+    }
+
+    .tt-table {
+        font-size: var(--fs-dt);
+    }
+
+    .dl-sm-it {
+        margin-bottom: 10px;
+    }
+
+    .dl-name-dv {
+        width: 30%;
+    }
+
+    .dl-input-dv {
+        width: 70%;
+    }
+
+    .dl-sl-dv {
+        width: 70%;
+    }
+
+    .dv-bnt-save {
+        padding: 5px;
+        font-size: var(--fs-dt);
+        margin-top: 20px;
+    }
+}
+
+@media only screen and (min-width: 992px) and (max-width:1200px) {
+    .name-f {
+        margin-top: 10px;
+        font-size: var(--fs-tt);
+    }
+
+    .row-table {
+        margin-top: 20px;
+    }
+
+    .tt-table {
+        font-size: var(--fs-dt);
+    }
+
+    .dl-sm-it {
+        margin-bottom: 10px;
+    }
+
+    .dl-name-dv {
+        width: 30%;
+    }
+
+    .dl-input-dv {
+        width: 70%;
+    }
+
+    .dl-sl-dv {
+        width: 70%;
+    }
+
+    .dv-bnt-save {
+        padding: 5px;
+        font-size: var(--fs-dt);
+        margin-top: 20px;
+    }
+} 
+
 @media only screen and (min-width:1200px){
     .name-f {
         margin-top:10px;

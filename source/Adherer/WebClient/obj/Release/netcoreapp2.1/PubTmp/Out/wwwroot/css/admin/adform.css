@@ -197,6 +197,324 @@
     }
 }
 
+@media only screen and (max-width: 600px) {
+    .title {
+        font-size: var(--fs-dt);
+        padding: 5px 5px 5px 0;
+    }
+
+    .main-form-item {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .tt-table {
+        font-size: var(--fs-dt);
+    }
+
+    .tt-table-dt {
+        font-size: var(--fs-dt);
+        padding: 5px;
+    }
+
+    .form-add-new {
+        padding: 10px;
+    }
+
+    .left-text {
+        width: 30%;
+        padding: 5px;
+        font-size: var(--fs-dt);
+    }
+
+    .right-text {
+        width: 70%;
+        padding: 7px;
+        font-size: var(--fs-dt);
+        min-height: 60px;
+    }
+
+    .name-file {
+    }
+
+    .bnt-insert-form {
+        font-size: var(--fs-dt);
+        margin-top: 5px;
+    }
+
+    .dl-sm-it {
+        margin-bottom: 20px;
+    }
+
+    .left-text {
+        width: 30%;
+        padding: 5px;
+        text-align: center;
+    }
+
+    .input-text {
+        width: 70%;
+        padding: 5px;
+    }
+
+    .form-file-update {
+        width: 70%;
+        padding: 5px;
+    }
+
+    .bnt-update {
+        padding: 3px 5px;
+    }
+
+    .name-file-update {
+        width: 80%;
+        font-size: var(--fs-dt);
+    }
+
+    .bnt-brower-update {
+        width: 20%;
+        font-size: 12px;
+    }
+}
+
+@media only screen and (min-width: 600px) and (max-width:768px) {
+    .title {
+        font-size: var(--fs-dt);
+        padding: 5px 5px 5px 0;
+    }
+
+    .main-form-item {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .tt-table {
+        font-size: var(--fs-dt);
+    }
+
+    .tt-table-dt {
+        font-size: var(--fs-dt);
+        padding: 5px;
+    }
+
+    .form-add-new {
+        padding: 10px;
+    }
+
+    .left-text {
+        width: 30%;
+        padding: 5px;
+        font-size: var(--fs-dt);
+    }
+
+    .right-text {
+        width: 70%;
+        padding: 7px;
+        font-size: var(--fs-dt);
+        min-height: 60px;
+    }
+
+    .name-file {
+    }
+
+    .bnt-insert-form {
+        font-size: var(--fs-dt);
+        margin-top: 5px;
+    }
+
+    .dl-sm-it {
+        margin-bottom: 20px;
+    }
+
+    .left-text {
+        width: 30%;
+        padding: 5px;
+        text-align: center;
+    }
+
+    .input-text {
+        width: 70%;
+        padding: 5px;
+    }
+
+    .form-file-update {
+        width: 70%;
+        padding: 5px;
+    }
+
+    .bnt-update {
+        padding: 3px 5px;
+    }
+
+    .name-file-update {
+        width: 80%;
+        font-size: var(--fs-dt);
+    }
+
+    .bnt-brower-update {
+        width: 20%;
+        font-size: 12px;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+    .title {
+        font-size: var(--fs-dt);
+        padding:5px 5px  5px 0;
+    }
+
+    .main-form-item {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .tt-table {
+        font-size: var(--fs-dt);
+    }
+
+    .tt-table-dt {
+        font-size: var(--fs-dt);
+        padding: 5px;
+    }
+
+    .form-add-new {
+        padding: 10px;
+    }
+
+    .left-text {
+        width: 30%;
+        padding: 5px;
+        font-size: var(--fs-dt);
+    }
+
+    .right-text {
+        width: 70%;
+        padding: 7px;
+        font-size: var(--fs-dt);
+        min-height: 60px;
+    }
+
+    .name-file {
+    }
+
+    .bnt-insert-form {
+        font-size: var(--fs-dt);
+        margin-top: 5px;
+    }
+
+    .dl-sm-it {
+        margin-bottom: 20px;
+    }
+
+    .left-text {
+        width: 30%;
+        padding: 5px;
+        text-align:center;
+    }
+
+    .input-text {
+        width: 70%;
+        padding: 5px;
+    }
+
+    .form-file-update {
+        width: 70%;
+        padding: 5px;
+    }
+
+    .bnt-update {
+        padding: 3px 5px;
+    }
+
+    .name-file-update {
+        width: 80%;
+        font-size: var(--fs-dt);
+    }
+
+    .bnt-brower-update {
+        width: 20%;
+        font-size: 12px;
+    }
+}
+
+@media only screen and (min-width: 992px) and (max-width:1200px) {
+    .title {
+        font-size: var(--fs-dt);
+    }
+
+    .main-form-item {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .tt-table {
+        font-size: var(--fs-dt);
+    }
+
+    .tt-table-dt {
+        font-size: var(--fs-dt);
+        padding: 5px;
+    }
+
+    .form-add-new {
+        padding: 10px;
+    }
+
+    .left-text {
+        width: 30%;
+        padding: 5px;
+        font-size: var(--fs-dt);
+    }
+
+    .right-text {
+        width: 70%;
+        padding: 7px;
+        font-size: var(--fs-dt);
+        min-height: 60px;
+    }
+
+    .name-file {
+    }
+
+    .bnt-insert-form {
+        font-size: var(--fs-dt);
+        margin-top: 5px;
+    }
+
+    .dl-sm-it {
+        margin-bottom: 20px;
+    }
+
+    .left-text {
+        width: 30%;
+        padding: 5px;
+    }
+
+    .input-text {
+        width: 70%;
+        padding: 5px;
+    }
+
+    .form-file-update {
+        width: 70%;
+        padding: 5px;
+    }
+
+    .bnt-update {
+        padding: 3px 5px;
+    }
+
+    .name-file-update {
+        width: 80%;
+        font-size: var(--fs-dt);
+    }
+
+    .bnt-brower-update {
+        width: 20%;
+        font-size: 12px;
+    }
+} 
+
 @media only screen and (min-width:1200px) {
     .title {
         font-size: var(--fs-dt);

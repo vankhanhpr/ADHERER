@@ -23,17 +23,17 @@
         -ms-transform: rotate(0deg);
         -moz-transform: rotate(0deg);
         -webkit-transform: rotate(0deg);
-        transform: rotate(-90deg);
+        transform: rotate(0deg);
     }
     .down {
-        -ms-transform: rotate(0deg);
-        -moz-transform: rotate(0deg);
-        -webkit-transform: rotate(0deg);
-        transform: rotate(0deg);
+        -ms-transform: rotate(-90deg);
+        -moz-transform: rotate(-90deg);
+        -webkit-transform: rotate(-90deg);
+        transform: rotate(-90deg);
         transition: all 0.2s linear;
     }
     .tab-filter{
-        display:none;
+        display:block;
         width:100%;
         padding:5px;
         border:1px solid rgba(51,51,51,0.1);
@@ -171,10 +171,380 @@
         font-size:12px;
         display:none;
     }
+
+
+    .bootstrap-datetimepicker-widget .dropdown-menu {
+        margin: 2px 0;
+        padding: 40px;
+        width: 19em;
+    }
+
 }
+
+@media only screen and (max-width: 600px) {
+    .f-add-dv {
+        padding: 10px;
+        margin-top: 10px;
+    }
+
+    .ic-show-ft {
+        margin-top: 5px;
+        margin-left: 10px;
+    }
+
+    .tab-filter {
+        margin-top: 10px;
+    }
+
+    .sl-ft-og {
+        min-width: 10%;
+        margin-left: 5px;
+    }
+
+    .f-search-ft {
+        padding: 3px;
+        margin-left: 10px;
+    }
+
+    .search-ft {
+        min-width: 20%;
+    }
+
+    .bnt-search {
+        margin-top: 3px;
+        margin-right: 3px;
+        font-size: var(--fs-dt);
+    }
+
+    .t-name-dv {
+        font-size: var(--fs-dt);
+    }
+
+    .f-body-ldv {
+        margin-top: 20px;
+        padding: 10px;
+    }
+
+    .img-avt-dv {
+        width: 10%;
+        height: 100px;
+    }
+
+    .item-dv {
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+    .f-name {
+        width: 30%;
+        padding: 5px 10px;
+    }
+
+    .t-if-dv {
+        font-size: var(--fs-dt);
+        margin-bottom: 5px;
+    }
+
+    .font-ic {
+        font-size: var(--fs-dt);
+        margin-right: 10px;
+    }
+
+    .dl-sm-it {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .dl-name-dv {
+        width: 30%;
+        font-size: var(--fs-dt);
+    }
+
+    .dl-input-dv {
+        width: 70%;
+        padding: 5px;
+    }
+
+    .dl-sl-dv {
+        width: 70%;
+        padding: 5px;
+    }
+}
+
+@media only screen and (min-width: 600px) and (max-width:768px) {
+    .f-add-dv {
+        padding: 10px;
+        margin-top: 10px;
+    }
+
+    .ic-show-ft {
+        margin-top: 5px;
+        margin-left: 10px;
+    }
+
+    .tab-filter {
+        margin-top: 10px;
+    }
+
+    .sl-ft-og {
+        min-width: 10%;
+        margin-left: 5px;
+    }
+
+    .f-search-ft {
+        padding: 3px;
+        margin-left: 10px;
+    }
+
+    .search-ft {
+        min-width: 20%;
+    }
+
+    .bnt-search {
+        margin-top: 3px;
+        margin-right: 3px;
+        font-size: var(--fs-dt);
+    }
+
+    .t-name-dv {
+        font-size: var(--fs-dt);
+    }
+
+    .f-body-ldv {
+        margin-top: 20px;
+        padding: 10px;
+    }
+
+    .img-avt-dv {
+        width: 10%;
+        height: 100px;
+    }
+
+    .item-dv {
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+    .f-name {
+        width: 30%;
+        padding: 5px 10px;
+    }
+
+    .t-if-dv {
+        font-size: var(--fs-dt);
+        margin-bottom: 5px;
+    }
+
+    .font-ic {
+        font-size: var(--fs-dt);
+        margin-right: 10px;
+    }
+
+    .dl-sm-it {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .dl-name-dv {
+        width: 30%;
+        font-size: var(--fs-dt);
+    }
+
+    .dl-input-dv {
+        width: 70%;
+        padding: 5px;
+    }
+
+    .dl-sl-dv {
+        width: 70%;
+        padding: 5px;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+    .f-add-dv {
+        padding: 10px;
+        margin-top: 10px;
+    }
+
+    .ic-show-ft {
+        margin-top: 5px;
+        margin-left: 10px;
+    }
+
+    .tab-filter {
+        margin-top: 10px;
+    }
+
+    .sl-ft-og {
+        min-width: 10%;
+        margin-left: 5px;
+    }
+
+    .f-search-ft {
+        padding: 3px;
+        margin-left: 10px;
+    }
+
+    .search-ft {
+        min-width: 20%;
+    }
+
+    .bnt-search {
+        margin-top: 3px;
+        margin-right: 3px;
+        font-size: var(--fs-dt);
+    }
+
+    .t-name-dv {
+        font-size: var(--fs-dt);
+    }
+
+    .f-body-ldv {
+        margin-top: 20px;
+        padding: 10px;
+    }
+
+    .img-avt-dv {
+        width: 10%;
+        height: 100px;
+    }
+
+    .item-dv {
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+    .f-name {
+        width: 30%;
+        padding: 5px 10px;
+    }
+
+    .t-if-dv {
+        font-size: var(--fs-dt);
+        margin-bottom: 5px;
+    }
+
+    .font-ic {
+        font-size: var(--fs-dt);
+        margin-right: 10px;
+    }
+
+    .dl-sm-it {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .dl-name-dv {
+        width: 30%;
+        font-size: var(--fs-dt);
+    }
+
+    .dl-input-dv {
+        width: 70%;
+        padding: 5px;
+    }
+
+    .dl-sl-dv {
+        width: 70%;
+        padding: 5px;
+    }
+}
+
+@media only screen and (min-width: 992px) and (max-width:1200px) {
+    .f-add-dv {
+        padding: 10px;
+        margin-top: 10px;
+    }
+
+    .ic-show-ft {
+        margin-top: 5px;
+        margin-left: 10px;
+    }
+
+    .tab-filter {
+        margin-top: 10px;
+    }
+
+    .sl-ft-og {
+        min-width: 10%;
+        margin-left: 5px;
+    }
+
+    .f-search-ft {
+        padding: 3px;
+        margin-left: 10px;
+    }
+
+    .search-ft {
+        min-width: 20%;
+    }
+
+    .bnt-search {
+        margin-top: 3px;
+        margin-right: 3px;
+        font-size: var(--fs-dt);
+    }
+
+    .t-name-dv {
+        font-size: var(--fs-dt);
+    }
+
+    .f-body-ldv {
+        margin-top: 20px;
+        padding: 10px;
+    }
+
+    .img-avt-dv {
+        width: 10%;
+        height: 100px;
+    }
+
+    .item-dv {
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+    .f-name {
+        width: 30%;
+        padding: 5px 10px;
+    }
+
+    .t-if-dv {
+        font-size: var(--fs-dt);
+        margin-bottom: 5px;
+    }
+
+    .font-ic {
+        font-size: var(--fs-dt);
+        margin-right: 10px;
+    }
+
+    .dl-sm-it {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .dl-name-dv {
+        width: 30%;
+        font-size: var(--fs-dt);
+    }
+
+    .dl-input-dv {
+        width: 70%;
+        padding: 5px;
+    }
+
+    .dl-sl-dv {
+        width: 70%;
+        padding: 5px;
+    }
+} 
+
 @media only screen and (min-width:1200px){
     .f-add-dv {
-        padding:10px;
+        padding: 10px;
+        margin-top: 10px;
     }
     .ic-show-ft {
         margin-top:5px;

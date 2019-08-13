@@ -146,7 +146,113 @@
         width: 100%;
     }
 }
+@media only screen and (max-width: 600px) {
+    .f-inf {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
 
+    .f-chibo {
+        padding: 10px 10px 0 10px;
+        min-height: 50px;
+    }
+
+    .dl-name-db, .dl-input-db {
+        font-size: var(--fs-dt);
+    }
+
+    .dl-bnt-save {
+        padding: 5px;
+        font-size: var(--fs-dt);
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+
+    .dl-sm-it {
+        margin-bottom: 10px;
+    }
+}
+
+@media only screen and (min-width: 600px) and (max-width:768px) {
+    .f-inf {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .f-chibo {
+        padding: 10px 10px 0 10px;
+        min-height: 50px;
+    }
+
+    .dl-name-db, .dl-input-db {
+        font-size: var(--fs-dt);
+    }
+
+    .dl-bnt-save {
+        padding: 5px;
+        font-size: var(--fs-dt);
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+
+    .dl-sm-it {
+        margin-bottom: 10px;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+    .f-inf {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .f-chibo {
+        padding: 10px 10px 0 10px;
+        min-height: 50px;
+    }
+
+    .dl-name-db, .dl-input-db {
+        font-size: var(--fs-dt);
+    }
+
+    .dl-bnt-save {
+        padding: 5px;
+        font-size: var(--fs-dt);
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+
+    .dl-sm-it {
+        margin-bottom: 10px;
+    }
+}
+
+@media only screen and (min-width: 992px) and (max-width:1200px) {
+    .f-inf {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .f-chibo {
+        padding: 10px 10px 0 10px;
+        min-height: 50px;
+    }
+
+    .dl-name-db, .dl-input-db {
+        font-size: var(--fs-dt);
+    }
+
+    .dl-bnt-save {
+        padding: 5px;
+        font-size: var(--fs-dt);
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+
+    .dl-sm-it {
+        margin-bottom: 10px;
+    }
+} 
 @media only screen and (min-width:1200px) {
     .f-inf {
         margin-top: 20px;

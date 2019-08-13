@@ -78,12 +78,30 @@ namespace WebApi.controllers.auth
                     data.message = "not found";
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 data.error = e;
                 data.success = false;
                 data.message = e.Message;
             }
+            return data;
+        }
+
+        //refresh token
+        public async Task<DataRespond> refreshTokenAsync(string token)
+        {
+            DataRespond data = new DataRespond();
+            try
+            {
+               // var rt = await HttpContext.Authentication.GetTokenAsync("refresh_token");
+            }
+            catch (Exception e)
+            {
+                data.error = e;
+                data.message = e.Message;
+                data.success = false;
+            }
+
             return data;
         }
     }

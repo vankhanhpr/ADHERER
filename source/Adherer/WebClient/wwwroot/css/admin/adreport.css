@@ -87,6 +87,252 @@
         color:var(--cl-text-wt);
     }
 }
+
+@media only screen and (max-width: 600px) {
+    .body-form {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+    .text-report {
+        font-size: var(--fs-tt);
+        padding: 5px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .text-note-filter {
+        font-size: var(--fs-dt);
+        padding: 3px 5px;
+        width: 40%;
+    }
+
+    .smail-item {
+        width: 50%;
+        padding-top: 10px;
+        min-height: 65px;
+    }
+
+    .f-search-ft {
+        padding: 5px;
+        margin-left: 10px;
+    }
+
+    .bnt-search {
+        margin-top: 3px;
+        margin-right: 3px;
+        font-size: var(--fs-dt);
+    }
+
+    .linechart {
+        min-width: 300px;
+        width: 100%;
+        height: 400px;
+        margin: 0 auto;
+        margin-top: 20px;
+    }
+
+    .form-show-info-user {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .left-text {
+        width: 20%;
+        padding: 10px;
+        font-size: var(--fs-dt);
+    }
+
+    .bnt-filter {
+        padding: 2px 5px;
+        width: 100px;
+    }
+}
+
+@media only screen and (min-width: 600px) and (max-width:768px) {
+    .body-form {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+    .text-report {
+        font-size: var(--fs-tt);
+        padding: 5px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .text-note-filter {
+        font-size: var(--fs-dt);
+        padding: 3px 5px;
+        width: 40%;
+    }
+
+    .smail-item {
+        width: 25%;
+        padding-top: 10px;
+        min-height: 65px;
+    }
+
+    .f-search-ft {
+        padding: 5px;
+        margin-left: 10px;
+    }
+
+    .bnt-search {
+        margin-top: 3px;
+        margin-right: 3px;
+        font-size: var(--fs-dt);
+    }
+
+    .linechart {
+        min-width: 300px;
+        width: 100%;
+        height: 400px;
+        margin: 0 auto;
+        margin-top: 20px;
+    }
+
+    .form-show-info-user {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .left-text {
+        width: 20%;
+        padding: 10px;
+        font-size: var(--fs-dt);
+    }
+
+    .bnt-filter {
+        padding: 2px 5px;
+        width: 100px;
+    }
+}
+
+@media only screen and (max-width: 992px) and (min-width: 768px)
+{
+    .body-form {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+    .text-report {
+        font-size: var(--fs-tt);
+        padding: 5px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .text-note-filter {
+        font-size: var(--fs-dt);
+        padding: 3px 5px;
+        width: 40%;
+    }
+
+    .smail-item {
+        width: 25%;
+        padding-top: 10px;
+        min-height: 65px;
+    }
+
+    .f-search-ft {
+        padding: 5px;
+        margin-left: 10px;
+    }
+
+    .bnt-search {
+        margin-top: 3px;
+        margin-right: 3px;
+        font-size: var(--fs-dt);
+    }
+
+    .linechart {
+        min-width: 300px;
+        width: 100%;
+        height: 400px;
+        margin: 0 auto;
+        margin-top: 20px;
+    }
+
+    .form-show-info-user {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .left-text {
+        width: 20%;
+        padding: 10px;
+        font-size: var(--fs-dt);
+    }
+
+    .bnt-filter {
+        padding: 2px 5px;
+        width: 100px;
+    }
+}
+
+@media only screen and (min-width: 992px) and (max-width:1200px) {
+    .body-form {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+    .text-report {
+        font-size: var(--fs-tt);
+        padding: 5px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .text-note-filter {
+        font-size: var(--fs-dt);
+        padding: 3px 5px;
+        width: 40%;
+    }
+
+    .smail-item {
+        width: 25%;
+        padding-top: 10px;
+        min-height: 65px;
+    }
+
+    .f-search-ft {
+        padding: 5px;
+        margin-left: 10px;
+    }
+
+    .bnt-search {
+        margin-top: 3px;
+        margin-right: 3px;
+        font-size: var(--fs-dt);
+    }
+
+    .linechart {
+        min-width: 300px;
+        width: 100%;
+        height: 400px;
+        margin: 0 auto;
+        margin-top: 20px;
+    }
+
+    .form-show-info-user {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .left-text {
+        width: 20%;
+        padding: 10px;
+        font-size: var(--fs-dt);
+    }
+
+    .bnt-filter {
+        padding: 2px 5px;
+        width: 100px;
+    }
+} 
+
 @media only screen and (min-width:1200px){
     .body-form {
        padding-left:5%;

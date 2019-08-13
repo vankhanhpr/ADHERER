@@ -102,6 +102,16 @@ namespace WebApi.serrvice.admin.responsitory
             return context.Users.Where(m => m.cbid == id && m.ngaydenchibo >= fromday && m.ngaydenchibo <= endday ).ToList();
         }
 
+        public dynamic getUserByChiBoId(int id)
+        {
+            var dangvien = context.Users.Where(m=>m.cbid==id).Select(user => new
+            {
+                user,
+                file = context.Files.Where(m => m.usid == user.usid).FirstOrDefault()
+            }).ToList();
+            return dangvien;
+        }
+
         public Users getUserById(int id)
         {
             return context.Users.Where(m => m.usid == id).FirstOrDefault();

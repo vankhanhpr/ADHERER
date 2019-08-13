@@ -225,7 +225,491 @@
         border: 1px solid rgba(255, 0, 0,0.4);
     }
 }
+@media only screen and (max-width: 600px) {
+    .name-file {
+        font-size: var(--fs-tt);
+        margin-top: 10px;
+    }
+    .tab-body {
+        width: 100%;
+    }
+    .tab-avt {
+        margin-bottom: 20px;
+    }
 
+    .f-bd-file {
+        margin-top: 20px;
+        padding: 5px;
+    }
+
+    .img-avt-file {
+        width: 20%;
+        height: 150px;
+    }
+
+    .f-t-avt {
+        width: 80%;
+        padding: 10px 5%;
+    }
+
+    .row-item-body-add {
+        margin-top: 20px;
+        padding: 10px;
+    }
+
+    .t-avt-left {
+        font-size: var(--fs-dt);
+        width: 30%;
+        margin-top: 5px;
+    }
+
+    .t-avt-addres {
+        font-size: var(--fs-dt);
+        width: 100%;
+        margin-top: 5px;
+    }
+
+    .ip-avt-t {
+        font-size: var(--fs-dt);
+        padding: 5px;
+        width: 70%;
+    }
+
+    .ip-avt-add {
+        font-size: var(--fs-dt);
+        padding: 5px;
+        width: 100%;
+        font-size: var(--fs-dt);
+        padding: 5px;
+        margin-top: 20px;
+    }
+
+    .sl-avt-add {
+        width: 33.333%;
+        padding: 5px;
+        margin-top: 2px;
+        cursor: pointer;
+    }
+
+    .bnt-update-file {
+        font-size: var(--fs-dt);
+        margin-top: 10px;
+        margin-bottom: 5px;
+    }
+    /*family*/
+    .tab-note-family {
+        font-size: var(--fs-tt);
+        margin-top: 30px
+    }
+
+    .ic-show-ft {
+        margin-top: 5px;
+        margin-left: 10px;
+        font-size: var(--f-ic);
+    }
+
+    .bnt-add-fml {
+        font-size: var(--fs-dt);
+        margin-right: 5px;
+    }
+
+    .dl-sm-it {
+        margin-bottom: 20px;
+    }
+
+    .dl-sl-fml {
+        width: 70%;
+    }
+
+    .dl-name-fml {
+        font-size: var(--fs-dt);
+        width: 30%;
+    }
+
+    .dl-input-fml {
+        width: 70%;
+        padding: 5px;
+    }
+
+    .dl-bnt-save {
+        font-size: var(--fs-dt);
+        margin-top: 10px;
+        margin-bottom: 5px;
+        width: 100%;
+    }
+
+    .fa-cogs, .fa-trash-o {
+        font-size: var(--fs-dt);
+        margin-left: 5px;
+    }
+    /*bomus*/
+    .note-bonus {
+        min-height: 130px;
+    }
+}
+
+@media only screen and (min-width: 600px) and (max-width:768px) {
+    .name-file {
+        font-size: var(--fs-tt);
+        margin-top: 5px;
+    }
+
+    .tab-avt {
+        margin-bottom: 20px;
+    }
+
+    .f-bd-file {
+        margin-top: 20px;
+        padding: 5px;
+    }
+
+    .img-avt-file {
+        width: 20%;
+        height: 150px;
+    }
+
+    .f-t-avt {
+        width: 80%;
+        padding: 10px 5%;
+    }
+
+    .row-item-body-add {
+        margin-top: 20px;
+        padding: 10px;
+    }
+
+    .t-avt-left {
+        font-size: var(--fs-dt);
+        width: 30%;
+        margin-top: 5px;
+    }
+
+    .t-avt-addres {
+        font-size: var(--fs-dt);
+        width: 100%;
+        margin-top: 5px;
+    }
+
+    .ip-avt-t {
+        font-size: var(--fs-dt);
+        padding: 5px;
+        width: 70%;
+    }
+
+    .ip-avt-add {
+        font-size: var(--fs-dt);
+        padding: 5px;
+        width: 100%;
+        font-size: var(--fs-dt);
+        padding: 5px;
+        margin-top: 20px;
+    }
+
+    .sl-avt-add {
+        width: 33.333%;
+        padding: 5px;
+        margin-top: 2px;
+        cursor: pointer;
+    }
+
+    .bnt-update-file {
+        font-size: var(--fs-dt);
+        margin-top: 10px;
+        margin-bottom: 5px;
+    }
+    /*family*/
+    .tab-note-family {
+        font-size: var(--fs-tt);
+        margin-top: 30px
+    }
+
+    .ic-show-ft {
+        margin-top: 5px;
+        margin-left: 10px;
+        font-size: var(--f-ic);
+    }
+
+    .bnt-add-fml {
+        font-size: var(--fs-dt);
+        margin-right: 5px;
+    }
+
+    .dl-sm-it {
+        margin-bottom: 20px;
+    }
+
+    .dl-sl-fml {
+        width: 70%;
+    }
+
+    .dl-name-fml {
+        font-size: var(--fs-dt);
+        width: 30%;
+    }
+
+    .dl-input-fml {
+        width: 70%;
+        padding: 5px;
+    }
+
+    .dl-bnt-save {
+        font-size: var(--fs-dt);
+        margin-top: 10px;
+        margin-bottom: 5px;
+        width: 100%;
+    }
+
+    .fa-cogs, .fa-trash-o {
+        font-size: var(--fs-dt);
+        margin-left: 5px;
+    }
+    /*bomus*/
+    .note-bonus {
+        min-height: 130px;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+    .name-file {
+        font-size: var(--fs-tt);
+        margin-top: 5px;
+    }
+
+    .tab-avt {
+        margin-bottom: 20px;
+    }
+
+    .f-bd-file {
+        margin-top: 20px;
+        padding: 5px;
+    }
+
+    .img-avt-file {
+        width: 20%;
+        height: 150px;
+    }
+
+    .f-t-avt {
+        width: 80%;
+        padding: 10px 5%;
+    }
+
+    .row-item-body-add {
+        margin-top: 20px;
+        padding: 10px;
+    }
+
+    .t-avt-left {
+        font-size: var(--fs-dt);
+        width: 30%;
+        margin-top: 5px;
+    }
+
+    .t-avt-addres {
+        font-size: var(--fs-dt);
+        width: 100%;
+        margin-top: 5px;
+    }
+
+    .ip-avt-t {
+        font-size: var(--fs-dt);
+        padding: 5px;
+        width: 70%;
+    }
+
+    .ip-avt-add {
+        font-size: var(--fs-dt);
+        padding: 5px;
+        width: 100%;
+        font-size: var(--fs-dt);
+        padding: 5px;
+        margin-top: 20px;
+    }
+
+    .sl-avt-add {
+        width: 33.333%;
+        padding: 5px;
+        margin-top: 2px;
+        cursor: pointer;
+    }
+
+    .bnt-update-file {
+        font-size: var(--fs-dt);
+        margin-top: 10px;
+        margin-bottom: 5px;
+    }
+    /*family*/
+    .tab-note-family {
+        font-size: var(--fs-tt);
+        margin-top: 30px
+    }
+
+    .ic-show-ft {
+        margin-top: 5px;
+        margin-left: 10px;
+        font-size: var(--f-ic);
+    }
+
+    .bnt-add-fml {
+        font-size: var(--fs-dt);
+        margin-right: 5px;
+    }
+
+    .dl-sm-it {
+        margin-bottom: 20px;
+    }
+
+    .dl-sl-fml {
+        width: 70%;
+    }
+
+    .dl-name-fml {
+        font-size: var(--fs-dt);
+        width: 30%;
+    }
+
+    .dl-input-fml {
+        width: 70%;
+        padding: 5px;
+    }
+
+    .dl-bnt-save {
+        font-size: var(--fs-dt);
+        margin-top: 10px;
+        margin-bottom: 5px;
+        width: 100%;
+    }
+
+    .fa-cogs, .fa-trash-o {
+        font-size: var(--fs-dt);
+        margin-left: 5px;
+    }
+    /*bomus*/
+    .note-bonus {
+        min-height: 130px;
+    }
+}
+
+@media only screen and (min-width: 992px) and (max-width:1200px) {
+    .name-file {
+        font-size: var(--fs-tt);
+        margin-top: 5px;
+    }
+
+    .tab-avt {
+        margin-bottom: 20px;
+    }
+
+    .f-bd-file {
+        margin-top: 20px;
+        padding: 5px;
+    }
+
+    .img-avt-file {
+        width: 20%;
+        height: 150px;
+    }
+
+    .f-t-avt {
+        width: 80%;
+        padding: 10px 5%;
+    }
+
+    .row-item-body-add {
+        margin-top: 20px;
+        padding: 10px;
+    }
+
+    .t-avt-left {
+        font-size: var(--fs-dt);
+        width: 30%;
+        margin-top: 5px;
+    }
+
+    .t-avt-addres {
+        font-size: var(--fs-dt);
+        width: 100%;
+        margin-top: 5px;
+    }
+
+    .ip-avt-t {
+        font-size: var(--fs-dt);
+        padding: 5px;
+        width: 70%;
+    }
+
+    .ip-avt-add {
+        font-size: var(--fs-dt);
+        padding: 5px;
+        width: 100%;
+        font-size: var(--fs-dt);
+        padding: 5px;
+        margin-top: 20px;
+    }
+
+    .sl-avt-add {
+        width: 33.333%;
+        padding: 5px;
+        margin-top: 2px;
+        cursor: pointer;
+    }
+
+    .bnt-update-file {
+        font-size: var(--fs-dt);
+        margin-top: 10px;
+        margin-bottom: 5px;
+    }
+    /*family*/
+    .tab-note-family {
+        font-size: var(--fs-tt);
+        margin-top: 30px
+    }
+
+    .ic-show-ft {
+        margin-top: 5px;
+        margin-left: 10px;
+        font-size: var(--f-ic);
+    }
+
+    .bnt-add-fml {
+        font-size: var(--fs-dt);
+        margin-right: 5px;
+    }
+
+    .dl-sm-it {
+        margin-bottom: 20px;
+    }
+
+    .dl-sl-fml {
+        width: 70%;
+    }
+
+    .dl-name-fml {
+        font-size: var(--fs-dt);
+        width: 30%;
+    }
+
+    .dl-input-fml {
+        width: 70%;
+        padding: 5px;
+    }
+
+    .dl-bnt-save {
+        font-size: var(--fs-dt);
+        margin-top: 10px;
+        margin-bottom: 5px;
+        width: 100%;
+    }
+
+    .fa-cogs, .fa-trash-o {
+        font-size: var(--fs-dt);
+        margin-left: 5px;
+    }
+    /*bomus*/
+    .note-bonus {
+        min-height: 130px;
+    }
+} 
 @media only screen and (min-width:1200px){
     .name-file {
         font-size:var(--fs-tt);

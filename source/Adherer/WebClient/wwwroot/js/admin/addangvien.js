@@ -25,6 +25,7 @@ $('#sl-role-addnew').on('change', function () {
 $('#sl-title-addnew').on('change', function () {
     titleid = parseInt(this.value);
 });
+
 //select update user 
 $('#sl-chb-ud').on('change', function () {
     cbid = parseInt(this.value);
@@ -35,6 +36,16 @@ $('#sl-role-ud').on('change', function () {
 $('#sl-title-ud').on('change', function () {
     titleid = parseInt(this.value);
 });
+
+getAllChiBo(bindingChiBoToFilter);
+function bindingChiBoToFilter(data) {
+    if (data.success && data.data) {
+        for (var i in data.data) {
+            var item = data.data[i];
+            $("#select-chibo-filter").append('<option value=' + item.cbid + '>' + item.tencb + '</option>');
+        }
+    }
+}
 
 function showTabFilter() {
     if (bolft) {
@@ -130,7 +141,7 @@ function bindingUser(data) {
                     '</div>';
             }
             var view = '<div class="k item-dv">' +
-                '<div class="k img-avt-dv" ></div >' +
+                '<div class="k img-avt-dv" style="background-image:url(' + (file.avatar != null ? linkfileuser + file.avatar :'/images/admin/avt-us-defaul.png') + ')" ></div >' +
                 '<div class="k f-name">' +
                 '<span class="k t t-if-dv">' +
                 '<i class="fa fa-user-circle-o font-ic" aria-hidden="true"></i> ' + (file && file.hotendangdung != null ? file.hotendangdung : '') + '' +
@@ -643,7 +654,9 @@ $('#sl-ft-active').on('change', function () {
     var active = parseInt(this.value);
     filterUserByActive(active, bindingUser);
 });
-
+$('#select-chibo-filter').on('change', function () {
+    filterUserByChiBo(parseInt(this.value), bindingUser);
+});
 
 function filterUserByRole(role, callback) {
     $.ajax({
@@ -701,6 +714,28 @@ function filterUserByBox(callback) {
             }
         }
     });
+}
+
+function filterUserByChiBo(cbid, callback) {
+    $.ajax({
+        type: "get",
+        url: linkserver + "aduser/getUserByChiBoIdForFilter?id=" + cbid,
+        data: null,
+        statusCode: {
+            401: function () {
+                window.location.href = "/login";
+            }
+        },
+        headers: { 'authorization': `Bearer ${token}` },
+        dataType: 'json',
+        contentType: "application/json",
+        error: function (err) {
+            //bootbox.alert("Có lỗi xảy ra, vui lòng kiểm tra kết nối");
+        },
+        success: function (data) {
+            callback(data);
+        }
+    });                                                                                             
 }
 
 function acceptUser(id) {

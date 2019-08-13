@@ -26,7 +26,7 @@ $(document).ready(function () {
         sideBySide: false,
         daysOfWeekDisabled: [],
         calendarWeeks: false,
-        viewMode: 'days',
+        viewMode: 'months',
         toolbarPlacement: 'default',
         showTodayButton: false,
         showClear: false,

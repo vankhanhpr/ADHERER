@@ -25,6 +25,7 @@ $('#sl-role-addnew').on('change', function () {
 $('#sl-title-addnew').on('change', function () {
     titleid = parseInt(this.value);
 });
+
 //select update user 
 $('#sl-chb-ud').on('change', function () {
     cbid = parseInt(this.value);
@@ -36,16 +37,25 @@ $('#sl-title-ud').on('change', function () {
     titleid = parseInt(this.value);
 });
 
+getAllChiBo(bindingChiBoToFilter);
+function bindingChiBoToFilter(data) {
+    if (data.success && data.data) {
+        for (var i in data.data) {
+            var item = data.data[i];
+            $("#select-chibo-filter").append('<option value=' + item.cbid + '>' + item.tencb + '</option>');
+        }
+    }
+}
 
 function showTabFilter() {
     if (bolft) {
         bolft = false;
-        $(".tab-filter").show(300);
+        $(".tab-filter").hide(400);
         $(".ic-show-ft").toggleClass("down");
     }
     else {
         bolft = true;
-        $(".tab-filter").hide(300);
+        $(".tab-filter").show(400);
         $(".ic-show-ft").toggleClass("down");
 
     }
@@ -125,15 +135,13 @@ function bindingUser(data) {
                             '</div>';
             }
             else {
-                viewkey =   '<div class="k bd-bnt">' +
-                            '<span>' +
-                            '<span class="k t bnt-ed-dv" onclick="openTabBlockUser(' + user.usid + ',false) "> Mở khóa </span></span>' +
-                            '</div>'
+                viewkey = '<div class="k bd-bnt">' +
+                    '<span>' +
+                    '<span class="k t bnt-ed-dv" onclick="openTabBlockUser(' + user.usid + ',false) "> Mở khóa </span></span>' +
+                    '</div>';
             }
-
-
             var view = '<div class="k item-dv">' +
-                '<div class="k img-avt-dv" ></div >' +
+                '<div class="k img-avt-dv" style="background-image:url(' + (file.avatar != null ? linkfileuser + file.avatar :'/images/admin/avt-us-defaul.png') + ')" ></div >' +
                 '<div class="k f-name">' +
                 '<span class="k t t-if-dv">' +
                 '<i class="fa fa-user-circle-o font-ic" aria-hidden="true"></i> ' + (file && file.hotendangdung != null ? file.hotendangdung : '') + '' +
@@ -168,7 +176,7 @@ function bindingUser(data) {
                 '</div>' +
                 viewkey +
                 '<div class="k bd-bnt">' +
-                '<span class="k t bnt-ed-dv">Duyệt tài khoản</span>' +
+                '<span class="k t bnt-ed-dv" onclick="acceptUser(' + user.usid + ')">' + (!user.accept ? 'Duyệt tài khoản' : 'Cho phép chỉnh sửa tài khoản') + '</span>' +
                 '</div>' +
                 '<div class="k bd-bnt">' +
                 '<span class="k t bnt-ed-dv" data-toggle="modal" onclick="getUserById(bindingUserBuId,' + user.usid + ')" data-target="#modalupdateuser">Cập nhật tài khoản</span>' +
@@ -390,9 +398,9 @@ function insertUser() {
                         callback: function () {
                             emptyForm();
                             page = 0;
-                            getUser(bindingUser, page, pagesize)
+                            getUser(bindingUser, page, pagesize);
                         }
-                    })
+                    });
                 }
                 else {
                     emptyForm();
@@ -646,7 +654,9 @@ $('#sl-ft-active').on('change', function () {
     var active = parseInt(this.value);
     filterUserByActive(active, bindingUser);
 });
-
+$('#select-chibo-filter').on('change', function () {
+    filterUserByChiBo(parseInt(this.value), bindingUser);
+});
 
 function filterUserByRole(role, callback) {
     $.ajax({
@@ -701,6 +711,55 @@ function filterUserByBox(callback) {
         success: function (data) {
             if (data.success) {
                 callback(data);
+            }
+        }
+    });
+}
+
+function filterUserByChiBo(cbid, callback) {
+    $.ajax({
+        type: "get",
+        url: linkserver + "aduser/getUserByChiBoIdForFilter?id=" + cbid,
+        data: null,
+        statusCode: {
+            401: function () {
+                window.location.href = "/login";
+            }
+        },
+        headers: { 'authorization': `Bearer ${token}` },
+        dataType: 'json',
+        contentType: "application/json",
+        error: function (err) {
+            //bootbox.alert("Có lỗi xảy ra, vui lòng kiểm tra kết nối");
+        },
+        success: function (data) {
+            callback(data);
+        }
+    });                                                                                             
+}
+
+function acceptUser(id) {
+    $.ajax({
+        type: "get",
+        url: linkserver + "aduser/acceptUser?id=" + id,
+        data: null,
+        headers: { 'authorization': `Bearer ${token}` },
+        dataType: 'json',
+        contentType: "application/json",
+        error: function (err) {
+            bootbox.alert("Có lỗi xảy ra, vui lòng kiểm tra kết nối");
+        },
+        success: function (data) {
+            if (data.success) {
+                
+                if (data.data) {
+                    bootbox.alert("Duyệt tài khoản thành công!");
+                }
+                else {
+                    bootbox.alert("Đã mở khóa chỉnh sửa tài khoản!");
+                }
+                page = 0;
+                getUser(bindingUser, page, pagesize);
             }
         }
     });

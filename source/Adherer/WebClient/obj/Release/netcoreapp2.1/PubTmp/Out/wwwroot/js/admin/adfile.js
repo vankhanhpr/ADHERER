@@ -9,15 +9,17 @@ function toAbroad() {
 getProvinces(bindingProvinces);
 //date picker
 $(document).ready(function () {
-    $('#datepicker-birthday, #datepicker-vaodct,#datepicker-vaoddb,#datepicker-ngayvaodoan ,#datepicker-daycmnd').datetimepicker({
+    $('#datepicker-birthday, #datepicker-vaodct,#datepicker-vaoddb,#datepicker-ngayvaodoan ,#datepicker-daycmnd')
+        .datetimepicker({
         format: 'DD/MM/YYYY',
+        defaultDate: false,
+        viewMode: 'years',
         extraFormats: false,
         stepping: 1,
         minDate: false,
         maxDate: false,
         useCurrent: true,
         collapse: true,
-        defaultDate: false,
         disabledDates: false,
         enabledDates: false,
         icons: {
@@ -34,10 +36,10 @@ $(document).ready(function () {
         sideBySide: false,
         daysOfWeekDisabled: [],
         calendarWeeks: false,
-        viewMode: 'days',
         toolbarPlacement: 'default',
         showTodayButton: false,
         showClear: false,
+      
         widgetPositioning: {
             horizontal: 'auto',
             vertical: 'auto'
@@ -140,7 +142,7 @@ function bindingFile(data) {
             fileidmain = file.fileid;
             getFamilies(file.fileid, bindigFamilies);//get family
             getBonus(fileidmain, bindingBonus);//get bonus
-            getDiscipline(fileidmain,bindingDiscipline);//discipline
+            getDiscipline(fileidmain, bindingDiscipline);//discipline
             formData.append("fileid", file.fileid);
             $("#namedv").val(file.hotendangdung);
             $("#sl-giotinh option[value='" + (file.gioitinh ? 0 : 1) + "']").prop("selected", true);
@@ -167,7 +169,7 @@ function bindingFile(data) {
             $("#chuyenmon").val(file.chuyenmon);
             $("#noicutru").val(file.noicutru);
             if (file.avatar) {
-                $("#img-avt").css("background-image", "url("+linkfileuser + file.avatar+")");
+                $("#img-avt").css("background-image", "url(" + linkfileuser + file.avatar + ")");
             }
 
             //distric/province/ward
@@ -177,6 +179,7 @@ function bindingFile(data) {
 
         }
         else {
+            $(".bnt-add-fml").hide();
             formData.append("fileid", -1);
             getDistricts('01', bindingDistrict, '');
             getWard('001', bindingWard, '');
@@ -536,6 +539,7 @@ function updateUser() {
                                 bootbox.alert({
                                     message: "Cập nhật thông thành công!",
                                     callback: function () {
+                                        $(".bnt-add-fml").show();
                                         getDangVien(formData.get('usid'),bindingFile);
                                     }
                                 });

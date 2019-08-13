@@ -288,5 +288,24 @@ namespace WebApi.controllers.admin
             }
             return data;
         }
+
+        [HttpGet("getUserByChiBoIdForFilter")]
+        public DataRespond getUserByChiBoId(int id)
+        {
+            DataRespond data = new DataRespond();
+            try
+            {
+                data.success = true;
+                data.data = m_userResponsitory.getUserByChiBoId(id);
+                data.message = "success";
+            }
+            catch(Exception e)
+            {
+                data.error = e;
+                data.message = e.Message;
+                data.success = false;
+            }
+            return data;
+        }
     }
 }
