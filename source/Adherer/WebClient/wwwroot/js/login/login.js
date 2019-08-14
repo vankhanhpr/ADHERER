@@ -11,7 +11,7 @@ function login() {
             type: 'POST',
             dataType: 'json',
             data: JSON.stringify(data),
-            async: false,
+            async: true,
             processData: false,
             contentType: "application/json",
             error: function (err) {

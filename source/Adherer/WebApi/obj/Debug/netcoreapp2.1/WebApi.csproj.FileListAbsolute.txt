@@ -40,3 +40,17 @@ F:\ASP.NET\ADHERER\source\Adherer\WebApi\obj\Debug\netcoreapp2.1\WebApi.dll
 F:\ASP.NET\ADHERER\source\Adherer\WebApi\obj\Debug\netcoreapp2.1\WebApi.pdb
 F:\ASP.NET\ADHERER\source\Adherer\WebApi\obj\Debug\netcoreapp2.1\WebApi.csprojAssemblyReference.cache
 E:\ASPMVC\WORK\ADHERER\source\Adherer\WebApi\obj\Debug\netcoreapp2.1\WebApi.csprojAssemblyReference.cache
+F:\ASP.NET\ADHERER\source\Adherer\WebApi\bin\Debug\netcoreapp2.1\WebApi.Views.dll
+F:\ASP.NET\ADHERER\source\Adherer\WebApi\bin\Debug\netcoreapp2.1\WebApi.Views.pdb
+F:\ASP.NET\ADHERER\source\Adherer\WebApi\obj\Debug\netcoreapp2.1\WebApi.TagHelpers.input.cache
+F:\ASP.NET\ADHERER\source\Adherer\WebApi\obj\Debug\netcoreapp2.1\WebApi.TagHelpers.output.cache
+F:\ASP.NET\ADHERER\source\Adherer\WebApi\obj\Debug\netcoreapp2.1\WebApi.RazorCoreGenerate.cache
+F:\ASP.NET\ADHERER\source\Adherer\WebApi\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_ValidationScriptsPartial.g.cshtml.cs
+F:\ASP.NET\ADHERER\source\Adherer\WebApi\obj\Debug\netcoreapp2.1\Razor\Views\Tests\Create.g.cshtml.cs
+F:\ASP.NET\ADHERER\source\Adherer\WebApi\obj\Debug\netcoreapp2.1\Razor\Views\Tests\Delete.g.cshtml.cs
+F:\ASP.NET\ADHERER\source\Adherer\WebApi\obj\Debug\netcoreapp2.1\Razor\Views\Tests\Details.g.cshtml.cs
+F:\ASP.NET\ADHERER\source\Adherer\WebApi\obj\Debug\netcoreapp2.1\Razor\Views\Tests\Edit.g.cshtml.cs
+F:\ASP.NET\ADHERER\source\Adherer\WebApi\obj\Debug\netcoreapp2.1\Razor\Views\Tests\Index.g.cshtml.cs
+F:\ASP.NET\ADHERER\source\Adherer\WebApi\obj\Debug\netcoreapp2.1\WebApi.RazorTargetAssemblyInfo.cs
+F:\ASP.NET\ADHERER\source\Adherer\WebApi\obj\Debug\netcoreapp2.1\WebApi.Views.pdb
+F:\ASP.NET\ADHERER\source\Adherer\WebApi\obj\Debug\netcoreapp2.1\WebApi.csproj.CopyComplete

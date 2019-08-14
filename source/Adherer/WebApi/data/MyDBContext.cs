@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using WebApi.model;
 using WebApi.serrvice.admin.model;
+using WebApi.controllers.values;
 
 namespace WebApi.data
 {
@@ -25,5 +26,6 @@ namespace WebApi.data
         public DbSet<Report> Report { get; set; }
         public DbSet<Organization> Organization { get; set; }
         public DbSet<Title> Title { get; set; }
+        public DbSet<WebApi.controllers.values.Test> Test { get; set; }
     }
 }
