@@ -9,7 +9,7 @@ function toAbroad() {
 getProvinces(bindingProvinces);
 //date picker
 $(document).ready(function () {
-    $('#datepicker-birthday, #datepicker-vaodct,#datepicker-vaoddb,#datepicker-ngayvaodoan ,#datepicker-daycmnd')
+    $('#datepicker-birthday, #datepicker-vaodct,#datepicker-ngayvaodoan ,#datepicker-daycmnd')
         .datetimepicker({
         format: 'DD/MM/YYYY',
         defaultDate: false,
@@ -171,6 +171,8 @@ function bindingFile(data) {
             if (file.avatar) {
                 $("#img-avt").css("background-image", "url(" + linkfileuser + file.avatar + ")");
             }
+            $("#name-card").text(file.card);
+            $("#name-decision").text(file.decision);
 
             //distric/province/ward
             getDistricts(file.matp, bindingDistrict, file.maqh);
@@ -537,7 +539,7 @@ function updateUser() {
                             destroyLoading();
                             if (data.success) {
                                 bootbox.alert({
-                                    message: "Cập nhật thông thành công!",
+                                    message: "Cập nhật thông tin thành công!",
                                     callback: function () {
                                         $(".bnt-add-fml").show();
                                         getDangVien(formData.get('usid'),bindingFile);
@@ -555,3 +557,95 @@ function updateUser() {
 }
 
 //call item family,bonus,..
+
+// brower the dang
+function getCard() {
+    $("#upload-card").click();
+    $("#upload-card").change(function () {
+        readCardUpload(this);
+    });
+}
+//add picture to view
+function readCardUpload(input) {
+    if (input.files && input.files[0]) {
+        if (formData.get("card") != null) {
+            formData.delete("card");
+        }
+        formData.append("card", input.files[0]);
+        var x = input.files[0];
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $("#name-card").text(x.name);
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+    $("#upload-card").val("");
+}
+
+// brower dicision
+function getDicision() {
+    $("#upload-decision").click();
+    $("#upload-decision").change(function () {
+        readDicisionUpload(this);
+    });
+}
+//add picture to view
+function readDicisionUpload(input) {
+    if (input.files && input.files[0]) {
+        if (formData.get("decision") != null) {
+            formData.delete("decision");
+        }
+        formData.append("decision", input.files[0]);
+        var x = input.files[0];
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $("#name-decision").text(x.name);
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+    $("#upload-decision").val("");
+}
+
+//ngay vao Dang chinh thuc
+function changeDay(ev) {
+    alert("fasdf");
+}
+$(document).ready(function () {
+    $('#datepicker-vaoddb').datetimepicker({
+            format: 'DD/MM/YYYY',
+            defaultDate: false,
+            viewMode: 'years',
+            extraFormats: false,
+            stepping: 1,
+            minDate: false,
+            maxDate: false,
+            useCurrent: true,
+            collapse: true,
+            disabledDates: false,
+            enabledDates: false,
+            icons: {
+                time: 'glyphicon glyphicon-time',
+                date: 'glyphicon glyphicon-calendar',
+                up: 'glyphicon glyphicon-chevron-up',
+                down: 'glyphicon glyphicon-chevron-down',
+                previous: 'glyphicon glyphicon-chevron-left',
+                next: 'glyphicon glyphicon-chevron-right',
+                today: 'glyphicon glyphicon-screenshot',
+                clear: 'glyphicon glyphicon-trash'
+            },
+            useStrict: false,
+            sideBySide: false,
+            daysOfWeekDisabled: [],
+            calendarWeeks: false,
+            toolbarPlacement: 'default',
+            showTodayButton: false,
+            showClear: false,
+            widgetPositioning: {
+                horizontal: 'auto',
+                vertical: 'auto'
+            }
+    }).on('dp.change', function (e) {
+        var x = new Date(e.date);
+        $("#ngayvaodangct").val(formatDate(new Date(x.setFullYear(x.getFullYear() + 1))));
+        });
+});

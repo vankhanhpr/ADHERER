@@ -26,6 +26,8 @@ namespace WebApi.data
         public DbSet<Report> Report { get; set; }
         public DbSet<Organization> Organization { get; set; }
         public DbSet<Title> Title { get; set; }
-        public DbSet<WebApi.controllers.values.Test> Test { get; set; }
+        public DbSet<AdhererLiving> AdhererLiving { get; set; }
+        public DbSet<Test> Test { get; set; }
+
     }
 }

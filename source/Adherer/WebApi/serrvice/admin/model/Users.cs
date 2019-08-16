@@ -24,5 +24,6 @@ namespace WebApi.serrvice.admin.model
         public int lydodi { get; set; }
         public int cbidold { get; set; }
         public Boolean accept { get; set; }
+        public string noisinhhoatcu { get; set; }
     }
 }

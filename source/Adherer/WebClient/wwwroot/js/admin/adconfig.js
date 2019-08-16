@@ -2,6 +2,8 @@
 var linkfileuser = "https://localhost:44343/images/user/";
 var linkfiledownload = "https://localhost:44343/files/";
 
+var linkdocument = "https://localhost:44343/document/";
+
 function formatDate(date) {
     var hours = date.getHours();
     var minutes = date.getMinutes();

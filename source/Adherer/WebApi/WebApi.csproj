@@ -14,6 +14,9 @@
   <ItemGroup>
     <Folder Include="model\respond\" />
     <Folder Include="wwwroot\images\user\" />
+    <Folder Include="wwwroot\card\" />
+    <Folder Include="wwwroot\decision\" />
+    <Folder Include="wwwroot\document\" />
   </ItemGroup>
 
   <ItemGroup>

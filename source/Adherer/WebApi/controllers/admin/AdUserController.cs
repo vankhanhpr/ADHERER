@@ -92,6 +92,7 @@ namespace WebApi.controllers.admin
                 user.lydodi = -1;//nothing
                 user.cbidold = -1;//nothing
                 user.accept = false;
+                user.noisinhhoatcu = usrq.noisinhhoatcu;
 
                 m_userResponsitory.insertUser(user);
                 data.success = true;
@@ -143,7 +144,8 @@ namespace WebApi.controllers.admin
                 user.titleid = usrq.titleid;
                 user.roleid = usrq.roleid;
                 user.active = usrq.active == 0 ? true : false;
-                
+                user.noisinhhoatcu = usrq.noisinhhoatcu;
+
                 DateTime udday = DateTime.ParseExact(usrq.ngaydenchibo, "dd/MM/yyyy", CultureInfo.InvariantCulture);
                 user.ngaydenchibo = udday;
                 if (usrq.password != "")

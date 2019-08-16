@@ -69,7 +69,16 @@ namespace WebApi.controllers.admin
                     var x = deleteFileImg(file.avatar);
                     file.avatar = await uploadFileImg(filerq.avatar);
                 }
-               // file.fileid = filerq.fileid;
+                if (filerq.card != null)
+                {
+                    var y = deleteCard(file.card);
+                    file.card = await uploadCard(filerq.card);
+                }
+                if (filerq.decision != null)
+                {
+                    var y = deleteDecision(file.decision);
+                    file.decision = await uploadDecision(filerq.decision);
+                }
                 file.usid = filerq.usid;
                 file.donvi = filerq.donvi;
                 DateTime bd = DateTime.ParseExact(filerq.ngaythangnamsinh, "dd/MM/yyyy", CultureInfo.InvariantCulture);
@@ -118,6 +127,7 @@ namespace WebApi.controllers.admin
             return data;
         }
 
+        //add avatar
         public async Task<string> uploadFileImg(IFormFile file)
         {
             if (file == null || file.Length == 0)
@@ -142,6 +152,58 @@ namespace WebApi.controllers.admin
             System.IO.File.Delete(file1);//delete in forder
             return "success";
         }
+
+        //add card
+        public async Task<string> uploadCard(IFormFile file)
+        {
+            if (file == null || file.Length == 0)
+                return "";
+            var temp = file.GetFilename().Split(".");
+            var nameimgmain = RandomString(10) + "." + temp[1];
+            var fpath = Path.Combine(
+                        Directory.GetCurrentDirectory(), "wwwroot/card",
+                        nameimgmain);//post image to forder 
+            using (var stream = new FileStream(fpath, FileMode.Create))
+            {
+                await file.CopyToAsync(stream);
+            }
+            return nameimgmain;
+        }
+        public async Task<string> deleteCard(string file)
+        {
+            //delete old picture
+            string webRootPath = m_hostingEnvironment.WebRootPath;
+            string contentRootPath = m_hostingEnvironment.ContentRootPath;
+            var file1 = System.IO.Path.Combine(webRootPath, "card/" + file);
+            System.IO.File.Delete(file1);//delete in forder
+            return "success";
+        }
+        //add decision
+        public async Task<string> uploadDecision(IFormFile file)
+        {
+            if (file == null || file.Length == 0)
+                return "";
+            var temp = file.GetFilename().Split(".");
+            var nameimgmain = RandomString(10) + "." + temp[1];
+            var fpath = Path.Combine(
+                        Directory.GetCurrentDirectory(), "wwwroot/decision",
+                        nameimgmain);//post image to forder 
+            using (var stream = new FileStream(fpath, FileMode.Create))
+            {
+                await file.CopyToAsync(stream);
+            }
+            return nameimgmain;
+        }
+        public async Task<string> deleteDecision(string file)
+        {
+            //delete old picture
+            string webRootPath = m_hostingEnvironment.WebRootPath;
+            string contentRootPath = m_hostingEnvironment.ContentRootPath;
+            var file1 = System.IO.Path.Combine(webRootPath, "decision/" + file);
+            System.IO.File.Delete(file1);//delete in forder
+            return "success";
+        }
+
 
         //random image 
         private static Random random = new Random();

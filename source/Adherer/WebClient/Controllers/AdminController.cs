@@ -67,5 +67,10 @@ namespace WebClient.Controllers
         {
             return View();
         }
+
+        public IActionResult LivingAdherer()
+        {
+            return View();
+        }
     }
 }

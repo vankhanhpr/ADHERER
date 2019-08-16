@@ -70,7 +70,9 @@ namespace WebApi.serrvice.admin.responsitory
                                 filesdv.hokhauthuongtru,
                                 filesdv.honnhan,
                                 filesdv.suckhoe,
-                                filesdv.avatar
+                                filesdv.avatar,
+                                filesdv.card,
+                                filesdv.decision
 
                             }).FirstOrDefault()
                 }).FirstOrDefault();

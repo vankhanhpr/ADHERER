@@ -41,5 +41,8 @@ namespace WebApi.model.request
         public string hokhauthuongtru { get; set; }
         public int honnhan { get; set; }
         public string suckhoe { get; set; }
+
+        public IFormFile card { get; set; }
+        public IFormFile decision { get; set; }
     }
 }

@@ -23,5 +23,6 @@ namespace WebApi.model.request
         public int cbidold { get; set; }
 
         public Boolean accept { get; set; }
+        public string noisinhhoatcu { get; set; }
     }
 }

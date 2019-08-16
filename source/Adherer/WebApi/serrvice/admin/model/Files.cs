@@ -45,5 +45,7 @@ namespace WebApi.serrvice.admin.model
         public Boolean honnhan { get; set;}
         public string suckhoe { get; set; }
 
+        public string card { get; set; }
+        public string decision { get; set; }
     }
 }
