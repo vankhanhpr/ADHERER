@@ -2,6 +2,7 @@
 using WebApi.model;
 using WebApi.serrvice.admin.model;
 using WebApi.controllers.values;
+using AdhererClassLib.area.main;
 
 namespace WebApi.data
 {
@@ -27,6 +28,7 @@ namespace WebApi.data
         public DbSet<Organization> Organization { get; set; }
         public DbSet<Title> Title { get; set; }
         public DbSet<AdhererLiving> AdhererLiving { get; set; }
+        public DbSet<Finance> Finance { get; set; }
         public DbSet<Test> Test { get; set; }
 
     }

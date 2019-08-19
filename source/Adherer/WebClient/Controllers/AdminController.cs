@@ -72,5 +72,9 @@ namespace WebClient.Controllers
         {
             return View();
         }
+        public IActionResult Finance()
+        {
+            return View();
+        }
     }
 }

@@ -87,6 +87,7 @@ namespace WebApi
             services.AddTransient<IAdhererLivingResponsitory, AdhererLivingResponsitory>();
 
             services.AddTransient<IDashBoardResponsitory, DashBoardResponsitory>();
+            services.AddTransient<IFinanceResponsitory, FinanceResponsitory>();
 
             services.AddCors();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
