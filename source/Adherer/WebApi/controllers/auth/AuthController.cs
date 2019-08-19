@@ -93,7 +93,7 @@ namespace WebApi.controllers.auth
             DataRespond data = new DataRespond();
             try
             {
-               // var rt = await HttpContext.Authentication.GetTokenAsync("refresh_token");
+                //var rt = await HttpContext.Authentication.GetTokenAsync("refresh_token");
             }
             catch (Exception e)
             {

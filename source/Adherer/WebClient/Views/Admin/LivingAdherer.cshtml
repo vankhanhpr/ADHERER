@@ -78,13 +78,13 @@
                 <div class="k modal-body">
                     <div class="k dl-sm-it">
                         <span class="k t dl-name-fml">Tiêu đề: </span>
-                        <input class="k dl-input-fml" id="" type="text" />
+                        <input class="k dl-input-fml" id="title-living" type="text" />
                     </div>
                     <div class="k dl-sm-it">
-                        <span class="k t dl-name-fml" id="">Thời gian: </span>
+                        <span class="k t dl-name-fml">Thời gian: </span>
                         <div class="form-group">
-                            <div class='input-group date' id=''>
-                                <input type='text' class="form-control" id="" />
+                            <div class='input-group date' id='datetime-update'>
+                                <input type='text' class="form-control" id="time-update" />
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                 </span>
@@ -93,16 +93,19 @@
                     </div>
                     <div class="k dl-sm-it">
                         <span class="k t dl-name-fml">Ghi chú: </span>
-                        <textarea class="k dl-input-fml note-bonus" id="" type="text"></textarea>
+                        <textarea class="k dl-input-fml note-bonus" id="note-update" type="text"></textarea>
                     </div>
                     <div class="k dl-sm-it">
                         <span class="k t dl-name-fml">Đính kèm: </span>
-                        <span class="k file-attach" id="" type="text">abcdef.pdf <span class="brower" onclick="getImage()">Brower</span></span>
-                        <input id="multi-file" class="hidden" style="display:none" type="file" multiple="">
+                        <span class="k file-attach" type="text">
+                            <span id="name-file-update"></span>
+                            <span class="brower" onclick="getImageUpdate()">Brower</span>
+                        </span>
+                        <input id="select-file-update" class="hidden" style="display:none" type="file" multiple="">
                     </div>
 
                     <span class="k t err-validate" id="err-update-discipline">**Vui lòng điền đầy đủ thông tin</span>
-                    <span class="k bnt-save-add-new" onclick="">Cập nhật thông tin</span>
+                    <span class="k bnt-save-add-new" onclick="validateFormUpdate()">Cập nhật thông tin</span>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

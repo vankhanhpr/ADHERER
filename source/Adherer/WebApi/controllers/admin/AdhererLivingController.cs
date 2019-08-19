@@ -58,7 +58,7 @@ namespace WebApi.controllers.admin
         }
 
         [HttpPost("updateAdhererLiving")]
-        public async Task<DataRespond> updateAdhererLivingAsync(AdhererlivingRequest adhererlivingRequest)
+        public async Task<DataRespond> updateAdhererLivingAsync([FromForm]AdhererlivingRequest adhererlivingRequest)
         {
             DataRespond data = new DataRespond();
             try
@@ -69,12 +69,13 @@ namespace WebApi.controllers.admin
                     var x = deleteDocument(adhererLiving.namefiel);
                     adhererLiving.namefiel = await uploadDocument(adhererlivingRequest.file);
                 }
-
                 adhererLiving.title = adhererlivingRequest.title;
                 adhererLiving.note = adhererlivingRequest.note;
                 DateTime dayevent = DateTime.ParseExact(adhererlivingRequest.dayevent, "dd/MM/yyyy", CultureInfo.InvariantCulture);
                 adhererLiving.dayevent = dayevent;
                 m_adhererLivingResponsitory.updateAdhererLiving(adhererLiving);
+                data.success = true;
+                data.message = "update success";
             }
             catch (Exception e)
             {

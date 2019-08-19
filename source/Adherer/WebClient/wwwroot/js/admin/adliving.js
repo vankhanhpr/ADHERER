@@ -1,5 +1,7 @@
 ﻿var token = getTokenByLocal().token;
 var formData = new FormData();
+var formDataUpdate = new FormData();
+var livid = -1;
 function getImage() {
     $("#multi-file").click();
     $("#multi-file").change(function () {
@@ -24,7 +26,7 @@ function readImageUpload(input) {
 }
 
 $(document).ready(function () {
-    $('#datepicker-add-new')
+    $('#datepicker-add-new, #datetime-update')
         .datetimepicker({
             format: 'DD/MM/YYYY',
             defaultDate: false,
@@ -127,7 +129,6 @@ function insertAhdererLiving() {
             }
         }
     });
-
 }
 
 function emptyForm() {
@@ -151,8 +152,6 @@ function checkStr(str) {
     }
     return true;
 }
-
-
 getAllLivingAhderer(bindingAdherer);
 function getAllLivingAhderer(callback) {
     $.ajax({
@@ -188,7 +187,7 @@ function bindingAdherer(data) {
                 '<div class="k f-edit-file">' +
                 '<a href=' + linkdocument + item.namefiel + '>' +
                 '<span class="k t file-close">' + item.namefiel + '</span></a>' +
-                '<i class="fa fa-wrench" aria-hidden="true"></i>' +
+                '<i class="fa fa-wrench" aria-hidden="true"data-toggle="modal" data-target="#modal-update-living" onclick="getAdhererLivingById(' + item.livid + ')"></i>' +
                 '<i class="fa fa-trash-o" aria-hidden="true"onclick="deletelivingAdherer(' + item.livid + ')"></i>' +
                 '</div>' +
             '</div >');
@@ -238,4 +237,122 @@ function deletelivingAdherer(id) {
             }
         }
     });  
+}
+
+function getAdhererLivingById(id) {
+    $.ajax({
+        type: "get",
+        url: linkserver + "AdhererLiving/getAllAdhererLivingById?id="+id,
+        data: null,
+        headers: { 'authorization': `Bearer ${token}` },
+        dataType: 'json',
+        contentType: "application/json",
+        statusCode: {
+            401: function () {
+                window.location.href = "/login";
+            }
+        },
+        error: function (err) {
+            bootbox.alert("Có lỗi xảy ra, vui lòng kiểm tra kết nối");
+        },
+        success: function (data) {
+            if (data.success && data.data) {
+                var item = data.data;
+                livid = item.livid;
+                $("#title-living").val(item.title);
+                $("#time-update").val(formatDate(new Date(item.dayevent)));
+                $("#note-update").val(item.note);
+                $("#name-file-update").text(item.namefiel);
+            }
+        }
+    });
+}
+
+function validateFormUpdate() {
+    var title = $("#title-living").val();
+    var time = $("#time-update").val();
+    var note = $("#note-update").val();
+
+    var checkupdate = true;
+    if (checkStr(title.trim())) {
+        removeClass("title-living");
+    }
+    else {
+        addClass("title-living");
+        checkupdate = false;
+    }
+    if (checkStr(note.trim())) {
+        removeClass("note-update");
+    }
+    else {
+        addClass("note-update");
+        checkupdate = false;
+    }
+    if (!checkupdate) {
+        $("#err-update-discipline").show();
+    }
+    else {
+        $("#err-update-discipline").hide();
+        formDataUpdate.append('title', title);
+        formDataUpdate.append('note', note);
+        formDataUpdate.append('dayevent', time);
+        formDataUpdate.append('livid', livid);
+        updateAdhererLiving();
+    }
+}
+function updateAdhererLiving() {
+    $.ajax({
+        url: linkserver + "AdhererLiving/updateAdhererLiving",
+        type: 'POST',
+        dataType: 'json',
+        async: false,
+        data: formDataUpdate,
+        headers: { 'authorization': `Bearer ${token}` },
+        processData: false,
+        contentType: false,
+        cache: false,
+        error: function (err) {
+            bootbox.alert({
+                message: "Error :" + err.message
+            });
+        },
+        success: function (data) {
+            if (data.success) {
+                bootbox.alert({
+                    message: "Cập nhật thông tin thành công!",
+                    callback: function () {
+                        $('#modal-update-living').modal('toggle');
+                        getAllLivingAhderer(bindingAdherer);
+                    }
+                });
+            }
+            else {
+                bootbox.alert("Có lỗi xảy ra vui lòng kiểm tra lại thông tin!");
+            }
+        }
+    });
+}
+
+//select new file
+function getImageUpdate() {
+    $("#select-file-update").click();
+    $("#select-file-update").change(function () {
+        readImageUploadUpdate(this);
+    });
+}
+//add picture to view
+function readImageUploadUpdate(input) {
+    if (input.files && input.files[0]) {
+        if (formDataUpdate.get("file") != null) {
+            formData.delete("file");
+        }
+        formDataUpdate.append("file", input.files[0]);
+        var x = input.files[0];
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $("#name-file-update").text(x.name);
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+    $("#select-file-update").val("");
 }
