@@ -1,5 +1,4 @@
-﻿
-function login() {
+﻿function login() {
     showLoading();
     if (validateData()) {
         var madv = $("#t-madv").val();

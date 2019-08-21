@@ -23,9 +23,56 @@ namespace WebApi.serrvice.user.responsitory
             return context.Files.Where(m => m.fileid == id).FirstOrDefault();
         }
 
-        public Files getFileByUserId(int usid)
+        public dynamic getFileByUserId(int usid)
         {
-            return context.Files.Where(m => m.usid == usid).FirstOrDefault();
+            var dangvien = context
+                .Users
+                .Where(m => m.usid == usid)
+                .Select(user => new
+                {
+                    user,
+                    file = (from filesdv in context.Files
+                            join nation in context.Nation
+                            on filesdv.dantoc equals nation.nationid
+                            where filesdv.usid == user.usid
+                            select new
+                            {
+                                user.usid,
+                                user.madv,
+                                filesdv.fileid,
+                                filesdv.hotenkhaisinh,
+                                filesdv.hotendangdung,
+                                filesdv.ngaythangnamsinh,
+                                filesdv.dantoc,
+                                filesdv.gioitinh,
+                                nation.name,
+                                filesdv.tongiao,
+                                filesdv.quequan,
+                                filesdv.nghenghiep,
+                                filesdv.solylich,
+                                filesdv.donvi,
+                                filesdv.sdt,
+                                filesdv.email,
+                                filesdv.ngayvaodangct,
+                                filesdv.ngayvaodangdb,
+                                filesdv.ngayvaodoan,
+                                filesdv.trinhdovanhoa,
+                                filesdv.chuyenmon,
+                                filesdv.matp,
+                                filesdv.maqh,
+                                filesdv.xaid,
+                                filesdv.noicutru,
+                                filesdv.cmnd,
+                                filesdv.daycmnd,
+                                filesdv.noicapcmnd,
+                                filesdv.hokhauthuongtru,
+                                filesdv.honnhan,
+                                filesdv.suckhoe,
+                                filesdv.avatar
+
+                            }).FirstOrDefault()
+                }).FirstOrDefault();
+            return dangvien;
         }
 
         public void insertFile(Files files)
@@ -34,10 +81,18 @@ namespace WebApi.serrvice.user.responsitory
             context.SaveChanges();
         }
 
-        public void updateFile(Files files)
+        public void updateFile(Files file, Boolean bol)
         {
-            context.Update(files);
-            context.SaveChanges();
+            if (!bol)
+            {
+                context.Entry(file).State = EntityState.Added;
+                context.SaveChanges();
+            }
+            else
+            {
+                context.Update(file);
+                context.SaveChanges();
+            }
         }
     }
 }

@@ -9,7 +9,7 @@ using WebApi.serrvice.user.interfaces;
 
 namespace WebApi.controllers
 {
-    [Authorize]
+    //[Authorize ]
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : Controller
@@ -20,17 +20,15 @@ namespace WebApi.controllers
             m_userResponsitory = userResponsitory;
         }
         
-        [HttpGet("getAllUser")]
-        public DataRespond getAllUser()
+        [HttpGet("getUserByMadv")]
+        public DataRespond getAllUser(string madv)
         {
-
             DataRespond data = new DataRespond();
             try
             {
-                string requestedWith = HttpContext.Request.Headers["Authorization"];
                 data.success = true;
-               // data.data = m_userResponsitory.get();
                 data.message = "success";
+                data.data = m_userResponsitory.getUserByMaDv(madv);
             }
             catch(Exception e)
             {

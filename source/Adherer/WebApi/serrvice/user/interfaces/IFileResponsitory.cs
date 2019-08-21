@@ -9,9 +9,9 @@ namespace WebApi.serrvice.user.interfaces
 {
     public interface IFileResponsitory: IResponsitory<Files>
     {
-        Files getFileByUserId(int usid);
+        dynamic getFileByUserId(int usid);
         void insertFile(Files files);
-        void updateFile(Files files);
+        void updateFile(Files files,Boolean bol);
         Files findFileById(int id);
     }
 }

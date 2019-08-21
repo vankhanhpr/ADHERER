@@ -14,25 +14,24 @@ namespace WebClient.Controllers
         {
             return View();
         }
-
-        public IActionResult About()
-        {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
-        }
-
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
-        }
-
-        public IActionResult Privacy()
+        public IActionResult Discripline_Reward()
         {
             return View();
         }
+        public IActionResult Family()
+        {
+            return View();
+        }
+        public IActionResult Form()
+        {
+            return View();
+        }
+        public IActionResult Abroad()
+        {
+            return View();
+        }
+
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

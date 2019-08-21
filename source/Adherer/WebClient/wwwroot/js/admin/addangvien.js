@@ -141,7 +141,7 @@ function bindingUser(data) {
                     '</div>';
             }
             var view = '<div class="k item-dv">' +
-                '<div class="k img-avt-dv" style="background-image:url(' + (file.avatar != null ? linkfileuser + file.avatar :'/images/admin/avt-us-defaul.png') + ')" ></div >' +
+                '<div class="k img-avt-dv" style="background-image:url(' + (file && file.avatar != null ? linkfileuser + file.avatar :'/images/admin/avt-us-defaul.png') + ')" ></div >' +
                 '<div class="k f-name">' +
                 '<span class="k t t-if-dv">' +
                 '<i class="fa fa-user-circle-o font-ic" aria-hidden="true"></i> ' + (file && file.hotendangdung != null ? file.hotendangdung : '') + '' +

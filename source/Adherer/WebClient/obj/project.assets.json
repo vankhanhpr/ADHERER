@@ -12606,23 +12606,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\KhanhNguyenIT\\.nuget\\packages\\": {},
+    "C:\\Users\\tin\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\ASP.NET\\ADHERER\\source\\Adherer\\WebClient\\WebClient.csproj",
+      "projectUniqueName": "C:\\tin\\QLDV\\Source\\ADHERER\\source\\Adherer\\WebClient\\WebClient.csproj",
       "projectName": "WebClient",
-      "projectPath": "F:\\ASP.NET\\ADHERER\\source\\Adherer\\WebClient\\WebClient.csproj",
-      "packagesPath": "C:\\Users\\KhanhNguyenIT\\.nuget\\packages\\",
-      "outputPath": "F:\\ASP.NET\\ADHERER\\source\\Adherer\\WebClient\\obj\\",
+      "projectPath": "C:\\tin\\QLDV\\Source\\ADHERER\\source\\Adherer\\WebClient\\WebClient.csproj",
+      "packagesPath": "C:\\Users\\tin\\.nuget\\packages\\",
+      "outputPath": "C:\\tin\\QLDV\\Source\\ADHERER\\source\\Adherer\\WebClient\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\KhanhNguyenIT\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\tin\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
