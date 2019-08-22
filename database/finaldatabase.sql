@@ -156,7 +156,8 @@ create table Forms(
 	namefile nvarchar(100) not null,
 	note nvarchar(1000),
 	updatedate datetime,
-	active bit
+	active bit,
+	type int
 )	
 create table Toabroad (
 	brid int not null primary key identity (1,1),

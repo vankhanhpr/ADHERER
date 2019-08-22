@@ -12,3 +12,6 @@ F:\ASP.NET\ADHERER\source\Adherer\WebApi\obj\Release\netcoreapp2.1\WebApi.Assemb
 F:\ASP.NET\ADHERER\source\Adherer\WebApi\obj\Release\netcoreapp2.1\WebApi.RazorTargetAssemblyInfo.cache
 F:\ASP.NET\ADHERER\source\Adherer\WebApi\obj\Release\netcoreapp2.1\WebApi.dll
 F:\ASP.NET\ADHERER\source\Adherer\WebApi\obj\Release\netcoreapp2.1\WebApi.pdb
+F:\ASP.NET\ADHERER\source\Adherer\WebApi\bin\Release\netcoreapp2.1\AdhererClassLib.dll
+F:\ASP.NET\ADHERER\source\Adherer\WebApi\bin\Release\netcoreapp2.1\AdhererClassLib.pdb
+F:\ASP.NET\ADHERER\source\Adherer\WebApi\obj\Release\netcoreapp2.1\WebApi.csproj.CopyComplete

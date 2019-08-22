@@ -1,8 +1,14 @@
 ﻿var linkserver = "https://localhost:44343/api/";
 var linkfileuser = "https://localhost:44343/images/user/";
 var linkfiledownload = "https://localhost:44343/files/";
-
 var linkdocument = "https://localhost:44343/document/";
+
+//var linkserver = "https://10.0.75.1:100/api/";
+//var linkfileuser = "https://10.0.75.1:100/images/user/";
+//var linkfiledownload = "https://10.0.75.1:100/files/";
+//var linkdocument = "https://10.0.75.1:100/document/";
+
+
 
 function formatDate(date) {
     var hours = date.getHours();

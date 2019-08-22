@@ -17,5 +17,6 @@ namespace WebApi.serrvice.admin.model
         public string note { get; set; }
         public DateTime updateday { get; set; }
         public Boolean active { get; set; }
+        public int type { get; set; }
     }
 }

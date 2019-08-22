@@ -30,14 +30,14 @@ namespace WebApi.controllers.admin
             m_hostingEnvironment = hostingEnvironment;
         }
         [HttpGet("getAllForms")]
-        public DataRespond getForms()
+        public DataRespond getForms(int type)
         {
             DataRespond data = new DataRespond();
             try
             {
                 data.success = true;
                 data.message = "success";
-                data.data = m_adFormResponsitory.getAllForm();
+                data.data = m_adFormResponsitory.getAllForm(type);
             }
             catch(Exception e)
             {
@@ -62,6 +62,7 @@ namespace WebApi.controllers.admin
                 form.note = formrequest.note;
                 form.updateday = DateTime.Now;
                 form.active = true;
+                form.type = formrequest.type;
 
                 m_adFormResponsitory.insertForm(form);
                 data.success = true;
@@ -142,7 +143,6 @@ namespace WebApi.controllers.admin
             }
             return data;
         }
-
 
         public async Task<string> uploadFile(IFormFile file)
         {

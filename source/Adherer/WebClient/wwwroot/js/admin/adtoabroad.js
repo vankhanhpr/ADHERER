@@ -44,13 +44,79 @@ function bindinAbroad(data) {
     destroyLoading();
 }
 
+function getCurrentDay() {
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0');
+    var yyyy = today.getFullYear();
+
+    today = mm + '/' + dd + '/' + yyyy;
+    return today;
+}
+
+function formatDaytogo() {
+    var x = $('#daytogo').val();
+    var tem = x.split("/");
+    return tem[1] + '/' + tem[0] + '/' + tem[2];
+}
+var time='';
+function getValue() {
+    //time = $('#daytogo').val();
+}
+function setValue() {
+   // $('#daytogo').val(time);
+    //$('#daytoreturn').val($('#daytogo').val());
+}
 //datetime picker
 $(document).ready(function () {
-    $('#datepicker-daytogo, #datepicker-daytoreturn').datetimepicker({
+    $('#datepicker-daytogo').datetimepicker({
         format: 'DD/MM/YYYY',
         extraFormats: false,
         stepping: 1,
-        minDate: false,
+        minDate: getCurrentDay(),
+        maxDate: false,
+        useCurrent: true,
+        collapse: true,
+        defaultDate: false,
+        disabledDates: false,
+        enabledDates: false,
+        icons: {
+            time: 'glyphicon glyphicon-time',
+            date: 'glyphicon glyphicon-calendar',
+            up: 'glyphicon glyphicon-chevron-up',
+            down: 'glyphicon glyphicon-chevron-down',
+            previous: 'glyphicon glyphicon-chevron-left',
+            next: 'glyphicon glyphicon-chevron-right',
+            today: 'glyphicon glyphicon-screenshot',
+            clear: 'glyphicon glyphicon-trash'
+        },
+        useStrict: false,
+        sideBySide: false,
+        daysOfWeekDisabled: [],
+        calendarWeeks: false,
+        viewMode: 'years',
+        toolbarPlacement: 'default',
+        showTodayButton: false,
+        showClear: false,
+        widgetPositioning: {
+            horizontal: 'auto',
+            vertical: 'auto'
+        }
+    }).on('dp.change', function (e) {
+        var x = new Date(e.date);
+        var z = $("#daytoreturn").val().split('/');
+        var y = new Date(z[2],z[1]-1,z[0]);
+        if (y < x) {
+            $("#daytoreturn").val(formatDate(new Date(x.setFullYear(x.getFullYear()))));
+        }
+    });
+});
+$(document).ready(function () {
+    $('#datepicker-daytoreturn').datetimepicker({
+        format: 'DD/MM/YYYY',
+        extraFormats: false,
+        stepping: 1,
+        minDate: formatDaytogo(),
         maxDate: false,
         useCurrent: true,
         collapse: true,
@@ -223,7 +289,7 @@ function validateUpdateForm() {
             'noiden': positiontoupdate.trim(),
             'lydo': reasionupdate.trim(),
             'thoigiandi': $("#daytogoupdate").val(),
-            'thoigiantrove': $("#daytoreturnupdate").val(),
+            'thoigiantrove': $("#daytoreturnupdate").val()
         };
         updateAbroad(model);
     }

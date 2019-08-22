@@ -9,7 +9,7 @@ namespace WebApi.serrvice.admin.interfaces
 {
     public interface IAdFormResponsitory: IResponsitory<Forms>
     {
-        IEnumerable<Forms> getAllForm();
+        IEnumerable<Forms> getAllForm(int type);
         void insertForm(Forms form);
         void updateForm(Forms form);
         void deleteForm(int id);
