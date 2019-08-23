@@ -1,0 +1,153 @@
+﻿
+@{
+    ViewData["Title"] = "Quản lý Đảng viên";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+@section Css{
+    <link rel="stylesheet" type="text/css" href="~/css/admin/admanageuser.css">
+}
+<div class="k main-form">
+    <div class="k body-form">
+        <div class=" k menu">
+            <span class="k t item-menu item-menu-main">Trang chủ</span>
+            <span class="k t item-menu"onclick="showTab('tab-sinhhoat')">Chuyển Đảng</span>
+            <span class="k t item-menu"onclick="showTab('tab-huyhieu')">Xét tặng huy hiệu Đảng</span>
+            <span class="k t item-menu"onclick="showTab('tab-user-dubi')">Quản lý Đảng viên dự bị</span>
+        </div>
+
+        @*Xet tang huy hieu Dang*@
+        <div class="k body-item" style="display:block" id="tab-huyhieu">
+            <span class=" k t t-item-note">Xét tặng huy hiệu Đảng cho Đảng viên</span>
+            <div class="k form-user">
+                <span class=" k t text-table">STT </span>
+                <span class=" k t text-table-info">Thông tin </span>
+                @*<span class=" k t text-sign">Huy hiệu đã có </span>*@
+                <div class="k child-form-user">
+                    <span class="k t stt">1</span>
+                    <div class="k t body-user">
+                        <span class="k t name-user">Nguyễn Văn Kha</span>
+                        <span class="k t note-day">Ngày vào Đảng:</span>
+                        <span class="k t note-day">12/12/2012</span>
+                        <progress class="k t progress-bar" id="file" data-label="12 năm tuổi Đảng" max="100" value="70"> 70% </progress>
+                    </div>
+                </div>
+                <div class="k child-form-user">
+                    <span class="k t stt">2</span>
+                    <div class="k t body-user">
+                        <span class="k t name-user">Nguyễn Văn Kha</span>
+                        <span class="k t note-day t-day-togo">Ngày vào Đảng:</span>
+                        <span class="k t note-day">12/12/2012</span>
+                        <progress class="k t progress-bar" id="file" data-label="11 năm tuổi Đảng" max="80" value="70"> 100% </progress>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        @*chuyển sinh hoạt đảng*@
+        <div class="k body-item" style="display:none"id="tab-sinhhoat">
+            <span class=" k t t-item-note">Công tác chuyển sinh hoạt Đảng viên</span>
+
+            <span class="t bnt-addnew" data-toggle="modal" data-target="#modalinsertdangvien">+Chuyển đến</span>
+            <div class="k f-search-ft">
+                <input class="k search-ft" id="search-box" onkeyup="" type="text">
+                <i class="fa fa-search bnt-search" aria-hidden="true"></i>
+            </div>
+            <div class="k form-user">
+                <div class="k list-user-move">
+                    <div class="k img-avt"></div>
+                    <div class="k f-name">
+                        <span class="k t t-if-dv">
+                            <i class="fa fa-id-card-o font-ic" aria-hidden="true"></i>
+                            LH012345
+                        </span>
+                        <span class="k t t-if-dv">
+                            <i class="fa fa-user-circle-o font-ic" aria-hidden="true"></i>
+                            Nguyen Van Khanh
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @*quan ly dang vien du bi*@
+        <div class="k body-item" style="display:none"id="tab-user-dubi">
+            <span class=" k t t-item-note">Quản lý Đảng viên dự bị</span>
+            <div class="k form-user">
+
+            </div>
+        </div>
+    </div>
+
+    @*add new dang vien*@
+    <div class="modal fade" id="modalinsertdangvien" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Đảng viên chuyến đến</h4>
+                </div>
+                <div class="k modal-body">
+                    <div class="k dl-sm-it">
+                        <span class="k t dl-name-dv">Mã Đảng viên: </span>
+                        <input class="k dl-input-dv" id="ip-madv-addnew" type="text" />
+                    </div>
+                    <div class="k dl-sm-it">
+                        <span class="k t dl-name-dv">Chi bộ: </span>
+                        <select class="k dl-sl-dv" id="sl-chb-addnew">
+                            @*<option value="0">Chi bộ trung tâm CNTT</option>*@
+                        </select>
+                    </div>
+                    <div class="k dl-sm-it">
+                        <span class="k t dl-name-dv">Chức vụ Đảng: </span>
+                        <select class="k dl-sl-dv" id="sl-title-addnew">
+                            @*<option value="0">Ủy viên</option>
+                                <option value="0">Bí thư chi bộ</option>*@
+                        </select>
+                    </div>
+                    <div class="k dl-sm-it" id="go-on-business-old">
+                        <span class="k t dl-name-dv">Nơi sinh hoạt cũ: </span>
+                        <input class="k dl-input-dv" id="adress-on-bussiness" type="text" />
+                    </div>
+                    <div class="k dl-sm-it">
+                        <span class="k t dl-name-dv" id="sl-db-active">Ngày đến Chi bộ: </span>
+                        <div class="form-group">
+                            <div class='input-group date' id='datepicker-addnew'>
+                                <input type='text' class="form-control" id="day-create-cb" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="k dl-sm-it">
+                        <span class="k t dl-name-dv">Mật khẩu: </span>
+                        <input class="k dl-input-dv" id="ip-pass" type="password" />
+                    </div>
+                    <div class="k dl-sm-it">
+                        <span class="k t dl-name-dv">Nhập lại mật khẩu: </span>
+                        <input class="k dl-input-dv" id="ip-cf-pass" type="password" />
+                        <span class="k t err-validate">**Vui lòng kiểm tra lại thông tin</span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="k btn btn-default" data-dismiss="modal">
+                        Đóng
+                    </button>
+                    <span class="k dl-bnt-save" onclick="">
+                        <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                        Thêm mới
+                    </span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section Script{
+    <script src="~/js/admin/admanageruser.js"></script>
+}

@@ -76,5 +76,9 @@ namespace WebClient.Controllers
         {
             return View();
         }
+        public IActionResult ManageUser()
+        {
+            return View();
+        }
     }
 }

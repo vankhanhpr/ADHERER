@@ -120,6 +120,7 @@
     .t-name-db {
         font-size: var(--fs-tt);
         padding-left: 20px;
+        
     }
 
     .bd-item-db {
@@ -279,11 +280,12 @@
     .t-name-db {
         font-size: var(--fs-tt);
         padding-left: 20px;
+        margin-top: 20px;
     }
 
     .bd-item-db {
         width: 25%;
-        padding: 20px;
+        padding: 10px 20px;
     }
 
     .item-db, .item-db2, .item-db3, .item-db4, .item-db5, .item-db6 {

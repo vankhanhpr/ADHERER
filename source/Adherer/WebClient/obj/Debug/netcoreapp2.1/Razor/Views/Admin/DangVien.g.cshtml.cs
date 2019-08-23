@@ -82,7 +82,7 @@ using WebClient.Models;
                 WriteLiteral("\r\n    ");
                 EndContext();
                 BeginContext(118, 73, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "a6defe15ce9f4ddab0085d330fe78c56", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "8047e42090e045f2a4b3189f8f8e1595", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -117,7 +117,7 @@ using WebClient.Models;
                     ");
             EndContext();
             BeginContext(728, 77, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a40f40a7182246c4a5d2c3770a35cffb", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b7def8723d344db4a3c6325d80c56f3e", async() => {
                 BeginContext(786, 10, true);
                 WriteLiteral("Phân quyền");
                 EndContext();
@@ -141,7 +141,7 @@ using WebClient.Models;
             WriteLiteral("\r\n                    ");
             EndContext();
             BeginContext(827, 32, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "909a816fff4147b1a5df293de16a75ea", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "cf8bbc8c13df41819fa83f637aaf2507", async() => {
                 BeginContext(845, 5, true);
                 WriteLiteral("Admin");
                 EndContext();
@@ -163,7 +163,7 @@ using WebClient.Models;
             WriteLiteral("\r\n                    ");
             EndContext();
             BeginContext(881, 36, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "aa5bf67d086e4370ab307e907a53b436", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ec4593d437584454950e7705f465d8b9", async() => {
                 BeginContext(899, 9, true);
                 WriteLiteral("Đảng viên");
                 EndContext();
@@ -185,7 +185,7 @@ using WebClient.Models;
             WriteLiteral("\r\n                    ");
             EndContext();
             BeginContext(939, 33, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "84c77b15e0e04aef8ecfa7427d225efd", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1051fa81ff6b46cfbb5b800b20e7658d", async() => {
                 BeginContext(957, 6, true);
                 WriteLiteral("Tất cả");
                 EndContext();
@@ -207,7 +207,7 @@ using WebClient.Models;
             WriteLiteral("\r\n                </select>\r\n                <select class=\"k sl-ft-og\" id=\"sl-ft-active\">\r\n                    ");
             EndContext();
             BeginContext(1084, 86, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a9cfeda35c6541a6b7b82dcf2ebe5278", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6b8a004725be4bd88a8d223ee6246eff", async() => {
                 BeginContext(1141, 20, true);
                 WriteLiteral("Trạng thái hoạt động");
                 EndContext();
@@ -231,7 +231,7 @@ using WebClient.Models;
             WriteLiteral("\r\n                    ");
             EndContext();
             BeginContext(1192, 41, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4e77c9621ab54aa5a2f2348005d5d8d1", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a38eed7367bb4e8884e19e3d1a17431d", async() => {
                 BeginContext(1210, 14, true);
                 WriteLiteral("Đang hoạt động");
                 EndContext();
@@ -253,7 +253,7 @@ using WebClient.Models;
             WriteLiteral("\r\n                    ");
             EndContext();
             BeginContext(1255, 31, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "419e71ecb37946efae0290249bbfe3a3", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9dd1d8c6e9574c03819133652f9ca850", async() => {
                 BeginContext(1273, 4, true);
                 WriteLiteral("Khóa");
                 EndContext();
@@ -275,7 +275,7 @@ using WebClient.Models;
             WriteLiteral("\r\n                    ");
             EndContext();
             BeginContext(1308, 33, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "aeb87570ad924d33b3eee8c16d8f2f9d", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "79cc21aed88a4c7e9eb539ff75576123", async() => {
                 BeginContext(1326, 6, true);
                 WriteLiteral("Tất cả");
                 EndContext();
@@ -297,7 +297,7 @@ using WebClient.Models;
             WriteLiteral("\r\n                </select>\r\n                <select class=\"k sl-ft-og\" id=\"select-chibo-filter\">\r\n                    ");
             EndContext();
             BeginContext(1460, 78, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "eb1d169fcb464ac5a1beaa6e92dca0d9", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a1de2598f9a44a4a84963506a6b7a129", async() => {
                 BeginContext(1518, 11, true);
                 WriteLiteral("Chọn Chi bộ");
                 EndContext();
@@ -373,7 +373,7 @@ using WebClient.Models;
                             ");
             EndContext();
             BeginContext(6450, 34, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e5980ba52ded4cfe8447f39d90ad89a0", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "28aa38d6e1e74a5f92fcee9e0082851f", async() => {
                 BeginContext(6468, 7, true);
                 WriteLiteral("Kết nạp");
                 EndContext();
@@ -395,7 +395,7 @@ using WebClient.Models;
             WriteLiteral("\r\n                            ");
             EndContext();
             BeginContext(6514, 37, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "80cddb2a29d54357840f3411f54cbb3f", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9d2b3f71263947b697c262eaeb4f1fa0", async() => {
                 BeginContext(6532, 10, true);
                 WriteLiteral("Chuyển đến");
                 EndContext();
@@ -429,7 +429,7 @@ using WebClient.Models;
                             ");
             EndContext();
             BeginContext(7134, 36, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7f91f0430636473e9248d79268bbf0b7", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4f3b3ec0e18b482cbe62f6152e9f39b4", async() => {
                 BeginContext(7152, 9, true);
                 WriteLiteral("Đảng viên");
                 EndContext();
@@ -451,7 +451,7 @@ using WebClient.Models;
             WriteLiteral("\r\n                            ");
             EndContext();
             BeginContext(7200, 32, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6fd39da87179488cac299c95522dc1c5", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7e4ae576cff24e93a4c071b8851cc50d", async() => {
                 BeginContext(7218, 5, true);
                 WriteLiteral("Admin");
                 EndContext();
@@ -539,7 +539,7 @@ using WebClient.Models;
                             ");
             EndContext();
             BeginContext(10548, 36, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7fb35c7a016e4d6692bc2b958e80ce10", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "83a41a5c17e9462ead2ffa53a060c7b0", async() => {
                 BeginContext(10566, 9, true);
                 WriteLiteral("Đảng viên");
                 EndContext();
@@ -561,7 +561,7 @@ using WebClient.Models;
             WriteLiteral("\r\n                            ");
             EndContext();
             BeginContext(10614, 32, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "74b4beba89fe4076aa3e2ac1db09d753", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fe5142b721e2476f81f1ba48ee7da9bf", async() => {
                 BeginContext(10632, 5, true);
                 WriteLiteral("Admin");
                 EndContext();
@@ -634,7 +634,7 @@ using WebClient.Models;
                             ");
             EndContext();
             BeginContext(13071, 36, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "dbaa43bb826b49f58551af6bc9ce7882", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0ea906cdaa924d9fbfac110782d30274", async() => {
                 BeginContext(13089, 9, true);
                 WriteLiteral("Chuyển đi");
                 EndContext();
@@ -656,7 +656,7 @@ using WebClient.Models;
             WriteLiteral("\r\n                            ");
             EndContext();
             BeginContext(13137, 43, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2586498843074a6bb79ef3afc978d36a", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c16ad75afcd640ecb86eb66ec058f533", async() => {
                 BeginContext(13155, 16, true);
                 WriteLiteral("Xin ra khỏi Đảng");
                 EndContext();
@@ -678,7 +678,7 @@ using WebClient.Models;
             WriteLiteral("\r\n                            ");
             EndContext();
             BeginContext(13210, 34, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b641fb1458784cc1a26d09c81513aac2", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "40dcd979550c42748610a00a6655e23d", async() => {
                 BeginContext(13228, 7, true);
                 WriteLiteral("Xóa tên");
                 EndContext();
@@ -700,7 +700,7 @@ using WebClient.Models;
             WriteLiteral("\r\n                            ");
             EndContext();
             BeginContext(13274, 35, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "44bb56283a5e4550958e535895e87842", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e4c178c23fd84a7891ef23ce10ebec5f", async() => {
                 BeginContext(13292, 8, true);
                 WriteLiteral("Khai trừ");
                 EndContext();
@@ -722,7 +722,7 @@ using WebClient.Models;
             WriteLiteral("\r\n                            ");
             EndContext();
             BeginContext(13339, 34, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e1975a250eb54346b691820c4e92c76a", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0e0a09221fe643b982d4e7c507996d02", async() => {
                 BeginContext(13357, 7, true);
                 WriteLiteral("Từ trần");
                 EndContext();
@@ -764,7 +764,7 @@ using WebClient.Models;
                 WriteLiteral("\r\n    ");
                 EndContext();
                 BeginContext(13812, 48, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a7c122bc81f14a49b53dfc9cde3cebfa", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d54cb1b0cdf24bd59234f8cba4948662", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
