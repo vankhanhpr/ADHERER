@@ -20,7 +20,7 @@
         </div>
 
         <div class="k f-inf" id="f-inf-chb">
-            <div class="k row-table">
+            <div class="k row-table-main">
                 <span class="k t tt-table">Chi bộ</span>
                 <span class="k t tt-table">Ngày thành lập</span>
                 <span class="k t tt-table">Trạng thái</span>
@@ -79,10 +79,16 @@
                             </div>
                         </div>
                     </div>
-                    <span class="k dl-bnt-save" onclick="updateChiBo()">Cập nhật</span>
+                    @*<span class="k dl-bnt-save" onclick="updateChiBo()">Cập nhật</span>*@
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="k btn btn-default" data-dismiss="modal">
+                        Đóng
+                    </button>
+                    <span class="k dl-bnt-save" onclick="updateChiBo()">
+                        <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                        Cập nhật
+                    </span>
                 </div>
             </div>
 
@@ -130,10 +136,16 @@
                         </div>
                     </div>
 
-                    <span class="k dl-bnt-save" onclick="insertChiBo()">Thêm mới</span>
+                    @*<span class="k dl-bnt-save" onclick="insertChiBo()">Thêm mới</span>*@
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="k btn btn-default" data-dismiss="modal">
+                        Đóng
+                    </button>
+                    <span class="k dl-bnt-save" onclick="insertChiBo()">
+                        <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                        Thêm mới
+                    </span>
                 </div>
             </div>
 

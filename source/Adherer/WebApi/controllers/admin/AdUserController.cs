@@ -309,5 +309,24 @@ namespace WebApi.controllers.admin
             }
             return data;
         }
+
+        [HttpGet("getArmorial")]
+        public DataRespond getArmorial(int cbid)
+        {
+            DataRespond data = new DataRespond();
+            try
+            {
+                data.success = true;
+                data.data = m_userResponsitory.getArmorial(cbid);
+                data.message = "success";
+            }
+            catch(Exception e)
+            {
+                data.error = e;
+                data.message = e.Message;
+                data.success = false;
+            }
+            return data;
+        }
     }
 }

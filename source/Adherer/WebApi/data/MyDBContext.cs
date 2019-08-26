@@ -30,6 +30,5 @@ namespace WebApi.data
         public DbSet<AdhererLiving> AdhererLiving { get; set; }
         public DbSet<Finance> Finance { get; set; }
         public DbSet<Test> Test { get; set; }
-
     }
 }

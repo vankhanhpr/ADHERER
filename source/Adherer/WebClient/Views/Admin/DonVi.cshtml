@@ -49,10 +49,16 @@
                             <option value="0">Hoạt động</option>
                         </select>
                     </div>
-                    <span class="k dv-bnt-save" onclick="insertOrganization()">Cập nhật</span>
+                    @*<span class="k dv-bnt-save" onclick="insertOrganization()">Cập nhật</span>*@
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="k btn btn-default" data-dismiss="modal">
+                        Đóng
+                    </button>
+                    <span class="k dl-bnt-save" onclick="insertOrganization()">
+                        <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                        Thêm mới
+                    </span>
                 </div>
             </div>
         </div>
@@ -79,13 +85,19 @@
                             <option value="1">Khóa</option>
                         </select>
                     </div>
-                    <span class="k dv-bnt-save" id="bnt-ud" onclick="updateOrganization()">
-                        @*<i class="fa fa-refresh fa-spin" id="bnt-ud-og"></i>*@
+                    @*<span class="k dv-bnt-save" id="bnt-ud" onclick="updateOrganization()">
+                        <i class="fa fa-refresh fa-spin" id="bnt-ud-og"></i>
                         Cập nhật
-                    </span>
+                    </span>*@
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="k btn btn-default" data-dismiss="modal">
+                        Đóng
+                    </button>
+                    <span class="k dl-bnt-save" onclick="updateOrganization()">
+                        <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                        Cập nhật
+                    </span>
                 </div>
             </div>
         </div>

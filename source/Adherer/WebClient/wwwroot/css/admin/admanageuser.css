@@ -45,7 +45,18 @@
         color: var(--cl-text-bl);
         font-weight: 300;
     }
-
+    .sl-chibo {
+        position: relative;
+        float: right;
+        color: var(--cl-text-bl);
+        border: 1px solid rgba(51,51,51,0.1);
+        border-radius: 4px;
+        padding: 4px;
+        margin-top: 5px;
+        margin-right: 5px;
+        cursor: pointer;
+        min-width: 200px;
+    }
     .form-user {
         width: 100%;
         border: 1px solid rgba(51,51,51,0.1);
@@ -175,6 +186,7 @@
         text-align: center;
         font-weight: 600;
         margin-right:5px;
+        margin-top:5px;
     }
     .btn-default{
         float:right;
@@ -228,6 +240,17 @@
         text-align: left;
         width: 100%;
         font-weight: 300;
+    }
+
+    .err-validate {
+        color: red;
+        text-align: center;
+        width: 100%;
+        font-size: 12px;
+        display: none;
+    }
+    .err-ip {
+        border: 1px solid rgba(255, 0, 0,0.4);
     }
 }
 

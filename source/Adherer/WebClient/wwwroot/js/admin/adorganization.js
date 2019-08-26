@@ -33,7 +33,7 @@ function bindingOrganization(data) {
             var item = data.data[i];
             $("#f-add-it-dv").append('<div class="k row-table-it">' +
                 '<span class= "k t tt-table-it" >' + item.nameog + '</span>' +
-                '<span class="k t tt-table-it">' + (item.active === true ? 'Hoạt động' :'Khóa') + '</span>' +
+                '<span class="k t tt-table-it">' + (item.active === true ? '<i class="fa fa-toggle-on" aria-hidden="true"></i> Hoạt động' :'<i class="fa fa-toggle-off" aria-hidden="true"></i> Khóa') + '</span>' +
                 '<div class="k t tt-table-it">' +
                 '<i class="fa fa-cogs" data-toggle="modal" data-target="#modalupdatedonvi" onclick="getDetailOg(' + item.ogid + ')"></i>' +
                 '</div>' +
