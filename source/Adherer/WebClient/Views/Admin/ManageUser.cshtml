@@ -9,7 +9,6 @@
 <div class="k main-form">
     <div class="k body-form">
         <div class=" k menu">
-            <span class="k t item-menu item-menu-main">Trang chủ</span>
             <span class="k t item-menu" onclick="showTab('tab-sinhhoat')">Chuyển Đảng</span>
             <span class="k t item-menu" onclick="showTab('tab-huyhieu')">Xét tặng huy hiệu Đảng</span>
             <span class="k t item-menu" onclick="showTab('tab-user-dubi')">Quản lý Đảng viên dự bị</span>
@@ -17,10 +16,9 @@
 
         <select class=" t sl-chibo" id="sl-chibo">
             @*<option>Chi bộ trung tâm CNTT</option>
-            <option>Chi bộ trung tâm X</option>*@
+                <option>Chi bộ trung tâm X</option>*@
         </select>
-        <select class=" t sl-chibo" id="sl-dangbo">
-        </select>
+        <select class=" t sl-chibo" id="sl-dangbo"></select>
 
         @*Xet tang huy hieu Dang*@
         <div class="k body-item" style="display:block" id="tab-huyhieu">
@@ -29,14 +27,14 @@
                 <span class=" k t text-table-info">Thông tin </span>
                 @*<span class=" k t text-sign">Huy hiệu đã có </span>*@
                 @*<div class="k child-form-user">
-                    <span class="k t stt">1</span>
-                    <div class="k t body-user">
-                        <span class="k t name-user">Nguyễn Văn Kha</span>
-                        <span class="k t note-day">Ngày vào Đảng:</span>
-                        <span class="k t note-day">12/12/2012</span>
-                        <progress class="k t progress-bar" id="file" data-label="12 năm tuổi Đảng" max="100" value="70"> 70% </progress>
-                    </div>
-                </div>*@
+                        <span class="k t stt">1</span>
+                        <div class="k t body-user">
+                            <span class="k t name-user">Nguyễn Văn Kha</span>
+                            <span class="k t note-day">Ngày vào Đảng:</span>
+                            <span class="k t note-day">12/12/2012</span>
+                            <progress class="k t progress-bar" id="file" data-label="12 năm tuổi Đảng" max="100" value="70"> 70% </progress>
+                        </div>
+                    </div>*@
 
             </div>
         </div>
@@ -44,12 +42,18 @@
 
         @*chuyển sinh hoạt đảng*@
         <div class="k body-item" style="display:none" id="tab-sinhhoat">
-            <span class=" k t t-item-note">Công tác chuyển sinh hoạt Đảng viên</span>
-
-            <span class="t bnt-addnew" data-toggle="modal" data-target="#modalinsertdangvien" onclick="getTitle(bindingTitle)">+Chuyển đến</span>
-            <div class="k f-search-ft">
-                <input class="k search-ft" id="search-box" onkeyup="" type="text">
-                <i class="fa fa-search bnt-search" aria-hidden="true"></i>
+            <div class="k tab-head-adhe">
+                <span class="t bnt-addnew" data-toggle="modal" data-target="#modalinsertdangvien" onclick="getTitle(bindingTitle)">+Chuyển đến</span>
+                <div class="k f-search-ft">
+                    <input class="k search-ft" id="search-box" onkeyup="" type="text">
+                    <i class="fa fa-search bnt-search" aria-hidden="true"></i>
+                </div>
+            </div>
+            <div class="k tab-head-adhe">
+                <span class=" k t t-item-note">Chọn Đảng viên chuyển sinh hoạt</span>
+                <select class="k t select-user" id="select-dangvien">
+                    @*<option value="0">fasdf</option>*@
+                </select>
             </div>
             <div class="k form-user">
                 <div class="k list-user-move">
@@ -63,6 +67,39 @@
                             <i class="fa fa-user-circle-o font-ic" aria-hidden="true"></i>
                             Nguyen Van Khanh
                         </span>
+                    </div>
+                    <div class="k f-name">
+                        <div class="k row-input">
+                            <input class="k t checkbox" type="checkbox" name="giaygioithieu" value="0" />
+                            <span class="k t text-note-checkbox">Đơn xin chuyển Đảng</span>
+                        </div>
+                        <div class="k row-input">
+                            <input class="k t checkbox" type="checkbox" name="hopdanhgia" value="1" />
+                            <span class="k t text-note-checkbox">Bản tự kiểm điểm</span>
+                        </div>
+                        <div class="k row-input">
+                            <input class="k t checkbox" type="checkbox" name="danhan" value="2" checked />
+                            <span class="k t text-note-checkbox">Xác nhận của Chi bộ</span>
+                        </div>
+                    </div>
+                    <div class="k f-name">
+                        <div class="k row-input">
+                            <span class=" k t ">
+                                <span class="k t bnt-brower-file" onclick="getFileMove()">Tải lên</span>
+                                <span class="k t name-file-move"></span>
+                                <input id="upload-file-move" class="hidden" style="display:none" type="file" accept="image/*" multiple="">
+                            </span>
+                        </div>
+                        <div class="k row-input">
+                            <span class=" k t ">
+                                <span class="k t bnt-brower-file" onclick="getFileReview()">Tải lên</span>
+                                <span class="k t file-review"></span>
+                                <input id="upload-file-review" class="hidden" style="display:none" type="file" accept="image/*" multiple="">
+                            </span>
+                        </div>
+                        <div class="k row-input">
+                            <span class="k t bnt-move-user">Chuyển đi</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -114,6 +151,15 @@
                         </div>
                     </div>
 
+                    <div class="k dl-sm-it" id="go-on-business-old">
+                        <span class="k t dl-name-dv">Giấy giới thiệu: </span>
+                        <span class="k document-togo" type="text">
+                            <span class="t name-referral">nothing</span>
+                            <span class="t brower-doc" onclick="getImage()">Brower</span>
+                            <input id="upload-referral" class="hidden" style="display:none" type="file" accept="image/*" multiple="">
+                        </span>
+                    </div>
+
                     <div class="k dl-sm-it">
                         <span class="k t dl-name-dv">Mật khẩu: </span>
                         <input class="k dl-input-dv" id="ip-pass" type="password" />
@@ -121,7 +167,7 @@
                     <div class="k dl-sm-it">
                         <span class="k t dl-name-dv">Nhập lại mật khẩu: </span>
                         <input class="k dl-input-dv" id="ip-cf-pass" type="password" />
-                        <span class="k t err-validate"id="err-validate">**Vui lòng kiểm tra lại thông tin</span>
+                        <span class="k t err-validate" id="err-validate">**Vui lòng kiểm tra lại thông tin</span>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -130,7 +176,7 @@
                     </button>
                     <span class="k dl-bnt-save" onclick="validateForm()">
                         <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
-                        Thêm mới
+                        Chuyển tới Chi bộ
                     </span>
                 </div>
             </div>

@@ -252,6 +252,57 @@
     .err-ip {
         border: 1px solid rgba(255, 0, 0,0.4);
     }
+    
+    /*chuyen sinh hoat dang*/
+    .row-input{
+        width:100%;
+        margin-bottom:10px;
+    }
+    .checkbox{
+        cursor:pointer;
+    }
+    .text-note-checkbox{
+        font-weight:300;
+        font-size:var(--fs-dt);
+        color:var(--cl-text-bl);
+    }
+    .document-togo{
+        border:1px dashed rgba(51,51,51,0.1);
+        border-radius:4px;
+    }
+    .brower-doc, .bnt-brower-file {
+        position: relative;
+        float: right;
+        border: 1px dashed rgba(77, 185, 14, 0.56);
+        color: forestgreen;
+        padding: 0px 5px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    .bnt-move-user {
+        position: relative;
+        float: right;
+        border: 1px solid rgba(51,51,51,0.1);
+        background-color: var(--bg-button);
+        padding: 3px 5px;
+        color: var(--cl-text-wt);
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    .name-file-move, .file-review {
+        text-overflow: ellipsis;
+        max-width: 190px;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+    .tab-head-adhe{
+        width:100%;
+    }
+    .select-user{
+        color:var(--cl-text-bl);
+        font-weight:300;
+        text-align:left;
+    }
 }
 
 @media only screen and (min-width:1200px) {
@@ -341,5 +392,27 @@
     .f-name {
         width: 30%;
         padding: 5px 10px;
+    }
+
+    /*chuyen dang*/
+    .document-togo {
+        width:70%;
+        padding:5px;
+    }
+    .brower-doc, .bnt-brower-file {
+        font-size: 12px;
+    }
+    .bnt-move-user {
+        margin-right: 5px;
+        margin-top: 3px;
+    }
+    .select-user {
+       font-size:var(--fs-dt);
+       margin-top:5px;
+       border:1px solid rgba(51,51,51,0.1);
+       border-radius:4px;
+       padding:2px 5px;
+       margin-left:5px;
+       cursor:pointer;
     }
 }

@@ -1,6 +1,16 @@
 Create database ADHERER;
 use Adherer;
 
+Create table UserMove(
+	usmoveid int primary key not null Identity(1,1),
+	fileid int ,
+	filereview nvarchar(20),
+	tranfer nvarchar(20),
+	createday datetime,
+	accept bit,
+	foreign key(fileid) references Files(fileid) 
+);
+
 create table DangBo(
 	dbid int not null primary key identity (1,1),
 	tructhuoc int,
@@ -30,6 +40,7 @@ Create table Roles(
 	active bit
 );
 
+alter table Users add giaygioithieu nvarchar(20);
 create table Users (
 	usid int not null Identity(1,1),
 	madv nvarchar(9),
@@ -45,6 +56,7 @@ create table Users (
 	titleid int ,
 	active bit not null,
 	accept bit,
+	giaygioithieu nvarchar(20),
 	foreign key (cbid) references Chibo(cbid),
 	foreign key (roleid) references Roles(roleid),
 	foreign key (titleid) references Title(titleid)

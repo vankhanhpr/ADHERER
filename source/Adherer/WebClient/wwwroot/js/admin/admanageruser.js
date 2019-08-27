@@ -109,6 +109,7 @@ function bindingChiBo(data) {
         }
         if (data.data[0]) {
             getArmorial(bindingArmorial, parseInt(data.data[0].cbid));
+            getUserByChiBo(bindingUser, parseInt(data.data[0].cbid));
         }
     }
 }
@@ -136,6 +137,7 @@ function getTitle(callback) {
 }
 function bindingTitle(data) {
     if (data.success && data.data) {
+        $("#sl-title option").remove();
         for (var i in data.data) {
             var item = data.data[i];
             $("#sl-title").append('<option value="' + item.titleid + '">' + item.nametitle + '</option>');
@@ -181,6 +183,48 @@ $(document).ready(function () {
     });
 });
 
+function emptyForm() {
+    $("#ip-madv").val('');
+    $("#adress-on-bussiness").val('');
+    $("#ip-pass").val('');
+    $("#ip-cf-pass").val('');
+}
+function addClass(obj) {
+    $("#" + obj).addClass("err-ip");
+}
+function removeClass(obj) {
+    $("#" + obj).removeClass("err-ip");
+}
+
+
+
+
+//chuyển sinh hoạt đến
+// brower picture
+var formData = new FormData();
+function getImage() {
+    $("#upload-referral").click();
+    $("#upload-referral").change(function () {
+        readImageUpload(this);
+    });
+}
+//add picture to view
+function readImageUpload(input) {
+    if (input.files && input.files[0]) {
+        if (formData.get("giaygioithieu") != null) {
+            formData.delete("giaygioithieu");
+        }
+        formData.append("giaygioithieu", input.files[0]);
+        var x = input.files[0];
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $(".name-referral").text(x.name);
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+    $("#upload-referral").val("");
+}
+
 function validateForm() {
     var madv = $("#ip-madv").val();
     var oldadress = $("#adress-on-bussiness").val();
@@ -220,33 +264,31 @@ function validateForm() {
     else {
         $("#err-validate").hide();
     }
-    var data = {
-        'madv': madv.trim(),
-        'cbid': parseInt($("#sl-chibo").children("option:selected").val()),
-        'ngaydenchibo': daytogo,
-        'roleid': 1,
-        'titleid': title,
-        'active': 0,
-        'password': pass.trim(),
-        'lydoden': 1,
-        'noisinhhoatcu': oldadress.trim()
-    };
-    insertUser(data);
+    formData.append('madv', madv.trim());
+    formData.append('cbid', parseInt($("#sl-chibo").children("option:selected").val()));
+    formData.append('ngaydenchibo', daytogo);
+    formData.append('roleid', 1);
+    formData.append('titleid', title);
+    formData.append('active', 0);
+    formData.append('password', pass.trim());
+    formData.append('lydoden', 1);
+    formData.append('noisinhhoatcu', oldadress.trim());
+    insertUser(formData);
 }
-
 var bol = true;
 function insertUser(data) {
     if (bol) {
         bol = false;
         $.ajax({
-            url: linkserver + "aduser/insertUser",
+            url: linkserver + "aduser/moveUser",
             type: 'POST',
             dataType: 'json',
-            data: JSON.stringify(data),
-            headers: { 'authorization': `Bearer ${token}` },
             async: false,
+            data: data,
+            headers: { 'authorization': `Bearer ${token}` },
             processData: false,
-            contentType: "application/json",
+            contentType: false,
+            cache: false,
             error: function (err) {
                 bol = true;
                 bootbox.alert({
@@ -258,16 +300,15 @@ function insertUser(data) {
                 if (data.success) {
                     $('#modalinsertdangvien').modal('toggle');
                     bootbox.alert({
-                        message: "Thêm mới Đảng viên thành công!",
+                        message: "Chuyển Đảng viên đến Chi bộ thành công!",
                         callback: function () {
                             emptyForm();
-                            page = 0;
                             window.location.href = '/admin/manageuser';
                         }
                     });
                 }
                 else {
-                     emptyForm();
+                    emptyForm();
                     $('#modalinsertdangvien').modal('toggle');
                     bootbox.alert(data.message);
                 }
@@ -276,15 +317,78 @@ function insertUser(data) {
     }
 }
 
-function emptyForm() {
-    $("#ip-madv").val('');
-    $("#adress-on-bussiness").val('');
-    $("#ip-pass").val('');
-    $("#ip-cf-pass").val('');
+//chuyen di
+function getFileMove() {
+    $("#upload-file-move").click();
+    $("#upload-file-move").change(function () {
+        readFileMove(this);
+    });
 }
-function addClass(obj) {
-    $("#" + obj).addClass("err-ip");
+function readFileMove(input) {
+    if (input.files && input.files[0]) {
+        //if (formData.get("giaygioithieu") != null) {
+        //    formData.delete("giaygioithieu");
+        //}
+        //formData.append("giaygioithieu", input.files[0]);
+        var x = input.files[0];
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $(".name-file-move").text(x.name);
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+    $("#upload-file-move").val("");
 }
-function removeClass(obj) {
-    $("#" + obj).removeClass("err-ip");
+function getFileReview() {
+    $("#upload-file-review").click();
+    $("#upload-file-review").change(function () {
+        readFileReview(this);
+    });
+}
+function readFileReview(input) {
+    if (input.files && input.files[0]) {
+        //if (formData.get("giaygioithieu") != null) {
+        //    formData.delete("giaygioithieu");
+        //}
+        //formData.append("giaygioithieu", input.files[0]);
+        var x = input.files[0];
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $(".file-review").text(x.name);
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+    $("#upload-file-review").val("");
+}
+
+//var cbid = parseInt($("#sl-chibo").children("option:selected").val());
+function getUserByChiBo(callback,id) {
+    $.ajax({
+        type: "get",
+        url: linkserver + "aduser/getUserByChiBoIdForFilter?id="+id,
+        data: null,
+        headers: { 'authorization': `Bearer ${token}` },
+        dataType: 'json',
+        contentType: "application/json",
+        statusCode: {
+            401: function () {
+                window.location.href = "/login";
+            }
+        },
+        error: function (err) {
+            bootbox.alert("Có lỗi xảy ra, vui lòng kiểm tra kết nối");
+        },
+        success: function (data) {
+            callback(data);
+        }
+    });
+}
+
+function bindingUser(data) {
+    if (data.success && data.data) {
+        for (var i in data.data) {
+            var item = data.data[i].user;
+            $("#select-dangvien").append('<option value="' + item.usid + '">' + item.madv + '</option>');
+        }
+    }
 }
