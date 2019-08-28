@@ -1,14 +1,16 @@
 Create database ADHERER;
 use Adherer;
 
+
 Create table UserMove(
 	usmoveid int primary key not null Identity(1,1),
-	fileid int ,
+	usid int ,
 	filereview nvarchar(20),
 	tranfer nvarchar(20),
 	createday datetime,
 	accept bit,
-	foreign key(fileid) references Files(fileid) 
+	addresstogo nvarchar(3000),
+	foreign key(usid) references Users(usid) 
 );
 
 create table DangBo(

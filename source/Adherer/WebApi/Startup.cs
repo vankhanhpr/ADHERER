@@ -66,6 +66,10 @@ namespace WebApi
             services.AddSingleton<IFileProvider>(
               new PhysicalFileProvider(
                   Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/document")));//form file
+            services.AddSingleton<IFileProvider>(
+              new PhysicalFileProvider(
+                  Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/transfer")));//transfer
+
 
             services.AddScoped<IUserResponsitory, UserResponsitory>();
             services.AddScoped<IAuthentication, AuthenticationResponsitory>();
@@ -85,6 +89,7 @@ namespace WebApi
             services.AddTransient<IAdToabroadResponsitory, AdToabroadResponsitory>();
             services.AddTransient<IAdFormResponsitory, AdFormResponsitory>();
             services.AddTransient<IAdhererLivingResponsitory, AdhererLivingResponsitory>();
+            services.AddTransient<IUserMoveResponsitory, UserMoveResponsitory>();
 
             services.AddTransient<IDashBoardResponsitory, DashBoardResponsitory>();
             services.AddTransient<IFinanceResponsitory, FinanceResponsitory>();

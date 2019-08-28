@@ -1,4 +1,6 @@
 ﻿var token = getTokenByLocal().token;
+var usid = -1;
+var formInsert = new FormData();
 
 $("#sl-chibo").on('change', function () {
     getArmorial(bindingArmorial, parseInt(this.value));
@@ -208,10 +210,11 @@ function getImage() {
         readImageUpload(this);
     });
 }
+
 //add picture to view
 function readImageUpload(input) {
     if (input.files && input.files[0]) {
-        if (formData.get("giaygioithieu") != null) {
+        if (formData.get("giaygioithieu") !== null) {
             formData.delete("giaygioithieu");
         }
         formData.append("giaygioithieu", input.files[0]);
@@ -234,14 +237,14 @@ function validateForm() {
     var confilmpass = $("#ip-cf-pass").val();
 
     var checkinsert = true;
-    if (madv.trim() == '') {
+    if (madv.trim() === '') {
         checkinsert = false;
         addClass('ip-madv');
     }
     else {
         removeClass('ip-madv');
     }
-    if (oldadress.trim() == '') {
+    if (oldadress.trim() === '') {
         checkinsert = false;
         addClass('adress-on-bussiness');
     }
@@ -317,6 +320,7 @@ function insertUser(data) {
     }
 }
 
+
 //chuyen di
 function getFileMove() {
     $("#upload-file-move").click();
@@ -326,15 +330,16 @@ function getFileMove() {
 }
 function readFileMove(input) {
     if (input.files && input.files[0]) {
-        //if (formData.get("giaygioithieu") != null) {
-        //    formData.delete("giaygioithieu");
-        //}
-        //formData.append("giaygioithieu", input.files[0]);
+        if (formInsert.get("filereview") !== null) {
+            formInsert.delete("filereview");
+        }
+        formInsert.append("filereview", input.files[0]);
         var x = input.files[0];
         var reader = new FileReader();
         reader.onload = function (e) {
             $(".name-file-move").text(x.name);
         };
+        $("#check-form-move").attr('checked', 'checked');
         reader.readAsDataURL(input.files[0]);
     }
     $("#upload-file-move").val("");
@@ -347,25 +352,25 @@ function getFileReview() {
 }
 function readFileReview(input) {
     if (input.files && input.files[0]) {
-        //if (formData.get("giaygioithieu") != null) {
-        //    formData.delete("giaygioithieu");
-        //}
-        //formData.append("giaygioithieu", input.files[0]);
+        if (formInsert.get("tranfer") !== null) {
+            formInsert.delete("tranfer");
+        }
+        formInsert.append("tranfer", input.files[0]);
         var x = input.files[0];
         var reader = new FileReader();
         reader.onload = function (e) {
             $(".file-review").text(x.name);
         };
+        $("#check-form-review").attr('checked', 'checked');
         reader.readAsDataURL(input.files[0]);
     }
     $("#upload-file-review").val("");
 }
 
-//var cbid = parseInt($("#sl-chibo").children("option:selected").val());
-function getUserByChiBo(callback,id) {
+function getUserByChiBo(callback, id) {
     $.ajax({
         type: "get",
-        url: linkserver + "aduser/getUserByChiBoIdForFilter?id="+id,
+        url: linkserver + "usermove/getUserMoveByChiBo?id=" + id,
         data: null,
         headers: { 'authorization': `Bearer ${token}` },
         dataType: 'json',
@@ -390,5 +395,96 @@ function bindingUser(data) {
             var item = data.data[i].user;
             $("#select-dangvien").append('<option value="' + item.usid + '">' + item.madv + '</option>');
         }
+        if (data.data[0] && data.data[0].user ) {
+            getUserById(bindingFile, data.data[0].user.usid);
+            usid = data.data[0].user.usid;
+        }
     }
+}
+
+$('#input-select').on('input', function () {
+    var value = $(this).val();
+    if (value) {
+        usid = value;
+        getUserById(bindingFile, value);
+    }
+});
+function getUserById(callback, id) {
+    $.ajax({
+        type: "get",
+        url: linkserver + "adfile/getFileByUsId?id=" + id,
+        data: null,
+        headers: { 'authorization': `Bearer ${token}` },
+        dataType: 'json',
+        contentType: "application/json",
+        statusCode: {
+            401: function () {
+                window.location.href = "/login";
+            }
+        },
+        error: function (err) {
+            bootbox.alert("Có lỗi xảy ra, vui lòng kiểm tra kết nối");
+        },
+        success: function (data) {
+            callback(data);
+        }
+    });
+}
+function bindingFile(data) {
+    if (data.success && data.data) {
+        var item = data.data;
+        $("#madv").text(item.user.madv);
+        if (item.file) {
+            $("#nameuser").val(item.filesdv);
+            if (item.file.avatar) {
+                $(".img-avt").css("background-image", "url(" + linkfileuser + item.file.avatar + ")");
+            }
+        }
+    }
+    else {
+        //
+    }
+}
+
+function moveDangVien() {
+    var address = $("#address-togo").val();
+    if (address.trim() === '') {
+        $("#address-togo").css('border', '1px solid red');
+        return;
+    }
+    else {
+        $("#address-togo").css('border', '1px solid rgba(51,51,51,0.1');
+
+        formInsert.append('addresstogo', address);
+        formInsert.append('usid', usid);
+    }
+    $.ajax({
+        url: linkserver + "UserMove/insertUserMove",
+        type: 'POST',
+        dataType: 'json',
+        async: false,
+        data: formInsert,
+        headers: { 'authorization': `Bearer ${token}` },
+        processData: false,
+        contentType: false,
+        cache: false,
+        error: function (err) {
+            bootbox.alert({
+                message: "Error :" + err.message
+            });
+        },
+        success: function (data) {
+            if (data.success) {
+                bootbox.alert({
+                    message: "Đã chuyển Đảng viên!",
+                    callback: function () {
+                        window.location = "/admin/manageuser";
+                    }
+                });
+            }
+            else {
+                bootbox.alert("Có lỗi xảy ra vui lòng kiểm tra lại thông tin!");
+            }
+        }
+    });
 }

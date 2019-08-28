@@ -16,8 +16,10 @@
 
         <select class=" t sl-chibo" id="sl-chibo">
             @*<option>Chi bộ trung tâm CNTT</option>
-                <option>Chi bộ trung tâm X</option>*@
+            <option>Chi bộ trung tâm X</option>*@
         </select>
+        
+
         <select class=" t sl-chibo" id="sl-dangbo"></select>
 
         @*Xet tang huy hieu Dang*@
@@ -27,14 +29,14 @@
                 <span class=" k t text-table-info">Thông tin </span>
                 @*<span class=" k t text-sign">Huy hiệu đã có </span>*@
                 @*<div class="k child-form-user">
-                        <span class="k t stt">1</span>
-                        <div class="k t body-user">
-                            <span class="k t name-user">Nguyễn Văn Kha</span>
-                            <span class="k t note-day">Ngày vào Đảng:</span>
-                            <span class="k t note-day">12/12/2012</span>
-                            <progress class="k t progress-bar" id="file" data-label="12 năm tuổi Đảng" max="100" value="70"> 70% </progress>
-                        </div>
-                    </div>*@
+                    <span class="k t stt">1</span>
+                    <div class="k t body-user">
+                        <span class="k t name-user">Nguyễn Văn Kha</span>
+                        <span class="k t note-day">Ngày vào Đảng:</span>
+                        <span class="k t note-day">12/12/2012</span>
+                        <progress class="k t progress-bar" id="file" data-label="12 năm tuổi Đảng" max="100" value="70"> 70% </progress>
+                    </div>
+                </div>*@
 
             </div>
         </div>
@@ -44,16 +46,17 @@
         <div class="k body-item" style="display:none" id="tab-sinhhoat">
             <div class="k tab-head-adhe">
                 <span class="t bnt-addnew" data-toggle="modal" data-target="#modalinsertdangvien" onclick="getTitle(bindingTitle)">+Chuyển đến</span>
-                <div class="k f-search-ft">
+                @*<div class="k f-search-ft">
                     <input class="k search-ft" id="search-box" onkeyup="" type="text">
                     <i class="fa fa-search bnt-search" aria-hidden="true"></i>
-                </div>
+                </div>*@
             </div>
             <div class="k tab-head-adhe">
                 <span class=" k t t-item-note">Chọn Đảng viên chuyển sinh hoạt</span>
-                <select class="k t select-user" id="select-dangvien">
-                    @*<option value="0">fasdf</option>*@
-                </select>
+                <input class="select-user" id="input-select" list="select-dangvien">
+                <datalist  id="select-dangvien">
+                    @*<option value="">fasfd</option>*@
+                </datalist>
             </div>
             <div class="k form-user">
                 <div class="k list-user-move">
@@ -61,25 +64,28 @@
                     <div class="k f-name">
                         <span class="k t t-if-dv">
                             <i class="fa fa-id-card-o font-ic" aria-hidden="true"></i>
-                            LH012345
+                            <span id="madv"></span>
                         </span>
                         <span class="k t t-if-dv">
                             <i class="fa fa-user-circle-o font-ic" aria-hidden="true"></i>
-                            Nguyen Van Khanh
+                            <span id="nameuser"></span>
                         </span>
                     </div>
                     <div class="k f-name">
                         <div class="k row-input">
-                            <input class="k t checkbox" type="checkbox" name="giaygioithieu" value="0" />
+                            <input class="k t checkbox" id="check-form-move" type="checkbox" name="giaygioithieu" value="0" />
                             <span class="k t text-note-checkbox">Đơn xin chuyển Đảng</span>
                         </div>
                         <div class="k row-input">
-                            <input class="k t checkbox" type="checkbox" name="hopdanhgia" value="1" />
+                            <input class="k t checkbox" id="check-form-review" type="checkbox" name="hopdanhgia" value="1" />
                             <span class="k t text-note-checkbox">Bản tự kiểm điểm</span>
                         </div>
                         <div class="k row-input">
                             <input class="k t checkbox" type="checkbox" name="danhan" value="2" checked />
                             <span class="k t text-note-checkbox">Xác nhận của Chi bộ</span>
+                        </div>
+                        <div class="k row-input">
+                            <input class="k t input-from-to" id="address-togo" placeholder="Nơi chuyển đi" type ="text"/>
                         </div>
                     </div>
                     <div class="k f-name">
@@ -98,7 +104,7 @@
                             </span>
                         </div>
                         <div class="k row-input">
-                            <span class="k t bnt-move-user">Chuyển đi</span>
+                            <span class="k t bnt-move-user"onclick="moveDangVien()">Chuyển đi</span>
                         </div>
                     </div>
                 </div>
@@ -107,7 +113,7 @@
 
         @*quan ly dang vien du bi*@
         <div class="k body-item" style="display:none" id="tab-user-dubi">
-            <span class=" k t t-item-note">Quản lý Đảng viên dự bị</span>
+            <span class=" k t t-item-note">Danh sách Đảng viên dự bị</span>
             <div class="k form-user">
 
             </div>
