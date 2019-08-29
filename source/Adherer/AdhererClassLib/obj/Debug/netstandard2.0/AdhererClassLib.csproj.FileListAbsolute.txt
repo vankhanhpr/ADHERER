@@ -12,3 +12,17 @@ F:\ASP.NET\ADHERER\source\Adherer\AdhererClassLib\bin\Debug\netstandard2.0\Syste
 F:\ASP.NET\ADHERER\source\Adherer\AdhererClassLib\obj\Debug\netstandard2.0\AdhererClassLib.csproj.CopyComplete
 F:\ASP.NET\ADHERER\source\Adherer\AdhererClassLib\obj\Debug\netstandard2.0\AdhererClassLib.dll
 F:\ASP.NET\ADHERER\source\Adherer\AdhererClassLib\obj\Debug\netstandard2.0\AdhererClassLib.pdb
+E:\ASPMVC\WORK\ADHERER\source\Adherer\AdhererClassLib\bin\Debug\netstandard2.0\AdhererClassLib.deps.json
+E:\ASPMVC\WORK\ADHERER\source\Adherer\AdhererClassLib\bin\Debug\netstandard2.0\AdhererClassLib.dll
+E:\ASPMVC\WORK\ADHERER\source\Adherer\AdhererClassLib\bin\Debug\netstandard2.0\AdhererClassLib.pdb
+E:\ASPMVC\WORK\ADHERER\source\Adherer\AdhererClassLib\bin\Debug\netstandard2.0\Microsoft.AspNetCore.Http.Features.dll
+E:\ASPMVC\WORK\ADHERER\source\Adherer\AdhererClassLib\bin\Debug\netstandard2.0\System.ComponentModel.Annotations.dll
+E:\ASPMVC\WORK\ADHERER\source\Adherer\AdhererClassLib\bin\Debug\netstandard2.0\Microsoft.AspNetCore.Http.Features.xml
+E:\ASPMVC\WORK\ADHERER\source\Adherer\AdhererClassLib\bin\Debug\netstandard2.0\System.ComponentModel.Annotations.xml
+E:\ASPMVC\WORK\ADHERER\source\Adherer\AdhererClassLib\obj\Debug\netstandard2.0\AdhererClassLib.csprojAssemblyReference.cache
+E:\ASPMVC\WORK\ADHERER\source\Adherer\AdhererClassLib\obj\Debug\netstandard2.0\AdhererClassLib.csproj.CoreCompileInputs.cache
+E:\ASPMVC\WORK\ADHERER\source\Adherer\AdhererClassLib\obj\Debug\netstandard2.0\AdhererClassLib.AssemblyInfoInputs.cache
+E:\ASPMVC\WORK\ADHERER\source\Adherer\AdhererClassLib\obj\Debug\netstandard2.0\AdhererClassLib.AssemblyInfo.cs
+E:\ASPMVC\WORK\ADHERER\source\Adherer\AdhererClassLib\obj\Debug\netstandard2.0\AdhererClassLib.csproj.CopyComplete
+E:\ASPMVC\WORK\ADHERER\source\Adherer\AdhererClassLib\obj\Debug\netstandard2.0\AdhererClassLib.dll
+E:\ASPMVC\WORK\ADHERER\source\Adherer\AdhererClassLib\obj\Debug\netstandard2.0\AdhererClassLib.pdb

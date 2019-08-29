@@ -1,17 +1,19 @@
 ﻿
 var formData = new FormData();
-function changeView() {
+function changeView(id,fileid,option) {
     $("#upload-doc").click();
     $("#upload-doc").change(function () {
-        readFileUpload(this);
+        readFileUpload(this, id,fileid,option);
     });
 }
-function readFileUpload(input) {
+function readFileUpload(input, id, fileid ,option) {
     if (input.files && input.files[0]) {
-        //if (formData.get("giaygioithieu") !== null) {
-        //    formData.delete("giaygioithieu");
-        //}
-        //formData.append("giaygioithieu", input.files[0]);
+        if (formData.get(option) !== null) {
+            formData.delete(option);
+        }
+        formData.append(option, input.files[0]);
+        formData.append('formfileid', id);
+        formData.append('fileid', fileid);
         var x = input.files[0];
         var reader = new FileReader();
         //reader.onload = function (e) {
@@ -88,9 +90,9 @@ function bindingFormFile(data) {
     if (data.success && data.data) {
         for (var i in data.data) {
             var item = data.data[i];
-            var day = new Date(item.ngayvaodangdb);
-            var x = getDay(day);
-            $("#list-user-move").append(`<div class=" k border-item">
+            var s = getData(item.ngayvaodangct);
+            console.log(s);
+            $("#list-user-dubi").append(`<div class=" k border-item">
                                 <div class="k img-avt"></div>
                                 <div class="k f-name-timeline">
                                     <span class="k t t-if-dv">
@@ -109,7 +111,7 @@ function bindingFormFile(data) {
                                 <div class="k f-body-user">
                                     <div class="k item-body-user">
                                         <span class="k t text-note-body-user">Tiến trình</span>
-                                        <progress class="k t progress-bar" id="file" data-label="`+ item.progress + `tháng/12tháng" max="12" value="` + item.progress+`"> </progress>
+                                        <progress class="k t progress-bar" id="file" data-label="`+ s + `tháng/12tháng" max="12" value="` + s+`"> </progress>
                                     </div>
                                 </div>
                                 <div class="k item-body-user">
@@ -117,10 +119,10 @@ function bindingFormFile(data) {
 
                                     <div id="timeline-wrap">
                                         <div id="timeline"></div>
-                                        <div class="marker mfirst timeline-icon one" style= "background-color:`+ (item.formfile.giaychungnhanboiduong ? `#8cfa95` :`#536295`)+`">
+                                        <div class="marker mfirst timeline-icon one" style= "background-color:`+ (item.formfile.giaychungnhanboiduong ? `#8cfa95` : `#536295`) + `"onclick="changeView(` + item.formfile.formfileid + `,` + item.fileid + `,'giaychungnhanboiduong'` +`)">
                                             `+ (item.formfile.giaychungnhanboiduong ? `<i class="fa fa-check"></i>` :`<i class="fa fa-pencil"></i>`)+`
                                         </div>
-                                        <div class="marker m2 timeline-icon two" onclick="changeView()">
+                                        <div class="marker m2 timeline-icon two" onclick="changeView(`+ item.formfile.formfileid +`,` + item.fileid +`,giaychungnhanboiduong` +`)">
                                             <i class="fa fa-pencil"></i>
                                         </div>
                                         <div class="marker m3 timeline-icon three" onclick="changeView()">
@@ -157,4 +159,23 @@ function bindingFormFile(data) {
                             </div>`);
         }
     }
+}
+
+function getData(day) {
+    var x = new Date();
+    var y = new Date(day);
+    if (x.getFullYear() === y.getFullYear()) {
+        return y.getMonth() - x.getMonth();
+    }
+    else
+        if (y.getFullYear() - x.getFullYear() === 1) {
+            return y.getMonth() + (12 - x.getMonth());
+        }
+        else {
+            var total = x.getMonth() + y.getMonth();
+            for (var i = y.getFullYear() + 1; i < x.getFullYear(); i++) {
+                total += 12;
+            }
+            return total;
+        }
 }

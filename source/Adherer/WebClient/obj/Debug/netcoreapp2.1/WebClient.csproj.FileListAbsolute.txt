@@ -88,3 +88,9 @@ F:\ASP.NET\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\Razor\Views\
 F:\ASP.NET\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\Razor\Views\Admin\Finance.g.cshtml.cs
 F:\ASP.NET\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\Razor\Views\Admin\ManageUser.g.cshtml.cs
 F:\ASP.NET\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\WebClient.csprojAssemblyReference.cache
+E:\ASPMVC\WORK\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\Razor\Views\Admin\DetailReport.g.cshtml.cs
+E:\ASPMVC\WORK\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\Razor\Views\Admin\Finance.g.cshtml.cs
+E:\ASPMVC\WORK\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\Razor\Views\Admin\Form.g.cshtml.cs
+E:\ASPMVC\WORK\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\Razor\Views\Admin\LivingAdherer.g.cshtml.cs
+E:\ASPMVC\WORK\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\Razor\Views\Admin\ManageUser.g.cshtml.cs
+E:\ASPMVC\WORK\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\Razor\Views\Admin\Report.g.cshtml.cs

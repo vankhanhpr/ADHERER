@@ -179,23 +179,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\KhanhNguyenIT\\.nuget\\packages\\": {},
+    "C:\\Users\\donki\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\ASP.NET\\ADHERER\\source\\Adherer\\AdhererClassLib\\AdhererClassLib.csproj",
+      "projectUniqueName": "E:\\ASPMVC\\WORK\\ADHERER\\source\\Adherer\\AdhererClassLib\\AdhererClassLib.csproj",
       "projectName": "AdhererClassLib",
-      "projectPath": "F:\\ASP.NET\\ADHERER\\source\\Adherer\\AdhererClassLib\\AdhererClassLib.csproj",
-      "packagesPath": "C:\\Users\\KhanhNguyenIT\\.nuget\\packages\\",
-      "outputPath": "F:\\ASP.NET\\ADHERER\\source\\Adherer\\AdhererClassLib\\obj\\",
+      "projectPath": "E:\\ASPMVC\\WORK\\ADHERER\\source\\Adherer\\AdhererClassLib\\AdhererClassLib.csproj",
+      "packagesPath": "C:\\Users\\donki\\.nuget\\packages\\",
+      "outputPath": "E:\\ASPMVC\\WORK\\ADHERER\\source\\Adherer\\AdhererClassLib\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\KhanhNguyenIT\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\donki\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
