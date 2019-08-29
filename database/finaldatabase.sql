@@ -1,7 +1,16 @@
 Create database ADHERER;
 use Adherer;
 
-
+Create table FormFile(
+	fileid int not null,
+	formfileid int not null primary key identity(1,1),
+	bantukiemdiem nvarchar(20),
+	giaychungnhanboiduong nvarchar(20),
+	nhanxetnguoihd nvarchar(20),
+	nhanxetchibo nvarchar(20),
+	quydinhketnap nvarchar(20),
+	foreign key(fileid) references Files(fileid)
+);
 Create table UserMove(
 	usmoveid int primary key not null Identity(1,1),
 	usid int ,

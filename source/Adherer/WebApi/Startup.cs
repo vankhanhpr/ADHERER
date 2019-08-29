@@ -90,6 +90,7 @@ namespace WebApi
             services.AddTransient<IAdFormResponsitory, AdFormResponsitory>();
             services.AddTransient<IAdhererLivingResponsitory, AdhererLivingResponsitory>();
             services.AddTransient<IUserMoveResponsitory, UserMoveResponsitory>();
+            services.AddTransient<IFormFileResponsitory, FormFileResponsitory>();
 
             services.AddTransient<IDashBoardResponsitory, DashBoardResponsitory>();
             services.AddTransient<IFinanceResponsitory, FinanceResponsitory>();

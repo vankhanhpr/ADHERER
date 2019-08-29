@@ -112,6 +112,7 @@ function bindingChiBo(data) {
         if (data.data[0]) {
             getArmorial(bindingArmorial, parseInt(data.data[0].cbid));
             getUserByChiBo(bindingUser, parseInt(data.data[0].cbid));
+            getFormFileByChiBo(data.data[0].cbid, bindingFormFile);
         }
     }
 }
@@ -448,6 +449,12 @@ function bindingFile(data) {
 
 function moveDangVien() {
     var address = $("#address-togo").val();
+
+    //if ($('#check-form-move').checked) {
+    if (document.getElementById("check-form-move").checked === false || document.getElementById("check-form-review").checked === false) {
+        bootbox.alert("Bạn phải đính kèm Đơn xin chuyển Đảng và Bản tự kiểm điểm trước khi chuyển đi");
+    }
+
     if (address.trim() === '') {
         $("#address-togo").css('border', '1px solid red');
         return;
