@@ -1,12 +1,17 @@
 ﻿
 var formData = new FormData();
-function changeView(id,fileid,option) {
-    $("#upload-doc").click();
-    $("#upload-doc").change(function () {
-        readFileUpload(this, id,fileid,option);
-    });
+var checkupdate = true;
+
+function changeView(id, fileid, option, obj) {
+    if (checkupdate) {
+        checkupdate = true;
+        $("#upload-doc").click();
+        $("#upload-doc").change(function () {
+            readFileUpload(this, id, fileid, option, obj);
+        });
+    }
 }
-function readFileUpload(input, id, fileid ,option) {
+function readFileUpload(input, id, fileid ,option,obj) {
     if (input.files && input.files[0]) {
         if (formData.get(option) !== null) {
             formData.delete(option);
@@ -16,6 +21,8 @@ function readFileUpload(input, id, fileid ,option) {
         formData.append('fileid', fileid);
         var x = input.files[0];
         var reader = new FileReader();
+        showLoadButton(obj);
+        updateFormFile(obj);
         //reader.onload = function (e) {
         //    $(".name-referral").text(x.name);
         //};
@@ -23,8 +30,7 @@ function readFileUpload(input, id, fileid ,option) {
     }
     //$("#upload-referral").val("");
 }
-
-function updateFormFile() {
+function updateFormFile(obj) {
     $.ajax({
         url: linkserver + "formfile/updateFormFile",
         type: 'POST',
@@ -39,16 +45,17 @@ function updateFormFile() {
             bootbox.alert({
                 message: "Có lỗi xảy ra vui lòng thử lại sau"
             });
+            destroyLoadButton();
+            checkupdate = true;
         },
         success: function (data) {
+            destroyLoadButton();
+            checkupdate = true;
             if (data.success) {
-                //bootbox.alert({
-                //    message: "Cập nhật thông tin thành công!",
-                //    callback: function () {
-                //        $(".bnt-add-fml").show();
-                //        getDangVien(formData.get('usid'), bindingFile);
-                //    }
-                //});
+                formData = new FormData();
+                $(obj).css('background-color', '#8cfa95');
+                $(obj).find('i').removeClass('fa-pencil');
+                $(obj).find('i').addClass('fa-check');
             }
             else {
                 bootbox.alert("Có lỗi xảy ra vui lòng kiểm tra lại thông tin!");
@@ -56,7 +63,6 @@ function updateFormFile() {
         }
     });
 }
-
 function getFormFileByChiBo(id,callback) {
     $.ajax({
         type: "get",
@@ -93,7 +99,7 @@ function bindingFormFile(data) {
             var s = getData(item.ngayvaodangct);
             console.log(s);
             $("#list-user-dubi").append(`<div class=" k border-item">
-                                <div class="k img-avt"></div>
+                                <div class="k img-avt" style="background-image:url(`+ (item.avatar ? linkfileuser + item.avatar :'/images/admin/avt-us-defaul.png') +`)"></div>
                                 <div class="k f-name-timeline">
                                     <span class="k t t-if-dv">
                                         <i class="fa fa-id-card-o font-ic" aria-hidden="true"></i>
@@ -119,20 +125,20 @@ function bindingFormFile(data) {
 
                                     <div id="timeline-wrap">
                                         <div id="timeline"></div>
-                                        <div class="marker mfirst timeline-icon one" style= "background-color:`+ (item.formfile.giaychungnhanboiduong ? `#8cfa95` : `#536295`) + `"onclick="changeView(` + item.formfile.formfileid + `,` + item.fileid + `,'giaychungnhanboiduong'` +`)">
+                                        <div class="marker mfirst timeline-icon one" style= "background-color:`+ (item.formfile.giaychungnhanboiduong ? `#8cfa95` : `#536295`) + `"onclick="changeView(` + item.formfile.formfileid + `,` + item.fileid + `,'giaychungnhanboiduong',this)">
                                             `+ (item.formfile.giaychungnhanboiduong ? `<i class="fa fa-check"></i>` :`<i class="fa fa-pencil"></i>`)+`
                                         </div>
-                                        <div class="marker m2 timeline-icon two" onclick="changeView(`+ item.formfile.formfileid +`,` + item.fileid +`,giaychungnhanboiduong` +`)">
-                                            <i class="fa fa-pencil"></i>
+                                        <div class="marker m2 timeline-icon two" style= "background-color:`+ (item.formfile.bantukiemdiem ? `#8cfa95` : `#536295`) + `" onclick="changeView(` + item.formfile.formfileid + `,` + item.fileid +`,'bantukiemdiem',this)">
+                                           `+ (item.formfile.bantukiemdiem ? `<i class="fa fa-check"></i>` : `<i class="fa fa-pencil"></i>`) +`
                                         </div>
-                                        <div class="marker m3 timeline-icon three" onclick="changeView()">
-                                            <i class="fa fa-pencil"></i>
+                                        <div class="marker m3 timeline-icon three" style= "background-color:`+ (item.formfile.nhanxetnguoihd ? `#8cfa95` : `#536295`) + `"onclick="changeView(` + item.formfile.formfileid + `,` + item.fileid + `,'nhanxetnguoihd',this)">
+                                           `+ (item.formfile.nhanxetnguoihd ? `<i class="fa fa-check"></i>` : `<i class="fa fa-pencil"></i>`) +`
                                         </div>
-                                        <div class="marker m4 timeline-icon four" onclick="changeView()">
-                                            <i class="fa fa-pencil"></i>
+                                        <div class="marker m4 timeline-icon four" style= "background-color:`+ (item.formfile.nhanxetchibo ? `#8cfa95` : `#536295`) + `"onclick="changeView(` + item.formfile.formfileid + `,` + item.fileid + `,'nhanxetchibo',this)">
+                                           `+ (item.formfile.nhanxetchibo ? `<i class="fa fa-check"></i>` : `<i class="fa fa-pencil"></i>`) +`
                                         </div>
-                                        <div class="marker mlast timeline-icon five" onclick="changeView()">
-                                            <i class="fa fa-pencil"></i>
+                                        <div class="marker mlast timeline-icon five" style= "background-color:`+ (item.formfile.quydinhketnap ? `#8cfa95` : `#536295`) + `"onclick="changeView(` + item.formfile.formfileid + `,` + item.fileid + `,'quydinhketnap',this)">
+                                           `+ (item.formfile.quydinhketnap ? `<i class="fa fa-check"></i>` : `<i class="fa fa-pencil"></i>`) +`
                                         </div>
                                         <input id="upload-doc" class="hidden" style="display:none" type="file" accept="image/*" multiple="">
 
@@ -160,7 +166,6 @@ function bindingFormFile(data) {
         }
     }
 }
-
 function getData(day) {
     var x = new Date();
     var y = new Date(day);
@@ -178,4 +183,11 @@ function getData(day) {
             }
             return total;
         }
+}
+
+function showLoadButton(obj) {
+    $(obj).append('<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>');
+}
+function destroyLoadButton() {
+    $('.lds-ellipsis').remove();
 }

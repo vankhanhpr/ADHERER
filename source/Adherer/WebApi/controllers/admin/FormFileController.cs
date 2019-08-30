@@ -58,36 +58,36 @@ namespace WebApi.controllers.admin
                 data.message = "update success";
                 if (formFileRequest.giaychungnhanboiduong != null)
                 {
-                    formFile.giaychungnhanboiduong =await uploadDecision(formFileRequest.giaychungnhanboiduong);
                     deleteFile(formFile.giaychungnhanboiduong);
+                    formFile.giaychungnhanboiduong = await uploadFile(formFileRequest.giaychungnhanboiduong);
                     m_formFileResponsitory.updateFormFile(formFile);
                     return data;
                 }
                 if (formFileRequest.bantukiemdiem != null)
                 {
-                    formFile.bantukiemdiem = await uploadDecision(formFileRequest.bantukiemdiem);
                     deleteFile(formFile.bantukiemdiem);
+                    formFile.bantukiemdiem = await uploadFile(formFileRequest.bantukiemdiem);
                     m_formFileResponsitory.updateFormFile(formFile);
                     return data;
                 }
                 if (formFileRequest.nhanxetnguoihd != null)
                 {
-                    formFile.nhanxetnguoihd = await uploadDecision(formFileRequest.nhanxetnguoihd);
                     deleteFile(formFile.nhanxetnguoihd);
+                    formFile.nhanxetnguoihd = await uploadFile(formFileRequest.nhanxetnguoihd);
                     m_formFileResponsitory.updateFormFile(formFile);
                     return data;
                 }
                 if (formFileRequest.nhanxetchibo != null)
                 {
-                    formFile.nhanxetchibo = await uploadDecision(formFileRequest.nhanxetchibo);
                     deleteFile(formFile.nhanxetchibo);
+                    formFile.nhanxetchibo = await uploadFile(formFileRequest.nhanxetchibo);
                     m_formFileResponsitory.updateFormFile(formFile);
                     return data;
                 }
                 if (formFileRequest.quydinhketnap != null)
                 {
-                    formFile.quydinhketnap = await uploadDecision(formFileRequest.quydinhketnap);
                     deleteFile(formFile.quydinhketnap);
+                    formFile.quydinhketnap = await uploadFile(formFileRequest.quydinhketnap);
                     m_formFileResponsitory.updateFormFile(formFile);
                     return data;
                 }
@@ -100,14 +100,14 @@ namespace WebApi.controllers.admin
             }
             return data;
         }
-        public async Task<string> uploadDecision(IFormFile file)
+        public async Task<string> uploadFile(IFormFile file)
         {
             if (file == null || file.Length == 0)
                 return "";
             var temp = file.GetFilename().Split(".");
             var nameimgmain = RandomString(10) + "." + temp[1];
             var fpath = Path.Combine(
-                        Directory.GetCurrentDirectory(), "wwwroot/decision",
+                        Directory.GetCurrentDirectory(), "wwwroot/dangviendubi",
                         nameimgmain);//post image to forder 
             using (var stream = new FileStream(fpath, FileMode.Create))
             {
@@ -122,7 +122,7 @@ namespace WebApi.controllers.admin
             {
                 string webRootPath = m_hostingEnvironment.WebRootPath;
                 string contentRootPath = m_hostingEnvironment.ContentRootPath;
-                var file1 = System.IO.Path.Combine(webRootPath, "decision/" + file);
+                var file1 = System.IO.Path.Combine(webRootPath, "dangviendubi/" + file);
                 System.IO.File.Delete(file1);//delete in forder
             }
             catch

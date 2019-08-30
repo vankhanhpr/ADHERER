@@ -23,7 +23,7 @@ function formatDate(date) {
     return day + "/" + month + "/" + date.getFullYear();
 }
 function showLoading() {
-    $("body").append('<div class="lds-ring"><div></div><div></div><div></div><div></div></div>');
+    $("body").append('<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>');
 }
 function destroyLoading() {
     $(".lds-ring").hide();
@@ -39,4 +39,24 @@ function strToObj(str) {//convert string to object
 function getTokenByLocal() {
     var token = strToObj(window.localStorage.getItem('token_session'));
     return token;
+}
+
+function formatNumber(yourNumber) {
+    if (yourNumber) {
+        var components = yourNumber.toString().split(".");
+        components[0] = components[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        return components.join(".");
+    } else {
+        return "";
+    }
+}
+//change key
+function changeKeyPress(obj) {
+    var text = $(obj).val().toString();
+    var str = formatNumber(covertToString(text));
+    $(obj).val(str);
+}
+function covertToString(str) {
+    var strint = str.replace(/,/g, '');
+    return strint;
 }

@@ -104,6 +104,14 @@
         border: 1px solid rgba(255, 0, 0,0.4);
     }
 
+    /*view chart*/
+    .text-chart-revanue{
+        color:var(--cl-text-bl);
+        font-weight:300;
+        text-align:left;
+        background-color:var(--bg-item);
+        width:100%;
+    }
 }
 @media only screen and (min-width:1200px){
     .title-finance {
@@ -140,5 +148,12 @@
         font-size: var(--fs-dt);
         margin-top: 20px;
         margin-bottom: 10px;
+    }
+    /*view chart*/
+    .text-chart-revanue {
+        font-size:var(--fs-dt);
+        margin-top:20px;
+        margin-bottom:10px;
+        padding:5px;
     }
 }

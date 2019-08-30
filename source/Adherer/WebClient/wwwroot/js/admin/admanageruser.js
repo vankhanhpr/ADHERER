@@ -392,6 +392,7 @@ function getUserByChiBo(callback, id) {
 
 function bindingUser(data) {
     if (data.success && data.data) {
+        $("#select-dangvien option").remove();
         for (var i in data.data) {
             var item = data.data[i].user;
             $("#select-dangvien").append('<option value="' + item.usid + '">' + item.madv + '</option>');

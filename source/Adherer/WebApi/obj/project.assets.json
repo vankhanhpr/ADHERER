@@ -12622,23 +12622,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\donki\\.nuget\\packages\\": {},
+    "C:\\Users\\KhanhNguyenIT\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\ASPMVC\\WORK\\ADHERER\\source\\Adherer\\WebApi\\WebApi.csproj",
+      "projectUniqueName": "F:\\ASP.NET\\ADHERER\\source\\Adherer\\WebApi\\WebApi.csproj",
       "projectName": "WebApi",
-      "projectPath": "E:\\ASPMVC\\WORK\\ADHERER\\source\\Adherer\\WebApi\\WebApi.csproj",
-      "packagesPath": "C:\\Users\\donki\\.nuget\\packages\\",
-      "outputPath": "E:\\ASPMVC\\WORK\\ADHERER\\source\\Adherer\\WebApi\\obj\\",
+      "projectPath": "F:\\ASP.NET\\ADHERER\\source\\Adherer\\WebApi\\WebApi.csproj",
+      "packagesPath": "C:\\Users\\KhanhNguyenIT\\.nuget\\packages\\",
+      "outputPath": "F:\\ASP.NET\\ADHERER\\source\\Adherer\\WebApi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\donki\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\KhanhNguyenIT\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -12651,8 +12651,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "E:\\ASPMVC\\WORK\\ADHERER\\source\\Adherer\\AdhererClassLib\\AdhererClassLib.csproj": {
-              "projectPath": "E:\\ASPMVC\\WORK\\ADHERER\\source\\Adherer\\AdhererClassLib\\AdhererClassLib.csproj"
+            "F:\\ASP.NET\\ADHERER\\source\\Adherer\\AdhererClassLib\\AdhererClassLib.csproj": {
+              "projectPath": "F:\\ASP.NET\\ADHERER\\source\\Adherer\\AdhererClassLib\\AdhererClassLib.csproj"
             }
           }
         }

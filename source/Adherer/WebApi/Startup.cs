@@ -69,7 +69,9 @@ namespace WebApi
             services.AddSingleton<IFileProvider>(
               new PhysicalFileProvider(
                   Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/transfer")));//transfer
-
+            services.AddSingleton<IFileProvider>(
+              new PhysicalFileProvider(
+                  Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/dangviendubi")));//dang vien du bi
 
             services.AddScoped<IUserResponsitory, UserResponsitory>();
             services.AddScoped<IAuthentication, AuthenticationResponsitory>();

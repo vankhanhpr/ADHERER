@@ -34,6 +34,7 @@ namespace WebApi.serrvice.admin.responsitory
                              user.madv,
                              file.fileid,
                              file.ngayvaodangdb,
+                             file.avatar,
                              formfile
                          }).ToList();
             return temp;
