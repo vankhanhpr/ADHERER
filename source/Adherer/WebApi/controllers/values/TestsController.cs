@@ -9,6 +9,8 @@ using WebApi.data;
 
 namespace WebApi.controllers.values
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class TestsController : Controller
     {
         private readonly MyDBContext _context;
@@ -18,18 +20,29 @@ namespace WebApi.controllers.values
             _context = context;
         }
 
-       
-        [HttpGet("getTest")]
 
-        public Test getTest()
+        [HttpGet("getTest")]
+        public dynamic getTest()
         {
-            return _context.Test.FirstOrDefault();
+            Test test = new Test();
+            try
+            {
+               
+                _context.Add(test);
+            }
+            catch(Exception e)
+            {
+                return e;
+            }
+
+
+            return null;
         }
 
-        // GET: Tests
-        public async Task<IActionResult> Index()
+
+        public async Task<dynamic> Index()
         {
-            return View(await _context.Test.ToListAsync());
+            return await _context.Test.ToListAsync();
         }
 
         // GET: Tests/Details/5
@@ -79,7 +92,6 @@ namespace WebApi.controllers.values
             {
                 return NotFound();
             }
-
             var test = await _context.Test.FindAsync(id);
             if (test == null)
             {

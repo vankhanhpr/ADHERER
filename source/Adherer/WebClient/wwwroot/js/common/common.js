@@ -10,7 +10,7 @@ function convertDay(date) {
 
     var month = (date.getMonth() + 1) < 10 ? '0' + (date.getMonth() + 1) : (date.getMonth() + 1);
     var day = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
-    dayFormat= day + "." + month + "." + date.getFullYear();
+    dayFormat= day + "/" + month + "/" + date.getFullYear();
     return dayFormat;
 }
 

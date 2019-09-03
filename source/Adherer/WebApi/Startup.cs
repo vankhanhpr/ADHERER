@@ -57,6 +57,15 @@ namespace WebApi
             services.AddSingleton<IFileProvider>(
                new PhysicalFileProvider(
                    Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/files")));//form file
+            services.AddSingleton<IFileProvider>(
+               new PhysicalFileProvider(
+                   Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/card")));//form file
+            services.AddSingleton<IFileProvider>(
+               new PhysicalFileProvider(
+                   Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/decision")));//form file
+            services.AddSingleton<IFileProvider>(
+              new PhysicalFileProvider(
+                  Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/document")));//form file
 
             services.AddScoped<IUserResponsitory, UserResponsitory>();
             services.AddScoped<IAuthentication, AuthenticationResponsitory>();
@@ -75,9 +84,13 @@ namespace WebApi
             services.AddTransient<IAdDisciplineResponsitory, AdDisciplineResponsitory>();
             services.AddTransient<IAdToabroadResponsitory, AdToabroadResponsitory>();
             services.AddTransient<IAdFormResponsitory, AdFormResponsitory>();
+            services.AddTransient<IAdhererLivingResponsitory, AdhererLivingResponsitory>();
 
             services.AddTransient<IDashBoardResponsitory, DashBoardResponsitory>();
-
+            services.AddTransient<IFinanceResponsitory, FinanceResponsitory>();
+            //for user
+            services.AddTransient<IFileResponsitory, FileResponsitory>();
+            services.AddTransient<IUserResponsitory, UserResponsitory>();
             services.AddCors();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

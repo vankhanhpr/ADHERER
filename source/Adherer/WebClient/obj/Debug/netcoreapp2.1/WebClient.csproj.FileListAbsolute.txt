@@ -38,7 +38,6 @@ F:\ASP.NET\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\WebClient.Vi
 F:\ASP.NET\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\WebClient.dll
 F:\ASP.NET\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\WebClient.pdb
 F:\ASP.NET\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\WebClient.csproj.CopyComplete
-F:\ASP.NET\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\WebClient.csprojAssemblyReference.cache
 E:\ASPMVC\WORK\ADHERER\source\Adherer\WebClient\bin\Debug\netcoreapp2.1\WebClient.deps.json
 E:\ASPMVC\WORK\ADHERER\source\Adherer\WebClient\bin\Debug\netcoreapp2.1\WebClient.runtimeconfig.json
 E:\ASPMVC\WORK\ADHERER\source\Adherer\WebClient\bin\Debug\netcoreapp2.1\WebClient.runtimeconfig.dev.json
@@ -85,6 +84,7 @@ F:\ASP.NET\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\Razor\Views\
 F:\ASP.NET\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\Razor\Views\Admin\Form.g.cshtml.cs
 F:\ASP.NET\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\Razor\Views\Admin\Report.g.cshtml.cs
 F:\ASP.NET\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\Razor\Views\Admin\DetailReport.g.cshtml.cs
+<<<<<<< HEAD
 C:\tin\QLDV\Source\ADHERER\source\Adherer\WebClient\bin\Debug\netcoreapp2.1\WebClient.deps.json
 C:\tin\QLDV\Source\ADHERER\source\Adherer\WebClient\bin\Debug\netcoreapp2.1\WebClient.runtimeconfig.json
 C:\tin\QLDV\Source\ADHERER\source\Adherer\WebClient\bin\Debug\netcoreapp2.1\WebClient.runtimeconfig.dev.json
@@ -131,3 +131,10 @@ C:\tin\QLDV\Source\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\Razo
 C:\tin\QLDV\Source\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\Razor\Views\Home\Discipline_Reward.g.cshtml.cs
 C:\tin\QLDV\Source\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\Razor\Views\Home\Family.g.cshtml.cs
 C:\tin\QLDV\Source\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\Razor\Views\Home\Form.g.cshtml.cs
+=======
+F:\ASP.NET\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\Razor\Views\Admin\LivingAdherer.g.cshtml.cs
+F:\ASP.NET\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\WebClient.csprojAssemblyReference.cache
+F:\ASP.NET\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\Razor\Views\Admin\Finance.g.cshtml.cs
+>>>>>>> 53ef6c75ea82ab4c62dabfe2687228e12ed9dca1
+C:\tin\QLDV\Source\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\Razor\Views\Admin\Finance.g.cshtml.cs
+C:\tin\QLDV\Source\ADHERER\source\Adherer\WebClient\obj\Debug\netcoreapp2.1\Razor\Views\Admin\LivingAdherer.g.cshtml.cs

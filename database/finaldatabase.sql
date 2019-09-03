@@ -179,3 +179,11 @@ Create table Report (
 	note nvarchar(1000),
 	active bit
 );
+
+Create table Finance (
+	financeid int not null primary key identity(1,1),
+	name nvarchar(200),
+	createday datetime,
+	moneys bigint ,
+	status int ,
+);

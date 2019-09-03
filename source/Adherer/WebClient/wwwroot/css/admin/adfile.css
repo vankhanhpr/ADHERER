@@ -109,6 +109,21 @@
         float:right;
         cursor:pointer;
     }
+
+    .left-form-card{
+        border:1px dashed rgba(51,51,51,0.1);
+        border-radius:4px;
+    }
+    .brower-card{
+        color:var(--bg-button);
+        border-radius:4px;
+        border:1px dashed rgba(51,51,51,0.1);
+        position:relative;
+        float:right;
+        cursor:pointer;
+        font-weight:300;
+    }
+
     .err-validate {
         color: red;
         text-align: center;
@@ -116,7 +131,6 @@
         font-size: 12px;
         display: none;
     }
-   
     /*family*/
     .tab-note-family {
         width: 100%;
@@ -765,9 +779,18 @@
     }
     .bnt-update-file{
         font-size:var(--fs-dt);
-        margin-top:10px;
+        margin-top:30px;
         margin-bottom:5px;
     }
+    .left-form-card {
+        width:70%;
+        padding:5px;
+    }
+    .brower-card {
+        padding:2px 5px;
+        font-size:12px;
+    }
+
     /*family*/
     .tab-note-family {
         font-size: var(--fs-tt);

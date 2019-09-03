@@ -26,6 +26,17 @@ $('#sl-title-addnew').on('change', function () {
     titleid = parseInt(this.value);
 });
 
+//show come form user
+$('#reason-create').on('change', function () {
+    var reasion = parseInt(this.value);
+    if (reasion === 1) {
+        $("#go-on-business-old").show(300);
+    }
+    else {
+        $("#go-on-business-old").hide(300);
+    }
+});
+
 //select update user 
 $('#sl-chb-ud').on('change', function () {
     cbid = parseInt(this.value);
@@ -361,6 +372,18 @@ function insertUser() {
     var madv = $("#ip-madv-addnew").val();
     var newpass = $("#ip-pass").val();
     var cfpass = $("#ip-cf-pass").val();
+    var bussiness = $("#adress-on-bussiness").val();
+    if (parseInt($("#reason-create").children("option:selected").val()) == 1) {
+        if (bussiness.trim() == '') {
+            $("#adress-on-bussiness").addClass("err-ip");
+            $(".err-validate").show();
+            return;
+        }
+        else {
+            $("#adress-on-bussiness").removeClass("err-ip");
+            $(".err-validate").hide();
+        }
+    }
     if (!checkData(madv, newpass, cfpass)) {
         return;
     }
@@ -372,7 +395,8 @@ function insertUser() {
         'titleid': titleid,
         'active': 0,
         'password': cfpass.trim(),
-        'lydoden': parseInt($("#reason-create").children("option:selected").val())
+        'lydoden': parseInt($("#reason-create").children("option:selected").val()),
+        'noisinhhoatcu': bussiness.trim()
     };
     if (bol) {
         bol = false;

@@ -1,3 +1,4 @@
+var formData = new FormData();
 $(document).ready(function () {
     window.scrollTo(0, 0);
     document.getElementById('customFile').addEventListener('change', handleFileSelect, false);
@@ -57,7 +58,7 @@ jQuery('.datetimepicker').datetimepicker({
      }
     },
     timepicker:false,
-    format:'d.m.Y'
+    format:'d/m/Y'
    });
 
   //Hàm kiểm tra Email, Họ và Tên 
@@ -110,7 +111,10 @@ function handleFileSelect(event) {
         $("#btnclose").click();
     };
     reader.readAsDataURL(input.files[0]);
-
+    if (formData.get("avatar") != null) {
+        formData.delete("avatar");
+    }
+    formData.append("avatar", input.files[0]);
 };
 
 function hidenPopup(classNm) {

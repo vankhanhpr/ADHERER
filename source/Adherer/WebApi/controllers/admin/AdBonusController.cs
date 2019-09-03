@@ -116,7 +116,6 @@ namespace WebApi.controllers.admin
             return data;
         }
 
-
         [HttpGet("deleteBonus")]
         public DataRespond deleteBonus(int id)
         {

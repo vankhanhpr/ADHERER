@@ -1,6 +1,7 @@
 Create database ADHERER;
 use Adherer;
 
+
 create table DangBo(
 	dbid int not null primary key identity (1,1),
 	tructhuoc int,
@@ -87,7 +88,8 @@ Alter table Files add cmnd nvarchar(12),
 	honnhan bit,
 	suckhoe nvarchar(100)
 
-
+	Alter table Files add card nvarchar(20)
+	Alter table Files add decision nvarchar(20)
 Create table Files (
 	fileid int not null Identity(1,1),
 	usid int  not null,
@@ -123,6 +125,9 @@ Create table Files (
 	sdt nvarchar(10),
 	email nvarchar(100),
 	avatar nvarchar(20),
+	decision nvarchar(20),
+	card nvarchar(20),
+
 	primary key(fileid),
 	foreign key (usid) references users(usid),
 	foreign key (dantoc) references Nation(nationid),
@@ -198,3 +203,12 @@ Create table Report (
 	active bit
 );
 alter table Report add note nvarchar(1000)
+
+Create table AdhererLiving (
+	livid int identity(1,1),
+	title nvarchar(200),
+	dayevent datetime,
+	note nvarchar(2000),
+	namefiel nvarchar(20),
+	createday datetime
+)

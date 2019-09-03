@@ -1,10 +1,5 @@
 ﻿//get dangvien by id
 //var tokenmodel = strToObj(getTokenByLocal());
-disableddatePicker("user-daycmnd");
-disableddatePicker("user-ngaythangnamsinh");
-disableddatePicker("user-ngayvaodangct");
-//disableddatePicker("user-ngayvaodangdb");
-disableddatePicker("user-ngayvaodoan");
 var token = getTokenByLocal().token;
 var id = getTokenByLocal().usid;
 if (id != null && typeof id != 'undefined') {
@@ -12,7 +7,6 @@ if (id != null && typeof id != 'undefined') {
 } else {
     window.location.href = "/login";
 }
-
 
 var parames = [];
 parames['idSelectTp'] = "user-matp"; 
@@ -26,10 +20,11 @@ function disableddatePicker(id) {
     //$('#' + id).datePicker('disable');
 };
 
+//get user
 function getInfoUser(id, callback) {
     $.ajax({
         type: "get",
-        url: QLDV_LINK_API + "adfile/getFileByUsId?id=" + id,
+        url: QLDV_LINK_API + "file/getFileByUserId?id=" + id,
         data: null,
         dataType: 'json',
         contentType: "application/json",
@@ -50,7 +45,7 @@ function getInfoUser(id, callback) {
 }
 function bindingUserFile(data) {
     if (data.success && data.data) {
-        formData = new FormData();
+        
         var user = data.data.user;
         formData.append("usid", user.usid);
         var file = data.data.file;
@@ -60,6 +55,7 @@ function bindingUserFile(data) {
             }
         }
         if (file) {
+            formData.append("fileid", file.fileid);
             $("#user-fileid").val(file.fileid);  
             $("#user-usid").val(file.usid); 
             $("#user-madv").val(file.madv);
@@ -105,6 +101,7 @@ function bindingUserFile(data) {
     };
 }
 
+//change district ,province,ward
 $("#user-matp").on('change', function () {
     getDistricts("user-maqh", this.value, bindingDistrict, '');
 });
@@ -119,16 +116,17 @@ function edit() {
 //UpdateUser
 
 function updateUserInfo(formData) {
+    console.info(formData);
     $.ajax({
-        url: QLDV_LINK_API + "adFile/updateFile",
+        url: QLDV_LINK_API + "file/updateFile",
         type: 'POST',
-        contentType: false,
-        processData: false,
         dataType: 'json',
+        async: false,
         data: formData,
         headers: { 'authorization': `Bearer ${token}` },
-        async: false,
         processData: false,
+        contentType: false,
+        cache: false,
         statusCode: {
             401: function () {
                 alert("erro 401");
@@ -139,7 +137,7 @@ function updateUserInfo(formData) {
         },
         success: function (data) {
             if (data.success == true) {
-                window.location.reload();
+                //window.location.reload();
             }
             else {
                 alert(data.message);
@@ -160,26 +158,52 @@ function processUpdateUser() {
         alert("Vui long kiem tra lai du lieu nhap");
     } else {
         var data = $("#user-data").serializeArray();
-        var formData = new FormData();
-        
+       
+
         if (data.length > 0) {
             //var dataArr = [];
             for (var i = 0; i < data.length; i++) {
                 var key = data[i]['name'];
                 var val = data[i]['value'];
-            }
-                //dataArr[key] = val;
                 formData.append(key, val);
             }
+            //dataArr[key] = val;
+
             //var dataObj = Object.assign({}, dataArr);
             //$.each(data, function (i, val) {
             //    formData.append(val.name, val.value);
             //});
+            //console.info(data);
+            //console.info(formData);
             updateUserInfo(formData);
-        } else {
-            alert("data input ko hop le");
+            window.location.reload();
+            //} else {
+            //    alert("data input ko hop le");
+            //}
+
         }
-        
+
+    };
+}
+// brower picture
+function getImage() {
+    $("#multi-file").click();
+    $("#multi-file").change(function () {
+        readImageUpload(this);
+    });
+}
+//add picture to view
+function readImageUpload(input) {
+    if (input.files && input.files[0]) {
+        if (formData.get("avatar") != null) {
+            formData.delete("avatar");
+        }
+        formData.append("avatar", input.files[0]);
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $("#img-avt").css("background-image", "url(" + e.target.result + ")");
+        };
+        reader.readAsDataURL(input.files[0]);
     }
-    
-};
+    $("#multi-file").val("");
+}
