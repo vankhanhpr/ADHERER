@@ -12,5 +12,6 @@ namespace WebApi.model.request
         public string nameform { get; set; }
         public IFormFile file { get; set; }
         public string note { get; set; }
+        public int type { get; set; }
     }
 }

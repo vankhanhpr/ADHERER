@@ -45,6 +45,24 @@ namespace WebApi.serrvice.admin.responsitory
             return dangvien;
         }
 
+        //xet huy hieu dang
+        public dynamic getArmorial(int cbid)
+        {
+            var armorial = (from file in context.Files
+                           join user in context.Users on file.usid equals user.usid
+                           where user.cbid == cbid && file.ngayvaodangct < DateTime.Now
+                           select new
+                           {
+                               name = file.hotendangdung,
+                               madv= user.madv,
+                               fileid = file.fileid,
+                               ngayvaodang= file.ngayvaodangct,
+                               year = DateTime.Now.Year - file.ngayvaodangct.Year
+                           }).OrderByDescending(x=>x.year).ToList();
+            return armorial;
+
+        }
+
         public dynamic getUserByActive(int active)
         {
             switch (active)
@@ -58,14 +76,14 @@ namespace WebApi.serrvice.admin.responsitory
                         }).ToList();
                         return dangvien;
                     }
-                    
+
                 case 1:
                     {
                         var dangvien = context.Users.Select(user => new
                         {
                             user,
                             file = context.Files.Where(m => m.usid == user.usid).FirstOrDefault()
-                        }).Where(n=>n.user.active==false).ToList();
+                        }).Where(n => n.user.active == false).ToList();
                         return dangvien;
                     }
 
@@ -89,22 +107,22 @@ namespace WebApi.serrvice.admin.responsitory
             {
                 user,
                 file = context.Files.Where(m => m.usid == user.usid).FirstOrDefault()
-            }).ToList().AsQueryable().Where(n=>
+            }).ToList().AsQueryable().Where(n =>
                   n.user.usid.ToString().ToLowerInvariant().Contains(filterby)
-                ||n.user.madv.ToLowerInvariant().Contains(filterby)
-                //||n.file.hotendangdung.ToLowerInvariant().Contains(filterby)
+                || n.user.madv.ToLowerInvariant().Contains(filterby)
+            //||n.file.hotendangdung.ToLowerInvariant().Contains(filterby)
             );
             return dangvien;
         }
 
         public dynamic getUserByChiBo(int id, DateTime fromday, DateTime endday)
         {
-            return context.Users.Where(m => m.cbid == id && m.ngaydenchibo >= fromday && m.ngaydenchibo <= endday ).ToList();
+            return context.Users.Where(m => m.cbid == id && m.ngaydenchibo >= fromday && m.ngaydenchibo <= endday).ToList();
         }
 
         public dynamic getUserByChiBoId(int id)
         {
-            var dangvien = context.Users.Where(m=>m.cbid==id).Select(user => new
+            var dangvien = context.Users.Where(m => m.cbid == id).Select(user => new
             {
                 user,
                 file = context.Files.Where(m => m.usid == user.usid).FirstOrDefault()

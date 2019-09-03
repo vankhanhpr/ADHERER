@@ -14,28 +14,12 @@
         </div>
 
         <div class="k f-inf" id="f-item-db">
-            <div class="k row-table">
+            <div class="k row-table-main">
                 <span class="k t tt-table">Đảng bộ</span>
                 <span class="k t tt-table">Ngày thành lập</span>
                 <span class="k t tt-table">Trạng thái</span>
                 <span class="k t tt-table">Cập nhật</span>
             </div>
-            @*<div class="k row-table">
-                    <span class="k t tt-table-dt">Trung tâm công nghệ thông tin</span>
-                    <span class="k t tt-table-dt">12/12/2012</span>
-                    <span class="k t tt-table-dt">Hoạt động</span>
-                    <div class="k t tt-table-dt">
-                        <i class="fa fa-cogs" data-toggle="modal" data-target="#modaladddangbo"></i>
-                        <i class="fa fa-trash-o" aria-hidden="true"></i>
-                        <i class="fa fa-plus" aria-hidden="true" onclick="toggeChibo(this)"></i>
-                    </div>
-                    <div class="k f-chibo" style="display:none">
-                        <span class="k t t-name-chibo">Chi Bo trung tam cong nghe thong tin</span>
-                        <span class="k t t-name-chibo">Chi Bo Phòng Giải Pháp</span>
-                    </div>
-                </div>*@
-
-
         </div>
     </div>
 
@@ -79,10 +63,16 @@
                         </div>
                     </div>
 
-                    <span class="k dl-bnt-save" onclick="updateDangBo()">Cập nhật</span>
+                    @*<span class="k dl-bnt-save" onclick="updateDangBo()">Cập nhật</span>*@
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="k btn btn-default" data-dismiss="modal">
+                        Đóng
+                    </button>
+                    <span class="k dl-bnt-save" onclick="updateDangBo()">
+                        <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                        Cập nhật
+                    </span>
                 </div>
             </div>
 
@@ -127,11 +117,15 @@
                             </div>
                         </div>
                     </div>
-
-                    <span class="k dl-bnt-save" onclick="insertDangbo()">Cập nhật</span>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="k btn btn-default" data-dismiss="modal">
+                        Đóng
+                    </button>
+                    <span class="k dl-bnt-save" onclick="insertDangbo()">
+                        <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                        Thêm mới
+                    </span>
                 </div>
             </div>
 

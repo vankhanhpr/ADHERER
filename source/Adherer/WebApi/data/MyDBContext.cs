@@ -29,7 +29,8 @@ namespace WebApi.data
         public DbSet<Title> Title { get; set; }
         public DbSet<AdhererLiving> AdhererLiving { get; set; }
         public DbSet<Finance> Finance { get; set; }
+        public DbSet<UserMove> UserMove { get; set; }
+        public DbSet<FormFile> FormFile { get; set; }
         public DbSet<Test> Test { get; set; }
-
     }
 }

@@ -15,7 +15,8 @@
     <Folder Include="wwwroot\images\user\" />
     <Folder Include="wwwroot\card\" />
     <Folder Include="wwwroot\decision\" />
-    <Folder Include="wwwroot\document\" />
+    <Folder Include="wwwroot\dangviendubi\" />
+    <Folder Include="wwwroot\transfer\" />
   </ItemGroup>
 
   <ItemGroup>

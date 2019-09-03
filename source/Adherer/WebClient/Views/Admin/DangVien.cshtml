@@ -167,10 +167,16 @@
                         <span class="k t err-validate">**Vui lòng kiểm tra lại thông tin</span>
                     </div>
 
-                    <span class="k dl-bnt-save" onclick="insertUser()">Thêm mới</span>
+                    @*<span class="k dl-bnt-save" onclick="insertUser()">Thêm mới</span>*@
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="k btn btn-default" data-dismiss="modal">
+                        Đóng
+                    </button>
+                    <span class="k dl-bnt-save" onclick="insertUser()">
+                        <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                        Thêm mới
+                    </span>
                 </div>
             </div>
 
@@ -201,7 +207,7 @@
                         <span class="k t dl-name-dv">Chức vụ Đảng: </span>
                         <select class="k dl-sl-dv" id="sl-og-ud">
                             @*<option value="0">Ủy viên</option>
-                                <option value="0">Bí thư chi bộ</option>*@
+                    <option value="0">Bí thư chi bộ</option>*@
                         </select>
                     </div>
                     <div class="k dl-sm-it">
@@ -233,10 +239,16 @@
                         <span class="k t err-validate" id="err-validate-ud">**Vui lòng kiểm tra lại thông tin, nếu không thay đổi mật khẩu vui lòng xóa trắng 2 trường mật khẩu</span>
                     </div>
 
-                    <span class="k dl-bnt-save" onclick="updateUser()">Cập nhật</span>
+                    @*<span class="k dl-bnt-save" onclick="updateUser()">Cập nhật</span>*@
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="k btn btn-default" data-dismiss="modal">
+                        Đóng
+                    </button>
+                    <span class="k dl-bnt-save" onclick="updateUser()">
+                        <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                        Cập nhật
+                    </span>
                 </div>
             </div>
 
@@ -263,10 +275,16 @@
                             <option value="1">Từ trần</option>
                         </select>
                     </div>
-                    <span class="k dl-bnt-save" onclick="blockUser()">Khóa tài khoản</span>
+                    @*<span class="k dl-bnt-save" onclick="blockUser()">Khóa tài khoản</span>*@
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="k btn btn-default" data-dismiss="modal">
+                        Đóng
+                    </button>
+                    <span class="k dl-bnt-save" onclick="blockUser()">
+                        <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                        Khóa tài khoản
+                    </span>
                 </div>
             </div>
 

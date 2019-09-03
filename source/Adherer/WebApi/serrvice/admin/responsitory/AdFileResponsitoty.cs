@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AdhererClassLib.area.main;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -82,6 +83,10 @@ namespace WebApi.serrvice.admin.responsitory
         public void insertFile(Files file)
         {
             context.Entry(file).State = EntityState.Added;
+            context.SaveChanges();
+            FormFile ff = new FormFile();
+            ff.fileid = file.fileid;
+            context.Entry(ff).State = EntityState.Added;
             context.SaveChanges();
         }
 

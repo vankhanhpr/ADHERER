@@ -8,7 +8,7 @@ namespace AdhererClassLib.area.request
     {
         public int financeid { get; set; }
         public string name { get; set; }
-        public DateTime createday { get; set; }
+        public string createday { get; set; }
         public long moneys { get; set; }
         public int status { get; set; }
     }

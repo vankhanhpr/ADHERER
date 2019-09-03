@@ -139,18 +139,18 @@ function bindingUser(data) {
             var user = data.data[i].user;
             var file = data.data[i].file;
             var viewkey = "";
-            if (user.active) {
-                viewkey =   '<div class="k bd-bnt">' +
-                            '<span  data-toggle="modal" data-target="#modalchuyendang">' +
-                            '<span class="k t bnt-ed-dv" onclick="openTabBlockUser(' + user.usid + ',true) "> Khóa </span></span>' +
-                            '</div>';
-            }
-            else {
-                viewkey = '<div class="k bd-bnt">' +
-                    '<span>' +
-                    '<span class="k t bnt-ed-dv" onclick="openTabBlockUser(' + user.usid + ',false) "> Mở khóa </span></span>' +
-                    '</div>';
-            }
+            //if (user.active) {
+            //    viewkey =   '<div class="k bd-bnt">' +
+            //                '<span  data-toggle="modal" data-target="#modalchuyendang">' +
+            //                '<span class="k t bnt-ed-dv" onclick="openTabBlockUser(' + user.usid + ',true) "> Khóa </span></span>' +
+            //                '</div>';
+            //}
+            //else {
+            //    viewkey = '<div class="k bd-bnt">' +
+            //        '<span>' +
+            //        '<span class="k t bnt-ed-dv" onclick="openTabBlockUser(' + user.usid + ',false) "> Mở khóa </span></span>' +
+            //        '</div>';
+            //}
             var view = '<div class="k item-dv">' +
                 '<div class="k img-avt-dv" style="background-image:url(' + (file && file.avatar != null ? linkfileuser + file.avatar :'/images/admin/avt-us-defaul.png') + ')" ></div >' +
                 '<div class="k f-name">' +

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -22,6 +23,7 @@ namespace WebApi.model.request
 
         public int cbidold { get; set; }
 
+        public IFormFile giaygioithieu { get; set; }
         public Boolean accept { get; set; }
         public string noisinhhoatcu { get; set; }
     }

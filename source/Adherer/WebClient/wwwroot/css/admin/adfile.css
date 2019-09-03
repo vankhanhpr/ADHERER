@@ -208,7 +208,7 @@
         cursor:pointer;
         padding:5px;
     }
-    .dl-bnt-save {
+    /*.dl-bnt-save {
         border-radius: 4px;
         color: var(--cl-text-wt);
         padding: 3px 5px;
@@ -219,6 +219,27 @@
         float: right;
         cursor: pointer;
         text-align:center;
+    }*/
+    .btn-default {
+        float: right;
+        margin-top: 5px;
+    }
+
+    .dl-bnt-save {
+        color: var(--cl-text-bl);
+        border: 1px solid rgba(51,51,51,0.1);
+        float: right;
+        padding: 3px 5px;
+        border-radius: 4px;
+        background-color: var(--bg-button);
+        cursor: pointer;
+        box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+        width: auto;
+        padding: 6px 12px;
+        text-align: center;
+        font-weight: 600;
+        margin-right: 5px;
+        margin-top: 5px;
     }
     /*bonus*/
     .tab-bonus, .tab-discipline {
@@ -347,9 +368,8 @@
 
     .dl-bnt-save {
         font-size: var(--fs-dt);
-        margin-top: 10px;
+        margin-top: 5px;
         margin-bottom: 5px;
-        width: 100%;
     }
 
     .fa-cogs, .fa-trash-o {
@@ -468,9 +488,8 @@
 
     .dl-bnt-save {
         font-size: var(--fs-dt);
-        margin-top: 10px;
+        margin-top: 5px;
         margin-bottom: 5px;
-        width: 100%;
     }
 
     .fa-cogs, .fa-trash-o {
@@ -589,9 +608,8 @@
 
     .dl-bnt-save {
         font-size: var(--fs-dt);
-        margin-top: 10px;
+        margin-top: 5px;
         margin-bottom: 5px;
-        width: 100%;
     }
 
     .fa-cogs, .fa-trash-o {
@@ -710,9 +728,8 @@
 
     .dl-bnt-save {
         font-size: var(--fs-dt);
-        margin-top: 10px;
+        margin-top: 5px;
         margin-bottom: 5px;
-        width: 100%;
     }
 
     .fa-cogs, .fa-trash-o {
@@ -821,9 +838,8 @@
     }
     .dl-bnt-save {
         font-size: var(--fs-dt);
-        margin-top: 10px;
+        margin-top: 5px;
         margin-bottom: 5px;
-        width:100%;
     }
     .fa-cogs, .fa-trash-o {
         font-size: var(--fs-dt);

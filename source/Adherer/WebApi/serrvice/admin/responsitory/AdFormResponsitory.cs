@@ -34,9 +34,9 @@ namespace WebApi.serrvice.admin.responsitory
             return context.Forms.Where(m => m.formid == id).FirstOrDefault();
         }
 
-        public IEnumerable<Forms> getAllForm()
+        public IEnumerable<Forms> getAllForm(int type)
         {
-            return context.Forms.ToList();
+            return context.Forms.Where(m=>m.type== type).ToList();
         }
 
         public void insertForm(Forms form)

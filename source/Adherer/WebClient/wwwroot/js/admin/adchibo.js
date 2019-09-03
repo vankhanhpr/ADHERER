@@ -116,6 +116,14 @@ function insertChiBo() {
         'active': 0,
         'ngaythanhlap': $("#day-create-cb").val()
     };
+    var name = $("#ip-name-cb").val();
+    if (name.trim() == '') {
+        $("#ip-name-cb").css('border', '1px solid rgba(255,0,0,0.3');
+        return;
+    }
+    else {
+        $("#ip-name-cb").css('border', '1px solid rgba(51,51,51,0.1');
+    }
     if (bol) {
         bol = false;
         $.ajax({
@@ -137,6 +145,7 @@ function insertChiBo() {
                 bol = true;
                 if (data.success) {
                     $('#modalinsertchibo').modal('toggle');
+                    $("#ip-name-cb").val("");
                     bootbox.alert({
                         message: "Thêm Chi bộ thành công!",
                         callback: function () {
@@ -239,6 +248,14 @@ function updateChiBo() {
         'active': $("#sl-active-chibo").children("option:selected").val(),
         'ngaythanhlap': $("#day-update-cb").val()
     };
+    var name = $("#ip-name-db-ud").val();
+    if (name.trim() == '') {
+        $("#ip-name-db-ud").css('border', '1px solid rgba(255,0,0,0.3)');
+        return;
+    }
+    else {
+        $("#ip-name-db-ud").css('border', '1px solid rgba(51,51,51,0.1)');
+    }
     if (boud) {
         boud = false;
         $.ajax({

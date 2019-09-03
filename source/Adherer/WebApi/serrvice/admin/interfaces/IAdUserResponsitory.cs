@@ -26,5 +26,7 @@ namespace WebApi.serrvice.admin.interfaces
 
         dynamic getUserByChiBo(int id,DateTime fromday,DateTime endday);
         dynamic getUserByChiBoId(int id);
+
+        dynamic getArmorial(int cbid);
     }
 }

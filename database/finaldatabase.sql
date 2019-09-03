@@ -1,6 +1,8 @@
 Create database ADHERER;
 use Adherer;
 
+
+
 create table DangBo(
 	dbid int not null primary key identity (1,1),
 	tructhuoc int,
@@ -45,9 +47,21 @@ create table Users (
 	titleid int ,
 	active bit not null,
 	accept bit,
+	giaygioithieu nvarchar(20),
+	noisinhhoatcu nvarchar(500),
 	foreign key (cbid) references Chibo(cbid),
 	foreign key (roleid) references Roles(roleid),
 	foreign key (titleid) references Title(titleid)
+);
+Create table UserMove(
+	usmoveid int primary key not null Identity(1,1),
+	usid int ,
+	filereview nvarchar(20),
+	tranfer nvarchar(20),
+	createday datetime,
+	accept bit,
+	addresstogo nvarchar(3000),
+	foreign key(usid) references Users(usid) 
 );
 create table Nation(
 	nationid int not null primary key identity(1,1),
@@ -60,17 +74,6 @@ create table Organization(
 	active bit,
 	createday datetime
 );
-Create table QTCT(
-	qtctid int not null primary key identity(1,1),
-	dayfrom datetime,
-	dayto datetime,
-	address nvarchar(100),
-	organization nvarchar(100),
-	chucvu nvarchar(100),
-	fileid int,
-	foreign key (fileid) references files(fileid)
-);
-
 
 Create table Files (
 	fileid int not null Identity(1,1),
@@ -107,10 +110,33 @@ Create table Files (
 	sdt nvarchar(10),
 	email nvarchar(100),
 	avatar nvarchar(20),
+	card nvarchar(20),
+	decision nvarchar(20),
 	primary key(fileid),
 	foreign key (usid) references users(usid),
 	foreign key (dantoc) references Nation(nationid),
 	foreign key(donvi) references Organization(ogid)
+);
+Create table FormFile(
+	fileid int not null,
+	formfileid int not null primary key identity(1,1),
+	bantukiemdiem nvarchar(20),
+	giaychungnhanboiduong nvarchar(20),
+	nhanxetnguoihd nvarchar(20),
+	nhanxetchibo nvarchar(20),
+	quydinhketnap nvarchar(20),
+	foreign key(fileid) references Files(fileid)
+);
+
+Create table QTCT(
+	qtctid int not null primary key identity(1,1),
+	dayfrom datetime,
+	dayto datetime,
+	address nvarchar(100),
+	organization nvarchar(100),
+	chucvu nvarchar(100),
+	fileid int,
+	foreign key (fileid) references files(fileid)
 );
 Create table Family(
 	fmlid int not null Identity(1,1),
@@ -155,8 +181,9 @@ create table Forms(
 	nameform nvarchar(100) not null ,
 	namefile nvarchar(100) not null,
 	note nvarchar(1000),
-	updatedate datetime,
-	active bit
+	updateday datetime,
+	active bit,
+	type int
 )	
 create table Toabroad (
 	brid int not null primary key identity (1,1),

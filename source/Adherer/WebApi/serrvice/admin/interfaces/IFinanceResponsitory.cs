@@ -15,5 +15,8 @@ namespace WebApi.serrvice.admin.interfaces
         void insertFinance(Finance finance);
         void updateFinance(Finance finance);
         void deleteFinance(int id);
+
+        dynamic revanue(int year);
+        dynamic getTotalMoney();
     }
 }
