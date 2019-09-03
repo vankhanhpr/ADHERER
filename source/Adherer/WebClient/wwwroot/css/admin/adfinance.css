@@ -112,6 +112,11 @@
         background-color:var(--bg-item);
         width:100%;
     }
+    .total-money{
+        color:red;
+        padding:5px;
+        font-size:20px;
+    }
 }
 @media only screen and (min-width:1200px){
     .title-finance {

@@ -1,11 +1,11 @@
 ﻿
 var formData = new FormData();
 var token = getTokenByLocal().token;
-getForm(bindigForm);
-function getForm(callback) {
+getForm(bindigForm, 0);
+function getForm(callback, type) {
     $.ajax({
         type: "get",
-        url: linkserver + "adform/getAllForms",
+        url: linkserver + "adform/getAllForms?type="+ type,
         data: null,
         headers: { 'authorization': `Bearer ${token}` },
         dataType: 'json',
@@ -30,7 +30,8 @@ function bindigForm(data) {
             var item = data.data[i];
             var j = parseInt(i) + 1;
             $("#main-form-item").append('<div class="k row-table item-form-detail">' +
-                '<span class= "k t tt-table-dt" >'+j+'</span >' +
+                '<span class= "k t tt-table-dt" >' + j + '</span >' +
+                '<span class= "k t tt-table-dt" >' + item.formid + '</span >' +
                 '<span class="k t tt-table-dt">' + item.nameform +'</span>' +
                 '<a href=' + linkfiledownload + item.namefile +'><span class="k t tt-table-dt">' + item.namefile +'</span></a>' +
                 '<div class="k t tt-table-dt">' +
@@ -74,7 +75,6 @@ function validateForm() {
         addClass('nameform');
     }
     else {
-        checkform = true;
         removeClass('nameform');
     }
     if (!checkStr(noteform.trim())) {
@@ -82,7 +82,6 @@ function validateForm() {
         addClass('noteform');
     }
     else {
-        checkform = true;
         removeClass('noteform');
     }
 
@@ -103,6 +102,7 @@ function validateForm() {
         $("#err-insert-form").hide();
         formData.append('nameform', nameform);
         formData.append('note', noteform);
+        formData.append('type', parseInt($("#filter-by").children("option:selected").val()));
         insertForm();
     }
 }
@@ -131,7 +131,10 @@ function insertForm() {
                 bootbox.alert({
                     message: "Thêm biểu mẫu thành công!",
                     callback: function () {
-                        window.location.href = "/admin/form";
+                        $("#nameform").val("");
+                        $("#name-file").text("");
+                        $("#noteform").val("");
+                        getForm(bindigForm, parseInt($("#filter-by").children("option:selected").val()));
                     }
                 });
             }
@@ -181,7 +184,6 @@ function getFormById(id) {
         }
     });
 }
-
 // brower picture
 function getImageUpdate() {
     $("#multi-file-update").click();
@@ -190,7 +192,6 @@ function getImageUpdate() {
     });
 }
 //add picture to view
-
 function readImageUploadUpdate(input) {
     if (input.files && input.files[0]) {
         if (formDataUpdate.get("file") != null) {
@@ -206,7 +207,6 @@ function readImageUploadUpdate(input) {
     }
     $("#multi-file-update").val("");
 }
-
 function validateUpdateForm() {
     var nameformupdate = $("#name-form-update").val();
     var noteform = $("#name-note-update").val();
@@ -274,7 +274,6 @@ function updateForm() {
         }
     });
 }
-
 function deleteForm(id) {
     bootbox.
         confirm("Bạn có chắc muốn xóa biểu mẫu này?",
@@ -294,7 +293,7 @@ function deleteForm(id) {
                         bootbox.alert({
                             message: "Xóa biểu mẫu thành công!",
                             callback: function () {
-                                getForm(bindigForm);
+                                getForm(bindigForm, parseInt($("#filter-by").children("option:selected").val()));
                             }
                         });
                     }
@@ -302,3 +301,8 @@ function deleteForm(id) {
             }
         });
 }
+
+//filter \
+$('#filter-by').on('change', function () {
+    getForm(bindigForm, parseInt($("#filter-by").children("option:selected").val()));
+});

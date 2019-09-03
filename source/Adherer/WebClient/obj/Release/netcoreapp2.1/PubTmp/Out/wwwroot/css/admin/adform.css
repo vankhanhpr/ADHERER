@@ -22,6 +22,17 @@
         font-weight: 300;
         text-align: left;
     }
+    .filter-by{
+        color:var(--cl-text-bl);
+        border:1px solid rgba(51,51,51,0.1);
+        padding:5px;
+        cursor:pointer;
+    }
+    .type-of-form{
+        color:var(--cl-text-bl);
+        text-align:left; 
+        padding:5px;
+    }
 
     .main-form-item {
         width: 100%;
@@ -33,7 +44,7 @@
     }
 
     .tt-table {
-        width: 25%;
+        width: 20%;
         border-left: 1px solid rgba(51,51,51,0.1);
         padding: 5px;
         color: var(--cl-text-bl);
@@ -46,7 +57,7 @@
         color: var(--cl-text-bl);
         font-weight: 300;
         text-align: left;
-        width: 25%;
+        width: 20%;
         border-left: 1px solid rgba(51,51,51,0.1);
         border: 1px solid rgba(51,51,51,0.1);
     }

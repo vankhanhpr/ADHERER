@@ -37,10 +37,48 @@ namespace WebApi.serrvice.admin.responsitory
             return context.Finance.Where(m => m.status == status).ToList();
         }
 
+        public dynamic getTotalMoney()
+        {
+            long money = 0;
+            var come = context.Finance.Where(m => m.status == 0).ToList();
+            var to = context.Finance.Where(m => m.status == 1).ToList();
+            foreach(var i in come)
+            {
+                money += i.moneys;
+            }
+            foreach (var i in to)
+            {
+                money -= i.moneys;
+            }
+            return money;
+        }
+
         public void insertFinance(Finance finance)
         {
             context.Entry(finance).State = EntityState.Added;
             context.SaveChanges();
+        }
+
+        public dynamic revanue(int year)
+        {
+            var come = context.Finance
+                .Where(m => m.createday.Year == year && m.status == 0)
+                .GroupBy(m => m.createday.Month)
+                .Select(
+                        cl => new {
+                            month = cl.First().createday.Month,
+                            total = cl.Sum(x => x.moneys)
+                        }).ToList();
+            var to = context.Finance
+                .Where(m => m.createday.Year == year && m.status == 1)
+                .GroupBy(m => m.createday.Month)
+                .Select(
+                        cl => new {
+                            month = cl.First().createday.Month,
+                            total = cl.Sum(x => x.moneys)
+                        }).ToList();
+            return new { come,to};
+
         }
 
         public void updateFinance(Finance finance)

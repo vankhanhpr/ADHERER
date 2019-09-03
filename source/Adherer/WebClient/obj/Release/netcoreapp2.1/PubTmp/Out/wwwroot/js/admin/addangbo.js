@@ -1,21 +1,22 @@
 ﻿checkToken();
 function toggeChibo(obj) {
+   
     var y = obj.className;
-    if (y == "fa fa-plus") {//kiem tra dang dong
+    if (y == "fa fa-angle-down") {//kiem tra dang dong
         var x = $(obj).parent().parent();
         var y = x.find(".f-chibo");
-        $(y).show(400);
-        $(obj).removeClass("fa-plus");
-        $(obj).addClass("fa-minus");
-        bol = false;
+        $(y).hide(400);
+        //$(obj).removeClass("fa-plus");
+        //$(obj).addClass("fa-minus");
+        $(obj).addClass("down");
     }
     else {//da ma ra
         var x = $(obj).parent().parent();
         var y = x.find(".f-chibo");
-        $(y).hide(400);
-        $(obj).addClass("fa-plus");
-        $(obj).removeClass("fa-minus");
-        bol = true;
+        $(y).show(400);
+        //$(obj).addClass("fa-plus");
+        //$(obj).removeClass("fa-minus");
+        $(obj).removeClass("down");
     }
 }
 var dbid = -1;
@@ -24,8 +25,6 @@ var truthuocaddnew = 0;
 var active = 0;
 var token = getTokenByLocal().token;
 getDangBo(bindingDangBo);
-
-
 //get dang bo
 function getDangBo(callback) {
     $.ajax({
@@ -64,13 +63,13 @@ function bindingDangBo(data) {
             $("#f-item-db").append('<div class="k row-table">' +
                 '<span class="k t tt-table-dt">' + db.tendb + '</span >' +
                 '<span class="k t tt-table-dt">' + formatDate(new Date(db.ngaythanhlap)) + '</span>' +
-                '<span class="k t tt-table-dt">' + (db.active == true ? 'Hoạt động' : 'Khóa') + '</span>' +
+                '<span class="k t tt-table-dt">' + (db.active == true ? '<i class="fa fa-toggle-on" aria-hidden="true"></i> Hoạt động' : '<i class="fa fa-toggle-off" aria-hidden="true"></i> Khóa') + '</span>' +
                 '<div class="k t tt-table-dt">' +
                 '<i class="fa fa-cogs" data-toggle="modal" data-target="#modalupdatedangbo" onclick="showTabEditDB(' + db.dbid + ')"></i>' +
-                '<i class="fa fa-trash-o" aria-hidden="true"></i>' +
-                '<i class="fa fa-plus" aria-hidden="true" onclick="toggeChibo(this)"></i>' +
+                //'<i class="fa fa-plus" aria-hidden="true" onclick="toggeChibo(this)"></i>' +
+                '<i class="fa fa-angle-down" aria-hidden="true" onclick="toggeChibo(this)" ></i>' +
                 '</div>' +
-                '<div class="k f-chibo" style="display:none">' +
+                '<div class="k f-chibo" style="display:block">' +
                 view +
                 '</div>' +
                 '</div>');
@@ -89,6 +88,11 @@ function getDetailDangBo(id) {
         url: linkserver + "addangbo/getDangBoById?id=" + id,
         data: null,
         dataType: 'json',
+        statusCode: {
+            401: function () {
+                window.location.href = "/login";
+            }
+        },
         headers: { 'authorization': `Bearer ${token}` },
         contentType: "application/json",
         error: function (err) {
@@ -156,6 +160,14 @@ function updateDangBo() {
         'active': $("#sl-ud-danngbo ").children("option:selected").val(),
         'ngaythanhlap': $("#day-create-db").val()
     };
+    var name = $("#ip-name-db").val();
+    if (name.trim() == '') {
+        $("#ip-name-db").css('border', '1px solid rgba(255,0,0,0.3');
+        return;
+    }
+    else {
+        $("#ip-name-db").css('border', '1px solid rgba(51,51,51,0.3');
+    }
     if (bol) {
         bol = false;
         $.ajax({
@@ -252,6 +264,14 @@ function insertDangbo() {
         'active': 0,
         'ngaythanhlap': $("#day-create-db").val()
     };
+    var name = $("#name-db-addnew").val();
+    if (name.trim() == '') {
+        $("#name-db-addnew").css('border', '1px solid red');
+        return;
+    }
+    else {
+        $("#name-db-addnew").css('border', '1px solid rgba(51,51,51,0.1)');
+    }
     if (bol) {
         bol = false;
         $.ajax({

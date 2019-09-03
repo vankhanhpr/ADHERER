@@ -10,6 +10,7 @@
     <div class="k body-form">
         <span class="k t title-finance">
             Quản lý ngân sách
+            <span class="total-money"id="total-money"></span>
             <span class="bnt-add-finance" data-toggle="modal" data-target="#modalinsertfinance">+Thêm mới</span>
         </span>
         <div class="k table-finance">
@@ -53,7 +54,7 @@
 
         <span class=" k t text-chart-revanue">Thống kê chi tiêu trong Chi bộ</span>
 
-        <div id="container" style="width: 100%; height: 400px; margin: 0 auto"></div>
+        <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
     </div>
 
     @*insert finance*@
@@ -81,6 +82,18 @@
                         <span class="k t dl-name-finance" id="sl-db-active">Số tiền: </span>
                         <input class="k dl-input-finance" id="money" onkeyup="changeKeyPress(this)" type="text" placeholder="0 vnđ" />
                     </div>
+                    <div class="k dl-sm-it">
+                        <span class="k t dl-name-finance" id="">Ngày chi/thu: </span>
+                        <div class="form-group">
+                            <div class='input-group date' id='datepicker-money'>
+                                <input type='text' class="form-control" id="daymoney" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
                     <span class="k t err-validate" id="err-insert-finance">**Vui lòng điền đầy đủ thông tin</span>
                     <span class="k dl-bnt-save" onclick="validateFinance()">Cập nhật</span>
                 </div>
@@ -94,14 +107,6 @@
 </div>
 
 @section Script{
-    @*<script type="text/javascript" src="~/lib/chart/highcharts.js"></script>*@
-
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/modules/data.js"></script>
-    <script src="https://code.highcharts.com/modules/series-label.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/export-data.js"></script>
-
+    <script type="text/javascript" src="~/lib/chart/highcharts.js"></script>
     <script src="~/js/admin/adfinance.js"></script>
 }

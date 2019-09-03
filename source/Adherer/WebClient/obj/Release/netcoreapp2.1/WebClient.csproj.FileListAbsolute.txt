@@ -45,3 +45,4 @@ F:\ASP.NET\ADHERER\source\Adherer\WebClient\obj\Release\netcoreapp2.1\WebClient.
 F:\ASP.NET\ADHERER\source\Adherer\WebClient\obj\Release\netcoreapp2.1\WebClient.csproj.CopyComplete
 F:\ASP.NET\ADHERER\source\Adherer\WebClient\obj\Release\netcoreapp2.1\Razor\Views\Admin\Finance.g.cshtml.cs
 F:\ASP.NET\ADHERER\source\Adherer\WebClient\obj\Release\netcoreapp2.1\Razor\Views\Admin\LivingAdherer.g.cshtml.cs
+F:\ASP.NET\ADHERER\source\Adherer\WebClient\obj\Release\netcoreapp2.1\Razor\Views\Admin\ManageUser.g.cshtml.cs

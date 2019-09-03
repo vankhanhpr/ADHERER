@@ -3,10 +3,10 @@
 //var linkfiledownload = "https://localhost:44343/files/";
 //var linkdocument = "https://localhost:44343/document/";
 
-var linkserver = "https://10.0.75.1:100/api/";
-var linkfileuser = "https://10.0.75.1:100/images/user/";
-var linkfiledownload = "https://10.0.75.1:100/files/";
-var linkdocument = "https://10.0.75.1:100/document/";
+var linkserver = "https://10.70.38.62:2001/api/";
+var linkfileuser = "https://10.70.38.62:2001/images/user/";
+var linkfiledownload = "https://10.70.38.62:2001/files/";
+var linkdocument = "https://10.70.38.62:2001/document/";
 
 
 
@@ -23,7 +23,7 @@ function formatDate(date) {
     return day + "/" + month + "/" + date.getFullYear();
 }
 function showLoading() {
-    $("body").append('<div class="lds-ring"><div></div><div></div><div></div><div></div></div>');
+    $("body").append('<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>');
 }
 function destroyLoading() {
     $(".lds-ring").hide();
@@ -39,4 +39,24 @@ function strToObj(str) {//convert string to object
 function getTokenByLocal() {
     var token = strToObj(window.localStorage.getItem('token_session'));
     return token;
+}
+
+function formatNumber(yourNumber) {
+    if (yourNumber) {
+        var components = yourNumber.toString().split(".");
+        components[0] = components[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        return components.join(".");
+    } else {
+        return "";
+    }
+}
+//change key
+function changeKeyPress(obj) {
+    var text = $(obj).val().toString();
+    var str = formatNumber(covertToString(text));
+    $(obj).val(str);
+}
+function covertToString(str) {
+    var strint = str.replace(/,/g, '');
+    return strint;
 }

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using AdhererClassLib.area.main;
+using AdhererClassLib.area.request;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.model;
@@ -41,15 +43,20 @@ namespace WebApi.controllers.admin
         }
 
         [HttpPost("insertFinance")]
-        public DataRespond insertFinance(Finance finance)
+        public DataRespond insertFinance(FinanceRequest finance)
         {
             DataRespond data = new DataRespond();
             try
             {
-                finance.createday = DateTime.Now;
+                var fi = new Finance();
+                fi.name = finance.name;
+                fi.moneys = finance.moneys;
+                fi.status = finance.status;
+                DateTime daycr = DateTime.ParseExact(finance.createday, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                fi.createday = daycr;
                 data.success = true;
                 data.message = "insert succeses";
-                m_financeResponsitory.insertFinance(finance);
+                m_financeResponsitory.insertFinance(fi);
             }
             catch(Exception e)
             {
@@ -100,6 +107,44 @@ namespace WebApi.controllers.admin
                 data.message = e.Message;
                 data.error = e;
                 data.success = false;
+            }
+            return data;
+        }
+
+        [HttpGet("revanue")]
+        public DataRespond revanue(int year)
+        {
+            DataRespond data = new DataRespond();
+            try
+            {
+                data.success = true;
+                data.data = m_financeResponsitory.revanue(year);
+                data.message = "success";
+            }
+            catch(Exception e)
+            {
+                data.success = false;
+                data.error = e;
+                data.message = e.Message;
+            }
+            return data;
+        }
+
+        [HttpGet("getTotalMoney")]
+        public DataRespond getTotalMoney()
+        {
+            DataRespond data = new DataRespond();
+            try
+            {
+                data.success = true;
+                data.data = m_financeResponsitory.getTotalMoney();
+                data.message = "success";
+            }
+            catch(Exception e)
+            {
+                data.message = e.Message;
+                data.success = false;
+                data.error = e;
             }
             return data;
         }
