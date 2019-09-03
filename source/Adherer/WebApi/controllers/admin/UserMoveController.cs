@@ -5,16 +5,18 @@ using System.Linq;
 using System.Threading.Tasks;
 using AdhererClassLib.area.main;
 using AdhererClassLib.area.request;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.model;
 using WebApi.model.iformfile;
+using WebApi.model.roles;
 using WebApi.serrvice.admin.interfaces;
 
 namespace WebApi.controllers.admin
 {
-    //[Authorize(Roles = Roles.Admin)]
+    [Authorize(Roles = Roles.Admin)]
     [Route("api/[controller]")]
     [ApiController]
     public class UserMoveController : Controller

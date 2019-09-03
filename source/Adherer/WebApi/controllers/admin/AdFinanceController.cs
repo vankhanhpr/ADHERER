@@ -13,7 +13,7 @@ using WebApi.serrvice.admin.interfaces;
 
 namespace WebApi.controllers.admin
 {
-    //[Authorize(Roles = Roles.Admin)]
+    [Authorize(Roles = Roles.Admin)]
     [Route("api/[controller]")]
     [ApiController]
     public class AdFinanceController : Controller
