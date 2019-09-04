@@ -5,7 +5,7 @@ function toggeChibo(obj) {
     if (y == "fa fa-angle-down") {//kiem tra dang dong
         var x = $(obj).parent().parent();
         var y = x.find(".f-chibo");
-        $(y).hide(400);
+        $(y).show(400);
         //$(obj).removeClass("fa-plus");
         //$(obj).addClass("fa-minus");
         $(obj).addClass("down");
@@ -13,7 +13,7 @@ function toggeChibo(obj) {
     else {//da ma ra
         var x = $(obj).parent().parent();
         var y = x.find(".f-chibo");
-        $(y).show(400);
+        $(y).hide(400);
         //$(obj).addClass("fa-plus");
         //$(obj).removeClass("fa-minus");
         $(obj).removeClass("down");
@@ -48,8 +48,8 @@ function getDangBo(callback) {
     });
 }
 function bindingDangBo(data) {
+    $(".row-table").remove();
     if (data.success && data.data.length > 0) {
-        $(".row-table").remove();
         for (var i in data.data) {
             var item = data.data[i];
             var view = "";
@@ -69,7 +69,7 @@ function bindingDangBo(data) {
                 //'<i class="fa fa-plus" aria-hidden="true" onclick="toggeChibo(this)"></i>' +
                 '<i class="fa fa-angle-down" aria-hidden="true" onclick="toggeChibo(this)" ></i>' +
                 '</div>' +
-                '<div class="k f-chibo" style="display:block">' +
+                '<div class="k f-chibo" style="display:none">' +
                 view +
                 '</div>' +
                 '</div>');
@@ -304,4 +304,30 @@ function insertDangbo() {
             }
         });
     }
+}
+
+function serchDangBo(callback) {
+    var filter = $("#search-box").val();
+    if (!filter) {
+        filter = "";
+    }
+    $.ajax({
+        type: "get",
+        url: linkserver + "addangbo/searchDangBo?filter=" + filter,
+        data: null,
+        dataType: 'json',
+        statusCode: {
+            401: function () {
+                window.location.href = "/login";
+            }
+        },
+        headers: { 'authorization': `Bearer ${token}` },
+        contentType: "application/json",
+        error: function (err) {
+            bootbox.alert("Có lỗi xảy ra, vui lòng kiểm tra kết nối");
+        },
+        success: function (data) {
+            callback(data);
+        }
+    });
 }

@@ -1,13 +1,12 @@
-﻿//var linkserver = "https://localhost:44343/api/";
-//var linkfileuser = "https://localhost:44343/images/user/";
-//var linkfiledownload = "https://localhost:44343/files/";
-//var linkdocument = "https://localhost:44343/document/";
+﻿var linkserver = "https://localhost:44343/api/";
+var linkfileuser = "https://localhost:44343/images/user/";
+var linkfiledownload = "https://localhost:44343/files/";
+var linkdocument = "https://localhost:44343/document/";
 
-var linkserver = "https://10.70.38.62:2001/api/";
-var linkfileuser = "https://10.70.38.62:2001/images/user/";
-var linkfiledownload = "https://10.70.38.62:2001/files/";
-var linkdocument = "https://10.70.38.62:2001/document/";
-
+//var linkserver = "https://10.70.38.62:2001/api/";
+//var linkfileuser = "https://10.70.38.62:2001/images/user/";
+//var linkfiledownload = "https://10.70.38.62:2001/files/";
+//var linkdocument = "https://10.70.38.62:2001/document/";
 
 
 function formatDate(date) {

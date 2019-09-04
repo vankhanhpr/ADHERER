@@ -14,5 +14,6 @@ namespace WebApi.serrvice.admin.interfaces
         void updateOrganization(Organization organization);
         void deleteOrganization(int id);
         Organization findOrganizationById(int id);
+        dynamic searchOrganization(string filter);
     }
 }

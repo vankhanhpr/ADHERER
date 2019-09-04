@@ -34,15 +34,34 @@ namespace WebApi.serrvice.admin.responsitory
             return context.Forms.Where(m => m.formid == id).FirstOrDefault();
         }
 
-        public IEnumerable<Forms> getAllForm(int type)
+        public IEnumerable<Forms> getAllForm(int type,int cbid)
         {
-            return context.Forms.Where(m=>m.type== type).ToList();
+            return context.Forms.Where(m=>m.type== type && m.cbid==cbid).ToList();
         }
 
         public void insertForm(Forms form)
         {
             context.Entry(form).State = EntityState.Added;
             context.SaveChanges();
+        }
+
+        public dynamic searchForms(int type, int cbid, string filter)
+        {
+            if (filter == null)
+            {
+                filter = "";
+            }
+            var filterby = filter.Trim().ToLowerInvariant();
+            var form = context.Forms
+                                .Where(m => m.type == type && m.cbid==cbid)
+                                .ToList()
+                                .AsQueryable()
+                                .Where(n =>
+                                           n.formid.ToString().ToLowerInvariant().Contains(filterby)
+                                        || n.nameform.ToLowerInvariant().Contains(filterby)
+                                        || n.namefile.ToLowerInvariant().Contains(filterby)
+            );
+            return form;
         }
 
         public void updateForm(Forms form)

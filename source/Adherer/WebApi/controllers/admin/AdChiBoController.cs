@@ -132,5 +132,24 @@ namespace WebApi.controllers.admin
             }
             return data;
         }
+
+        [HttpGet("searchChiBo")]
+        public DataRespond searchChiBo(string filter,int id)
+        {
+            DataRespond data = new DataRespond();
+            try
+            {
+                data.success = true;
+                data.message = "search success";
+                data.data = m_chiBoResponsitory.searchChiBo(filter,id);
+            }
+            catch(Exception e)
+            {
+                data.error = e;
+                data.message = e.Message;
+                data.success = false;
+            }
+            return data;
+        }
     }
 }

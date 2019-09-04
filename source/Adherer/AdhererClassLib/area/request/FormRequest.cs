@@ -13,5 +13,6 @@ namespace WebApi.model.request
         public IFormFile file { get; set; }
         public string note { get; set; }
         public int type { get; set; }
+        public int cbid { get; set; }
     }
 }

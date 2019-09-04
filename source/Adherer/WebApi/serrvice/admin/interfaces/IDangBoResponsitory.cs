@@ -15,5 +15,7 @@ namespace WebApi.serrvice.admin.interfaces
         DangBo getDangBoById(int id);
 
         dynamic getDangBoNotAttached(int id);
+
+        dynamic searchDangBo(string key);
     }
 }

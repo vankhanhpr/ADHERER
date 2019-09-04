@@ -68,7 +68,6 @@ function bindingChiBo(data) {
                     '<span class="k t tt-table-dt">'+(item.active === true?'Hoạt động':'Khóa')+'</span>' +
                     '<div class="k t tt-table-dt">' +
                     '<i class="fa fa-cogs" data-toggle="modal" data-target="#modalupdatechibo" onclick="showFormUdCb(' + item.cbid + ')"></i>' +
-                    '<i class="fa fa-trash-o" aria-hidden="true"></i>' +
                     '</div>' +
                     '</div >');
             }
@@ -291,4 +290,22 @@ function updateChiBo() {
             }
         });
     }
+}
+
+function searchChiBo(callback) {
+    var filter = $("#search-box").val();
+    $.ajax({
+        type: "get",
+        url: linkserver + "adchibo/searchChiBo?filter=" + filter + "&&id=" + dbid,
+        data: null,
+        headers: { 'authorization': `Bearer ${token}` },
+        dataType: 'json',
+        contentType: "application/json",
+        error: function (err) {
+            bootbox.alert("Có lỗi xảy ra, vui lòng kiểm tra kết nối");
+        },
+        success: function (data) {
+            callback(data);
+        }
+    });
 }

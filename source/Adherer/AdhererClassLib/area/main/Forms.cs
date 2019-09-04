@@ -18,5 +18,6 @@ namespace WebApi.serrvice.admin.model
         public DateTime updateday { get; set; }
         public Boolean active { get; set; }
         public int type { get; set; }
+        public int cbid { get; set; }
     }
 }

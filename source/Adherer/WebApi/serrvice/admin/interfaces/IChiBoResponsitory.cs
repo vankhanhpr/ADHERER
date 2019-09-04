@@ -14,5 +14,6 @@ namespace WebApi.serrvice.admin.interfaces
         void insertChoBo(ChiBo cb);
         void updateChiBo(ChiBo cb);
         ChiBo getChiBoById(int id);
+        dynamic searchChiBo(string filter,int id);
     }
 }

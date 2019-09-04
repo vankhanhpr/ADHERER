@@ -183,6 +183,7 @@ create table Forms(
 	note nvarchar(1000),
 	updateday datetime,
 	active bit,
+	cbid int,
 	type int
 )	
 create table Toabroad (

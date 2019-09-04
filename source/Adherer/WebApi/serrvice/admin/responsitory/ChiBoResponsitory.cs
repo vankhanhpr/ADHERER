@@ -36,6 +36,24 @@ namespace WebApi.serrvice.admin.responsitory
             context.SaveChanges();
         }
 
+        public dynamic searchChiBo(string filter,int id)
+        {
+            if (filter == null)
+            {
+                filter = "";
+            }
+            var filterby = filter.Trim().ToLowerInvariant();
+            var chibo = context.Chibo
+                                .Where(m=>m.dbid==id)
+                                .ToList()
+                                .AsQueryable()
+                                .Where(n =>
+                                           n.cbid.ToString().ToLowerInvariant().Contains(filterby)
+                                        || n.tencb.ToLowerInvariant().Contains(filterby)
+            );
+            return chibo;
+        }
+
         public void updateChiBo(ChiBo cb)
         {
             context.Update(cb);

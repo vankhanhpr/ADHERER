@@ -3,8 +3,8 @@ var formData = new FormData();
 var formDataUpdate = new FormData();
 var livid = -1;
 function getImage() {
-    $("#multi-file").click();
-    $("#multi-file").change(function () {
+    $("#select-file-insert").click();
+    $("#select-file-insert").change(function () {
         readImageUpload(this);
     });
 }

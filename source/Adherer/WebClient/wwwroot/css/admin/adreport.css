@@ -86,6 +86,8 @@
         cursor:pointer;
         color:var(--cl-text-wt);
     }
+
+    /*filter form*/
 }
 
 @media only screen and (max-width: 600px) {

@@ -103,5 +103,24 @@ namespace WebApi.controllers.admin
             }
             return data;
         }
+
+        [HttpGet("searchOriganization")]
+        public DataRespond searchOriganization(string filter)
+        {
+            DataRespond data = new DataRespond();
+            try
+            {
+                data.success = true;
+                data.message = "search success";
+                data.data = m_organizationResponsitory.searchOrganization(filter);
+            }
+            catch(Exception e)
+            {
+                data.message = e.Message;
+                data.error = e;
+                data.success = false;
+            }
+            return data;
+        }
     }
 }

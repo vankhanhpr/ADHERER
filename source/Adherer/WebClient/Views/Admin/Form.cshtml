@@ -9,6 +9,13 @@
     <div class=" k body-form">
         <div class="k form-head">
             <span class="k t title">Quản lý biểu mẫu</span>
+            <span class="k t t-note-dangbo">Đảng bộ:</span>
+            <select class="k t select-option" id="sl-dangbo">
+            </select>
+            <span class="k t t-note-dangbo">Chi bộ:</span>
+            <select class="k t select-option"id="sl-chibo">
+                @*<option value="">Trung tâm CNTT</option>*@
+            </select>
         </div>
         <div class="k form-add-new">
             <div class="k item-left-form">
@@ -33,17 +40,21 @@
             </div>
 
             <span class="k t type-of-form">Loại: </span>
-            <select class="k filter-by"id="filter-by">
+            <select class="k filter-by" id="filter-by">
                 <option value="0">Biểu mẫu</option>
                 <option value="1">Văn bản đến</option>
                 <option value="2">Văn bản đi</option>
             </select>
+            <div class="k f-search-ft">
+                <input class="k search-ft" id="search-box" onkeyup="searchForms(bindigForm)" type="text">
+                <i class="fa fa-search bnt-search" aria-hidden="true"></i>
+            </div>
         </div>
         <div class=" k main-form-item" id="main-form-item">
             <div class="k row-table">
-                <span class="k t tt-table">STT</span>
-                <span class="k t tt-table">Mã số văn bản</span>
-                <span class="k t tt-table">Tên biểu mẫu</span>
+                <span class="k t tt-table small-row">STT</span>
+                <span class="k t tt-table small-row">Mã số văn bản</span>
+                <span class="k t tt-table big-row">Tên biểu mẫu</span>
                 <span class="k t tt-table">Link</span>
                 <span class="k t tt-table">Cập nhật</span>
             </div>

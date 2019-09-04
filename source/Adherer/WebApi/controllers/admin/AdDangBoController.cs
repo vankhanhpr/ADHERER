@@ -127,5 +127,24 @@ namespace WebApi.controllers.admin
             }
             return data;
         }
+
+        [HttpGet("searchDangBo")]
+        public DataRespond searchDangBo(string filter)
+        {
+            DataRespond data = new DataRespond();
+            try
+            {
+                data.success = true;
+                data.data = m_dangBoResponsitory.searchDangBo(filter);
+                data.message = "search success";
+            }
+            catch(Exception e)
+            {
+                data.success = false;
+                data.error = e;
+                data.message = e.Message;
+            }
+            return data;
+        }
     }
 }

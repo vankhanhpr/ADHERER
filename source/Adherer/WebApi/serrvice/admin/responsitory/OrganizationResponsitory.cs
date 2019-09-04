@@ -44,6 +44,23 @@ namespace WebApi.serrvice.admin.responsitory
             context.SaveChanges();
         }
 
+        public dynamic searchOrganization(string filter)
+        {
+            if (filter == null)
+            {
+                filter = "";
+            }
+            var filterby = filter.Trim().ToLowerInvariant();
+            var org = context.Organization
+                                .ToList()
+                                .AsQueryable()
+                                .Where(n =>
+                                           n.ogid.ToString().ToLowerInvariant().Contains(filterby)
+                                        || n.nameog.ToLowerInvariant().Contains(filterby)
+            );
+            return org;
+        }
+
         public void updateOrganization(Organization organization)
         {
             context.Update(organization);

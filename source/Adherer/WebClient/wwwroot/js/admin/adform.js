@@ -1,11 +1,11 @@
 ﻿
 var formData = new FormData();
 var token = getTokenByLocal().token;
-getForm(bindigForm, 0);
-function getForm(callback, type) {
+var cbid = -1;
+function getForm(callback, type, cbid) {
     $.ajax({
         type: "get",
-        url: linkserver + "adform/getAllForms?type="+ type,
+        url: linkserver + "adform/getAllForms?type=" + type + "&&cbid=" + cbid,
         data: null,
         headers: { 'authorization': `Bearer ${token}` },
         dataType: 'json',
@@ -30,9 +30,9 @@ function bindigForm(data) {
             var item = data.data[i];
             var j = parseInt(i) + 1;
             $("#main-form-item").append('<div class="k row-table item-form-detail">' +
-                '<span class= "k t tt-table-dt" >' + j + '</span >' +
-                '<span class= "k t tt-table-dt" >' + item.formid + '</span >' +
-                '<span class="k t tt-table-dt">' + item.nameform +'</span>' +
+                '<span class= "k t tt-table-dt small-row" >' + j + '</span >' +
+                '<span class= "k t tt-table-dt small-row" >' + item.formid + '</span >' +
+                '<span class="k t tt-table-dt big-row">' + item.nameform +'</span>' +
                 '<a href=' + linkfiledownload + item.namefile +'><span class="k t tt-table-dt">' + item.namefile +'</span></a>' +
                 '<div class="k t tt-table-dt">' +
                 '<i class="fa fa-cogs" data-toggle="modal" data-target="#modalupdateform"onclick="getFormById(' + item.formid + ')"></i>' +
@@ -102,6 +102,7 @@ function validateForm() {
         $("#err-insert-form").hide();
         formData.append('nameform', nameform);
         formData.append('note', noteform);
+        formData.append('cbid', cbid);
         formData.append('type', parseInt($("#filter-by").children("option:selected").val()));
         insertForm();
     }
@@ -134,7 +135,7 @@ function insertForm() {
                         $("#nameform").val("");
                         $("#name-file").text("");
                         $("#noteform").val("");
-                        getForm(bindigForm, parseInt($("#filter-by").children("option:selected").val()));
+                        getForm(bindigForm, parseInt($("#filter-by").children("option:selected").val()), cbid);
                     }
                 });
             }
@@ -176,6 +177,7 @@ function getFormById(id) {
         success: function (data) {
             if (data.success && data.data) {
                 var item = data.data;
+                formDataUpdate = new FormData();
                 formDataUpdate.append('formid',item.formid);
                 $("#name-form-update").val(item.nameform);
                 $("#name-file-update").text(item.namefile);
@@ -235,6 +237,7 @@ function validateUpdateForm() {
         $("#err-update-form").hide();
         formDataUpdate.append('nameform', nameformupdate.trim());
         formDataUpdate.append('note', noteform.trim());
+        formDataUpdate.append('cbid', cbid);
         updateForm();
     }
 }
@@ -264,7 +267,8 @@ function updateForm() {
                 bootbox.alert({
                     message: "Cập nhật biểu mẫu thành công!",
                     callback: function () {
-                        window.location.href = "/admin/form";
+                        //window.location.href = "/admin/form";
+                        getForm(bindigForm, parseInt($("#filter-by").children("option:selected").val()), cbid);
                     }
                 });
             }
@@ -304,5 +308,93 @@ function deleteForm(id) {
 
 //filter \
 $('#filter-by').on('change', function () {
-    getForm(bindigForm, parseInt($("#filter-by").children("option:selected").val()));
+    getForm(bindigForm, parseInt($("#filter-by").children("option:selected").val()),cbid);
 });
+
+//get dang bo
+getDangBo();
+function getDangBo() {
+    $.ajax({
+        type: "get",
+        url: linkserver + "addangbo/getalldangbo",
+        data: null,
+        headers: { 'authorization': `Bearer ${token}` },
+        dataType: 'json',
+        contentType: "application/json",
+        statusCode: {
+            401: function () {
+                window.location.href = "/login";
+            }
+        },
+        error: function (err) {
+            bootbox.alert("Có lỗi xảy ra, vui lòng kiểm tra kết nối");
+        },
+        success: function (data) {
+            if (data.success && data.data) {
+                for (var i in data.data) {
+                    var item = data.data[i].db;
+                    $("#sl-dangbo").append('<option value='+item.dbid+'>'+item.tendb+'</option>');
+                }
+                if (data.data[0].db) {
+                    getChiBoByDbId(data.data[0].db.dbid);
+                }
+            }
+        }
+    });
+}
+
+function getChiBoByDbId(id) {
+    $.ajax({
+        type: "get",
+        url: linkserver + "adchibo/getChiBoByDb?id=" + id,
+        data: null,
+        headers: { 'authorization': `Bearer ${token}` },
+        dataType: 'json',
+        contentType: "application/json",
+        error: function (err) {
+            bootbox.alert("Có lỗi xảy ra, vui lòng kiểm tra kết nối");
+        },
+        success: function (data) {
+            if (data.success && data.data) {
+                $("#sl-chibo option").remove();
+                for (var i in data.data) {
+                    var item = data.data[i];
+                    $("#sl-chibo").append('<option value=' + item.cbid + '>' + item.tencb + '</option>');
+                }
+                if (data.data[0]) {
+                    cbid = data.data[0].cbid;
+                    getForm(bindigForm, 0, data.data[0].cbid);
+                }
+            }
+        }
+    });
+}
+$('#sl-dangbo').on('change', function () {
+    getChiBoByDbId(parseInt(this.value));
+});
+$('#sl-chibo').on('change', function () {
+    getForm(bindigForm, 0, parseInt(this.value));
+});
+
+function searchForms(callback) {
+    var filter = $("#search-box").val();
+    $.ajax({
+        type: "get",
+        url: linkserver + "adform/searchForm?type=" + parseInt($("#filter-by").children("option:selected").val()) + "&&cbid=" + cbid + "&&filter=" + filter,
+        data: null,
+        headers: { 'authorization': `Bearer ${token}` },
+        dataType: 'json',
+        contentType: "application/json",
+        statusCode: {
+            401: function () {
+                window.location.href = "/login";
+            }
+        },
+        error: function (err) {
+            bootbox.alert("Có lỗi xảy ra, vui lòng kiểm tra kết nối");
+        },
+        success: function (data) {
+            callback(data);
+        }
+    });
+}

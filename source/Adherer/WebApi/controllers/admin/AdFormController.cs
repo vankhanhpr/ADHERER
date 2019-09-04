@@ -30,14 +30,17 @@ namespace WebApi.controllers.admin
             m_hostingEnvironment = hostingEnvironment;
         }
         [HttpGet("getAllForms")]
-        public DataRespond getForms(int type)
+        public DataRespond getForms(int type,int cbid)
         {
+            //0 bieu mau
+            //1 van ban den
+            //2 van ban di
             DataRespond data = new DataRespond();
             try
             {
                 data.success = true;
                 data.message = "success";
-                data.data = m_adFormResponsitory.getAllForm(type);
+                data.data = m_adFormResponsitory.getAllForm(type, cbid);
             }
             catch(Exception e)
             {
@@ -63,6 +66,7 @@ namespace WebApi.controllers.admin
                 form.updateday = DateTime.Now;
                 form.active = true;
                 form.type = formrequest.type;
+                form.cbid = formrequest.cbid;
 
                 m_adFormResponsitory.insertForm(form);
                 data.success = true;
@@ -96,6 +100,7 @@ namespace WebApi.controllers.admin
             return data;
         }
 
+     
         [HttpPost("updateForm")]
         public async Task<DataRespond> updateFormAsync([FromForm]FormRequest formrequest)
         {
@@ -140,6 +145,25 @@ namespace WebApi.controllers.admin
                 data.error = e;
                 data.message = e.Message;
                 data.success = false;
+            }
+            return data;
+        }
+
+        [HttpGet("searchForm")]
+        public DataRespond searchForm(int type, int cbid,string filter)
+        {
+            DataRespond data = new DataRespond();
+            try
+            {
+                data.data = m_adFormResponsitory.searchForms(type,cbid,filter);
+                data.success = true;
+                data.message = "search success";
+            }
+            catch(Exception e)
+            {
+                data.message = e.Message;
+                data.success = false;
+                data.error = e;
             }
             return data;
         }

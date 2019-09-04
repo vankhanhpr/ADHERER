@@ -12,10 +12,16 @@
     <div class="k body-form">
         <div class="k f-add-cb">
             <span class="k t t-name-cb">Thông tin Chi Bộ</span>
+
+            <div class="k f-search-ft">
+                <input class="k search-ft" id="search-box" onkeyup="searchChiBo(bindingChiBo)" type="text">
+                <i class="fa fa-search bnt-search" aria-hidden="true"></i>
+            </div>
+
             <span class="k t bnt-add-cb" data-toggle="modal" data-target="#modalinsertchibo" onclick="getDangBo(bindingChiBoToFilter)"> + Thêm mới</span>
             <select class="dl-ft-db" id="ft-db">
                 @*<option value="0">Đảng bộ trung tâm công nghệ thông tin</option>
-                    <option value="1">Đảng bộ gì đó</option>*@
+            <option value="1">Đảng bộ gì đó</option>*@
             </select>
         </div>
 

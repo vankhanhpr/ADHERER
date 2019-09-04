@@ -44,6 +44,26 @@ namespace WebApi.serrvice.admin.responsitory
             context.SaveChanges();
         }
 
+        public dynamic searchDangBo(string filter)
+        {
+            if (filter == null)
+            {
+                filter = "";
+            }
+            var filterby = filter.Trim().ToLowerInvariant();
+            var dangbo = context.Dangbo.Select(db=>new {
+                                        db,
+                                        chibo = context.Chibo.Where(m=>m.dbid== db.dbid)
+                                    })
+                                  .ToList()
+                                  .AsQueryable()
+                                  .Where(n =>
+                                             n.db.dbid.ToString().ToLowerInvariant().Contains(filterby)
+                                          || n.db.tendb.ToLowerInvariant().Contains(filterby)
+            );
+            return dangbo;
+        }
+
         public void updateDangBo(DangBo db)
         {
             context.Update(db);

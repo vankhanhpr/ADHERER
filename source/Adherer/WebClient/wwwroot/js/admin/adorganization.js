@@ -27,8 +27,8 @@ function getAllOganizatio(callback) {
     });
 }
 function bindingOrganization(data) {
+    $(".row-table-it").remove();
     if (data.success && data.data.length > 0) {
-        $(".row-table-it").remove();
         for (var i in data.data) {
             var item = data.data[i];
             $("#f-add-it-dv").append('<div class="k row-table-it">' +
@@ -159,4 +159,27 @@ function updateOrganization() {
             }
         });
     }
+}
+
+function searchOriganization(callback) {
+    var filter = $("#search-box").val();
+    $.ajax({
+        type: "get",
+        url: linkserver + "AdOrganization/searchOriganization?filter=" + filter,
+        data: null,
+        headers: { 'authorization': `Bearer ${token}` },
+        dataType: 'json',
+        contentType: "application/json",
+        statusCode: {
+            401: function () {
+                window.location.href = "/login";
+            }
+        },
+        error: function (err) {
+            bootbox.alert("Có lỗi xảy ra, vui lòng kiểm tra kết nối");
+        },
+        success: function (data) {
+            callback(data);
+        }
+    });
 }
