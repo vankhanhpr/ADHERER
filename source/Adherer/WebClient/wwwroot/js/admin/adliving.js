@@ -2,6 +2,7 @@
 var formData = new FormData();
 var formDataUpdate = new FormData();
 var livid = -1;
+var cbid = -1;
 function getImage() {
     $("#select-file-insert").click();
     $("#select-file-insert").change(function () {
@@ -89,6 +90,11 @@ function validateAdhererLiving() {
         formData.append('time', time.trim());
         formData.append('note', note.trim());
         formData.append('dayevent', $("#time-living").val());
+        formData.append('cbid', cbid);
+        if (cbid === -1) {
+            bootbox.alert("Vui lòng lựa chọn Chi bộ trước khi thêm mới");
+            return;
+        }
         insertAhdererLiving();
 
     }
@@ -115,12 +121,12 @@ function insertAhdererLiving() {
         },
         success: function (data) {
             if (data.success) {
+                $('#modal-add-living').modal('toggle');
                 bootbox.alert({
                     message: "Thêm thông tin thành công!",
                     callback: function () {
                         emptyForm();
-                        $('#modal-add-living').modal('toggle');
-                        getAllLivingAhderer(bindingAdherer);
+                        getAllLivingAhderer(bindingAdherer,cbid);
                     }
                 });
             }
@@ -152,11 +158,11 @@ function checkStr(str) {
     }
     return true;
 }
-getAllLivingAhderer(bindingAdherer);
-function getAllLivingAhderer(callback) {
+
+function getAllLivingAhderer(callback,cbid) {
     $.ajax({
         type: "get",
-        url: linkserver + "AdhererLiving/getAllAdhererLiving",
+        url: linkserver + "AdhererLiving/getAllAdhererLiving?cbid=" + cbid,
         data: null,
         headers: { 'authorization': `Bearer ${token}` },
         dataType: 'json',
@@ -176,21 +182,22 @@ function getAllLivingAhderer(callback) {
 }
 function bindingAdherer(data) {
     if (data.success && data.data) {
-        $(".item-living").remove();
+        $(".item-form-detail").remove();
         for (var i in data.data) {
             var item = data.data[i];
-            $("#body-item").append('<div class="k item-living">'+
-                '<span class= "k t t-living"> ' + item.title + '</span>' +
-                '<span class="k t t-time">Thời gian sinh hoạt: ' + formatDate(new Date(item.dayevent)) + '</span>' +
-                '<span class="k t note-living">' + item.note+
-                '</span>' +
-                '<div class="k f-edit-file">' +
-                '<a href=' + linkdocument + item.namefiel + '>' +
-                '<span class="k t file-close">' + item.namefiel + '</span></a>' +
-                '<i class="fa fa-wrench" aria-hidden="true"data-toggle="modal" data-target="#modal-update-living" onclick="getAdhererLivingById(' + item.livid + ')"></i>' +
-                '<i class="fa fa-trash-o" aria-hidden="true"onclick="deletelivingAdherer(' + item.livid + ')"></i>' +
-                '</div>' +
-            '</div >');
+            var j = parseInt(i) + 1;
+            $('#body-item').append(`<div class="k row-table item-form-detail">
+                <span class="k t tt-table-dt small-row">`+j+`</span>
+                <span class="k t tt-table-dt small-row">`+ formatDate(new Date(item.dayevent))+`</span>
+                <span class="k t tt-table-dt big-row">`+ item.title+`</span>
+                <a href="`+ linkdocument + item.namefiel +`">
+                    <span class="k t tt-table-dt">o34we2kpnq.docx</span>
+                </a>
+                <div class="k t tt-table-dt">
+                    <i class="fa fa-cogs" data-toggle="modal" data-target="#modal-update-living" onclick="getAdhererLivingById(` + item.livid + `)"></i>
+                    <i class="fa fa-trash-o" aria-hidden="true" onclick="deletelivingAdherer(` + item.livid + `)"></i>
+                </div>
+            </div>`);
         }
     }
 }
@@ -240,6 +247,7 @@ function deletelivingAdherer(id) {
 }
 
 function getAdhererLivingById(id) {
+    formDataUpdate = new FormData();
     $.ajax({
         type: "get",
         url: linkserver + "AdhererLiving/getAllAdhererLivingById?id="+id,
@@ -267,7 +275,9 @@ function getAdhererLivingById(id) {
         }
     });
 }
-
+function showFormAddNew() {
+    formData = new FormData();
+}
 function validateFormUpdate() {
     var title = $("#title-living").val();
     var time = $("#time-update").val();
@@ -318,11 +328,11 @@ function updateAdhererLiving() {
         },
         success: function (data) {
             if (data.success) {
+                $('#modal-update-living').modal('toggle');
                 bootbox.alert({
                     message: "Cập nhật thông tin thành công!",
                     callback: function () {
-                        $('#modal-update-living').modal('toggle');
-                        getAllLivingAhderer(bindingAdherer);
+                        getAllLivingAhderer(bindingAdherer,cbid);
                     }
                 });
             }
@@ -343,7 +353,7 @@ function getImageUpdate() {
 //add picture to view
 function readImageUploadUpdate(input) {
     if (input.files && input.files[0]) {
-        if (formDataUpdate.get("file") != null) {
+        if (formDataUpdate.get("file") !== null) {
             formData.delete("file");
         }
         formDataUpdate.append("file", input.files[0]);
@@ -356,3 +366,72 @@ function readImageUploadUpdate(input) {
     }
     $("#select-file-update").val("");
 }
+
+getDangBo();
+function getDangBo() {
+    $.ajax({
+        type: "get",
+        url: linkserver + "addangbo/getalldangbo",
+        data: null,
+        headers: { 'authorization': `Bearer ${token}` },
+        dataType: 'json',
+        contentType: "application/json",
+        statusCode: {
+            401: function () {
+                window.location.href = "/login";
+            }
+        },
+        error: function (err) {
+            bootbox.alert("Có lỗi xảy ra, vui lòng kiểm tra kết nối");
+        },
+        success: function (data) {
+            if (data.success && data.data) {
+                for (var i in data.data) {
+                    var item = data.data[i].db;
+                    $("#sl-dangbo").append('<option value='+item.dbid+'>'+item.tendb+'</option>');
+                }
+                if (data.data[0]) {
+                    getChiBoByDbId(data.data[0].db.dbid);
+                }
+            }
+        }
+    });
+}
+
+function getChiBoByDbId(id) {
+    $.ajax({
+        type: "get",
+        url: linkserver + "adchibo/getChiBoByDb?id=" + id,
+        data: null,
+        headers: { 'authorization': `Bearer ${token}` },
+        dataType: 'json',
+        contentType: "application/json",
+        error: function (err) {
+            bootbox.alert("Có lỗi xảy ra, vui lòng kiểm tra kết nối");
+        },
+        success: function (data) {
+            if (data.success && data.data) {
+                $("#sl-chibo option").remove();
+                for (var i in data.data) {
+                    var item = data.data[i];
+                    $("#sl-chibo").append('<option value='+item.cbid+'>'+item.tencb+'</option>');
+                }
+                if (data.data[0]) {
+                    cbid = data.data[0].cbid;
+                    getAllLivingAhderer(bindingAdherer, cbid);
+                }
+                else {
+                    cbid = -1;
+                }
+            }
+        }
+    });
+}
+
+$('#sl-dangbo').on('change', function () {
+    getChiBoByDbId(parseInt(this.value));
+});
+$('#sl-chibo').on('change', function () {
+    cbid = parseInt(this.value)
+    getAllLivingAhderer(bindingAdherer, parseInt(this.value));
+});

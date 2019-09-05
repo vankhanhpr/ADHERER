@@ -14,5 +14,6 @@ namespace WebApi.serrvice.admin.model
         public string note { get; set; }
         public string namefiel { get; set; }
         public DateTime createday { get; set; }
+        public int cbid { get; set; }
     }
 }

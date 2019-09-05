@@ -9,8 +9,14 @@
 <div class=" k main-form">
     <div class="k body-form">
         <span class="k t title-finance">
-            Quản lý ngân sách
-            <span class="total-money"id="total-money"></span>
+            <span class="k t t-title-finance">Quản lý ngân sách</span>
+            <span class="k t t-note-dangbo">Đảng bộ:</span>
+            <select class="k t select-option" id="sl-dangbo"></select>
+            <span class="k t t-note-dangbo">Chi bộ:</span>
+            <select class="k t select-option" id="sl-chibo">
+                @*<option value="1">Viễn thông TP.HCM</option>*@
+            </select>
+            <span class="total-money" id="total-money"></span>
             <span class="bnt-add-finance" data-toggle="modal" data-target="#modalinsertfinance">+Thêm mới</span>
         </span>
         <div class="k table-finance">
@@ -51,9 +57,7 @@
                 </div>
             </div>
         </div>
-
         <span class=" k t text-chart-revanue">Thống kê chi tiêu trong Chi bộ</span>
-
         <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
     </div>
 
@@ -77,6 +81,10 @@
                             <option class="t" value="0">Thu</option>
                             <option class="t" value="1">Chi</option>
                         </select>
+                    </div>
+                    <div class="k dl-sm-it">
+                        <span class="k t dl-name-finance">Người thu/chi: </span>
+                        <input class="k dl-input-finance" id="person-finance" type="text" />
                     </div>
                     <div class="k dl-sm-it">
                         <span class="k t dl-name-finance" id="sl-db-active">Số tiền: </span>

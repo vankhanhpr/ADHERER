@@ -9,7 +9,7 @@ namespace WebApi.serrvice.admin.interfaces
 {
     public interface IAdhererLivingResponsitory:IResponsitory<AdhererLiving>
     {
-        dynamic getAllAdhererLiving();
+        dynamic getAllAdhererLiving(int cbid);
         AdhererLiving getAdhererLivingById(int id);
         void insertAdhererLiving(AdhererLiving adhererLiving);
         void updateAdhererLiving(AdhererLiving adhererLiving);

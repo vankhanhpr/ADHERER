@@ -1,11 +1,11 @@
 ﻿var token = getTokenByLocal().token;
-getFinanceByStatus(0, bindingFinance);
-getFinanceByStatus(1, bindingFinance);
+var cbid = -1;
+
 var year = new Date().getFullYear();
-function getFinanceByStatus(status, callback) {
+function getFinanceByStatus(status, callback, cbid) {
     $.ajax({
         type: "get",
-        url: linkserver + "adfinance/getFinanceByStatus?status=" + status,
+        url: linkserver + "adfinance/getFinanceByStatus?status=" + status + "&&cbid=" + cbid,
         data: null,
         headers: { 'authorization': `Bearer ${token}` },
         dataType: 'json',
@@ -70,8 +70,13 @@ function validateFinance() {
             "name": name.trim(),
             "moneys": covertToString(money.trim()),
             "status": parseInt($("#sl-type-finance").children("option:selected").val()),
-            "createday": $("#daymoney").val()
+            "createday": $("#daymoney").val(),
+            "cbid": cbid
         };
+        if (cbid === -1) {
+            bootbox.alert("Vui lòng chọn Chi bộ muốn thêm");
+            return;
+        }
         insertFinance(data);
     }
     else {
@@ -101,10 +106,10 @@ function insertFinance(data) {
                     message: "Thêm mới thông tin thành công!",
                     callback: function () {
                         $(".title-item-row").remove();
-                        getFinanceByStatus(0, bindingFinance);
-                        getFinanceByStatus(1, bindingFinance);
-                        getRevanue(year, bindingRevanue);
-                        getTotalMoney();
+                        getFinanceByStatus(0, bindingFinance, cbid);
+                        getFinanceByStatus(1, bindingFinance, cbid);
+                        getRevanue(year, bindingRevanue, cbid);
+                        getTotalMoney(cbid);
                     }
                 });
             }
@@ -149,10 +154,10 @@ function deleteFinance(id) {
                         $(".title-item-row").remove();
                         $("#ip-name-finance").val('');
                         $("#money").val('');
-                        getFinanceByStatus(0, bindingFinance);
-                        getFinanceByStatus(1, bindingFinance);
-                        getRevanue(year, bindingRevanue);
-                        getTotalMoney();
+                        getFinanceByStatus(0, bindingFinance,cbid);
+                        getFinanceByStatus(1, bindingFinance,cbid);
+                        getRevanue(year, bindingRevanue,cbid);
+                        getTotalMoney(cbid);
                     }
                 });
             }
@@ -185,7 +190,7 @@ $(document).ready(function () {
     });
 });
 
-function drawChart(come,to) {
+function drawChart(come, to) {
     Highcharts.chart('container', {
         chart: {
             type: 'line'
@@ -216,8 +221,8 @@ function drawChart(come,to) {
             name: 'Thu',
             data: come/*[7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]*/
         }, {
-                name: 'Chi',
-                data: to/*[3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]*/
+            name: 'Chi',
+            data: to/*[3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]*/
         }],
         credits: {
             enabled: false
@@ -225,11 +230,11 @@ function drawChart(come,to) {
     });
 }
 
-getRevanue(year, bindingRevanue);
-function getRevanue(year, callback) {
+
+function getRevanue(year, callback, cbid) {
     $.ajax({
         type: "get",
-        url: linkserver + "adfinance/revanue?year=" + year,
+        url: linkserver + "adfinance/revanue?year=" + year + "&&cbid=" + cbid,
         data: null,
         headers: { 'authorization': `Bearer ${token}` },
         dataType: 'json',
@@ -314,11 +319,11 @@ $(document).ready(function () {
         }
     });
 });
-getTotalMoney();
-function getTotalMoney() {
+//getTotalMoney();
+function getTotalMoney(cbid) {
     $.ajax({
         type: "get",
-        url: linkserver + "adfinance/getTotalMoney",
+        url: linkserver + "adfinance/getTotalMoney?cbid=" + cbid,
         data: null,
         headers: { 'authorization': `Bearer ${token}` },
         dataType: 'json',
@@ -332,7 +337,80 @@ function getTotalMoney() {
             bootbox.alert("Có lỗi xảy ra, vui lòng kiểm tra kết nối");
         },
         success: function (data) {
-            $("#total-money").text('Tổng: '+formatNumber(data.data)+' vnđ');
+            $("#total-money").text('Tổng: ' + formatNumber(data.data) + ' vnđ');
         }
     });
 }
+
+getDangBo();
+function getDangBo() {
+    $.ajax({
+        type: "get",
+        url: linkserver + "addangbo/getalldangbo",
+        data: null,
+        headers: { 'authorization': `Bearer ${token}` },
+        dataType: 'json',
+        contentType: "application/json",
+        statusCode: {
+            401: function () {
+                window.location.href = "/login";
+            }
+        },
+        error: function (err) {
+            bootbox.alert("Có lỗi xảy ra, vui lòng kiểm tra kết nối");
+        },
+        success: function (data) {
+            if (data.success && data.data) {
+                for (var i in data.data) {
+                    var item = data.data[i].db;
+                    $("#sl-dangbo").append('<option value=' + item.dbid + '>' + item.tendb + '</option>');
+                }
+                if (data.data[0]) {
+                    getChiBoByDbId(data.data[0].db.dbid);
+                }
+            }
+        }
+    });
+}
+
+function getChiBoByDbId(id) {
+    $.ajax({
+        type: "get",
+        url: linkserver + "adchibo/getChiBoByDb?id=" + id,
+        data: null,
+        headers: { 'authorization': `Bearer ${token}` },
+        dataType: 'json',
+        contentType: "application/json",
+        error: function (err) {
+            bootbox.alert("Có lỗi xảy ra, vui lòng kiểm tra kết nối");
+        },
+        success: function (data) {
+            if (data.success && data.data) {
+                $("#sl-chibo option").remove();
+                for (var i in data.data) {
+                    var item = data.data[i];
+                    $("#sl-chibo").append('<option value=' + item.cbid + '>' + item.tencb + '</option>');
+                }
+                if (data.data[0]) {
+                    cbid = data.data[0].cbid;
+                    getFinanceByStatus(0, bindingFinance, cbid);
+                    getFinanceByStatus(1, bindingFinance, cbid);
+                    getRevanue(year, bindingRevanue, cbid);
+                    getTotalMoney(cbid);
+                }
+                else {
+                    cbid = -1;
+                }
+            }
+        }
+    });
+}
+$('#sl-dangbo').on('change', function () {
+    getChiBoByDbId(parseInt(this.value));
+});
+$('#sl-chibo').on('change', function () {
+    cbid = parseInt(this.value);
+    getAllLivingAhderer(bindingAdherer, parseInt(this.value));
+    getFinanceByStatus(0, bindingFinance, parseInt(this.value));
+    getFinanceByStatus(1, bindingFinance, parseInt(this.value));
+});

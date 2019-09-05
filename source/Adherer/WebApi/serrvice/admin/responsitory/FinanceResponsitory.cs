@@ -32,16 +32,16 @@ namespace WebApi.serrvice.admin.responsitory
             return context.Finance.Where(m => m.financeid == id).FirstOrDefault();
         }
 
-        public dynamic getFinanceByStatus(int status)
+        public dynamic getFinanceByStatus(int status,int cbid)
         {
-            return context.Finance.Where(m => m.status == status).ToList();
+            return context.Finance.Where(m => m.status == status && m.cbid==cbid).ToList();
         }
 
-        public dynamic getTotalMoney()
+        public dynamic getTotalMoney(int cbid)
         {
             long money = 0;
-            var come = context.Finance.Where(m => m.status == 0).ToList();
-            var to = context.Finance.Where(m => m.status == 1).ToList();
+            var come = context.Finance.Where(m => m.status == 0 && m.cbid==cbid).ToList();
+            var to = context.Finance.Where(m => m.status == 1 && m.cbid == cbid).ToList();
             foreach(var i in come)
             {
                 money += i.moneys;
@@ -59,10 +59,10 @@ namespace WebApi.serrvice.admin.responsitory
             context.SaveChanges();
         }
 
-        public dynamic revanue(int year)
+        public dynamic revanue(int year, int cbid)
         {
             var come = context.Finance
-                .Where(m => m.createday.Year == year && m.status == 0)
+                .Where(m => m.createday.Year == year && m.status == 0 && m.cbid==cbid)
                 .GroupBy(m => m.createday.Month)
                 .Select(
                         cl => new {

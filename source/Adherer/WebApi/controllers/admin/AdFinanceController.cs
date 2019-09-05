@@ -24,14 +24,14 @@ namespace WebApi.controllers.admin
             m_financeResponsitory = financeResponsitory;
         }
         [HttpGet("getFinanceByStatus")]
-        public DataRespond getFinanceByStatus(int status)
+        public  DataRespond getFinanceByStatus(int status,int cbid)
         {
             DataRespond data = new DataRespond();
             try
             {
                 data.success = true;
                 data.message = "succss";
-                data.data = m_financeResponsitory.getFinanceByStatus(status);
+                data.data = m_financeResponsitory.getFinanceByStatus(status, cbid);
             }
             catch(Exception e)
             {
@@ -52,6 +52,7 @@ namespace WebApi.controllers.admin
                 fi.name = finance.name;
                 fi.moneys = finance.moneys;
                 fi.status = finance.status;
+                fi.cbid = finance.cbid;
                 DateTime daycr = DateTime.ParseExact(finance.createday, "dd/MM/yyyy", CultureInfo.InvariantCulture);
                 fi.createday = daycr;
                 data.success = true;
@@ -112,13 +113,13 @@ namespace WebApi.controllers.admin
         }
 
         [HttpGet("revanue")]
-        public DataRespond revanue(int year)
+        public DataRespond revanue(int year,int cbid)
         {
             DataRespond data = new DataRespond();
             try
             {
                 data.success = true;
-                data.data = m_financeResponsitory.revanue(year);
+                data.data = m_financeResponsitory.revanue(year,cbid);
                 data.message = "success";
             }
             catch(Exception e)
@@ -131,13 +132,13 @@ namespace WebApi.controllers.admin
         }
 
         [HttpGet("getTotalMoney")]
-        public DataRespond getTotalMoney()
+        public DataRespond getTotalMoney(int cbid)
         {
             DataRespond data = new DataRespond();
             try
             {
                 data.success = true;
-                data.data = m_financeResponsitory.getTotalMoney();
+                data.data = m_financeResponsitory.getTotalMoney(cbid);
                 data.message = "success";
             }
             catch(Exception e)

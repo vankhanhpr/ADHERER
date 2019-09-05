@@ -205,10 +205,12 @@ Create table Report (
 alter table Report add note nvarchar(1000)
 
 Create table AdhererLiving (
-	livid int identity(1,1),
+	livid int identity(1,1) not null primary key,
 	title nvarchar(200),
 	dayevent datetime,
 	note nvarchar(2000),
 	namefiel nvarchar(20),
-	createday datetime
-)
+	createday datetime,
+	cbid int not null,
+	foreign key (cbid) references Chibo(cbid)
+);

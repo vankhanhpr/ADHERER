@@ -28,9 +28,9 @@ namespace WebApi.serrvice.admin.responsitory
             return context.AdhererLiving.Where(m => m.livid == id).FirstOrDefault();
         }
 
-        public dynamic getAllAdhererLiving()
+        public dynamic getAllAdhererLiving(int cbid)
         {
-            return context.AdhererLiving.ToList();
+            return context.AdhererLiving.Where(m=>m.cbid==cbid).ToList();
         }
 
         public void insertAdhererLiving(AdhererLiving adhererLiving)

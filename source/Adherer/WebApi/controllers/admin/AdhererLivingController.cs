@@ -44,6 +44,7 @@ namespace WebApi.controllers.admin
                 }
                 adhererLiving.title = adhererlivingRequest.title;
                 adhererLiving.note = adhererlivingRequest.note;
+                adhererLiving.cbid = adhererlivingRequest.cbid;
                 DateTime dayevent = DateTime.ParseExact(adhererlivingRequest.dayevent, "dd/MM/yyyy", CultureInfo.InvariantCulture);
                 adhererLiving.dayevent = dayevent;
                 adhererLiving.createday = DateTime.Now;
@@ -111,13 +112,13 @@ namespace WebApi.controllers.admin
         }
 
         [HttpGet("getAllAdhererLiving")]
-        public DataRespond getAllAdhererLiving()
+        public DataRespond getAllAdhererLiving(int cbid)
         {
             DataRespond data = new DataRespond();
             try
             {
                 data.success = true;
-                data.data = m_adhererLivingResponsitory.getAllAdhererLiving();
+                data.data = m_adhererLivingResponsitory.getAllAdhererLiving(cbid);
                 data.message = "success";
             }
             catch(Exception e)

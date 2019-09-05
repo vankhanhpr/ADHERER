@@ -10,13 +10,13 @@ namespace WebApi.serrvice.admin.interfaces
 {
     public interface IFinanceResponsitory:IResponsitory<Finance>
     {
-        dynamic getFinanceByStatus(int status);
+        dynamic getFinanceByStatus(int status,int cbid);
         Finance getFinanceById(int id);
         void insertFinance(Finance finance);
         void updateFinance(Finance finance);
         void deleteFinance(int id);
 
-        dynamic revanue(int year);
-        dynamic getTotalMoney();
+        dynamic revanue(int year,int cbid);
+        dynamic getTotalMoney(int cbid);
     }
 }

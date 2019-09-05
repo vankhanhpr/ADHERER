@@ -112,7 +112,7 @@ Create table Files (
 	avatar nvarchar(20),
 	card nvarchar(20),
 	decision nvarchar(20),
-	primary key(fileid),
+	primary key(fileid,usid),
 	foreign key (usid) references users(usid),
 	foreign key (dantoc) references Nation(nationid),
 	foreign key(donvi) references Organization(ogid)
@@ -185,6 +185,7 @@ create table Forms(
 	active bit,
 	cbid int,
 	type int
+	foreign key(cbid) references Chibo(cbid)
 )	
 create table Toabroad (
 	brid int not null primary key identity (1,1),
@@ -214,4 +215,16 @@ Create table Finance (
 	createday datetime,
 	moneys bigint ,
 	status int ,
+	cbid int not null,
+	foreign key (cbid) references Chibo (cbid)
+);
+Create table AdhererLiving (
+	livid int identity(1,1) not null primary key,
+	title nvarchar(200),
+	dayevent datetime,
+	note nvarchar(2000),
+	namefiel nvarchar(20),
+	createday datetime,
+	cbid int not null,
+	foreign key (cbid) references Chibo(cbid)
 );

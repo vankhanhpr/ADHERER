@@ -13,5 +13,6 @@ namespace WebApi.model.request
         public string dayevent { get; set; }
         public string note { get; set; }
         public IFormFile file { get; set; }
+        public int cbid { get; set; }
     }
 }

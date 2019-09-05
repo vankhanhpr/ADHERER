@@ -117,6 +117,13 @@
         padding:5px;
         font-size:20px;
     }
+    .select-option {
+        border: 1px solid rgba(51,51,51,0.1);
+        border-radius: 4px;
+        padding: 2px 7px;
+        cursor: pointer;
+    }
+
 }
 @media only screen and (min-width:1200px){
     .title-finance {
@@ -130,6 +137,7 @@
     }
     .detail-row {
         padding:5px;
+        min-height:50px;
     }
     .fa-trash-o {
         font-size: var(--fs-dt);
@@ -160,5 +168,18 @@
         margin-top:20px;
         margin-bottom:10px;
         padding:5px;
+    }
+    .t-note-dangbo {
+        margin-left: 30px;
+        margin-top: 4px;
+        margin-right: 3px;
+    }
+    .t-note-dangbo {
+        color: var(--cl-text-bl);
+        font-weight: 300;
+        text-align: left;
+    }
+    .t-title-finance{
+        margin-top:4px;
     }
 }
