@@ -13,5 +13,6 @@ namespace WebApi.serrvice.admin.interfaces
         void updateUserMove(UserMove userMove);
 
         dynamic getUserByChiBo(int id);
+        dynamic filterUserByBox(string filter,int cbid);
     }
 }

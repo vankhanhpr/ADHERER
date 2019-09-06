@@ -13,45 +13,7 @@ function showTab(tab) {
     $("#" + tab).show();
 }
 //getArmorial(bindingArmorial);
-function getArmorial(callback, id) {
-    $.ajax({
-        type: "get",
-        url: linkserver + "aduser/getArmorial?cbid=" + id,
-        data: null,
-        headers: { 'authorization': `Bearer ${token}` },
-        dataType: 'json',
-        contentType: "application/json",
-        statusCode: {
-            401: function () {
-                window.location.href = "/login";
-            }
-        },
-        error: function (err) {
-            bootbox.alert("Có lỗi xảy ra, vui lòng kiểm tra kết nối");
-        },
-        success: function (data) {
-            callback(data);
-        }
-    });
-}
-function bindingArmorial(data) {
-    if (data.success && data.data) {
-        $(".child-form-user").remove();
-        for (var i in data.data) {
-            var item = data.data[i];
-            var j = parseInt(i) + 1;
-            $("#form-armorial").append('<div class="k child-form-user">' +
-                '<span class= "k t stt" >' + j + '</span >' +
-                '<div class="k t body-user">' +
-                '<span class="k t name-user">' + item.name + '</span>' +
-                '<span class="k t note-day">Ngày vào Đảng:</span>' +
-                '<span class="k t note-day">' + formatDate(new Date(item.ngayvaodang)) + '</span>' +
-                '<progress class="k t progress-bar" id="file" data-label="' + item.year + ' năm tuổi Đảng" max="60" value="' + item.year + '"> 70% </progress>' +
-                '</div>' +
-                '</div>');
-        }
-    }
-}
+
 function getChiBoByDbId(id, callback) {
     $.ajax({
         type: "get",
@@ -371,7 +333,7 @@ function readFileReview(input) {
 function getUserByChiBo(callback, id) {
     $.ajax({
         type: "get",
-        url: linkserver + "usermove/getUserMoveByChiBo?id=" + id,
+        url: linkserver + "usermove/getUserByChiBo?id=" + id,
         data: null,
         headers: { 'authorization': `Bearer ${token}` },
         dataType: 'json',
@@ -392,14 +354,17 @@ function getUserByChiBo(callback, id) {
 
 function bindingUser(data) {
     if (data.success && data.data) {
-        $("#select-dangvien option").remove();
+        $(".item-user").remove();
         for (var i in data.data) {
-            var item = data.data[i].user;
-            $("#select-dangvien").append('<option value="' + item.usid + '">' + item.madv + '</option>');
-        }
-        if (data.data[0] && data.data[0].user ) {
-            getUserById(bindingFile, data.data[0].user.usid);
-            usid = data.data[0].user.usid;
+            if (data.data[i].file) {
+                var j = parseInt(i) + 1;
+                var item = data.data[i];
+                $("#form-list-user").append(`<div class="k row-table item-user" onclick="selectUser(this)">
+                            <span class="k t item-row first-row">`+ j + `</span>
+                            <span class="k t item-row scd-row">`+ item.user.madv + `</span>
+                            <span class="k t item-row thr-row">`+ item.file.hotendangdung +`</span>
+                        </div>`);
+            }
         }
     }
 }
@@ -495,4 +460,75 @@ function moveDangVien() {
             }
         }
     });
+}
+function selectUser(obj) {
+    $(".row-table").css('background-color','white');
+    $(obj).css('background-color','rgba(51,51,51,0.1');
+}
+function getUserBySearchBox(callback) {
+    var filter = $("#search-box").val();
+    $.ajax({
+        type: "get",
+        url: linkserver + "usermove/filterUserByBox?filter=" + filter + "&&cbid=" + parseInt($("#sl-chibo").children("option:selected").val()),
+        data: null,
+        headers: { 'authorization': `Bearer ${token}` },
+        dataType: 'json',
+        contentType: "application/json",
+        statusCode: {
+            401: function () {
+                window.location.href = "/login";
+            }
+        },
+        error: function (err) {
+            bootbox.alert("Có lỗi xảy ra, vui lòng kiểm tra kết nối");
+        },
+        success: function (data) {
+            callback(data);
+        }
+    });
+}
+
+function nextTabLayout(obj) {
+    $(".tab-layout").css("background-color","white");
+    $(obj).css("background-color","var(--bg-button)");
+}
+
+function getArmorial(callback, id) {
+    $.ajax({
+        type: "get",
+        url: linkserver + "aduser/getArmorial?cbid=" + id,
+        data: null,
+        headers: { 'authorization': `Bearer ${token}` },
+        dataType: 'json',
+        contentType: "application/json",
+        statusCode: {
+            401: function () {
+                window.location.href = "/login";
+            }
+        },
+        error: function (err) {
+            bootbox.alert("Có lỗi xảy ra, vui lòng kiểm tra kết nối");
+        },
+        success: function (data) {
+            callback(data);
+        }
+    });
+}
+function bindingArmorial(data) {
+    if (data.success && data.data) {
+        //$(".child-form-user").remove();
+        for (var i in data.data) {
+            var item = data.data[i];
+            var j = parseInt(i) + 1;
+            $("#form-armorial").append('<div class="k child-form-user">' +
+                '<span class= "k t stt" >' + j + '</span >' +
+                '<div class="k t body-user">' +
+                '<span class="k t name-user">' + item.name + '</span>' +
+                '<span class="k t note-day">Ngày vào Đảng:</span>' +
+                '<span class="k t note-day">' + formatDate(new Date(item.ngayvaodang)) + '</span>' +
+                '<progress class="k t progress-bar" id="file" data-label="' + item.year + ' năm tuổi Đảng" max="60" value="' + item.year + '"> 70% </progress>' +
+                '</div>' +
+                '</div>');
+        }
+    }
 }

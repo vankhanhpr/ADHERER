@@ -103,10 +103,16 @@
                     </div>
 
                     <span class="k t err-validate" id="err-insert-finance">**Vui lòng điền đầy đủ thông tin</span>
-                    <span class="k dl-bnt-save" onclick="validateFinance()">Cập nhật</span>
+                    @*<span class="k dl-bnt-save" onclick="validateFinance()">Cập nhật</span>*@
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="k btn btn-default bnt-close" data-dismiss="modal">
+                        Đóng
+                    </button>
+                    <span class="k dl-bnt-save" onclick="validateFinance()">
+                        <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                        Cập nhật
+                    </span>
                 </div>
             </div>
 

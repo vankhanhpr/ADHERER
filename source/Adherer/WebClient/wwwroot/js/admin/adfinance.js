@@ -71,7 +71,9 @@ function validateFinance() {
             "moneys": covertToString(money.trim()),
             "status": parseInt($("#sl-type-finance").children("option:selected").val()),
             "createday": $("#daymoney").val(),
-            "cbid": cbid
+            "cbid": cbid,
+            "person": $("#person-finance").val(),
+            "uscreate": getTokenByLocal().usid
         };
         if (cbid === -1) {
             bootbox.alert("Vui lòng chọn Chi bộ muốn thêm");
@@ -105,6 +107,7 @@ function insertFinance(data) {
                 bootbox.alert({
                     message: "Thêm mới thông tin thành công!",
                     callback: function () {
+                        emptyForm();
                         $(".title-item-row").remove();
                         getFinanceByStatus(0, bindingFinance, cbid);
                         getFinanceByStatus(1, bindingFinance, cbid);
@@ -119,6 +122,13 @@ function insertFinance(data) {
         }
     });
 }
+
+function emptyForm() {
+    $("#ip-name-finance").val('');
+    $("#money").val('');
+    $("#person-finance").val('');
+}
+
 function deleteFinance(id) {
     bootbox.confirm({
         message: "Bạn có muốn xóa trường này không?",

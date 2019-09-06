@@ -18,6 +18,27 @@ namespace WebApi.serrvice.admin.responsitory
             userMovesEntiry = context.Set<UserMove>();
         }
 
+        public dynamic filterUserByBox(string filter,int cbid)
+        {
+            if (filter == null)
+            {
+                filter = "";
+            }
+            var filterby = filter.Trim().ToLowerInvariant();
+            var data = context.Users.Where(m=>m.cbid== cbid).Select(user => new {
+                user,
+                file = context.Files.Where(m=>m.usid== user.usid ).FirstOrDefault()
+            })
+            .ToList()
+            .AsQueryable()
+            .Where(n =>
+                        n.user.madv.ToLowerInvariant().Contains(filterby)
+                    || (n.file!=null && n.file.hotendangdung.ToLowerInvariant().Contains(filterby))
+                    || (n.file != null && n.file.hotenkhaisinh.ToLowerInvariant().Contains(filterby))
+            );
+            return data;
+        }
+
         public dynamic getUserByChiBo(int id)
         {
             var dangvien = from user in context.Users

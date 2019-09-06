@@ -53,6 +53,8 @@ namespace WebApi.controllers.admin
                 fi.moneys = finance.moneys;
                 fi.status = finance.status;
                 fi.cbid = finance.cbid;
+                fi.uscreate = finance.uscreate;
+                fi.person = finance.person;
                 DateTime daycr = DateTime.ParseExact(finance.createday, "dd/MM/yyyy", CultureInfo.InvariantCulture);
                 fi.createday = daycr;
                 data.success = true;
@@ -79,7 +81,7 @@ namespace WebApi.controllers.admin
                 fi.status = finance.status;
                 fi.name = finance.name;
                 fi.moneys = finance.moneys;
-
+                fi.person = finance.person;
                 m_financeResponsitory.updateFinance(fi);
                 data.success = true;
                 data.message = "update success";

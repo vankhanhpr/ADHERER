@@ -12,5 +12,7 @@ namespace AdhererClassLib.area.request
         public long moneys { get; set; }
         public int status { get; set; }
         public int cbid { get; set; }
+        public int uscreate { get; set; }
+        public string person { get; set; }
     }
 }

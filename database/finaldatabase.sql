@@ -215,6 +215,7 @@ Create table Finance (
 	createday datetime,
 	moneys bigint ,
 	status int ,
+	person nvarchar(500),
 	cbid int not null,
 	foreign key (cbid) references Chibo (cbid)
 );

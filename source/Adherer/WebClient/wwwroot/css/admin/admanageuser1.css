@@ -1,0 +1,231 @@
+﻿@import url("adconfig.css");
+:root {
+    --bg-item: white;
+    --background-home: #ff6a00;
+}
+@media only screen and (min-width:0px){
+    .body-form{
+        width:100%;
+    }
+    .form-title{
+        width:100%;
+        background-color:var(--bg-item);
+    }
+    .title{
+        color:var(--cl-text-bl);
+        font-weight:300;
+        text-align:left;
+        margin-top:3px;
+    }
+    .label-bd{
+        color:var(--cl-text-bl);
+        font-weight:300;
+        padding:5px;
+        margin-top:3px;
+    }
+    .sl-chibo {
+        color: var(--cl-text-bl);
+        border: 1px solid rgba(51,51,51,0.1);
+        border-radius: 4px;
+        padding: 4px;
+        margin-top: 5px;
+        margin-right: 5px;
+        cursor: pointer;
+        min-width: 200px;
+        margin-bottom:5px;
+    }
+    .form-body{
+        width:100%;
+        margin-top:5px;
+        background-color:var(--bg-item);
+        min-height:100vh;
+    }
+    .left-form{
+        width:40%;
+        border:1px solid rgba(51,51,51,0.1);
+    }
+    .right-form {
+        width: 60%;
+        border: 1px solid rgba(51,51,51,0.1);
+    }
+    .title-left-form{
+        width:100%;
+        padding:10px;
+        border-bottom:0.5px solid rgba(51,51,51,0.1);
+    }
+    .label-list-user {
+        width: auto;
+        color: var(--cl-text-bl);
+        font-weight: 300;
+    }
+    .f-search-ft {
+        border-radius: 4px;
+        border: 1px solid rgba(51,51,51,0.1);
+        background-color: var(--bg-white);
+    }
+    .search-ft {
+        width: auto;
+        border: none;
+    }
+    .body-left-form{
+        width:100%;
+    }
+    .row-table{
+        width:100%;
+        cursor:pointer;
+    }
+    .item-row{
+        color:var(--cl-text-bl);
+        font-weight:300;
+        text-align:left;
+        min-height:40px;
+        border-top:1px solid rgba(51,51,51,0.1);
+        border-bottom:1px solid rgba(51,51,51,0.1);
+        padding:5px;
+    }
+    .row-main{
+        font-weight:600;
+    }
+    .title-right-form{
+        width:100%;
+    }
+    .tab-layout{
+        color:var(--cl-text-bl);
+        background-color:var(--bg-item);
+        text-align:center;
+        border :1px solid rgba(177,193,30,0.1);
+        width:33.3333%;
+        cursor:pointer;
+        padding:5px;
+    }
+    .fist-right-it{
+        background-color:var(--bg-button);
+    }
+    .body-right-form{
+        width:100%;
+    }
+    .child-form-user {
+        width: 100%;
+        border: 1px solid rgba(51,51,51,0.1);
+    }
+    .sign-adherer{
+        width:100%;
+    }
+    .stt {
+        border-right: 1px solid rgba(51,51,51,0.1);
+        text-align: center;
+    }
+
+    .name-user {
+        color: var(--cl-text-bl);
+        font-weight: 300;
+        padding: 0 10px;
+    }
+
+    .note-day {
+        color: var(--cl-text-bl);
+        font-weight: 300;
+        padding: 0 10px;
+    }
+    /*progress bar*/
+    progress {
+        text-align: center;
+        height: 1.5em;
+        width: 100%;
+        -webkit-appearance: none;
+        border: none;
+        position: relative;
+    }
+
+        progress:before {
+            content: attr(data-label);
+            font-size: 0.8em;
+            vertical-align: 0;
+            /*Position text over the progress bar */
+            position: absolute;
+            left: 0;
+            right: 0;
+        }
+
+        progress::-webkit-progress-bar {
+            background-color: #c9c9c9;
+        }
+
+        progress::-webkit-progress-value {
+            background-color: #7cc4ff;
+        }
+
+        progress::-moz-progress-bar {
+            background-color: #7cc4ff;
+        }
+
+    .progress-bar {
+        width: 100%;
+        height: 20px;
+    }
+
+    .bnt-addnew {
+        position: relative;
+        float: right;
+        border: 1px solid rgba(51,51,51,0.1);
+        background-color: var(--bg-button);
+        padding: 3px 5px;
+        color: var(--cl-text-wt);
+        border-radius: 4px;
+        cursor: pointer;
+    }
+}
+@media only screen and (min-width:1200px){
+    .title {
+        font-size:var(--fs-dt);
+        padding:5px;
+    }
+    .label-bd {
+       font-size:var(--fs-dt);
+       padding:5px;
+       margin-left:20px;
+       margin-right:5px;
+    }
+    .label-list-user {
+        font-size:var(--fs-dt);
+    }
+    .f-search-ft {
+        padding: 3px;
+        margin-left:10px;
+    }
+    .item-row {
+        font-size:var(--fs-dt);
+    }
+    .first-row{
+        width:10%;
+        text-align:center;
+        border-right:0.5px solid rgba(51,51,51,0.1);
+    }
+    .scd-row {
+        width: 30%;
+        border-right: 0.5px solid rgba(51,51,51,0.1);
+    }
+    .thr-row{
+        width:60%;
+    }
+    .tab-layout {
+        font-size:var(--fs-dt);
+    }
+    .stt {
+        width: 10%;
+        padding: 5px 0;
+        min-height: 100px;
+    }
+   .main-adherer {
+        width: 90%;
+        padding:10px;
+    }
+    progress {
+        font-size: var(--fs-dt);
+    }
+    .progress-bar {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-size: var(--fs-dt);
+    }
+}

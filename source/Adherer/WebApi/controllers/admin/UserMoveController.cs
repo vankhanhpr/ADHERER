@@ -84,6 +84,43 @@ namespace WebApi.controllers.admin
             return data;
         }
 
+        [HttpGet("getUserByChiBo")]
+        public DataRespond getUserByChiBo(int id)
+        {
+            DataRespond data = new DataRespond();
+            try
+            {
+                data.success = true;
+                data.data = m_adUserResponsitory.getUserByChiBoId(id);
+                data.message = "success";
+            }
+            catch(Exception e)
+            {
+                data.message = e.Message;
+                data.error = e;
+                data.success = false;
+            }
+            return data;
+        }
+
+        [HttpGet("filterUserByBox")]
+        public DataRespond filterUserByBox(string filter,int cbid)
+        {
+            DataRespond data = new DataRespond();
+            try
+            {
+                data.success = true;
+                data.message = "success";
+                data.data = m_userMoveResponsitory.filterUserByBox(filter,cbid);
+            }
+            catch(Exception e)
+            {
+                data.success = false;
+                data.message = e.Message;
+                data.error = e;
+            }
+            return data;
+        }
 
         public async Task<string> uploadDecision(IFormFile file)
         {
