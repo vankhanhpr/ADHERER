@@ -1,0 +1,82 @@
+/* Pre- pop-change-avatar start */
+.pop-avatar {
+    padding: 10px;
+    z-index: 1;
+    top: 300px;
+    position: absolute;
+    left: 45%;
+    border: 1px solid;
+    width: 30%;
+    height: 30%;
+    background-color: #FFFFFF;
+}
+#img-upload {
+    width: 100px;
+    height: 100px;
+}
+
+/* Pre- pop-change-avatar end */
+
+.img-logo {
+    width: 50px;
+}
+.img-profile {
+    border: 1px solid;
+    padding: 15px;
+    width: 24%;
+    height: auto;
+    margin: 12px;
+}
+.pcoded-mtext {
+    color: black !important;
+}
+.pcoded-micon > .ti-user {
+    color: black !important;
+}
+.gender {
+    width: 70px;
+    padding: 6px;
+}
+
+
+.img-thumbnail {
+    margin-bottom: 15px;
+    width: 200px;
+    height: 200px;
+}
+.pcoded .pcoded-header {
+    background-color: #c60000 !important;
+}
+.modal-content {
+    height: 160px !important;
+}
+.btn {
+    background-color: #4CAF50 !important;
+    color: #FFFFFF ;
+    border: #4CAF50 !important;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: #008CBA;
+}
+
+.container1:hover .overlay {
+    opacity: 1;
+}
+
+.ml-10 {
+    margin-left:10px !important;
+}
+
+#btn-edit , #btn-save {
+    display: none;
+}

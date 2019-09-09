@@ -1,0 +1,86 @@
+﻿
+@{
+    ViewData["Title"] = "Abroad";
+    Layout = "~/Views/Shared/LayoutUser.cshtml";
+}
+
+<div class="pcoded-content">
+<div class="pcoded-inner-content">
+
+    <!-- Main-body start -->
+    <div class="main-body">
+        <div class="page-wrapper">
+            <!-- Page body start -->
+            <div class="page-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <!-- Basic Form Inputs card start -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h1>Xuất cảnh</h1>
+                                <form class="needs-validation" novalidate>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">
+                                            Địa điểm
+                                            đi
+                                        </label>
+                                        <div class="col-sm-5">
+                                            <input type="text" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Từ ngày</label>
+                                        <div class="col-sm-3">
+                                            <input id="idBirth"
+                                                   class="datetimepicker form-control" type="text"
+                                                   required>
+                                        </div>
+                                        <label class="col-sm-2 col-form-label">Đến ngày</label>
+                                        <div class="col-sm-2">
+                                            <input id="idBirth"
+                                                   class="datetimepicker form-control" type="text"
+                                                   required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">
+                                            Mục đích chuyến
+                                            đi
+                                        </label>
+                                        <div class="col-sm-3">
+                                            <input type="text" class="form-control" required>
+                                        </div>
+                                        <label class="col-sm-2 col-form-label">Kinh phí</label>
+                                        <div class="col-sm-2">
+                                            <input type="text" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Đính kèm</label>
+                                        <div class="custom-file col-sm-6">
+                                            <input type="file" id="customFile">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <button class="col-sm-2 col-form-label btn btn-primary">
+                                            Lưu
+                                        </button>
+                                    </div>
+
+                                </form>
+                                <!-- Basic Form Inputs card end -->
+                                <!-- Input Grid card start -->
+                                <!-- Page body end -->
+                            </div>
+                        </div>
+                        <!-- Main-body end -->
+                        <div id="styleSelector">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+                    </div>

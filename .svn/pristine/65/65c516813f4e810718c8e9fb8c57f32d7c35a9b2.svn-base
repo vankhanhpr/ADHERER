@@ -1,0 +1,128 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+@section Css{
+    <link rel="stylesheet" type="text/css" href="~/css/admin/adhome.css">
+}
+<div class="k main-form">
+    <div class="k form-body">
+        <span class="k t-name-db">Nhập thông tin và cập nhật</span>
+        <a href="/admin/dangbo">
+            <div class="k bd-item-db">
+                <div class="k item-db">
+                    <span class="k t t-name-it">ĐẢNG BỘ</span>
+                    <span class="k t t-tt-it" id="totaldangbo">0</span>
+                    <span class="k t t-bw-it">update</span>
+                    <i class="fa fa-clock-o ic-time-ud" aria-hidden="true"></i>
+                    <span class="k upday" id="daydangbo"></span>
+                </div>
+            </div>
+        </a>
+        <a href="/admin/chibo">
+            <div class="k bd-item-db">
+                <div class="k item-db2">
+                    <span class="k t t-name-it">CHI BỘ</span>
+                    <span class="k t t-tt-it" id="totalchibo">0</span>
+                    <span class="k t t-bw-it">update</span>
+                    <i class="fa fa-clock-o ic-time-ud" aria-hidden="true"></i>
+                    <span class="k upday" id="daychibo"></span>
+                </div>
+            </div>
+        </a>
+        <a href="/admin/donvi">
+            <div class="k bd-item-db">
+                <div class="k item-db4">
+                    <span class="k t t-name-it">ĐƠN VỊ</span>
+                    <span class="k t t-tt-it" id="totalorg">0</span>
+                    <span class="k t t-bw-it">update</span>
+                    <i class="fa fa-clock-o ic-time-ud" aria-hidden="true"></i>
+                    <span class="k upday" id="dayorg"></span>
+                </div>
+            </div>
+        </a>
+        <a href="/admin/dangvien">
+            <div class="k bd-item-db">
+                <div class="k item-db3">
+                    <span class="k t t-name-it">ĐẢNG VIÊN</span>
+                    <span class="k t t-tt-it" id="totaldangvien">0</span>
+                    <span class="k t t-bw-it">update</span>
+                    <i class="fa fa-clock-o ic-time-ud" aria-hidden="true"></i>
+                    <span class="k upday" id="daydangvien"></span>
+                </div>
+            </div>
+        </a>
+
+        <span class="k t-name-db">Các hoạt động</span>
+
+        <a href="/admin/form">
+            <div class="k bd-item-db">
+                <div class="k item-db5">
+                    <span class="k t t-name-it note-document">BIỂU MẪU & VĂN BẢN</span>
+                    <span class="k t t-tt-it total-document" id="totalform">0</span>
+                    <span class="k t t-bw-it">update</span>
+                    <i class="fa fa-clock-o ic-time-ud" aria-hidden="true"></i>
+                    <span class="k upday" id="dayform"></span>
+                </div>
+            </div>
+        </a>
+        <a href="/admin/livingadherer">
+            <div class="k bd-item-db">
+                <div class="k item-db6">
+                    <span class="k t t-name-it note-document">SINH HOẠT ĐẢNG</span>
+                    <span class="k t t-tt-it total-document">0</span>
+                    <span class="k t t-bw-it">update</span>
+                    <i class="fa fa-clock-o ic-time-ud" aria-hidden="true"></i>
+                    <span class="k upday">20/12/2012</span>
+                </div>
+            </div>
+        </a>
+        <a href="/admin/finance">
+            <div class="k bd-item-db">
+                <div class="k item-db6">
+                    <span class="k t t-name-it note-document">TÀI CHÍNH</span>
+                    <span class="k t t-tt-it total-document">0</span>
+                    <span class="k t t-bw-it">update</span>
+                    <i class="fa fa-clock-o ic-time-ud" aria-hidden="true"></i>
+                    <span class="k upday">20/12/2012</span>
+                </div>
+            </div>
+        </a>
+        <a href="/admin/manageuser">
+            <div class="k bd-item-db">
+                <div class="k item-db6">
+                    <span class="k t t-name-it note-document">NGHIỆP VỤ ĐẢNG VIÊN</span>
+                    <span class="k t t-tt-it total-document">0</span>
+                    <span class="k t t-bw-it">update</span>
+                    <i class="fa fa-clock-o ic-time-ud" aria-hidden="true"></i>
+                    <span class="k upday">20/12/2012</span>
+                </div>
+            </div>
+        </a>
+
+        <span class="k t-name-db">Báo cáo</span>
+
+        <span class="k t-name-db">Đảng viên đến theo các tháng trong năm</span>
+        <a href="/admin/report">
+            <div class="k bd-item-db">
+                <div class="k item-db6">
+                    <span class="k t t-name-it">THỐNG KÊ</span>
+                    <span class="k t t-tt-it">0</span>
+                    <span class="k t t-bw-it">update</span>
+                    <i class="fa fa-clock-o ic-time-ud" aria-hidden="true"></i>
+                    <span class="k upday">20/12/2012</span>
+                </div>
+            </div>
+        </a>
+        <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto ;margin-bottom:50px;"></div>
+
+    </div>
+</div>
+@section Script{
+    <script>
+        checkToken();
+    </script>
+    <script type="text/javascript" src="~/lib/chart/highcharts.js"></script>
+    <script type="text/javascript" src="~/js/admin/adindex.js"></script>
+}

@@ -1,0 +1,82 @@
+﻿@{
+    ViewData["Title"] = "Report";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+@section Css{
+    <link rel="stylesheet" type="text/css" href="~/css/admin/adreport.css">
+}
+<div class="k main-form">
+    <div class="k body-form">
+        <span class="k t text-report">Báo cáo và thống kê</span>
+
+        <div class="k form-filter">
+            <div class="k smail-item">
+                <span class="k t text-note-filter">Đến chi bộ từ: </span>
+                <div class="form-group">
+                    <div class='input-group date' id='datepicker-startday'>
+                        <input type='text' class="form-control" id="fromday" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="k smail-item">
+                <span class="k t text-note-filter">đến: </span>
+                <div class="form-group">
+                    <div class='input-group date' id='datepicker-endday'>
+                        <input type='text' class="form-control" id="endday" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="k smail-item">
+                <select class="type-user" id="select-dangbo"></select>
+            </div>
+            <div class="k smail-item">
+                <select class="type-user" id="select-chibo"></select>
+            </div>
+            @*<div class="k smail-item">
+                <div class="k f-search-ft">
+                    <input class="k search-ft" id="search-box" onkeyup="filterUserByBox(bindingUser)" type="text">
+                    <i class="fa fa-search bnt-search" aria-hidden="true"></i>
+                </div>
+            </div>*@
+            <div class="k smail-item">
+                <span class="t bnt-filter" onclick="filterUser()">Filter</span>
+            </div>
+        </div>
+
+        <div class="k form-show-info-user" id="form-show-info-user">
+            <div class="k form-item-user-main">
+                <div class="k t left-text bold-text">Mã Đảng viên</div>
+                <div class="k t left-text bold-text">Quyền</div>
+                <div class="k t left-text bold-text">Phân quyền</div>
+                <div class="k t left-text bold-text">Ngày đến Chi Bộ</div>
+                <div class="k t left-text bold-text">Lý do</div>
+            </div>
+            @*<div class="k form-item-user">
+                <div class="k t left-text">LH0123232</div>
+                <div class="k t left-text">Nguyen Van A</div>
+                <div class="k t left-text">Admin</div>
+                <div class="k t left-text">12/12/2012</div>
+                <div class="k t left-text">Kết nạp</div>
+            </div>*@
+        </div>
+
+        @*<a href="/admin/DetailReport">
+            <div class="k smail-item">
+                <span class="t bnt-filter">Tạo báo cáo</span>
+            </div>
+        </a>*@
+
+        <div id="container" class="k linechart"></div>
+    </div>
+</div>
+@section Script {
+    <script type="text/javascript" src="~/lib/chart/highcharts.js"></script>
+    <script src="~/js/admin/adreport.js"></script>
+}
