@@ -201,21 +201,23 @@ function getUser(id, callback) {
     });
 }
 function bindingUserByChiBo(data) {
+    return;
     if (data.success && data.data) {
         $(".form-item-user").remove();
         for (var i in data.data) {
             var item = data.data[i];
-            $("#form-show-info-user").append('<div class="k form-item-user">' +
-                '<div class= "k t left-text" >' + item.madv + '</div >' +
-                '<div class="k t left-text">' + (item.roleid === 2 ? 'Admin' : 'Đảng viên') + '</div>' +
-                '<div class="k t left-text">' + (item.active ? 'Hoạt động' : 'Không hoạt động') + '</div>' +
-                '<div class="k t left-text">' + formatDate(new Date(item.ngaydenchibo)) + '</div>' +
-                '<div class="k t left-text">' + (item.lydoden === 0 ? 'Kết nạp' : 'Chuyển đến') + '</div>' +
-                '</div>');
+            if (item.file) {
+                $("#form-show-info-user").append(` <div class="k form-item-user">
+                <div class="k left-text img-avt-user" style="background-image:url(`+ (item.file.avatar ? linkfileuser + item.file.avatar : '/images/admin/avt-us-defaul.png') + `)"></div>
+                <div class="k t left-text">`+ item.user.madv +`</div>
+                <div class="k t left-text">`+ item.file.hotendangdung + `</div>
+                <div class="k t left-text">`+ formatDate(new Date(item.file.createday)) +`</div>
+                <div class="k t left-text">`+ formatDate(new Date(item.user.ngaydenchibo)) +`</div>
+            </div>`);
+            }
         }
     }
 }
-
 function getDangBo() {
     $.ajax({
         type: "get",
@@ -242,4 +244,156 @@ function getDangBo() {
             }
         }
     });
+}
+
+//filter 
+function nextTabButton(tab) {
+    switch (tab) {
+        case 0:
+            break;
+        case 1:
+            break;
+        case 2:
+            break;
+    }
+}
+
+function showBonus(callback) {
+    var chibo = parseInt($("#select-chibo").children("option:selected").val());
+    if (isNaN(chibo)) { return;}
+    var data = {
+        'startday': $('#fromday').val(),
+        'endday': $('#endday').val(),
+        'cbid': chibo
+    };
+    $.ajax({
+        url: linkserver + "adreport/getUserBonus",
+        type: 'POST',
+        dataType: 'json',
+        data: JSON.stringify(data),
+        headers: { 'authorization': `Bearer ${token}` },
+        async: false,
+        processData: false,
+        contentType: "application/json",
+        statusCode: {
+            401: function () {
+                window.location.href = "/login";
+            }
+        },
+        error: function (err) {
+            bootbox.alert("Có lỗi xảy ra, vui lòng kiểm tra kết nối");
+        },
+        success: function (data) {
+            callback(data);
+        }
+    });
+}
+function bindingBonus(data) {
+    if (data.success && data.data) {
+        $(".form-item-user").remove();
+        for (var i in data.data) {
+            var item = data.data[i];
+            $("#tab-user-bonus").append(`<div class="k form-item-user">
+                <div class="k left-text img-avt-user"style=" background-image:url(`+ (item.avatar ? linkfileuser + item.avatar : '/images/admin/avt-us-defaul.png') + `)"></div>
+                <div class="k t left-text">`+ item.madv +`</div>
+                <div class="k t left-text">`+item.hotendangdung+`</div>
+                <div class="k t left-text">`+ item.noidung + `</div>
+                <div class="k t left-text">`+ formatDate(new Date(item.daycreate)) +`</div>
+            </div>`);
+        }
+    }
+}
+
+//filter dang vien co ki luat trong thoi gian
+function getUserDes(callback) {
+    var chibo = parseInt($("#select-chibo").children("option:selected").val());
+    if (isNaN(chibo)) { return; }
+    var data = {
+        'startday': $('#fromday').val(),
+        'endday': $('#endday').val(),
+        'cbid': chibo
+    };
+    $.ajax({
+        url: linkserver + "adreport/getUserDesS",
+        type: 'POST',
+        dataType: 'json',
+        data: JSON.stringify(data),
+        headers: { 'authorization': `Bearer ${token}` },
+        async: false,
+        processData: false,
+        contentType: "application/json",
+        statusCode: {
+            401: function () {
+                window.location.href = "/login";
+            }
+        },
+        error: function (err) {
+            bootbox.alert("Có lỗi xảy ra, vui lòng kiểm tra kết nối");
+        },
+        success: function (data) {
+            callback(data);
+        }
+    });
+}
+function bindingUserDes(data) {
+    if (data.success && data.data) {
+        $('.form-item-user').remove();
+        for (var i in data.data) {
+            var item = data.data[i];
+            $("#tab-user-des").append(`<div class="k form-item-user">
+                <div class="k left-text img-avt-user"style=" background-image:url(`+ (item.avatar ? linkfileuser + item.avatar : '/images/admin/avt-us-defaul.png') + `)"></div>
+                <div class="k t left-text">`+ item.madv + `</div>
+                <div class="k t left-text">`+ item.hotendangdung +`</div>
+                <div class="k t left-text">`+ item.noidung + `</div>
+                <div class="k t left-text">`+ formatDate(new Date(item.daycreate)) +`</div>
+            </div>`);
+        }
+    }
+}
+//filter dang vien di nước ngoài
+function getUserToaBroad(callback) {
+    var chibo = parseInt($("#select-chibo").children("option:selected").val());
+    if (isNaN(chibo)) { return; }
+    var data = {
+        'startday': $('#fromday').val(),
+        'endday': $('#endday').val(),
+        'cbid': chibo
+    };
+    $.ajax({
+        url: linkserver + "adreport/getUserToaBroad",
+        type: 'POST',
+        dataType: 'json',
+        data: JSON.stringify(data),
+        headers: { 'authorization': `Bearer ${token}` },
+        async: false,
+        processData: false,
+        contentType: "application/json",
+        statusCode: {
+            401: function () {
+                window.location.href = "/login";
+            }
+        },
+        error: function (err) {
+            bootbox.alert("Có lỗi xảy ra, vui lòng kiểm tra kết nối");
+        },
+        success: function (data) {
+            callback(data);
+        }
+    });
+}
+
+function bindingUserToabroad(data) {
+    if (data.success && data.data) {
+        $('.form-item-user').remove();
+        for (var i in data.data) {
+            var item = data.data[i];
+            $('#tab-user-toabroad').append(`<div class="k form-item-user">
+                <div class="k left-text img-avt-user"style="background-image:url(`+ (item.avatar ? linkfileuser + item.avatar : '/images/admin/avt-us-defaul.png') + `)"></div>
+                <div class="k t left-text">`+ item.madv + `</div>
+                <div class="k t left-text">`+ item.hotendangdung + `</div>
+                <div class="k t left-text">`+ item.lydo + `</div>
+                <div class="k t left-text">`+ formatDate(new Date(item.thoigiandi)) +`</div>
+            </div>`);
+        }
+    }
 }

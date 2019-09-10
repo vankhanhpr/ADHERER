@@ -115,7 +115,15 @@ namespace WebApi.serrvice.admin.responsitory
 
         public dynamic getUserByChiBo(int id, DateTime fromday, DateTime endday)
         {
-            return context.Users.Where(m => m.cbid == id && m.ngaydenchibo >= fromday && m.ngaydenchibo <= endday).ToList();
+            var data = context
+                .Users
+                .Where(m => m.cbid == id && m.ngaydenchibo >= fromday && m.ngaydenchibo <= endday)
+                .Select(user => new {
+                    user,
+                    file = context.Files.Where(m=>m.usid== user.usid).FirstOrDefault()
+                });
+
+            return data;
         }
 
         public dynamic getUserByChiBoId(int id)

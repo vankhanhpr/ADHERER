@@ -336,7 +336,6 @@ namespace WebApi.controllers.admin
             return data;
         }
 
-
         [HttpPost("moveUser")]
         public async Task<DataRespond> moveUserAsync([FromForm]UserRequest usrq)
         {
@@ -401,8 +400,6 @@ namespace WebApi.controllers.admin
             }
             return data;
         }
-
-
 
         public async Task<string> uploadDecision(IFormFile file)
         {

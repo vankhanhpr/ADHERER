@@ -101,6 +101,7 @@ namespace WebApi
 
             services.AddTransient<IDashBoardResponsitory, DashBoardResponsitory>();
             services.AddTransient<IFinanceResponsitory, FinanceResponsitory>();
+            services.AddTransient<IStatisticalResponsitory, StatisticalResponsitory>();
             //for user
             services.AddTransient<IFileResponsitory, FileResponsitory>();
             services.AddTransient<IUserResponsitory, UserResponsitory>();
